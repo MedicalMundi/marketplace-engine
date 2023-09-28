@@ -84,10 +84,10 @@ after('deploy:failed', 'deploy:unlock');
  */
 desc('Maintenance on');
 task('maintenance:on', function () {
-    run('{{bin/php}} {{bin/console}} corley:maintenance:soft on');
+    run('{{bin/php}} {{bin/console}} corley:maintenance:soft-lock on');
 });
 
 desc('Maintenance off');
 task('maintenance:off', function () {
-    run('{{bin/php}} {{bin/console}} corley:maintenance:soft off');
+    run('{{bin/php}} {{bin/console}} corley:maintenance:soft-lock off');
 });
