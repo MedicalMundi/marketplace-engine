@@ -23,3 +23,8 @@ docs/wip/
 /phpunit.xml
 .phpunit.result.cache
 ###< phpunit/phpunit ###
+
+
+###> corley/maintenance-bundle ###
+public/hard.lock
+###< corley/maintenance-bundle ###
