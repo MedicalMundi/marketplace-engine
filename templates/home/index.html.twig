@@ -12,6 +12,25 @@
                 <h1>oe-modules.com</h1>
             </div>
         </div>
+
+        <div class="row justify-content-center">
+            <div class="col-6 text-start">
+                <div hx-get="{{ path('webapi_all_module_table') }}"
+                     hx-trigger="load"
+                     hx-targed="#allModules"
+                     hx-swap="outerHTML">
+
+                    <div class="htmx-indicator spinner-border text-success align-self-center" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+
+
+                    <div id="AllModules"></div>
+
+
+                </div>
+            </div>
+        </div>
     </div>
 </main>
 {% endblock %}
