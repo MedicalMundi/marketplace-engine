@@ -81,13 +81,33 @@ after('deploy:failed', 'deploy:unlock');
 
 /**
  * MAINTENANCE BUNDLE CONFIGURATION
+ *
+ *  LOCK
+ * @see https://packagist.org/packages/corley/maintenance-bundle
  */
 desc('Maintenance on');
 task('maintenance:on', function () {
-    run('{{bin/php}} {{bin/console}} corley:maintenance:soft-lock on');
+    run('{{bin/php}} {{bin/console}} corley:maintenance:lock on');
 });
 
 desc('Maintenance off');
 task('maintenance:off', function () {
+    run('{{bin/php}} {{bin/console}} corley:maintenance:lock off');
+});
+
+
+/**
+ * MAINTENANCE BUNDLE CONFIGURATION
+ *
+ *  SOFT-LOCK
+ * @see https://packagist.org/packages/corley/maintenance-bundle
+ */
+desc('Maintenance soft-lock on');
+task('maintenance:soft:on', function () {
+    run('{{bin/php}} {{bin/console}} corley:maintenance:soft-lock on');
+});
+
+desc('Maintenance soft-lock off');
+task('maintenance:soft:off', function () {
     run('{{bin/php}} {{bin/console}} corley:maintenance:soft-lock off');
 });
