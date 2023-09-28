@@ -77,3 +77,17 @@ host('stage')
  */
 
 after('deploy:failed', 'deploy:unlock');
+
+
+/**
+ * MAINTENANCE BUNDLE CONFIGURATION
+ */
+desc('Maintenance on');
+task('maintenance:on', function () {
+    run('{{bin/php}} {{bin/console}} corley:maintenance:soft on');
+});
+
+desc('Maintenance off');
+task('maintenance:off', function () {
+    run('{{bin/php}} {{bin/console}} corley:maintenance:soft off');
+});
