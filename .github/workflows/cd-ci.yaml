@@ -9,3 +9,14 @@ jobs:
     with:
       triggering-sha: "${{ github.sha }}"
 
+  # EXPERIMENTAL
+  deploy-on-stage-workflow:
+    name: Deploy on Staging server
+    #if: startsWith(github.event.ref, 'refs/tags/v') & ${{ env.ENABLE_DEPLOY_ON_STAGING  == '1' }}
+    if: (${{ vars.ENABLE_DEPLOY_ON_STAGING  == '1' }}) & (${{ vars.ENABLE_DEPLOY_ON_PRODUCTION  == '0' }})
+#    needs:
+#      - commit-stage-workflow
+    secrets: inherit
+    uses: medicalmundi/marketplace-engine/.github/workflows/deploy-on-staging.yaml@main
+    with:
+      triggering-sha: "${{ github.sha }}"
