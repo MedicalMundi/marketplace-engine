@@ -44,7 +44,7 @@ host('production')
     ->set('ssh_multiplexing', false)
     /** git & composer settings */
     ->set('branch', 'main')
-    ->set('composer_options', ' --prefer-dist --no-progress --no-interaction --optimize-autoloader')
+    ->set('composer_options', ' --prefer-dist --no-dev --no-progress --no-interaction --optimize-autoloader')
     ->set('keep_releases', 5)
 ;
 
@@ -87,12 +87,14 @@ after('deploy:failed', 'deploy:unlock');
  */
 desc('Maintenance on');
 task('maintenance:on', function () {
-    run('{{bin/php}} {{bin/console}} corley:maintenance:lock on');
+    run('{{bin/console}} corley:maintenance:lock on');
+    info('Maintenance mode (hard-lock) successfully activated!');
 });
 
 desc('Maintenance off');
 task('maintenance:off', function () {
-    run('{{bin/php}} {{bin/console}} corley:maintenance:lock off');
+    run('{{bin/console}} corley:maintenance:lock off');
+    info('Maintenance mode (hard-lock) was deactivated!');
 });
 
 
@@ -104,10 +106,13 @@ task('maintenance:off', function () {
  */
 desc('Maintenance soft-lock on');
 task('maintenance:soft:on', function () {
-    run('{{bin/php}} {{bin/console}} corley:maintenance:soft-lock on');
+    run('{{bin/console}} corley:maintenance:soft-lock on');
+    info('Maintenance mode (soft-lock) successfully activated!');
+
 });
 
 desc('Maintenance soft-lock off');
 task('maintenance:soft:off', function () {
-    run('{{bin/php}} {{bin/console}} corley:maintenance:soft-lock off');
+    run('{{bin/console}} corley:maintenance:soft-lock off');
+    info('Maintenance mode (soft-lock) was deactivated!');
 });
