@@ -17,6 +17,7 @@ concurrency: staging_environment
 
 jobs:
   deploy:
+    name: Deploy
     runs-on: ubuntu-latest
     environment: staging
 
