@@ -18,23 +18,26 @@ namespace App\Adapter\Http\WebApi;
 use App\Application\ModuleFinder;
 use App\Application\PackagistItemCollection;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class AllModuleController extends AbstractController
+class SearchModuleController extends AbstractController
 {
     public function __construct(
         private readonly ModuleFinder $packagistModuleFinder
     ) {
     }
 
-    #[Route('/webapi/all-modules', name: 'webapi_all_module_table')]
-    public function index(): Response
+    #[Route('/webapi/search', name: 'webapi_search_modules', methods: ['POST'])]
+    public function index(Request $request): Response
     {
-        /** @var PackagistItemCollection $modules */
-        $modules = $this->packagistModuleFinder->searchModule();
+        $searchTerms = (string) $request->request->get('search');
 
-        return $this->render('webapi/modules/all_module_table.html.twig', [
+        /** @var PackagistItemCollection $modules */
+        $modules = $this->packagistModuleFinder->searchModule($searchTerms);
+
+        return $this->render('webapi/search/module_search_result.html.twig', [
             'modules' => $modules->getItems(),
         ]);
     }

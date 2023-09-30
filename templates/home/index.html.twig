@@ -18,23 +18,27 @@
         </div>
 
         <div class="row mt-5 justify-content-center">
-            <div class="col-6 text-start">
-                <div hx-get="{{ path('webapi_all_module_table') }}"
-                     hx-trigger="load"
-                     hx-targed="#allModules"
-                     hx-swap="outerHTML">
-
-                    <div class="htmx-indicator spinner-border text-success align-self-center" role="status">
-                        <span class="visually-hidden">Loading...</span>
-                    </div>
-
-
-                    <div id="AllModules"></div>
-
-
-                </div>
+            <div class="col-6 justify-content-center">
+                <form class="form">
+                    <input class="form-control" type="search"
+                           name="search" placeholder="Typing To Search Modules..."
+                           hx-post="/webapi/search"
+                           hx-trigger="keyup changed delay:500ms, search, load"
+                           hx-target="#search-results"
+                           hx-indicator=".htmx-indicator">
+                </form>
             </div>
         </div>
+
+        <div class="row mt-1 justify-content-center">
+            <div class="col-6 justify-content-center">
+                <div class="htmx-indicator spinner-border text-success col-1" role="status">
+                    <span class="visually-hidden"></span>
+                </div>
+                    <div id="search-results"></div>
+            </div>
+        </div>
+
     </div>
 </main>
 {% endblock %}

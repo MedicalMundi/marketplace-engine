@@ -21,7 +21,7 @@ jobs:
 
   deploy-on-stage-workflow:
     name: Deploy on Staging server
-    if: (${{ vars.ENABLE_DEPLOY_ON_STAGING  == '1' }}) & (${{ github.ref_name == 'main' }})
+    if: (${{ vars.ENABLE_DEPLOY_ON_STAGING  == '1' }}) && (${{ github.ref_name == 'main' }})
     needs:
       - acceptance-stage-workflow
     secrets: inherit
