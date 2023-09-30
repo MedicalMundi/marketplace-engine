@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <files psalm-version="5.15.0@5c774aca4746caf3d239d9c8cadb9f882ca29352">
-  <file src="src/Adapter/Http/WebApi/AllModuleController.php">
+  <file src="src/Adapter/Http/WebApi/SearchModuleController.php">
     <UndefinedInterfaceMethod>
       <code>searchModule</code>
     </UndefinedInterfaceMethod>
     <UnusedClass>
-      <code>AllModuleController</code>
+      <code>SearchModuleController</code>
     </UnusedClass>
   </file>
   <file src="src/Adapter/PackagistModuleFinder/PackagistModuleFinder.php">
