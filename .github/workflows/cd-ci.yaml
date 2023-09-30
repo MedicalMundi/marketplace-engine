@@ -11,7 +11,7 @@ jobs:
 
 
   acceptance-stage-workflow:
-    name: Commit Stage
+    name: Acceptance Stage
     needs:
       - commit-stage-workflow
     uses: medicalmundi/marketplace-engine/.github/workflows/acceptance-stage.yaml@main
