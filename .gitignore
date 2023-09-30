@@ -3,6 +3,8 @@
 docs/wip/
 /tools/**/vendor
 
+docker-compose.yml
+docker-compose.override.yml
 
 ###> symfony/framework-bundle ###
 /.env.local
