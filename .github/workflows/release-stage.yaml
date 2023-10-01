@@ -31,9 +31,10 @@ jobs:
       - name: Test the content of 'release_version.txt' file
         run: cat config/release_version.txt
 
-      - name: Release
-        uses: softprops/action-gh-release@v1
-        if: startsWith(github.ref, 'refs/tags/')
-        with:
-          files: |
-            config/release_version.txt
+      #TODO incomplete... should create a release zip file
+#      - name: Release
+#        uses: softprops/action-gh-release@v1
+#        if: startsWith(github.ref, 'refs/tags/')
+#        with:
+#          files: |
+#            config/release_version.txt
