@@ -4,8 +4,75 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "696a6dcc7b868c55c207a90b6fb69b96",
+    "content-hash": "59c34c815f6758bf86e13483db9354a4",
     "packages": [
+        {
+            "name": "beberlei/assert",
+            "version": "v3.3.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/beberlei/assert.git",
+                "reference": "cb70015c04be1baee6f5f5c953703347c0ac1655"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/beberlei/assert/zipball/cb70015c04be1baee6f5f5c953703347c0ac1655",
+                "reference": "cb70015c04be1baee6f5f5c953703347c0ac1655",
+                "shasum": ""
+            },
+            "require": {
+                "ext-ctype": "*",
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "ext-simplexml": "*",
+                "php": "^7.0 || ^8.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "*",
+                "phpstan/phpstan": "*",
+                "phpunit/phpunit": ">=6.0.0",
+                "yoast/phpunit-polyfills": "^0.1.0"
+            },
+            "suggest": {
+                "ext-intl": "Needed to allow Assertion::count(), Assertion::isCountable(), Assertion::minCount(), and Assertion::maxCount() to operate on ResourceBundles"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "lib/Assert/functions.php"
+                ],
+                "psr-4": {
+                    "Assert\\": "lib/Assert"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-2-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Benjamin Eberlei",
+                    "email": "kontakt@beberlei.de",
+                    "role": "Lead Developer"
+                },
+                {
+                    "name": "Richard Quadling",
+                    "email": "rquadling@gmail.com",
+                    "role": "Collaborator"
+                }
+            ],
+            "description": "Thin assertion library for input validation in business models.",
+            "keywords": [
+                "assert",
+                "assertion",
+                "validation"
+            ],
+            "support": {
+                "issues": "https://github.com/beberlei/assert/issues",
+                "source": "https://github.com/beberlei/assert/tree/v3.3.2"
+            },
+            "time": "2021-12-16T21:41:27+00:00"
+        },
         {
             "name": "brick/math",
             "version": "0.11.0",
@@ -1803,6 +1870,76 @@
             "time": "2023-09-25T18:19:53+00:00"
         },
         {
+            "name": "ecotone/pdo-event-sourcing",
+            "version": "1.105.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ecotoneframework/pdo-event-sourcing.git",
+                "reference": "8ba6b6501ba7ddd8323e6ea1ec9f8f722357fdd6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ecotoneframework/pdo-event-sourcing/zipball/8ba6b6501ba7ddd8323e6ea1ec9f8f722357fdd6",
+                "reference": "8ba6b6501ba7ddd8323e6ea1ec9f8f722357fdd6",
+                "shasum": ""
+            },
+            "require": {
+                "ecotone/dbal": "~1.105.0",
+                "prooph/pdo-event-store": "^1.15.1"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "^1.8",
+                "phpunit/phpunit": "^9.5",
+                "psr/container": "^2.0",
+                "wikimedia/composer-merge-plugin": "^2.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "1.105.0-dev"
+                },
+                "ecotone": {
+                    "repository": "pdo-event-sourcing"
+                },
+                "merge-plugin": {
+                    "include": [
+                        "../local_packages.json"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Ecotone\\EventSourcing\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dariusz Gafka",
+                    "email": "dgafka.mail@gmail.com"
+                }
+            ],
+            "description": "Extends Ecotone with Event Sourcing using Prooph PDO Event Store",
+            "homepage": "https://docs.ecotone.tech/",
+            "keywords": [
+                "dbal",
+                "ecotone"
+            ],
+            "support": {
+                "source": "https://github.com/ecotoneframework/pdo-event-sourcing/tree/1.105.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/dgafka",
+                    "type": "github"
+                }
+            ],
+            "time": "2023-09-25T18:19:56+00:00"
+        },
+        {
             "name": "ecotone/symfony-bundle",
             "version": "1.105.0",
             "source": {
@@ -2371,6 +2508,79 @@
             "time": "2022-12-12T11:44:10+00:00"
         },
         {
+            "name": "marc-mabe/php-enum",
+            "version": "v4.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/marc-mabe/php-enum.git",
+                "reference": "3da42cc1daceaf98c858e56f59d1ccd52b011fdc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/marc-mabe/php-enum/zipball/3da42cc1daceaf98c858e56f59d1ccd52b011fdc",
+                "reference": "3da42cc1daceaf98c858e56f59d1ccd52b011fdc",
+                "shasum": ""
+            },
+            "require": {
+                "ext-reflection": "*",
+                "php": "^7.1 | ^8.0"
+            },
+            "require-dev": {
+                "phpbench/phpbench": "^0.16.10 || ^1.0.4",
+                "phpstan/phpstan": "^1.3.1",
+                "phpunit/phpunit": "^7.5.20 | ^8.5.22 | ^9.5.11",
+                "vimeo/psalm": "^4.17.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.6-dev",
+                    "dev-3.x": "3.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "MabeEnum\\": "src/"
+                },
+                "classmap": [
+                    "stubs/Stringable.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Marc Bennewitz",
+                    "email": "dev@mabe.berlin",
+                    "homepage": "https://mabe.berlin/",
+                    "role": "Lead"
+                }
+            ],
+            "description": "Simple and fast implementation of enumerations with native PHP",
+            "homepage": "https://github.com/marc-mabe/php-enum",
+            "keywords": [
+                "enum",
+                "enum-map",
+                "enum-set",
+                "enumeration",
+                "enumerator",
+                "enummap",
+                "enumset",
+                "map",
+                "set",
+                "type",
+                "type-hint",
+                "typehint"
+            ],
+            "support": {
+                "issues": "https://github.com/marc-mabe/php-enum/issues",
+                "source": "https://github.com/marc-mabe/php-enum/tree/v4.7.0"
+            },
+            "time": "2022-04-19T02:21:46+00:00"
+        },
+        {
             "name": "nyholm/psr7",
             "version": "1.8.0",
             "source": {
@@ -2494,6 +2704,216 @@
                 "source": "https://github.com/phpstan/phpdoc-parser/tree/1.24.2"
             },
             "time": "2023-09-26T12:28:12+00:00"
+        },
+        {
+            "name": "prooph/common",
+            "version": "v4.5.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/prooph/common.git",
+                "reference": "a72655690409344fa5a86f7e2b1442c6e78d22a2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/prooph/common/zipball/a72655690409344fa5a86f7e2b1442c6e78d22a2",
+                "reference": "a72655690409344fa5a86f7e2b1442c6e78d22a2",
+                "shasum": ""
+            },
+            "require": {
+                "beberlei/assert": "^2.7.1 || ^3.0",
+                "php": "^7.4 || ^8.0",
+                "ramsey/uuid": "4.1.2 || ^4.3"
+            },
+            "require-dev": {
+                "php-coveralls/php-coveralls": "^2.2",
+                "phpunit/phpunit": "^9.5.5",
+                "prooph/bookdown-template": "^0.2.3",
+                "prooph/php-cs-fixer-config": "^0.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Prooph\\Common\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Alexander Miertsch",
+                    "email": "kontakt@codeliner.ws"
+                },
+                {
+                    "name": "Sascha-Oliver Prolic",
+                    "email": "saschaprolic@googlemail.com"
+                }
+            ],
+            "description": "Common classes used across prooph packages",
+            "homepage": "http://getprooph.org/",
+            "keywords": [
+                "common",
+                "prooph"
+            ],
+            "support": {
+                "issues": "https://github.com/prooph/common/issues",
+                "source": "https://github.com/prooph/common/tree/v4.5.2"
+            },
+            "time": "2022-11-04T00:55:45+00:00"
+        },
+        {
+            "name": "prooph/event-store",
+            "version": "v7.9.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/prooph/event-store.git",
+                "reference": "ff213c26c366af90a57d369595734b6ca202f687"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/prooph/event-store/zipball/ff213c26c366af90a57d369595734b6ca202f687",
+                "reference": "ff213c26c366af90a57d369595734b6ca202f687",
+                "shasum": ""
+            },
+            "require": {
+                "marc-mabe/php-enum": "^4.4",
+                "php": "^7.4 || ^8.0",
+                "prooph/common": "^4.5.2"
+            },
+            "conflict": {
+                "beberlei/assert": "3.2.3 - 3.2.4",
+                "sandrokeil/interop-config": "<2.0.1"
+            },
+            "require-dev": {
+                "phpspec/prophecy": "^1.10.3",
+                "phpspec/prophecy-phpunit": "^2.0",
+                "phpunit/php-invoker": "^3.1",
+                "phpunit/phpunit": "^9.3",
+                "prooph/bookdown-template": "^0.2.3",
+                "prooph/php-cs-fixer-config": "^0.4",
+                "psr/container": "^1.0",
+                "sandrokeil/interop-config": "^2.0.1",
+                "satooshi/php-coveralls": "^1.0"
+            },
+            "suggest": {
+                "prooph/event-sourcing": "Basic functionality for event sourced aggregates",
+                "prooph/pdo-event-store": "For usage with MySQL or Postgres as event store",
+                "prooph/service-bus": "Message bus facade to connect the event store with messaging systems",
+                "psr/container": "^1.0 for usage of provided factories",
+                "sandrokeil/interop-config": "For usage of provided factories"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "7.4-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Prooph\\EventStore\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Alexander Miertsch",
+                    "email": "contact@prooph.de",
+                    "homepage": "http://www.prooph.de"
+                },
+                {
+                    "name": "Sascha-Oliver Prolic",
+                    "email": "saschaprolic@googlemail.com"
+                }
+            ],
+            "description": "PHP EventStore Implementation",
+            "homepage": "http://getprooph.org/",
+            "keywords": [
+                "EventSourcing",
+                "EventStore",
+                "ddd",
+                "prooph"
+            ],
+            "support": {
+                "issues": "https://github.com/prooph/event-store/issues",
+                "source": "https://github.com/prooph/event-store/tree/v7.9.0"
+            },
+            "time": "2023-01-14T00:32:12+00:00"
+        },
+        {
+            "name": "prooph/pdo-event-store",
+            "version": "v1.15.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/prooph/pdo-event-store.git",
+                "reference": "118e727d9efd90ecf04d712841d67231d84c8f34"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/prooph/pdo-event-store/zipball/118e727d9efd90ecf04d712841d67231d84c8f34",
+                "reference": "118e727d9efd90ecf04d712841d67231d84c8f34",
+                "shasum": ""
+            },
+            "require": {
+                "ext-pdo": "*",
+                "php": "^7.3 | ^8.0",
+                "prooph/event-store": "^v7.6"
+            },
+            "conflict": {
+                "sandrokeil/interop-config": "<2.0.1"
+            },
+            "require-dev": {
+                "phpspec/prophecy": "^1.9",
+                "phpspec/prophecy-phpunit": "^2.0",
+                "phpunit/php-invoker": "^3.1",
+                "phpunit/phpunit": "^9.3",
+                "prooph/bookdown-template": "^0.2.3",
+                "prooph/php-cs-fixer-config": "^0.4",
+                "psr/container": "^1.0",
+                "sandrokeil/interop-config": "^2.0.1",
+                "satooshi/php-coveralls": "^1.0"
+            },
+            "suggest": {
+                "ext-pdo_mysql": "For usage with MySQL",
+                "ext-pdo_pgsql": "For usage with PostgreSQL",
+                "psr/container": "^1.0 for usage of provided factories",
+                "sandrokeil/interop-config": "^2.0.1 for usage of provided factories"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.7-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Prooph\\EventStore\\Pdo\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Alexander Miertsch",
+                    "email": "kontakt@codeliner.ws"
+                },
+                {
+                    "name": "Sascha-Oliver Prolic",
+                    "email": "saschaprolic@googlemail.com"
+                }
+            ],
+            "description": "Prooph PDO EventStore",
+            "homepage": "http://getprooph.org/",
+            "support": {
+                "issues": "https://github.com/prooph/pdo-event-store/issues",
+                "source": "https://github.com/prooph/pdo-event-store/tree/v1.15.1"
+            },
+            "time": "2022-11-29T16:56:43+00:00"
         },
         {
             "name": "psr/cache",
