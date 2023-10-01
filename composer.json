@@ -77,12 +77,14 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "src/"
+            "App\\": "src/",
+            "Catalog\\": "_catalog/src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "App\\Tests\\": "tests/"
+            "App\\Tests\\": "tests/",
+            "Catalog\\Tests\\": "_catalog/tests/"
         }
     },
     "minimum-stability": "stable",
