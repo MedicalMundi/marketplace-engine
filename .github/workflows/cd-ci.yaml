@@ -19,6 +19,16 @@ jobs:
       triggering-sha: "${{ github.sha }}"
 
 
+  release-stage-workflow:
+    name: Release Stage
+    if: startsWith(github.event.ref, 'refs/tags/v')
+    needs:
+      - acceptance-stage-workflow
+    uses: medicalmundi/marketplace-engine/.github/workflows/release-stage.yaml@main
+    with:
+      triggering-sha: "${{ github.sha }}"
+
+
   deploy-on-stage-workflow:
     name: Deploy on Staging server
     needs:

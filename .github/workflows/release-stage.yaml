@@ -1,0 +1,39 @@
+name: Release stage
+
+on:
+  workflow_call:
+    # Map the workflow outputs to job outputs
+    inputs:
+      triggering-sha:
+        required: true
+        type: string
+
+jobs:
+  prepare-release:
+    name: Prepare release (php-${{ matrix.php }})
+    runs-on: ubuntu-22.04
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout on SHA-${{ inputs.triggering-sha }}
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.triggering-sha }}
+
+      - name: Show CI job info (dump context)
+        if: ${{ vars.SHOW_WORKFLOW_INFO == '1'}}
+        uses: crazy-max/ghaction-dump-context@v2
+
+      - name: Build file 'release_version.txt'
+        # Tag name: @see https://github.com/orgs/community/discussions/26686
+        run: echo ${{ github.ref_name }} > config/release_version.txt
+
+      - name: Test the content of 'release_version.txt' file
+        run: cat config/release_version.txt
+
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: |
+            config/Release.txt
