@@ -11,6 +11,7 @@
 >
     <projectFiles>
         <directory name="src"/>
+        <directory name="_catalog/src"/>
         <ignoreFiles>
             <directory name="vendor"/>
         </ignoreFiles>

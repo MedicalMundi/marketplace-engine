@@ -20,15 +20,18 @@
     <testsuites>
         <testsuite name="Project Test Suite">
             <directory>tests</directory>
+            <directory>_catalog/tests</directory>
         </testsuite>
-        <testsuite name="Project Test Suite">
+        <testsuite name="unit">
             <directory>tests/Unit</directory>
+            <directory>_catalog/tests/Unit</directory>
         </testsuite>
     </testsuites>
 
     <coverage processUncoveredFiles="true">
         <include>
             <directory suffix=".php">src</directory>
+            <directory suffix=".php">_catalog/src</directory>
         </include>
     </coverage>
 

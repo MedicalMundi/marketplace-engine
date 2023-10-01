@@ -18,6 +18,8 @@ return function (ECSConfig $ecsConfig): void {
         //__DIR__ . '/config',
         __DIR__ . '/src',
         __DIR__ . '/tests',
+        __DIR__ . '/_catalog/src',
+        __DIR__ . '/_catalog/tests',
         __DIR__ . '/rector.php',
     ]);
 
