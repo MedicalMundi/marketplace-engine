@@ -11,6 +11,7 @@
         "doctrine/doctrine-bundle": "^2.10",
         "doctrine/doctrine-migrations-bundle": "^3.2",
         "doctrine/orm": "^2.16",
+        "ecotone/dbal": "^1.105",
         "ecotone/jms-converter": "^1.105",
         "ecotone/symfony-bundle": "^1.105",
         "nyholm/psr7": "^1.8",
