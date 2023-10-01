@@ -15,7 +15,7 @@ env:
 
 jobs:
   acceptance-checks:
-    name: Acceptance checks
+    name: Acceptance checks (php-${{ matrix.php }})
     runs-on: ubuntu-22.04
     timeout-minutes: 10
     services:
