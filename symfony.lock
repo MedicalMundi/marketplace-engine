@@ -29,6 +29,9 @@
             "migrations/.gitignore"
         ]
     },
+    "ecotone/symfony-bundle": {
+        "version": "1.105.0"
+    },
     "nyholm/psr7": {
         "version": "1.8",
         "recipe": {
