@@ -55,7 +55,6 @@ jobs:
     name: Enable Maintenace mode
     if: ${{ vars.ENABLE_MAINTENANCE_MODE_AFTER_DEPLOY_ON_STAGING == '1'}}
     runs-on: ubuntu-latest
-    environment: staging
     needs:
       - deploy
 
