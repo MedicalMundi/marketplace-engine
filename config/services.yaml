@@ -35,3 +35,6 @@ services:
             - '@ultramsg_client.options'
 
 
+    Enqueue\Dbal\DbalConnectionFactory:
+        factory: ['Ecotone\Dbal\DbalConnection', 'create']
+        arguments: ['@Doctrine\DBAL\Connection']
