@@ -5,6 +5,15 @@ when@prod:
             server_name: "marketplace.oe-modules.com"
             send_attempts: 4
 
+    tracing:
+        enabled: true
+        dbal: # DB queries
+            enabled: true
+        cache:
+            enabled: true
+        twig: # templating engine
+            enabled: true
+
 #        If you are using Monolog, you also need this additional configuration to log the errors correctly:
 #        https://docs.sentry.io/platforms/php/guides/symfony/#monolog-integration
 #        register_error_listener: false

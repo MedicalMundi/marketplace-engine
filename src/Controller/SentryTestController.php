@@ -30,6 +30,7 @@ class SentryTestController extends AbstractController
     #[Route('/sentry/test', name: 'app_sentry_test')]
     public function index(): Response
     {
+        $this->logger->error('My custom logged error.');
         return $this->render('sentry_test/index.html.twig', [
             'controller_name' => 'SentryTestController',
         ]);
