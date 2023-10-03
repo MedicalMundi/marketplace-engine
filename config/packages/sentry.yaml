@@ -7,7 +7,7 @@ when@prod:
             traces_sample_rate: 0.1
             server_name: "marketplace.oe-modules.com"
             send_attempts: 4
-            release: "0.1.x"
+            release: '%release.version%'
 
         tracing:
             enabled: true
