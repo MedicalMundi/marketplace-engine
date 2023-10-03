@@ -4,8 +4,6 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
-    ultramsg.instance_id: '%env(ULTRAMSG_INSTANCE_ID)%'
-    ultramsg.token: '%env(ULTRAMSG_TOKEN)%'
 
 services:
     # default configuration for services in *this* file
@@ -24,16 +22,6 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
-
-    ultramsg_client.options:
-        class: OpenDaje\UmWa\Options
-        arguments:
-            - { instanceId: '%ultramsg.instance_id%', token: '%ultramsg.token%' }
-
-    OpenDaje\UmWa\UltraMsgClient:
-        arguments:
-            - '@ultramsg_client.options'
-
 
     Enqueue\Dbal\DbalConnectionFactory:
         factory: ['Ecotone\Dbal\DbalConnection', 'create']
