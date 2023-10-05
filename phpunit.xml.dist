@@ -26,6 +26,10 @@
             <directory>tests/Unit</directory>
             <directory>_catalog/tests/Unit</directory>
         </testsuite>
+        <testsuite name="integration">
+            <directory>tests/Integration</directory>
+            <directory>_catalog/tests/Integration</directory>
+        </testsuite>
     </testsuites>
 
     <coverage processUncoveredFiles="true">
