@@ -24,8 +24,7 @@ class ModuleReaderOnPackagistTest extends TestCase
 {
     public function testModuleSearch(): void
     {
-        $packagistClient = new Client();
-        $packagistReader = new ModuleReaderOnPackagist($packagistClient);
+        $packagistReader = $this->getModuleReaderOnPackagist();
 
         $result = $packagistReader->search();
 
@@ -34,8 +33,7 @@ class ModuleReaderOnPackagistTest extends TestCase
 
     public function testModuleSearchWithTerms(): void
     {
-        $packagistClient = new Client();
-        $packagistReader = new ModuleReaderOnPackagist($packagistClient);
+        $packagistReader = $this->getModuleReaderOnPackagist();
 
         $result = $packagistReader->search('fax');
 
@@ -45,8 +43,7 @@ class ModuleReaderOnPackagistTest extends TestCase
 
     public function testModuleSearchWithNotFoundModule(): void
     {
-        $packagistClient = new Client();
-        $packagistReader = new ModuleReaderOnPackagist($packagistClient);
+        $packagistReader = $this->getModuleReaderOnPackagist();
 
         $result = $packagistReader->search('unknown-module');
 
@@ -56,8 +53,7 @@ class ModuleReaderOnPackagistTest extends TestCase
 
     public function testGetModuleDetail(): void
     {
-        $packagistClient = new Client();
-        $packagistReader = new ModuleReaderOnPackagist($packagistClient);
+        $packagistReader = $this->getModuleReaderOnPackagist();
 
         $result = $packagistReader->getModuleDetail('medicalmundi/oe-module-npi-registry');
 
@@ -68,9 +64,15 @@ class ModuleReaderOnPackagistTest extends TestCase
     {
         self::expectException(PackageNotFoundException::class);
 
-        $packagistClient = new Client();
-        $packagistReader = new ModuleReaderOnPackagist($packagistClient);
+        $packagistReader = $this->getModuleReaderOnPackagist();
 
         $packagistReader->getModuleDetail('unknown-vendor/unknown package');
+    }
+
+    private function getModuleReaderOnPackagist(): ModuleReaderOnPackagist
+    {
+        $packagistClient = new Client();
+
+        return new ModuleReaderOnPackagist($packagistClient);
     }
 }
