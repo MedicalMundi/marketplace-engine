@@ -1,0 +1,61 @@
+{% extends 'layout-base.html.twig' %}
+
+{% block title %}
+    {{ parent() }}
+{% endblock %}
+
+{% block main %}
+<main class="flex-shrink-0">
+    <div class="container">
+        <div class="row  border-bottom border-primary">
+            <div class="col-1 text-start">
+                <a class="icon-link icon-link-hover" href="{{ path('app_home') }}">
+                    <svg class="bi" aria-hidden="true"><use xlink:href="{{ asset('/assets/bootstrap-icons-1.11.1/bootstrap-icons.svg') }}#arrow-left"></use></svg>
+                    Home
+                </a>
+            </div>
+            <div class="col-9 text-center">
+                <h1>{{ module.name }}</h1>
+            </div>
+        </div>
+
+        <div class="row justify-content-center mt-5">
+            <div class="col">
+                <p> - {{ module.description }}</p>
+            </div>
+            <div class="col-auto justify-content-end">
+                <p>Maintainers: {{ module.maintainers[0].name }}</p>
+            </div>
+        </div>
+
+        <div class="row mt-1">
+            <div class="col-10">
+                <div class="card w-50">
+                    <div class="card-body">
+                        <h5 class="card-title border-bottom border-primary">Details</h5>
+                        {# <p class="card-text">{{ module.repository }}</p> #}
+                        <p class="card-text">
+                            <a href="{{ module.repository }}/issues" class="text-reset" target="_blank">Open Issues</a>: {{ module.githubOpenIssues }}
+                        </p>
+                        <p class="card-text">Installs: {{ module.downloads.total }}</p>
+                        <p class="card-text">Dependents: {{ module.dependents }}</p>
+                        <p class="card-text">Suggesters: {{ module.suggesters }}</p>
+
+                        {# <p class="card-text">Security:</p>#}
+
+                        <p class="card-text">
+                            <a href="{{ module.repository }}/stargazers" class="text-reset" target="_blank">Stars</a>: {{ module.githubStars }}
+                        </p>
+                        <p class="card-text">
+                            <a href="{{ module.repository }}/watchers" class="text-reset" target="_blank">Watchers</a>: {{ module.githubWatchers }}
+                        </p>
+                        <p class="card-text">
+                            <a href="{{ module.repository }}/forks" class="text-reset" target="_blank">Forks</a>: {{ module.githubForks }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}
