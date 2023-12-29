@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <files psalm-version="5.15.0@5c774aca4746caf3d239d9c8cadb9f882ca29352">
+  <file src="_catalog/src/Adapter/Http/Web/ModuleDetailsController.php">
+    <UnusedClass>
+      <code>ModuleDetailsController</code>
+    </UnusedClass>
+  </file>
   <file src="_catalog/src/Adapter/Packagist/ModuleReaderOnPackagist.php">
     <UnusedClass>
       <code>ModuleReaderOnPackagist</code>
@@ -7,7 +12,6 @@
   </file>
   <file src="_catalog/src/Application/ModuleDataReaderInterface.php">
     <PossiblyUnusedMethod>
-      <code>getModuleDetail</code>
       <code>search</code>
     </PossiblyUnusedMethod>
   </file>
