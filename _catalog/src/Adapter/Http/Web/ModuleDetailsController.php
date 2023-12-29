@@ -13,7 +13,7 @@
  * @license https://github.com/MedicalMundi/marketplace-engine/blob/main/LICENSE MIT
  */
 
-namespace App\Controller;
+namespace Catalog\Adapter\Http\Web;
 
 use Catalog\Application\ModuleDataReaderInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -27,9 +27,9 @@ class ModuleDetailsController extends AbstractController
     ) {
     }
 
-    #[Route('/module/{moduleName}', name: 'app_module_details', requirements: [
+    #[Route('/module/{moduleName}', name: 'catalog_module_details', requirements: [
         'moduleName' => '[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+?',
-    ])]
+    ], methods: ['GET'])]
     public function index(string $moduleName): Response
     {
         /**
@@ -37,7 +37,7 @@ class ModuleDetailsController extends AbstractController
          */
         $module = $this->moduleDataReader->getModuleDetail($moduleName);
 
-        return $this->render('module/index.html.twig', [
+        return $this->render('@catalog/module/index.html.twig', [
             'module' => $module,
         ]);
     }
