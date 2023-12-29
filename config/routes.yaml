@@ -9,3 +9,15 @@ webapi_controllers:
         path: ../src/Adapter/Http/WebApi
         namespace: App\Adapter\Http\WebApi
     type: attribute
+
+catalog_web_controllers:
+    resource:
+        path: ../_catalog/src/Adapter/Http/Web
+        namespace: Catalog\Adapter\Http\Web
+    type: attribute
+
+catalog_webapi_controllers:
+    resource:
+        path: ../_catalog/src/Adapter/Http/WebApi
+        namespace: Catalog\Adapter\Http\WebApi
+    type: attribute
