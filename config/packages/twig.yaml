@@ -9,6 +9,7 @@ twig:
     globals:
         release_version: '%release.version%'
 
+
 when@test:
     twig:
         strict_variables: true
