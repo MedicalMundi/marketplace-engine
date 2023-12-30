@@ -40,7 +40,7 @@ host('production')
     /** ssh settings */
     ->setRemoteUser('ekvwxsme')
     ->setPort(3508)
-    ->set('identityFile', '~/.ssh/id_rsa_oe_modules_php_deployer')
+    ->set('identityFile', '~/.ssh/id_rsa_marketplace_engine_deployer')
     ->set('ssh_multiplexing', false)
     /** git & composer settings */
     ->set('branch', 'main')
@@ -63,7 +63,7 @@ host('stage')
     /** ssh settings */
     ->setRemoteUser('ekvwxsme')
     ->setPort(3508)
-    //->set('identityFile', '~/.ssh/id_rsa_oe_modules_php_deployer')
+    //->set('identityFile', '~/.ssh/id_rsa_marketplace_engine_deployer')
     ->set('ssh_multiplexing', false)
     /** git & composer settings */
     ->set('branch', 'main')
