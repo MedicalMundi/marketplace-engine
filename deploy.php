@@ -44,7 +44,12 @@ host('production')
     ->set('ssh_multiplexing', false)
     /** git & composer settings */
     ->set('branch', 'main')
-    ->set('composer_options', ' --prefer-dist --no-dev --no-progress --no-interaction --optimize-autoloader')
+    /**
+     * In prod composer dovrebbe essere usato con l'opzione --no-dev
+     *
+     * ->set('composer_options', ' --prefer-dist --no-dev --no-progress --no-interaction --optimize-autoloader')
+     */
+    ->set('composer_options', ' --prefer-dist --no-progress --no-interaction --optimize-autoloader')
     ->set('keep_releases', 5)
 ;
 
