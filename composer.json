@@ -106,6 +106,7 @@
             "cache:clear": "symfony-cmd",
             "assets:install %PUBLIC_DIR%": "symfony-cmd"
         },
+        "ark": "./vendor/bin/phparkitect check",
         "cs": "./vendor/bin/ecs",
         "cs:fix": "./vendor/bin/ecs --fix",
         "rc": "./vendor/bin/rector --dry-run",
@@ -116,6 +117,7 @@
         "tu": "./vendor/bin/phpunit --testsuite=unit --testdox"
     },
     "scripts-descriptions": {
+        "ark": "Run Architectural checks",
         "cs": "Check php coding style",
         "cs:fix": "Fix php coding style",
         "rc": "Check rector rules",
