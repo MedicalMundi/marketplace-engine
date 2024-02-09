@@ -30,15 +30,8 @@ class TranslatingModuleServiceTest extends TestCase
         $this->moduleProvider = new FakePublicModuleProviderFromPackagist();
     }
 
-    public function test_shouldBeInstatiate()
+    public function test_shouldBeInstantiated()
     {
         $sut = new TranslatingModuleService($this->moduleProvider);
-    }
-
-    public function test_shouldfind()
-    {
-        $sut = new TranslatingModuleService($this->moduleProvider);
-
-        dd($sut->search('fax'));
     }
 }

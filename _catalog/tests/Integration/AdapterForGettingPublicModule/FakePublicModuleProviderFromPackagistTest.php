@@ -21,11 +21,11 @@ use PHPUnit\Framework\TestCase;
 
 class FakePublicModuleProviderFromPackagistTest extends TestCase
 {
-    public function test_shouldReturnAnPackagistItemCollection()
+    public function test_shouldReturnAPackagistItemCollection()
     {
         $sut = new FakePublicModuleProviderFromPackagist();
 
-        $sut->setupPackage('oe-module-foo', 'a cool module', 'https://www.google.com', 'https://github.com/foo/bar', 100);
+        $sut->setupPackage('a-vendor-name/a-package-name', 'a cool module', 'https://www.packagist.org/a-vendor-name/a-package-name', 'https://github.com/a-vendor-name/a-package-name', 100);
 
         self::assertInstanceOf(PackagistItemCollection::class, $sut->search(''));
     }
@@ -34,7 +34,7 @@ class FakePublicModuleProviderFromPackagistTest extends TestCase
     {
         $sut = new FakePublicModuleProviderFromPackagist();
 
-        $sut->setupPackage('oe-module-foo', 'a cool module', 'https://www.google.com', 'https://github.com/foo/bar', 100);
+        $sut->setupPackage('a-vendor-name/a-package-name', 'a cool module', 'https://www.packagist.org/a-vendor-name/a-package-name', 'https://github.com/a-vendor-name/a-package-name', 100);
 
         $result = $sut->search('');
 

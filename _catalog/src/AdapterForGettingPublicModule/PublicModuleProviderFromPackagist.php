@@ -43,8 +43,9 @@ class PublicModuleProviderFromPackagist implements ForGettingPublicModule
 
     private function buildPackagistItemCollection(object|array $inputItem): PackagistItemCollection
     {
-        if (is_object($inputItem)){
-            $packagistItem =  PackagistItem::create(
+        $resultItems = [];
+        if (\is_object($inputItem)) {
+            $resultItems[] = PackagistItem::create(
                 $inputItem->getName(),
                 $inputItem->getDescription(),
                 $inputItem->getUrl(),
@@ -52,11 +53,10 @@ class PublicModuleProviderFromPackagist implements ForGettingPublicModule
                 $inputItem->getDownloads()
             );
 
-            return  new PackagistItemCollection([$packagistItem]);
-        }else{
-            $x = [];
-            foreach ($inputItem as $item){
-                $x[] = PackagistItem::create(
+            return new PackagistItemCollection([$resultItems]);
+        } else {
+            foreach ($inputItem as $item) {
+                $resultItems[] = PackagistItem::create(
                     $item->getName(),
                     $item->getDescription(),
                     $item->getUrl(),
@@ -65,9 +65,7 @@ class PublicModuleProviderFromPackagist implements ForGettingPublicModule
                 );
             }
 
-            return new PackagistItemCollection([$x]);
+            return new PackagistItemCollection($resultItems);
         }
-
     }
-
 }
