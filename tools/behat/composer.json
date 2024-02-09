@@ -1,0 +1,6 @@
+{
+    "require-dev": {
+        "behat/behat": "^3.14",
+        "roave/behat-psr11extension": "^2.3"
+    }
+}
