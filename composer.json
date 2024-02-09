@@ -105,6 +105,24 @@
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
             "assets:install %PUBLIC_DIR%": "symfony-cmd"
-        }
+        },
+        "cs": "./vendor/bin/ecs",
+        "cs:fix": "./vendor/bin/ecs --fix",
+        "rc": "./vendor/bin/rector --dry-run",
+        "rc:fix": "./vendor/bin/rector",
+        "sa": "./vendor/bin/psalm",
+        "tf": "./vendor/bin/phpunit --testsuite=functional --testdox",
+        "ti": "./vendor/bin/phpunit --testsuite=integration --testdox",
+        "tu": "./vendor/bin/phpunit --testsuite=unit --testdox"
+    },
+    "scripts-descriptions": {
+        "cs": "Check php coding style",
+        "cs:fix": "Fix php coding style",
+        "rc": "Check rector rules",
+        "rc:fix": "Fix rector issues",
+        "sa": "Check static analysis (phpstan)",
+        "tf": "Run functional testsuite",
+        "ti": "Run integration testsuite",
+        "tu": "Run unit testsuite"
     }
 }
