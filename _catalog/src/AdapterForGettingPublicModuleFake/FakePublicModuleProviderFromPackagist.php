@@ -26,7 +26,7 @@ class FakePublicModuleProviderFromPackagist implements ForGettingPublicModule
     ) {
     }
 
-    public function search(string $searchTerm): object|array
+    public function search(string $searchTerm): PackagistItemCollection
     {
         return $this->buildPackagistItemCollection();
     }

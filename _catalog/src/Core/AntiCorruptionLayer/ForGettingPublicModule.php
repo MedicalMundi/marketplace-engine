@@ -15,6 +15,7 @@
 
 namespace Catalog\Core\AntiCorruptionLayer;
 
+use Catalog\Core\AntiCorruptionLayer\Dto\PackagistItemCollection;
 use Psr\Http\Client\ClientExceptionInterface;
 
 interface ForGettingPublicModule
@@ -22,10 +23,5 @@ interface ForGettingPublicModule
     /**
      * @throws ClientExceptionInterface
      */
-    public function search(string $searchTerm): object|array;
-
-    /**
-     * @throws ClientExceptionInterface
-     */
-    public function getModuleDetail(string $moduleName): object|array;
+    public function search(string $searchTerm): PackagistItemCollection;
 }

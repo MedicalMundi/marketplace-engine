@@ -15,6 +15,7 @@
 
 namespace Catalog\Core\AntiCorruptionLayer;
 
+use Catalog\Core\AntiCorruptionLayer\Dto\PackagistItemCollection;
 use Catalog\Core\ModuleFinder;
 
 class TranslatingModuleService implements ModuleFinder
@@ -24,13 +25,8 @@ class TranslatingModuleService implements ModuleFinder
     ) {
     }
 
-    public function search(string $searchTerm): object|array
+    public function search(string $searchTerm): PackagistItemCollection
     {
         return $this->moduleProvider->search($searchTerm);
-    }
-
-    public function getModuleDetail(string $moduleName): object|array
-    {
-        return $this->moduleProvider->getModuleDetail($moduleName);
     }
 }

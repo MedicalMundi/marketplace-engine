@@ -27,7 +27,7 @@ class PublicModuleProviderFromPackagist implements ForGettingPublicModule
     ) {
     }
 
-    public function search(string $searchTerm = ''): object|array
+    public function search(string $searchTerm = ''): PackagistItemCollection
     {
         $apiResult = $this->apiClient->search($searchTerm, [
             'type' => 'openemr-module',
@@ -50,7 +50,7 @@ class PublicModuleProviderFromPackagist implements ForGettingPublicModule
                 $inputItem->getDescription(),
                 $inputItem->getUrl(),
                 $inputItem->getRepository(),
-                $inputItem->getDownloads()
+                (int) $inputItem->getDownloads()
             );
 
             return new PackagistItemCollection([$resultItems]);
@@ -61,7 +61,7 @@ class PublicModuleProviderFromPackagist implements ForGettingPublicModule
                     $item->getDescription(),
                     $item->getUrl(),
                     $item->getRepository(),
-                    $item->getDownloads()
+                    (int) $item->getDownloads()
                 );
             }
 
