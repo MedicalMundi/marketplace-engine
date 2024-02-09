@@ -21,6 +21,9 @@ use Psr\Http\Client\ClientExceptionInterface;
 interface ModuleFinder
 {
     /**
+     * TODO: should return a domain object
+     */
+    /**
      * @throws ClientExceptionInterface
      */
     public function search(string $searchTerm): PackagistItemCollection;

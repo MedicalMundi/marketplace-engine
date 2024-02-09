@@ -41,12 +41,6 @@
     </UnusedClass>
   </file>
   <file src="_catalog/src/AdapterForGettingPublicModuleFake/FakePublicModuleProviderFromPackagist.php">
-    <InvalidReturnType>
-      <code>object|array</code>
-    </InvalidReturnType>
-    <PossiblyUnusedParam>
-      <code>$moduleName</code>
-    </PossiblyUnusedParam>
     <UnusedClass>
       <code>FakePublicModuleProviderFromPackagist</code>
     </UnusedClass>

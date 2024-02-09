@@ -31,10 +31,6 @@ class FakePublicModuleProviderFromPackagist implements ForGettingPublicModule
         return $this->buildPackagistItemCollection();
     }
 
-    public function getModuleDetail(string $moduleName): object|array
-    {
-    }
-
     private function buildPackagistItemCollection(): PackagistItemCollection
     {
         return new PackagistItemCollection($this->collection);

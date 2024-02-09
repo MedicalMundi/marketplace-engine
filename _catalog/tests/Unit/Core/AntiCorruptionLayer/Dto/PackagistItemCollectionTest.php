@@ -23,8 +23,6 @@ class PackagistItemCollectionTest extends TestCase
 {
     private const IRRELEVANT = 'irrelevant';
 
-    //use PackagistHttpResponseTrait;
-
     /**
      * @test
      */

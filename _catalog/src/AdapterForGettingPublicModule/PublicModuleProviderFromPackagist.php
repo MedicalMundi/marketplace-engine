@@ -36,11 +36,6 @@ class PublicModuleProviderFromPackagist implements ForGettingPublicModule
         return $this->buildPackagistItemCollection($apiResult);
     }
 
-    public function getModuleDetail(string $moduleName): object|array
-    {
-        return $this->apiClient->get($moduleName);
-    }
-
     private function buildPackagistItemCollection(object|array $inputItem): PackagistItemCollection
     {
         $resultItems = [];

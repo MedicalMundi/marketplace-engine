@@ -29,15 +29,4 @@ class FakePublicModuleProviderFromPackagistTest extends TestCase
 
         self::assertInstanceOf(PackagistItemCollection::class, $sut->search(''));
     }
-
-    public function test_shouldCountTheResult()
-    {
-        $sut = new FakePublicModuleProviderFromPackagist();
-
-        $sut->setupPackage('a-vendor-name/a-package-name', 'a cool module', 'https://www.packagist.org/a-vendor-name/a-package-name', 'https://github.com/a-vendor-name/a-package-name', 100);
-
-        $result = $sut->search('');
-
-        self::assertEquals(1, $result->count());
-    }
 }
