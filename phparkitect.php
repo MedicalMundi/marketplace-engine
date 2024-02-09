@@ -49,9 +49,9 @@ return static function (Config $config): void {
 
     $catalogClassSet = ClassSet::fromDir(__DIR__ . '/_catalog/src');
 
-    $allowedPhpDependencies = require_once __DIR__ . '/tools/Phparkitect/PhpDependencies/allowed_always.php';
-    $allowedVendorDependenciesInCatalogCore = require_once __DIR__ . '/tools/Phparkitect/VendorDependencies/allowed_in_catalog_core.php';
-    $allowedVendorDependenciesInCatalogAdapters = require_once __DIR__ . '/tools/Phparkitect/VendorDependencies/allowed_in_catalog_adapters.php';
+    $allowedPhpDependencies = require_once __DIR__ . '/tools/phparkitect/PhpDependencies/allowed_always.php';
+    $allowedVendorDependenciesInCatalogCore = require_once __DIR__ . '/tools/phparkitect/VendorDependencies/allowed_in_catalog_core.php';
+    $allowedVendorDependenciesInCatalogAdapters = require_once __DIR__ . '/tools/phparkitect/VendorDependencies/allowed_in_catalog_adapters.php';
 
     $catalogPortAndAdapterArchitectureRules = Architecture::withComponents()
         ->component('Core')->definedBy('Catalog\Core\*')
