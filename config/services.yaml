@@ -31,3 +31,10 @@ services:
     Enqueue\Dbal\DbalConnectionFactory:
         factory: ['Ecotone\Dbal\DbalConnection', 'create']
         arguments: ['@Doctrine\DBAL\Connection']
+
+
+    app.menu_builder:
+        class: App\Infrastructure\MainMenuBuilder
+        arguments: ["@knp_menu.factory"]
+        tags:
+            - { name: knp_menu.menu_builder, method: createMainMenu, alias: main }

@@ -120,4 +120,12 @@
       <code>HomeController</code>
     </UnusedClass>
   </file>
+  <file src="src/Infrastructure/MainMenuBuilder.php">
+    <UnusedClass>
+      <code>MainMenuBuilder</code>
+    </UnusedClass>
+    <UnusedParam>
+      <code>$options</code>
+    </UnusedParam>
+  </file>
 </files>
