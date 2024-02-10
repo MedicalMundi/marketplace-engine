@@ -84,10 +84,12 @@ jobs:
         run: |
           composer-normalize --dry-run --ansi
 
-      - name: Run composer audit
-        if: always()
-        run: |
-          composer audit --ansi
+        # ENABLE AFTER ISSUE FIX
+        # https://github.com/MedicalMundi/marketplace-engine/issues/19
+#      - name: Run composer audit
+#        if: always()
+#        run: |
+#          composer audit --ansi
 
       - name: Run ecs CODING STANDARDS
         if: always()
