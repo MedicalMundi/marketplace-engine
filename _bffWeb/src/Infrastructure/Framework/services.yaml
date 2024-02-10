@@ -13,10 +13,17 @@ services:
 
   # makes classes in src/ available to be used as services
   # this creates a service per class whose id is the fully-qualified class name
-  Catalog\:
-    resource: '../../../../_catalog/src/'
-    exclude:
-      - '../../../../_catalog/src/Application/Model/'
+  BffWeb\:
+    resource: '../../../../_bffWeb/src/'
+
 
   # add more service definitions when explicit configuration is needed
   # please note that last definitions always *replace* previous ones
+
+
+
+  bbf.web.menu_builder:
+    class: BffWeb\Infrastructure\MenuBuilder\MainMenuBuilder
+    arguments: ["@knp_menu.factory"]
+    tags:
+      - { name: knp_menu.menu_builder, method: createMainMenu, alias: main }

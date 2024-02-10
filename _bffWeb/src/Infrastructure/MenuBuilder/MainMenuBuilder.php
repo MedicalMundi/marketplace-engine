@@ -13,7 +13,7 @@
  * @license https://github.com/MedicalMundi/marketplace-engine/blob/main/LICENSE MIT
  */
 
-namespace BbfWeb\Infrastructure\MenuBuilder;
+namespace BffWeb\Infrastructure\MenuBuilder;
 
 use Knp\Menu\FactoryInterface;
 use Knp\Menu\ItemInterface;
