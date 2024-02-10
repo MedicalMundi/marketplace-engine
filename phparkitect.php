@@ -68,7 +68,7 @@ return static function (Config $config): void {
     $catalogCoreIsolationRule = Rule::allClasses()
         ->that(new ResideInOneOfTheseNamespaces('Catalog\Core'))
         ->should(new NotHaveDependencyOutsideNamespace('Catalog\Core', $allowedDependenciesInCoreCode))
-        ->because('we want isolate our core domain from external world.');
+        ->because('we want isolate our catalog core domain from external world.');
 
 
     $allowedDependenciesInCatalogAdapters = array_merge($allowedPhpDependencies, $allowedVendorDependenciesInCatalogAdapters);
@@ -76,7 +76,48 @@ return static function (Config $config): void {
         ->except('Catalog\Adapter\Http\Web\ModuleDetailsController', 'Catalog\Adapter\Packagist\ModuleReaderOnPackagist')
         ->that(new ResideInOneOfTheseNamespaces('Catalog\Adapter*'))
         ->should(new NotHaveDependencyOutsideNamespace('Catalog\Core', $allowedDependenciesInCatalogAdapters))
-        ->because('we want isolate our Adapters from ever growing dependencies.');
+        ->because('we want isolate our catalog Adapters from ever growing dependencies.');
 
     $config->add($catalogClassSet, $catalogCoreIsolationRule, $catalogAdaptersIsolationRule, ...$catalogPortAndAdapterArchitectureRules);
+
+
+    /**++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+     *++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*
+     *
+     *      BffWeb
+     *
+     *++++++++++++++++++++++++++++  ++++++++++++++++++++++++++++++++++++++++++++*
+     *++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*
+     */
+
+    $bffWebClassSet = ClassSet::fromDir(__DIR__ . '/_bffWeb/src');
+
+    $allowedVendorDependenciesInBffWebCore = require_once __DIR__ . '/tools/phparkitect/VendorDependencies/allowed_in_bffWeb_core.php';
+    $allowedVendorDependenciesInBffWebAdapters = require_once __DIR__ . '/tools/phparkitect/VendorDependencies/allowed_in_bffWeb_adapters.php';
+
+    $bffWebPortAndAdapterArchitectureRules = Architecture::withComponents()
+        ->component('Core')->definedBy('BbfWeb\Core\*')
+        ->component('Adapters')->definedBy('BbfWeb\Adapter*')
+        ->component('Infrastructure')->definedBy('BbfWeb\Infrastructure\*')
+
+        ->where('Infrastructure')->shouldNotDependOnAnyComponent()
+        ->where('Adapters')->mayDependOnComponents('Core', 'Infrastructure')
+        ->where('Core')->shouldNotDependOnAnyComponent()
+        ->rules();
+
+
+    $allowedDependenciesInBffWebCore = array_merge($allowedPhpDependencies, $allowedVendorDependenciesInBffWebCore);
+    $bffWebCoreIsolationRule = Rule::allClasses()
+        ->that(new ResideInOneOfTheseNamespaces('BbfWeb\Core'))
+        ->should(new NotHaveDependencyOutsideNamespace('BbfWeb\Core', $allowedDependenciesInBffWebCore))
+        ->because('we want isolate our bffWeb core domain from external world.');
+
+
+    $allowedDependenciesInBffWebAdapters = array_merge($allowedPhpDependencies, $allowedVendorDependenciesInBffWebAdapters);
+    $bffWebAdaptersIsolationRule = Rule::allClasses()
+        ->that(new ResideInOneOfTheseNamespaces('BbfWeb\Adapter*'))
+        ->should(new NotHaveDependencyOutsideNamespace('Catalog\Core', $allowedDependenciesInBffWebAdapters))
+        ->because('we want isolate our bffWeb Adapters from ever growing dependencies.');
+
+    $config->add($bffWebClassSet, $bffWebCoreIsolationRule, $bffWebAdaptersIsolationRule, ...$bffWebPortAndAdapterArchitectureRules);
 };
