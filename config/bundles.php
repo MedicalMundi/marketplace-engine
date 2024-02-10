@@ -13,4 +13,5 @@ return [
     Ecotone\SymfonyBundle\EcotoneSymfonyBundle::class => ['all' => true],
     Sentry\SentryBundle\SentryBundle::class => ['prod' => true],
     Symfony\Bundle\MonologBundle\MonologBundle::class => ['all' => true],
+    Knp\Bundle\MenuBundle\KnpMenuBundle::class => ['all' => true],
 ];

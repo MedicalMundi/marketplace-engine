@@ -15,6 +15,7 @@
         "ecotone/jms-converter": "^1.105",
         "ecotone/pdo-event-sourcing": "^1.105",
         "ecotone/symfony-bundle": "^1.105",
+        "knplabs/knp-menu-bundle": "^3.3",
         "knplabs/packagist-api": "^2.0",
         "nyholm/psr7": "^1.8",
         "psr/http-client": "^1.0",

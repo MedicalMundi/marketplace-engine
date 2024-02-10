@@ -50,6 +50,9 @@
             "ref": "4dd47013ecec8a158d186f63ec4b51f1defff897"
         }
     },
+    "knplabs/knp-menu-bundle": {
+        "version": "v3.3.0"
+    },
     "knplabs/packagist-api": {
         "version": "2.0",
         "recipe": {
