@@ -39,6 +39,7 @@ class SearchModuleController extends AbstractController
 
         return $this->render('webapi/search/module_search_result.html.twig', [
             'modules' => $modules->getItems(),
+            'totalModuleCount' => $modules->count(),
         ]);
     }
 }
