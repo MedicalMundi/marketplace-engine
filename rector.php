@@ -24,6 +24,8 @@ return static function (RectorConfig $rectorConfig): void {
         __DIR__ . '/tests',
         __DIR__ . '/_catalog/src',
         __DIR__ . '/_catalog/tests',
+        __DIR__ . '/_bffWeb/src',
+        __DIR__ . '/_bffWeb/tests',
     ]);
 
     $rectorConfig->symfonyContainerXml(__DIR__ . '/var/cache/dev/App_KernelDevDebugContainer.xml');

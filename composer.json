@@ -85,13 +85,15 @@
     "autoload": {
         "psr-4": {
             "App\\": "src/",
-            "Catalog\\": "_catalog/src/"
+            "Catalog\\": "_catalog/src/",
+            "BffWeb\\": "_bffWeb/src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
             "App\\Tests\\": "tests/",
-            "Catalog\\Tests\\": "_catalog/tests/"
+            "Catalog\\Tests\\": "_catalog/tests/",
+            "BffWeb\\Tests\\": "_bffWeb/src/"
         }
     },
     "minimum-stability": "stable",
