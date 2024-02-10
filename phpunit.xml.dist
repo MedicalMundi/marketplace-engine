@@ -21,24 +21,24 @@
         <testsuite name="omnia">
             <directory>tests</directory>
             <directory>_catalog/tests</directory>
-            <directory>_bbfWeb/tests</directory>
+            <directory>_bffWeb/tests</directory>
         </testsuite>
         <testsuite name="catalog">
             <directory>_catalog/tests</directory>
         </testsuite>
         <testsuite name="bbfWeb">
-            <directory>_bbfWeb/tests</directory>
+            <directory>_bffWeb/tests</directory>
         </testsuite>
 
         <testsuite name="unit">
             <directory>tests/Unit</directory>
             <directory>_catalog/tests/Unit</directory>
-            <directory>_bbfWeb/tests/Unit</directory>
+            <directory>_bffWeb/tests/Unit</directory>
         </testsuite>
         <testsuite name="integration">
             <directory>tests/Integration</directory>
             <directory>_catalog/tests/Integration</directory>
-            <directory>_bbfWeb/tests/Integration</directory>
+            <directory>_bffWeb/tests/Integration</directory>
         </testsuite>
     </testsuites>
 
