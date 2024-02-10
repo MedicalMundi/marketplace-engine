@@ -20,6 +20,8 @@ return function (ECSConfig $ecsConfig): void {
         __DIR__ . '/tests',
         __DIR__ . '/_catalog/src',
         __DIR__ . '/_catalog/tests',
+        __DIR__ . '/_bbfWeb/src',
+        __DIR__ . '/_bbfWeb/tests',
         __DIR__ . '/rector.php',
     ]);
 
