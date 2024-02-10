@@ -114,9 +114,6 @@
     <InvalidArgument>
       <code><![CDATA[$this->items]]></code>
     </InvalidArgument>
-    <PossiblyUnusedMethod>
-      <code>count</code>
-    </PossiblyUnusedMethod>
   </file>
   <file src="src/Controller/HomeController.php">
     <UnusedClass>
