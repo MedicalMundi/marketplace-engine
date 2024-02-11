@@ -86,7 +86,7 @@ return static function (Config $config): void {
      *
      *      BffWeb
      *
-     *++++++++++++++++++++++++++++  ++++++++++++++++++++++++++++++++++++++++++++*
+     *++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*
      *++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*
      */
 
@@ -120,4 +120,30 @@ return static function (Config $config): void {
         ->because('we want isolate our bffWeb Adapters from ever growing dependencies.');
 
     $config->add($bffWebClassSet, $bffWebCoreIsolationRule, $bffWebAdaptersIsolationRule, ...$bffWebPortAndAdapterArchitectureRules);
+
+
+    /**++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+     *++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*
+     *
+     *      All Application
+     *
+     *++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*
+     *++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*
+     */
+
+    $allApplicationClassSet = ClassSet::fromDir(__DIR__)
+        ->excludePath('*tests*')
+        ->excludePath('*vendor*')
+        ->excludePath('*tools*')
+        ->excludePath('*var*')
+    ;
+
+    $applicationModuleArchitectureRules = Architecture::withComponents()
+        ->component('BbfWeb')->definedBy('BbfWeb\*')
+        ->component('Catalog')->definedBy('Catalog\*')
+        ->where('BbfWeb')->shouldNotDependOnAnyComponent()
+        ->where('Catalog')->shouldNotDependOnAnyComponent()
+        ->rules();
+
+    $config->add($allApplicationClassSet, ...$applicationModuleArchitectureRules);
 };
