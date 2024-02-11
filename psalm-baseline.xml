@@ -128,4 +128,9 @@
       <code>HomeController</code>
     </UnusedClass>
   </file>
+  <file src="src/Controller/SecurityController.php">
+    <UnusedClass>
+      <code>SecurityController</code>
+    </UnusedClass>
+  </file>
 </files>
