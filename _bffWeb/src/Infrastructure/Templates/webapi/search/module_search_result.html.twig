@@ -1,0 +1,13 @@
+<ul class="list-group">
+{% for module in modules %}
+    <li class="list-group-item">
+        <a href="{{ module.url }}" class="text-decoration-none" target="_blank">
+            {{ module.name }}
+        </a>
+    </li>
+{% endfor %}
+</ul>
+
+<div class="row mt-5 justify-content-center">
+    <p class="text-center">Total count: {{ totalModuleCount }}</p>
+</div>

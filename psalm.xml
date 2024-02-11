@@ -19,6 +19,17 @@
         </ignoreFiles>
     </projectFiles>
 
+    <issueHandlers>
+        <!-- False positive -->
+        <!-- All controller -->
+        <UnusedClass>
+            <errorLevel type="suppress">
+                <directory name="_bffWeb/src/AdapterForWeb" /> <!-- all InvalidReturnType issues in this directory are suppressed -->
+            </errorLevel>
+        </UnusedClass>
+    </issueHandlers>
+
+
     <plugins>
         <pluginClass class="Psalm\PhpUnitPlugin\Plugin"/>
         <pluginClass class="Psalm\SymfonyPsalmPlugin\Plugin">
