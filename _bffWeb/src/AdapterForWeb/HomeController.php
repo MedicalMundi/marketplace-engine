@@ -25,7 +25,7 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 #[isGranted('ROLE_ADMIN')]
 class HomeController extends AbstractController
 {
-    #[Route('/web', name: 'web_home')]
+    #[Route('/', name: 'app_home')]
     public function index(): Response
     {
         return $this->render('@web/home/index.html.twig');

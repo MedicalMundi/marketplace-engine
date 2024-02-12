@@ -15,8 +15,8 @@
 
 namespace BffWeb\AdapterForWeb;
 
-use App\Application\ModuleFinder;
-use App\Application\PackagistItemCollection;
+use Catalog\AdapterForGettingPublicModule\PublicModuleProviderFromPackagist;
+use Catalog\Core\AntiCorruptionLayer\Dto\PackagistItemCollection;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -25,17 +25,17 @@ use Symfony\Component\Routing\Annotation\Route;
 class SearchModuleController extends AbstractController
 {
     public function __construct(
-        private readonly ModuleFinder $packagistModuleFinder
+        private readonly PublicModuleProviderFromPackagist $packagistModuleFinder
     ) {
     }
 
-    #[Route('/web/webapi/search', name: 'web_web_search_modules', methods: ['POST'])]
+    #[Route('/search/modules', name: 'web_f_search_modules', methods: ['POST'])]
     public function index(Request $request): Response
     {
         $searchTerms = (string) $request->request->get('search');
 
         /** @var PackagistItemCollection $modules */
-        $modules = $this->packagistModuleFinder->searchModule($searchTerms);
+        $modules = $this->packagistModuleFinder->search($searchTerms);
 
         return $this->render('@web/webapi/search/module_search_result.html.twig', [
             'modules' => $modules->getItems(),

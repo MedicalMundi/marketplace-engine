@@ -4,12 +4,6 @@ controllers:
         namespace: App\Controller
     type: attribute
 
-webapi_controllers:
-    resource:
-        path: ../src/Adapter/Http/WebApi
-        namespace: App\Adapter\Http\WebApi
-    type: attribute
-
 catalog_web_controllers:
     resource:
         path: ../_catalog/src/Adapter/Http/Web
