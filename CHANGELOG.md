@@ -6,7 +6,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) a
 
 ## [Unreleased] - XXXX-XX-XX
 
-## [Unreleased] - 2024-02-12
-- maintenance release
+## [v0.2.0] - 2024-02-12
+- ### Maintenance release
+
+- [**Full Changelog**: ](https://github.com/MedicalMundi/marketplace-engine/compare/v0.1.9...v0.2.0)
 
 
