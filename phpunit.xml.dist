@@ -46,6 +46,7 @@
         <include>
             <directory suffix=".php">src</directory>
             <directory suffix=".php">_catalog/src</directory>
+            <directory suffix=".php">_bffWeb/src</directory>
         </include>
     </coverage>
 
