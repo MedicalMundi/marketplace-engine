@@ -1,6 +1,7 @@
 <?php
 namespace Deployer;
 
+//require 'recipe/common.php';
 require 'recipe/symfony.php';
 
 // Config
@@ -33,6 +34,9 @@ set('application_path_production', 'marketplace.oe-modules.com');
 host('production')
     ->setHostname('marketplace.oe-modules.com')
     ->set('stage', 'production')
+    ->setLabels([
+        'env' => 'production',
+    ])
     ->set('deploy_path', '~/{{application_path_production}}')
     ->set('http_user', 'ekvwxsme')
     ->set('writable_use_sudo', false)
@@ -44,6 +48,7 @@ host('production')
     ->set('ssh_multiplexing', false)
     /** git & composer settings */
     ->set('branch', 'main')
+
     /**
      * In prod composer dovrebbe essere usato con l'opzione --no-dev
      *
@@ -61,6 +66,9 @@ set('application_path_stage', 'stage.marketplace.oe-modules.com');
 host('stage')
     ->setHostname('stage.marketplace.oe-modules.com')
     ->set('stage', 'stage')
+    ->setLabels([
+        'env' => 'stage',
+    ])
     ->set('deploy_path', '~/{{application_path_stage}}')
     ->set('http_user', 'ekvwxsme')
     ->set('writable_use_sudo', false)
@@ -82,6 +90,8 @@ host('stage')
  */
 
 after('deploy:failed', 'deploy:unlock');
+after('deploy', 'envvars:dump');
+
 
 
 /**
@@ -120,4 +130,41 @@ desc('Maintenance soft-lock off');
 task('maintenance:soft:off', function () {
     run('{{bin/console}} corley:maintenance:soft-lock off');
     info('Maintenance mode (soft-lock) was deactivated!');
+});
+
+
+desc('Compiles .env files to .env.local.php.');
+task('envvars:dump', function () {
+    if ('production' === get('labels')['env']){
+        writeln(' labels.env:' . get('labels')['env']);
+        info('Setup production env vars in file .env.local.php');
+        runLocally('cp -f .env.itroom.production .env.prod');
+        info('Generated env.dev with staging configuration data');
+
+        info('Run composer symfony:dump-env prod');
+        $cmdResult = runLocally('composer symfony:dump-env prod', ['tty' => true]);
+        echo $cmdResult;
+        info('Generated .env.local.php');
+    }elseif ('stage' === get('labels')['env']){
+        info('Setup stage env vars in file .env.local.php');
+        runLocally('cp -f .env.itroom.stage .env.dev');
+        info('Generated env.dev with staging configuration data');
+
+        info('Run composer symfony:dump-env dev');
+        $cmdResult = runLocally('composer symfony:dump-env dev', ['tty' => true]);
+        echo $cmdResult;
+        info('Generated .env.local.php');
+    }
+
+    info('Try to upload .env.local.php');
+    upload(__DIR__.'/.env.local.php', '{{release_path}}/.env.local.php');
+    info('Success: uploaded .env.local.php');
+
+    info('Cleanup local directories');
+    runLocally('rm -f .env.dev');
+    runLocally('rm -f .env.prod');
+    info('Remove generated .env.xxxx files from local filesystem');
+
+    runLocally('rm -f .env.local.php');
+    info('Remove generated .env.local.php from local filesystem');
 });

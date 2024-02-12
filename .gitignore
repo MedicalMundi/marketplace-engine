@@ -1,5 +1,8 @@
 /.idea
 
+
+.env.itroom.production
+.env.itroom.stage
 docs/internal/
 docs/wip/
 /tools/**/vendor
