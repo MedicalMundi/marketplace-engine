@@ -27,6 +27,7 @@
         "symfony/flex": "^2",
         "symfony/framework-bundle": "6.4.*",
         "symfony/http-client": "^6.0",
+        "symfony/mailer": "6.4.*",
         "symfony/monolog-bundle": "^3.8",
         "symfony/notifier": "6.4.*",
         "symfony/runtime": "6.4.*",
