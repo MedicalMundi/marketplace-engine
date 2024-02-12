@@ -9,6 +9,8 @@ twig:
     globals:
         release_version: '%release.version%'
 
+    form_themes: ['bootstrap_5_layout.html.twig']
+
 
 when@test:
     twig:
