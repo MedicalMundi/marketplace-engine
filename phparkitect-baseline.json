@@ -1,0 +1,10 @@
+{
+    "violations": [
+        {
+            "fqcn": "BffWeb\\AdapterForWeb\\SearchModuleController",
+            "line": 28,
+            "error": "depends on Catalog\\AdapterForGettingPublicModule\\PublicModuleProviderFromPackagist, but should not depend on these namespaces: Catalog\\* because of component architecture"
+        }
+    ],
+    "stopOnFailure": false
+}

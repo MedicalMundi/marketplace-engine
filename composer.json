@@ -93,7 +93,7 @@
         "psr-4": {
             "App\\Tests\\": "tests/",
             "Catalog\\Tests\\": "_catalog/tests/",
-            "BffWeb\\Tests\\": "_bffWeb/src/"
+            "BffWeb\\Tests\\": "_bffWeb/tests/"
         }
     },
     "minimum-stability": "stable",
