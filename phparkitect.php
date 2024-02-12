@@ -139,9 +139,9 @@ return static function (Config $config): void {
     ;
 
     $applicationModuleArchitectureRules = Architecture::withComponents()
-        ->component('BbfWeb')->definedBy('BbfWeb\*')
+        ->component('BffWeb')->definedBy('BffWeb\*')
         ->component('Catalog')->definedBy('Catalog\*')
-        ->where('BbfWeb')->shouldNotDependOnAnyComponent()
+        ->where('BffWeb')->shouldNotDependOnAnyComponent()
         ->where('Catalog')->shouldNotDependOnAnyComponent()
         ->rules();
 
