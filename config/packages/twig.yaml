@@ -4,7 +4,6 @@ twig:
     paths:
         # directories are relative to the project root dir (but you
         # can also use absolute directories)
-        '_catalog/src/Adapter/Http/Templates': 'catalog'
         '_bffWeb/src/Infrastructure/Templates': 'web'
 
     globals:
