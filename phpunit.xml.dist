@@ -42,6 +42,11 @@
             <directory>_catalog/tests/Integration</directory>
             <directory>_bffWeb/tests/Integration</directory>
         </testsuite>
+        <testsuite name="functional">
+            <directory>tests/Functional</directory>
+            <directory>_catalog/tests/Functional</directory>
+            <directory>_bffWeb/tests/Functional</directory>
+        </testsuite>
     </testsuites>
 
     <source restrictDeprecations="true" restrictNotices="true" restrictWarnings="true">
