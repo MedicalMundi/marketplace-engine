@@ -16,15 +16,16 @@
 namespace Catalog\Tests\Unit\Core\AntiCorruptionLayer\Dto;
 
 use Catalog\Core\AntiCorruptionLayer\Dto\PackagistItem;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
+#[CoversClass(PackagistItem::class)]
 class PackagistItemTest extends TestCase
 {
     private const IRRELEVANT = 'irrelevant';
 
-    /**
-     * @test
-     */
+    #[Test]
     public function can_be_created(): void
     {
         $packagistItem = PackagistItem::create(
