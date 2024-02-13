@@ -17,8 +17,11 @@ namespace Catalog\Tests\Integration\AdapterForGettingPublicModule;
 
 use Catalog\AdapterForGettingPublicModule\PublicModuleProviderFromPackagist;
 use Catalog\Core\AntiCorruptionLayer\Dto\PackagistItemCollection;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
+#[CoversClass(PublicModuleProviderFromPackagist::class)]
 class PublicModuleProviderFromPackagistTest extends KernelTestCase
 {
     private PublicModuleProviderFromPackagist $moduleProvider;
@@ -30,7 +33,8 @@ class PublicModuleProviderFromPackagistTest extends KernelTestCase
         $this->moduleProvider = $container->get(PublicModuleProviderFromPackagist::class);
     }
 
-    public function test_shouldReturnAnPackagistItemCollection()
+    #[Test]
+    public function shouldReturnAnPackagistItemCollection()
     {
         self::assertInstanceOf(PackagistItemCollection::class, $this->moduleProvider->search(''));
     }

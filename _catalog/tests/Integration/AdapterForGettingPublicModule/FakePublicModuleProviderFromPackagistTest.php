@@ -17,11 +17,15 @@ namespace Catalog\Tests\Integration\AdapterForGettingPublicModule;
 
 use Catalog\AdapterForGettingPublicModuleFake\FakePublicModuleProviderFromPackagist;
 use Catalog\Core\AntiCorruptionLayer\Dto\PackagistItemCollection;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
+#[CoversClass(FakePublicModuleProviderFromPackagist::class)]
 class FakePublicModuleProviderFromPackagistTest extends TestCase
 {
-    public function test_shouldReturnAPackagistItemCollection()
+    #[Test]
+    public function shouldReturnAPackagistItemCollection()
     {
         $sut = new FakePublicModuleProviderFromPackagist();
 

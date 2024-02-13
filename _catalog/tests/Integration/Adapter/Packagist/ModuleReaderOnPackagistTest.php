@@ -18,11 +18,15 @@ namespace Catalog\Tests\Integration\Adapter\Packagist;
 use Catalog\Adapter\Packagist\ModuleReaderOnPackagist;
 use Packagist\Api\Client;
 use Packagist\Api\PackageNotFoundException;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
+#[CoversClass(ModuleReaderOnPackagist::class)]
 class ModuleReaderOnPackagistTest extends TestCase
 {
-    public function testModuleSearch(): void
+    #[Test]
+    public function moduleSearch(): void
     {
         $packagistReader = $this->getModuleReaderOnPackagist();
 
@@ -31,7 +35,8 @@ class ModuleReaderOnPackagistTest extends TestCase
         self::assertNotEmpty($result);
     }
 
-    public function testModuleSearchWithTerms(): void
+    #[Test]
+    public function moduleSearchWithTerms(): void
     {
         $packagistReader = $this->getModuleReaderOnPackagist();
 
@@ -41,7 +46,8 @@ class ModuleReaderOnPackagistTest extends TestCase
         self::assertCount(1, $result);
     }
 
-    public function testModuleSearchWithNotFoundModule(): void
+    #[Test]
+    public function moduleSearchWithNotFoundModule(): void
     {
         $packagistReader = $this->getModuleReaderOnPackagist();
 
@@ -51,7 +57,8 @@ class ModuleReaderOnPackagistTest extends TestCase
         self::assertCount(0, $result);
     }
 
-    public function testGetModuleDetail(): void
+    #[Test]
+    public function getModuleDetail(): void
     {
         $packagistReader = $this->getModuleReaderOnPackagist();
 
@@ -60,7 +67,8 @@ class ModuleReaderOnPackagistTest extends TestCase
         self::assertIsObject($result);
     }
 
-    public function testThrowPackageNotFoundException(): void
+    #[Test]
+    public function throwPackageNotFoundException(): void
     {
         self::expectException(PackageNotFoundException::class);
 
