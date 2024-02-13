@@ -198,6 +198,6 @@ jobs:
           DATABASE_URL: mysql://test:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=mariadb-10.3.34
 
       - name: Run integration testsuite
-        run: ./bin/phpunit --testsuite integration
+        run: ./bin/phpunit --testsuite integration --no-progress
         env:
           DATABASE_URL: mysql://test:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=mariadb-10.3.34
