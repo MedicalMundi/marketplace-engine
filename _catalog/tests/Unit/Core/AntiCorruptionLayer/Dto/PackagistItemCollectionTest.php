@@ -17,15 +17,16 @@ namespace Catalog\Tests\Unit\Core\AntiCorruptionLayer\Dto;
 
 use Catalog\Core\AntiCorruptionLayer\Dto\PackagistItem;
 use Catalog\Core\AntiCorruptionLayer\Dto\PackagistItemCollection;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
+#[CoversClass(PackagistItemCollection::class)]
 class PackagistItemCollectionTest extends TestCase
 {
     private const IRRELEVANT = 'irrelevant';
 
-    /**
-     * @test
-     */
+    #[Test]
     public function can_be_created(): void
     {
         $collection = new PackagistItemCollection();
@@ -33,9 +34,7 @@ class PackagistItemCollectionTest extends TestCase
         self::assertInstanceOf(PackagistItemCollection::class, $collection);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function can_be_created_with_data(): void
     {
         $data = [
@@ -53,9 +52,7 @@ class PackagistItemCollectionTest extends TestCase
         self::assertInstanceOf(PackagistItemCollection::class, $collection);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function can_count_internal_elements(): void
     {
         $data = [
@@ -80,9 +77,7 @@ class PackagistItemCollectionTest extends TestCase
         self::assertEquals(2, $collection->count());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function can_return_elements_as_array(): void
     {
         $data = [

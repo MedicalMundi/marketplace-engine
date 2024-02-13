@@ -18,9 +18,14 @@ namespace Catalog\Tests\Unit\Core\AntiCorruptionLayer;
 use Catalog\AdapterForGettingPublicModuleFake\FakePublicModuleProviderFromPackagist;
 use Catalog\Core\AntiCorruptionLayer\ForGettingPublicModule;
 use Catalog\Core\AntiCorruptionLayer\TranslatingModuleService;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\CoversNothing;
+use PHPUnit\Framework\Attributes\DoesNotPerformAssertions;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
+#[CoversClass(TranslatingModuleService::class)]
 class TranslatingModuleServiceTest extends TestCase
 {
     private ForGettingPublicModule|MockObject $moduleProvider;
@@ -30,7 +35,10 @@ class TranslatingModuleServiceTest extends TestCase
         $this->moduleProvider = new FakePublicModuleProviderFromPackagist();
     }
 
-    public function test_shouldBeInstantiated()
+    #[Test]
+    #[CoversNothing]
+    #[DoesNotPerformAssertions]
+    public function shouldBeInstantiated()
     {
         $sut = new TranslatingModuleService($this->moduleProvider);
     }
