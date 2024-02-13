@@ -6,7 +6,11 @@ return [
     'Symfony\Bundle\FrameworkBundle\Controller\AbstractController',
     'Symfony\Component\HttpFoundation\Request',
     'Symfony\Component\HttpFoundation\Response',
+    /** ALL EXCEPTIONS */
+    'Symfony\Component\HttpKernel\Exception\*',
     'Symfony\Component\HttpKernel\Attribute\AsController',
+
+    'Symfony\Component\RateLimiter\RateLimiterFactory',
 
     'Symfony\Component\OptionsResolver\OptionsResolver',
 
@@ -15,7 +19,9 @@ return [
 
     'Symfony\Component\Form\FormBuilderInterface',
     'Symfony\Component\Form\AbstractType',
+    /** ALL FORM TYPE */
     'Symfony\Component\Form\Extension\Core\Type\*',
 
+    /** ALL CONSTRAINTS */
     'Symfony\Component\Validator\Constraints\*'
 ];
