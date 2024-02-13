@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <files psalm-version="5.15.0@5c774aca4746caf3d239d9c8cadb9f882ca29352">
+  <file src="_bffWeb/src/AdapterForWeb/Contact/ContactController.php">
+    <PossiblyNullOperand>
+      <code><![CDATA[$contact->email]]></code>
+      <code><![CDATA[$contact->message]]></code>
+      <code><![CDATA[$contact->name]]></code>
+      <code><![CDATA[$contact->subject]]></code>
+    </PossiblyNullOperand>
+  </file>
+  <file src="_bffWeb/src/AdapterForWeb/Contact/ContactFormType.php">
+    <MissingTemplateParam>
+      <code>ContactFormType</code>
+    </MissingTemplateParam>
+  </file>
   <file src="_bffWeb/src/AdapterForWeb/SearchModuleController.php">
     <UnnecessaryVarAnnotation>
       <code>PackagistItemCollection</code>
@@ -71,10 +84,5 @@
     <PossiblyUnusedMethod>
       <code>search</code>
     </PossiblyUnusedMethod>
-  </file>
-  <file src="src/Controller/SecurityController.php">
-    <UnusedClass>
-      <code>SecurityController</code>
-    </UnusedClass>
   </file>
 </files>
