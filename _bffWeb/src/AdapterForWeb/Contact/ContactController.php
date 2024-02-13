@@ -18,15 +18,25 @@ namespace BffWeb\AdapterForWeb\Contact;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\TooManyRequestsHttpException;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
+use Symfony\Component\RateLimiter\RateLimiterFactory;
 use Symfony\Component\Routing\Attribute\Route;
 
 class ContactController extends AbstractController
 {
+    public function __construct(
+        private readonly MailerInterface $mailer,
+        private readonly RateLimiterFactory $contactFormLimiter
+    ) {
+    }
+
     #[Route(path: '/contact', name: 'web_contact', methods: ['GET', 'POST'])]
-    public function index(Request $request, MailerInterface $mailer): Response
+    public function index(Request $request): Response
     {
+        $this->verifyThrottling($request);
+
         $formDto = new ContactFormDto();
         $form = $this->createForm(ContactFormType::class, $formDto);
         $form->handleRequest($request);
@@ -37,7 +47,7 @@ class ContactController extends AbstractController
 
             $email = $this->prepareEmail($contact);
 
-            $mailer->send($email);
+            $this->mailer->send($email);
 
             return $this->redirectToRoute('app_home', [], Response::HTTP_SEE_OTHER);
         }
@@ -46,6 +56,26 @@ class ContactController extends AbstractController
             'formDto' => $formDto,
             'form' => $form,
         ]);
+    }
+
+    private function verifyThrottling(Request $request): void
+    {
+        // create a limiter based on a unique identifier of the client
+        // (e.g. the client's IP address, a username/email, an API key, etc.)
+        $limiter = $this->contactFormLimiter->create($request->getClientIp());
+
+        // the argument of consume() is the number of tokens to consume
+        // and returns an object of type Limit
+        if (false === $limiter->consume(1)->isAccepted()) {
+            throw new TooManyRequestsHttpException();
+        }
+
+        // you can also use the ensureAccepted() method - which throws a
+        // RateLimitExceededException if the limit has been reached
+        //$limiter->consume(1)->ensureAccepted();
+
+        // to reset the counter
+        // $limiter->reset();
     }
 
     private function prepareEmail(ContactFormDto $contact): Email

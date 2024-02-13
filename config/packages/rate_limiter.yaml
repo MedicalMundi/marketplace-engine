@@ -1,0 +1,8 @@
+# @see https://symfony.com/doc/6.4/rate_limiter.html
+framework:
+  rate_limiter:
+    contact_form:
+      # use 'sliding_window' if you prefer that policy
+      policy: 'sliding_window'
+      limit: 2
+      interval: '1 minutes'
