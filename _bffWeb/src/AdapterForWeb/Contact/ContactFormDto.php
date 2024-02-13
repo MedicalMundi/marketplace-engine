@@ -13,19 +13,15 @@
  * @license https://github.com/MedicalMundi/marketplace-engine/blob/main/LICENSE MIT
  */
 
-namespace Catalog\Application;
+namespace BffWeb\AdapterForWeb\Contact;
 
-use Psr\Http\Client\ClientExceptionInterface;
-
-interface ModuleDataReaderInterface
+class ContactFormDto
 {
-    /**
-     * @throws ClientExceptionInterface
-     */
-    public function search(string $searchTerm): object|array;
+    public ?string $name = null;
 
-    /**
-     * @throws ClientExceptionInterface
-     */
-    public function getModuleDetail(string $moduleName): object|array;
+    public ?string $email = null;
+
+    public ?string $subject = null;
+
+    public ?string $message = null;
 }
