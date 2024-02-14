@@ -65,7 +65,6 @@
     <PossiblyUnusedMethod>
       <code>getDescription</code>
       <code>getDownloads</code>
-      <code>getName</code>
       <code>getRepository</code>
       <code>getUrl</code>
     </PossiblyUnusedMethod>
@@ -80,9 +79,10 @@
       <code>TranslatingModuleService</code>
     </UnusedClass>
   </file>
-  <file src="_catalog/src/Core/ModuleFinder.php">
+  <file src="_catalog/src/Core/PackagistScanner.php">
     <PossiblyUnusedMethod>
-      <code>search</code>
+      <code>__construct</code>
+      <code>notifyAddModuleToCatalog</code>
     </PossiblyUnusedMethod>
   </file>
 </files>

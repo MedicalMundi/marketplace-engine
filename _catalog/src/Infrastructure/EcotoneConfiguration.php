@@ -13,20 +13,24 @@
  * @license https://github.com/MedicalMundi/marketplace-engine/blob/main/LICENSE MIT
  */
 
-namespace Catalog\Core\AntiCorruptionLayer;
+namespace Catalog\Infrastructure;
 
-use Catalog\Core\AntiCorruptionLayer\Dto\PackagistItemCollection;
-use Catalog\Core\ModuleFinder;
+use Ecotone\Dbal\Configuration\DbalConfiguration;
+use Ecotone\Dbal\DbalBackedMessageChannelBuilder;
+use Ecotone\Messaging\Attribute\ServiceContext;
 
-class TranslatingModuleService implements ModuleFinder
+class EcotoneConfiguration
 {
-    public function __construct(
-        private readonly ForGettingPublicModule $moduleProvider,
-    ) {
+    #[ServiceContext]
+    public function getDbalConfiguration(): DbalConfiguration
+    {
+        return DbalConfiguration::createWithDefaults()
+            ->withDoctrineORMRepositories(true);
     }
 
-    public function search(string $searchTerm = ''): PackagistItemCollection
+    #[ServiceContext]
+    public function catalogChannel(): DbalBackedMessageChannelBuilder
     {
-        return $this->moduleProvider->search($searchTerm);
+        return DbalBackedMessageChannelBuilder::create("catalog");
     }
 }
