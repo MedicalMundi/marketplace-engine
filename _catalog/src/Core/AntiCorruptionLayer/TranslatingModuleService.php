@@ -25,7 +25,7 @@ class TranslatingModuleService implements ModuleFinder
     ) {
     }
 
-    public function search(string $searchTerm): PackagistItemCollection
+    public function search(string $searchTerm = ''): PackagistItemCollection
     {
         return $this->moduleProvider->search($searchTerm);
     }

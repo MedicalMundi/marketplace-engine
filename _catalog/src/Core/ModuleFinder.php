@@ -26,5 +26,5 @@ interface ModuleFinder
     /**
      * @throws ClientExceptionInterface
      */
-    public function search(string $searchTerm): PackagistItemCollection;
+    public function search(string $searchTerm = ''): PackagistItemCollection;
 }
