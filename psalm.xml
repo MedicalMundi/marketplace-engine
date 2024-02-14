@@ -26,6 +26,7 @@
             <errorLevel type="suppress">
                 <directory name="_bffWeb/src/AdapterForWeb" />
                 <directory name="src/Controller" />
+                <file name="_catalog/src/Infrastructure/EcotoneConfiguration.php" />
             </errorLevel>
         </UnusedClass>
     </issueHandlers>
