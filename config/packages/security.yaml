@@ -8,8 +8,8 @@ security:
             memory:
                 users:
                     teclaizerai@gmail.com: {password: '$2y$13$DzpN/bWe/v/X0DwZVmlZVOyKrQ1yuzE7VM.Z1cdIuG256X8/44Tme', roles: [ 'ROLE_SUPER_ADMIN' ]}
-                    admin@example.com: {password: '$2y$13$c6Cy.HtaGlrBji.xDOUIIu5hxMEJ/fQ4gfvnuR/oRhgGdDQ0sSWiy', roles: [ 'ROLE_ADMIN' ]}
-                    demo@example.com: {password: '$2y$13$c6Cy.HtaGlrBji.xDOUIIu5hxMEJ/fQ4gfvnuR/oRhgGdDQ0sSWiy', roles: [ 'ROLE_USER' ]}
+                    admin@example.com: {password: '$2y$13$Bc.qVeuQuHbL.i02TyjFa.faHJuX7TWizBLak7YqwHUsp5U/hfLP2', roles: [ 'ROLE_ADMIN' ]}
+                    demo@example.com: {password: '$2y$13$k1pe2mYaWng.NOvHePwsqu0JUqZysHm0noQW27JeFpM23oumTRrQe', roles: [ 'ROLE_USER' ]}
 
     role_hierarchy:
         ROLE_SUPER_ADMIN: [ ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH ]
