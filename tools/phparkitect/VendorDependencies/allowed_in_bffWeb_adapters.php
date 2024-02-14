@@ -21,6 +21,7 @@ return [
 
     'Symfony\Component\Form\FormBuilderInterface',
     'Symfony\Component\Form\AbstractType',
+    'Symfony\Component\Form\FormError',
     /** ALL FORM TYPE */
     'Symfony\Component\Form\Extension\Core\Type\*',
 
