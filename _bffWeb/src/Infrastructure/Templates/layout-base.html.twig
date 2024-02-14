@@ -1,6 +1,6 @@
 {# @see https://getbootstrap.com/docs/5.3/examples/sticky-footer-navbar/ #}
 
-{% extends 'base.html.twig' %}
+{% extends '@web/base.html.twig' %}
 
 {% block title %}
     oe-modules marketplace
@@ -101,7 +101,7 @@
 {% block body %}
 
     {% block navigation %}
-        {% include 'common/navigation.html.twig' %}
+        {% include '@web/common/navigation.html.twig' %}
     {% endblock %}
 
     {% block main %}
@@ -115,7 +115,7 @@
     {% endblock %}
 
     {% block footer %}
-        {% include 'common/footer.html.twig' %}
+        {% include '@web/common/footer.html.twig' %}
     {% endblock %}
 
 {% endblock %}
