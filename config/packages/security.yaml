@@ -7,10 +7,14 @@ security:
         users_in_memory:
             memory:
                 users:
-                    # account: admin|foobar
-                    admin: {password: '$2y$13$c6Cy.HtaGlrBji.xDOUIIu5hxMEJ/fQ4gfvnuR/oRhgGdDQ0sSWiy', roles: [ 'ROLE_ADMIN' ]}
-                    # account: john_admin|foobar
-                    john_admin: {password: '$2y$13$c6Cy.HtaGlrBji.xDOUIIu5hxMEJ/fQ4gfvnuR/oRhgGdDQ0sSWiy', roles: [ 'ROLE_ADMIN' ]}
+                    teclaizerai@gmail.com: {password: '$2y$13$DzpN/bWe/v/X0DwZVmlZVOyKrQ1yuzE7VM.Z1cdIuG256X8/44Tme', roles: [ 'ROLE_SUPER_ADMIN' ]}
+                    admin@example.com: {password: '$2y$13$c6Cy.HtaGlrBji.xDOUIIu5hxMEJ/fQ4gfvnuR/oRhgGdDQ0sSWiy', roles: [ 'ROLE_ADMIN' ]}
+                    demo@example.com: {password: '$2y$13$c6Cy.HtaGlrBji.xDOUIIu5hxMEJ/fQ4gfvnuR/oRhgGdDQ0sSWiy', roles: [ 'ROLE_USER' ]}
+
+    role_hierarchy:
+        ROLE_SUPER_ADMIN: [ ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH ]
+        ROLE_ADMIN: [ ROLE_USER]
+
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -39,6 +43,8 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
+        - { path: ^/login, roles: PUBLIC_ACCESS }
+        - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
 
