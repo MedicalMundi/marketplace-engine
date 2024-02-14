@@ -21,6 +21,8 @@ services:
   # add more service definitions when explicit configuration is needed
   # please note that last definitions always *replace* previous ones
 
+  Catalog\Core\AntiCorruptionLayer\ForGettingPublicModule: '@Catalog\AdapterForGettingPublicModule\PublicModuleProviderFromPackagist'
+
   Catalog\AdapterForGettingPublicModule\PublicModuleProviderFromPackagist:
     #public: true
     arguments:
