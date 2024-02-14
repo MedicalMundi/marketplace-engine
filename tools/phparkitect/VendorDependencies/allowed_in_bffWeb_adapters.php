@@ -10,6 +10,8 @@ return [
     'Symfony\Component\HttpKernel\Exception\*',
     'Symfony\Component\HttpKernel\Attribute\AsController',
 
+    'Symfony\Component\Security\Http\Authentication\AuthenticationUtils',
+
     'Symfony\Component\RateLimiter\RateLimiterFactory',
 
     'Symfony\Component\OptionsResolver\OptionsResolver',
