@@ -3,4 +3,6 @@
 return [
     'Psr\\',
     'Ramsey\Uuid',
+
+    'Ecotone\Modelling\EventBus',
 ];
