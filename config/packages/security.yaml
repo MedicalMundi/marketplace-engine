@@ -27,9 +27,9 @@ security:
                 check_path: app_login
                 enable_csrf: true
             logout:
-                path: app_logout
+                path: /logout
                 # where to redirect after logout
-                # target: app_any_route
+                target: app_home
 
             # by default, the feature allows 5 login attempts per minute
             login_throttling: null
