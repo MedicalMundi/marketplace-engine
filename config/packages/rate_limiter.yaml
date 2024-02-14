@@ -4,5 +4,5 @@ framework:
     contact_form:
       # use 'sliding_window' if you prefer that policy
       policy: 'sliding_window'
-      limit: 2
-      interval: '1 minutes'
+      limit: 3
+      interval: '2 minutes'

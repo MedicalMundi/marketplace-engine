@@ -54,7 +54,9 @@ class RateLimiterTest extends WebTestCase
         $this->client->request('GET', '/contact');
         $this->client->request('GET', '/contact');
         $this->client->request('GET', '/contact');
+        $this->client->request('GET', '/contact');
 
-        self::assertEquals(429, (int) $this->client->getResponse()->getStatusCode());
+        self::assertNotEquals(429, (int) $this->client->getResponse()->getStatusCode());
+        self::assertStringContainsString('Too many requests, please try again in 2 minute.', (string) $this->client->getResponse()->getContent());
     }
 }

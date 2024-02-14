@@ -16,6 +16,7 @@
 namespace BffWeb\AdapterForWeb\Contact;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\TooManyRequestsHttpException;
@@ -35,11 +36,15 @@ class ContactController extends AbstractController
     #[Route(path: '/contact', name: 'web_contact', methods: ['GET', 'POST'])]
     public function index(Request $request): Response
     {
-        $this->verifyThrottling($request);
-
         $formDto = new ContactFormDto();
         $form = $this->createForm(ContactFormType::class, $formDto);
         $form->handleRequest($request);
+
+        try {
+            $this->verifyThrottling($request);
+        } catch (TooManyRequestsHttpException) {
+            $form->addError(new FormError('Too many requests, please try again in 2 minute.'));
+        }
 
         if ($form->isSubmitted() && $form->isValid()) {
             /** @var ContactFormDto $contact */
