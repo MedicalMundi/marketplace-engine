@@ -44,7 +44,7 @@ jobs:
 
       - name: Show CI job info (dump context)
         if: ${{ vars.SHOW_WORKFLOW_INFO == '1'}}
-        uses: crazy-max/ghaction-dump-context@v2
+        uses: crazy-max/ghaction-dump-context@v2.1.0
 
       - name: info triggering workflow - commit message
         run: echo commit message from triggering workflow '${{ github.event.workflow_run.head_commit.message }}'
@@ -60,7 +60,7 @@ jobs:
 
       - name: Cache PHP extensions
         if: ${{ vars.USE_PHP_EXTENSION_CACHE }}
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ${{ steps.cache-php-extensions.outputs.dir }}
           key: ${{ steps.cache-php-extensions.outputs.key }}
@@ -79,7 +79,7 @@ jobs:
         run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
 
       - name: Cache dependencies
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
@@ -136,7 +136,7 @@ jobs:
 
       - name: Show CI job info (dump context)
         if: ${{ vars.SHOW_WORKFLOW_INFO == '1'}}
-        uses: crazy-max/ghaction-dump-context@v2
+        uses: crazy-max/ghaction-dump-context@v2.1.0
 
       - name: info triggering workflow - commit message
         run: echo commit message from triggering workflow '${{ github.event.workflow_run.head_commit.message }}'
@@ -152,7 +152,7 @@ jobs:
 
       - name: Cache PHP extensions
         if: ${{ vars.USE_PHP_EXTENSION_CACHE }}
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ${{ steps.cache-php-extensions.outputs.dir }}
           key: ${{ steps.cache-php-extensions.outputs.key }}
@@ -171,7 +171,7 @@ jobs:
         run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
 
       - name: Cache dependencies
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
@@ -233,7 +233,7 @@ jobs:
 
       - name: Show CI job info (dump context)
         if: ${{ vars.SHOW_WORKFLOW_INFO == '1'}}
-        uses: crazy-max/ghaction-dump-context@v2
+        uses: crazy-max/ghaction-dump-context@v2.1.0
 
       - name: info triggering workflow - commit message
         run: echo commit message from triggering workflow '${{ github.event.workflow_run.head_commit.message }}'
@@ -249,7 +249,7 @@ jobs:
 
       - name: Cache PHP extensions
         if: ${{ vars.USE_PHP_EXTENSION_CACHE }}
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ${{ steps.cache-php-extensions.outputs.dir }}
           key: ${{ steps.cache-php-extensions.outputs.key }}
@@ -268,7 +268,7 @@ jobs:
         run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
 
       - name: Cache dependencies
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
