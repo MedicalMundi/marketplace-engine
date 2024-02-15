@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) a
 
 ## [Unreleased] - XXXX-XX-XX
 
+## [v0.3.4] - 2024-02-15
+- ### Maintenance release
+
+
 ## [v0.3.3] - 2024-02-14
 - ### Maintenance release
 
@@ -14,6 +18,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) a
 - ### Maintenance release
 - ### added
 - Contact form: added rate limiter error
+
 
 ## [v0.3.1] - 2024-02-14
 - ### Maintenance release
