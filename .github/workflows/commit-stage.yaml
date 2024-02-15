@@ -154,7 +154,7 @@ jobs:
                 - php: '8.3'
                   is-php-experimental: false
                   generate-coverage-report: false
-          fail-fast: false
+          fail-fast: true
       steps:
           - name: Checkout on SHA-${{ inputs.triggering-sha }}
             uses: actions/checkout@v4
