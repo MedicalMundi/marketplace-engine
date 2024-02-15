@@ -54,6 +54,8 @@ class ContactController extends AbstractController
 
             $this->mailer->send($email);
 
+            $this->addFlash('success', 'Message sended!!');
+
             return $this->redirectToRoute('app_home', [], Response::HTTP_SEE_OTHER);
         }
 
