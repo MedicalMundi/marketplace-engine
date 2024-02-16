@@ -23,7 +23,17 @@ use Symfony\Component\Routing\Annotation\Route;
 #[AsController]
 class HomeController extends AbstractController
 {
-    #[Route('/', name: 'app_home')]
+    #[Route(
+        path: '/{_locale}',
+        name: 'app_home',
+        requirements: [
+            '_locale' => 'en|es|it',
+        ],
+        defaults: [
+            '_locale' => 'en',
+        ],
+        methods: 'GET',
+    )]
     public function index(): Response
     {
         return $this->render('@web/home/index.html.twig');

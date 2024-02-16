@@ -51,10 +51,10 @@ class RateLimiterTest extends WebTestCase
     #[Test]
     public function throttlingIsActiveOnContact(): void
     {
-        $this->client->request('GET', '/contact');
-        $this->client->request('GET', '/contact');
-        $this->client->request('GET', '/contact');
-        $this->client->request('GET', '/contact');
+        $this->client->request('GET', '/en/contact');
+        $this->client->request('GET', '/en/contact');
+        $this->client->request('GET', '/en/contact');
+        $this->client->request('GET', '/en/contact');
 
         self::assertNotEquals(429, (int) $this->client->getResponse()->getStatusCode());
         self::assertStringContainsString('Too many requests, please try again in 2 minute.', (string) $this->client->getResponse()->getContent());

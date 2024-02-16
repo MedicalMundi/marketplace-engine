@@ -11,8 +11,8 @@
             <div class="col-6 text-center">
                 <h1>oe-modules.com</h1>
                 <p class="text-muted">
-                    Available open-source modules for <a href="https://www.open-emr.org/" class="text-decoration-none" target="_blank">openEmr</a>. <br>
-                    All modules are registered on <a href="https://packagist.org" class="text-decoration-none" target="_blank">packagist.org</a>.
+                    {{ 'page.home.available_module_for'|trans({}, 'pages') }} <a href="https://www.open-emr.org/" class="text-decoration-none" target="_blank">openEmr</a>. <br>
+                    {{ 'page.home.all_modules_are_registered_on'|trans({}, 'pages') }} <a href="https://packagist.org" class="text-decoration-none" target="_blank">packagist.org</a>.
                 </p>
             </div>
         </div>
@@ -21,6 +21,7 @@
             <div class="col-6 justify-content-center">
                 <form class="form">
                     <input class="form-control" type="search"
+{#                           TODO: translate#}
                            name="search" placeholder="Typing To Search Modules..."
                            hx-post="/search/modules"
                            hx-trigger="keyup changed delay:500ms, search, load"
