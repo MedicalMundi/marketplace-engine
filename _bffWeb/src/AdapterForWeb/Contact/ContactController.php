@@ -33,7 +33,17 @@ class ContactController extends AbstractController
     ) {
     }
 
-    #[Route(path: '/contact', name: 'web_contact', methods: ['GET', 'POST'])]
+    #[Route(
+        path: '/{_locale}/contact',
+        name: 'web_contact',
+        requirements: [
+            '_locale' => 'en|es|it',
+        ],
+        defaults: [
+            '_locale' => 'en',
+        ],
+        methods: ['GET', 'POST'],
+    )]
     public function index(Request $request): Response
     {
         $formDto = new ContactFormDto();

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="Xc9YxXG" resname="page.home.available_module_for">
+        <source>page.home.available_module_for</source>
+        <target>Available open-source modules for</target>
+      </trans-unit>
+      <trans-unit id="TCMpqAC" resname="page.home.all_modules_are_registered_on">
+        <source>page.home.all_modules_are_registered_on</source>
+        <target>All modules are registered on</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
