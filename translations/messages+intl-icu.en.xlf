@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="WTw2xQG" resname="too_many_requests_please_try_again_in_number_minute.">
+        <source>too_many_requests_please_try_again_in_number_minute.</source>
+        <target>Too many requests, please try again in {number} minute.</target>
+      </trans-unit>
+      <trans-unit id="xVjwfC2" resname="action.contact.form.success">
+        <source>action.contact.form.success</source>
+        <target>Your message was sended</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

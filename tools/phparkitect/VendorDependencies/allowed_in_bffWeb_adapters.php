@@ -26,5 +26,7 @@ return [
     'Symfony\Component\Form\Extension\Core\Type\*',
 
     /** ALL CONSTRAINTS */
-    'Symfony\Component\Validator\Constraints\*'
+    'Symfony\Component\Validator\Constraints\*',
+
+    'Symfony\Contracts\Translation\TranslatorInterface',
 ];

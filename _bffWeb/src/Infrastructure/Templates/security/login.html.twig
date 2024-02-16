@@ -13,16 +13,19 @@
 
                 {% if app.user %}
                     <div class="mb-3">
+                        {#                           TODO: translate#}
                         You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
                     </div>
                 {% endif %}
 
                 <h1 class="h3 mb-3 font-weight-normal">Sign in</h1>
                 <div class="mb-3">
+                    {#                           TODO: translate#}
                     <label for="username">Username</label>
                     <input type="text" value="{{ last_username }}" name="_username" id="username" class="form-control" autocomplete="username" required autofocus>
                 </div>
                 <div class="mb-3">
+                    {#                           TODO: translate#}
                     <label for="password">Password</label>
                     <input type="password" name="_password" id="password" class="form-control" autocomplete="current-password" required>
                 </div>

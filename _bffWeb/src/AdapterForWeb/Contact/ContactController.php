@@ -24,12 +24,14 @@ use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
 use Symfony\Component\RateLimiter\RateLimiterFactory;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class ContactController extends AbstractController
 {
     public function __construct(
         private readonly MailerInterface $mailer,
-        private readonly RateLimiterFactory $contactFormLimiter
+        private readonly RateLimiterFactory $contactFormLimiter,
+        private readonly TranslatorInterface $translator
     ) {
     }
 
@@ -53,7 +55,10 @@ class ContactController extends AbstractController
         try {
             $this->verifyThrottling($request);
         } catch (TooManyRequestsHttpException) {
-            $form->addError(new FormError('Too many requests, please try again in 2 minute.'));
+            $errorMessage = $this->translator->trans('too_many_requests_please_try_again_in_number_minute.', [
+                'number' => 2,
+            ]);
+            $form->addError(new FormError($errorMessage));
         }
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -64,7 +69,8 @@ class ContactController extends AbstractController
 
             $this->mailer->send($email);
 
-            $this->addFlash('success', 'Message sended!!');
+            $flashMessage = $this->translator->trans('action.contact.form.success');
+            $this->addFlash('success', $flashMessage);
 
             return $this->redirectToRoute('app_home', [], Response::HTTP_SEE_OTHER);
         }

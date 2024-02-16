@@ -13,6 +13,10 @@
         <source>page.home.all_modules_are_registered_on</source>
         <target>All modules are registered on</target>
       </trans-unit>
+      <trans-unit id="TRzCC6f" resname="page.contact.head.title">
+        <source>page.contact.head.title</source>
+        <target>Contact Us</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
