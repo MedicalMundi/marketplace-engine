@@ -13,19 +13,6 @@
       <code>ContactFormType</code>
     </MissingTemplateParam>
   </file>
-  <file src="_bffWeb/src/AdapterForWeb/SearchModuleController.php">
-    <UnnecessaryVarAnnotation>
-      <code>PackagistItemCollection</code>
-    </UnnecessaryVarAnnotation>
-  </file>
-  <file src="_bffWeb/src/Infrastructure/MenuBuilder/MainMenuBuilder.php">
-    <UnusedClass>
-      <code>MainMenuBuilder</code>
-    </UnusedClass>
-    <UnusedParam>
-      <code>$options</code>
-    </UnusedParam>
-  </file>
   <file src="_catalog/src/AdapterForGettingPublicModule/PublicModuleProviderFromPackagist.php">
     <MixedArgument>
       <code><![CDATA[$inputItem->getDescription()]]></code>
@@ -52,37 +39,10 @@
       <code>getUrl</code>
       <code>getUrl</code>
     </MixedMethodCall>
-    <PossiblyUnusedMethod>
-      <code>__construct</code>
-    </PossiblyUnusedMethod>
-  </file>
-  <file src="_catalog/src/AdapterForGettingPublicModuleFake/FakePublicModuleProviderFromPackagist.php">
-    <UnusedClass>
-      <code>FakePublicModuleProviderFromPackagist</code>
-    </UnusedClass>
-  </file>
-  <file src="_catalog/src/Core/AntiCorruptionLayer/Dto/PackagistItem.php">
-    <PossiblyUnusedMethod>
-      <code>getDescription</code>
-      <code>getDownloads</code>
-      <code>getRepository</code>
-      <code>getUrl</code>
-    </PossiblyUnusedMethod>
   </file>
   <file src="_catalog/src/Core/AntiCorruptionLayer/Dto/PackagistItemCollection.php">
     <InvalidArgument>
       <code><![CDATA[$this->items]]></code>
     </InvalidArgument>
-  </file>
-  <file src="_catalog/src/Core/AntiCorruptionLayer/TranslatingModuleService.php">
-    <UnusedClass>
-      <code>TranslatingModuleService</code>
-    </UnusedClass>
-  </file>
-  <file src="_catalog/src/Core/PackagistScanner.php">
-    <PossiblyUnusedMethod>
-      <code>__construct</code>
-      <code>notifyAddModuleToCatalog</code>
-    </PossiblyUnusedMethod>
   </file>
 </files>
