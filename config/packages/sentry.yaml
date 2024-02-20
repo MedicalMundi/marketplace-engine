@@ -3,8 +3,8 @@ when@prod:
         dsn: '%env(SENTRY_DSN)%'
         options:
             environment: '%kernel.environment%'
-            sample_rate: 0.1
-            traces_sample_rate: 0.1
+            sample_rate: 0.5
+            traces_sample_rate: 0.5
             server_name: "marketplace.oe-modules.com"
             send_attempts: 4
             release: '%release.version%'
