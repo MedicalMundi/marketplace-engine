@@ -11,7 +11,7 @@ parameters:
     locale: 'en'
     # This parameter defines the codes of the locales (languages) enabled in the application
     app_locales: en|es|it
-    release.version: 'v0.3.5'
+    release.version: 'v0.3.5.x'
 
 services:
     # default configuration for services in *this* file
