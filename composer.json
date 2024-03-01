@@ -18,7 +18,7 @@
         "ecotone/symfony-bundle": "^1.2",
         "knplabs/knp-menu-bundle": "^3.3",
         "knplabs/packagist-api": "^2.0",
-        "knpuniversity/oauth2-client-bundle": "*",
+        "knpuniversity/oauth2-client-bundle": "^2.18",
         "nyholm/psr7": "^1.8",
         "pagerfanta/doctrine-orm-adapter": "^4.3",
         "pagerfanta/twig": "^4.3",
