@@ -13,7 +13,7 @@
  * @license https://github.com/MedicalMundi/marketplace-engine/blob/main/LICENSE MIT
  */
 
-namespace BffWeb\AdapterForWeb\Security;
+namespace BffWeb\Infrastructure\Framework\Security\Authenticator\OeModules;
 
 use KnpU\OAuth2ClientBundle\Client\ClientRegistry;
 use KnpU\OAuth2ClientBundle\Security\Authenticator\OAuth2Authenticator;
@@ -49,21 +49,12 @@ class OeModulesAuthenticator extends OAuth2Authenticator implements Authenticati
 
     public function supports(Request $request): ?bool
     {
-        // continue ONLY if the current ROUTE matches the check ROUTE
         return $request->attributes->get('_route') === 'connect_oemodules_check';
     }
 
     public function authenticate(Request $request): Passport
     {
         $client = $this->clientRegistry->getClient('oe_modules');
-
-//        $provider = $client->getOAuth2Provider();
-//
-//        $accessToken = $provider->getAccessToken('authorization_code', [
-//            'code' => $request->query->get('code'),
-//        ]);
-
-        //dd($accessToken);
 
         $accessToken = $this->fetchAccessToken($client);
 
@@ -73,25 +64,6 @@ class OeModulesAuthenticator extends OAuth2Authenticator implements Authenticati
 
                 $email = $OeModulesUser->getEmail();
 
-                // 1) have they logged in with Facebook before? Easy!
-                //                $existingUser = $this->entityManager->getRepository(User::class)->findOneBy(['facebookId' => $facebookUser->getId()]);
-
-                //                if ($existingUser) {
-                //                    return $existingUser;
-                //                }
-
-                // 2) do we have a matching user by email?
-                //$user = $this->entityManager->getRepository(User::class)->findOneBy(['email' => $email]);
-
-                // 3) Maybe you just want to "register" them by creating
-                // a User object
-                //                $user->setFacebookId($facebookUser->getId());
-                //                $this->entityManager->persist($user);
-                //                $this->entityManager->flush();
-
-                //return $user;
-
-                //return $this->authUserProvider->loadUserByIdentifier($facebookUser->getId());
                 return $this->authUserProvider->loadUserByIdentifier($email);
             })
         );
