@@ -13,7 +13,7 @@
  * @license https://github.com/MedicalMundi/marketplace-engine/blob/main/LICENSE MIT
  */
 
-namespace BffWeb\AdapterForWeb\Security;
+namespace BffWeb\Infrastructure\Framework\Security\Authenticator\Github;
 
 use Doctrine\ORM\EntityManagerInterface;
 use KnpU\OAuth2ClientBundle\Client\ClientRegistry;
@@ -34,7 +34,6 @@ class GithubAuthenticator extends OAuth2Authenticator implements AuthenticationE
 {
     public function __construct(
         private readonly ClientRegistry $clientRegistry,
-        private readonly EntityManagerInterface $entityManager,
         private readonly RouterInterface $router,
         private readonly OAuthUserProvider $authUserProvider
     ) {

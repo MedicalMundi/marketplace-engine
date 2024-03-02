@@ -25,9 +25,9 @@ security:
             lazy: true
             #provider: users_in_memory
             provider: oauth
-            entry_point: BffWeb\AdapterForWeb\Security\GithubAuthenticator
+            entry_point: BffWeb\Infrastructure\Framework\Security\Authenticator\Github\GithubAuthenticator
             custom_authenticators:
-                - BffWeb\AdapterForWeb\Security\GithubAuthenticator
+                - BffWeb\Infrastructure\Framework\Security\Authenticator\Github\GithubAuthenticator
                 - BffWeb\AdapterForWeb\Security\OeModulesAuthenticator
 #            form_login:
 #                login_path: app_login
