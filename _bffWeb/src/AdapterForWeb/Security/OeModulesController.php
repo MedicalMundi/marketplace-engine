@@ -19,19 +19,18 @@ use KnpU\OAuth2ClientBundle\Client\ClientRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
-class GithubController extends AbstractController
+class OeModulesController extends AbstractController
 {
     /**
      * Link to this controller to start the "connect" process
      */
-    #[Route('/connect/github', name: 'connect_github_start', methods: ['GET'])]
+    #[Route('/connect/oemodules', name: 'connect_oemodules_start', methods: ['GET'])]
     public function connectAction(ClientRegistry $clientRegistry)
     {
         return $clientRegistry
-            ->getClient('github')
+            ->getClient('oe_modules')
             ->redirect([
-                'user',
-                'user.email',
+                'email',
             ]);
     }
 
@@ -40,12 +39,11 @@ class GithubController extends AbstractController
      * because this is the "redirect_route" you configured
      * in config/packages/knpu_oauth2_client.yaml
      */
-    #[Route('/connect/github/check', name: 'connect_github_check')]
-    public function connectCheckAction()
+    #[Route('/connect/oemodules/check', name: 'connect_oemodules_check')]
+    public function connectCheckAction(ClientRegistry $clientRegistry)
     {
         // ** if you want to *authenticate* the user, then
         // leave this method blank and create a Guard Authenticator
-
         throw new \Exception('Don\'t forget to activate custom_authenticators in security.yaml');
     }
 }

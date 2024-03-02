@@ -18,19 +18,19 @@ knpu_oauth2_client:
             # use_state: true
 
 
-#        oe_modules_oauth:
-#            type: generic
-#            provider_class: App\Security\OauthProvider\OeModules
-#            # optional: a class that extends OAuth2Client
-#            # client_class: Some\Custom\Client
-#
-#            # optional: if your provider has custom constructor options
-#            # provider_options: {}
-#
-#            # now, all the normal options!
-#            client_id: '%env(OAUTH_OEMODULES_CLIENT_ID)%'
-#            client_secret: '%env(OAUTH_OEMODULES_CLIENT_SECRET)%'
-#            redirect_route: connect_oemodules_check
-#            redirect_params: { }
-#            # whether to check OAuth2 "state": defaults to true
-#            # use_state: true
+        oe_modules:
+            type: generic
+            provider_class: App\Security\OauthProvider\OeModules
+            # optional: a class that extends OAuth2Client
+            # client_class: Some\Custom\Client
+
+            # optional: if your provider has custom constructor options
+            # provider_options: {}
+
+            # now, all the normal options!
+            client_id: '%env(OAUTH_OEMODULES_CLIENT_ID)%'
+            client_secret: '%env(OAUTH_OEMODULES_CLIENT_SECRET)%'
+            redirect_route: connect_oemodules_check
+            redirect_params: { }
+            # whether to check OAuth2 "state": defaults to true
+            # use_state: true
