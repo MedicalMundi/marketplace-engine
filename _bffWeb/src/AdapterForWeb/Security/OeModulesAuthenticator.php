@@ -57,11 +57,13 @@ class OeModulesAuthenticator extends OAuth2Authenticator implements Authenticati
     {
         $client = $this->clientRegistry->getClient('oe_modules');
 
-        //        $provider = $client->getOAuth2Provider();
-        //
-        //        $accessToken = $provider->getAccessToken('authorization_code', [
-        //            'code' => $request->query->get('code'),
-        //        ]);
+//        $provider = $client->getOAuth2Provider();
+//
+//        $accessToken = $provider->getAccessToken('authorization_code', [
+//            'code' => $request->query->get('code'),
+//        ]);
+
+        //dd($accessToken);
 
         $accessToken = $this->fetchAccessToken($client);
 

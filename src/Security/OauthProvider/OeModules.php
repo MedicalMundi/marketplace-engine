@@ -15,6 +15,7 @@
 
 namespace App\Security\OauthProvider;
 
+use App\Security\OauthProvider\Exception\OeModulesIdentityProviderException;
 use League\OAuth2\Client\Provider\AbstractProvider;
 use League\OAuth2\Client\Provider\Exception\IdentityProviderException;
 use League\OAuth2\Client\Token\AccessToken;
@@ -46,22 +47,22 @@ class OeModules extends AbstractProvider
         return $this->domain . '/api/test';
     }
 
-    //    protected function fetchResourceOwnerDetails(AccessToken $token)
-    //    {
-    //        $response = parent::fetchResourceOwnerDetails($token);
-    //
-    //        if (empty($response['email'])) {
-    //            $url = $this->getResourceOwnerDetailsUrl($token) . '/emails';
-    //
-    //            $request = $this->getAuthenticatedRequest(self::METHOD_GET, $url, $token);
-    //
-    //            $responseEmail = $this->getParsedResponse($request);
-    //
-    //            $response['email'] = isset($responseEmail[0]['email']) ? $responseEmail[0]['email'] : null;
-    //        }
-    //
-    //        return $response;
-    //    }
+    protected function fetchResourceOwnerDetails(AccessToken $token)
+    {
+        $response = parent::fetchResourceOwnerDetails($token);
+
+        if (empty($response['email'])) {
+            $url = $this->getResourceOwnerDetailsUrl($token);
+
+            $request = $this->getAuthenticatedRequest(self::METHOD_GET, $url, $token);
+
+            $responseEmail = $this->getParsedResponse($request);
+
+            $response['email'] = isset($responseEmail[0]['email']) ? $responseEmail[0]['email'] : null;
+        }
+
+        return $response;
+    }
 
     protected function getDefaultScopes()
     {
@@ -72,7 +73,9 @@ class OeModules extends AbstractProvider
     {
         if ($response->getStatusCode() >= 400) {
             //TODO:error MESSAGE
-            throw new IdentityProviderException('xxx error', $response->getStatusCode(), $response);
+            throw OeModulesIdentityProviderException::clientException($response, $data);
+        } elseif (isset($data['error'])) {
+            throw OeModulesIdentityProviderException::oauthException($response, $data);
         }
     }
 
