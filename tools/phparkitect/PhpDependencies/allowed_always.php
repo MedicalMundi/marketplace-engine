@@ -5,4 +5,6 @@ return [
     'DateTime',
     'DateTimeImmutable',
     'Ramsey\Uuid',
+
+    'Exception',
 ];
