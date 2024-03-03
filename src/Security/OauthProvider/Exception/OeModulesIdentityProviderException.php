@@ -27,11 +27,12 @@ class OeModulesIdentityProviderException extends IdentityProviderException
      *
      * @return IdentityProviderException
      */
-    public static function clientException(ResponseInterface $response, $data)
+    public static function clientException(ResponseInterface $response, array $data)
     {
+        $message = (string) ($data['message'] ?? $response->getReasonPhrase());
         return static::fromResponse(
             $response,
-            isset($data['message']) ? $data['message'] : $response->getReasonPhrase()
+            $message
         );
     }
 
@@ -42,22 +43,21 @@ class OeModulesIdentityProviderException extends IdentityProviderException
      *
      * @return IdentityProviderException
      */
-    public static function oauthException(ResponseInterface $response, $data)
+    public static function oauthException(ResponseInterface $response, array $data)
     {
+        $errorMessage = (string) ($data['error'] ?? $response->getReasonPhrase());
         return static::fromResponse(
             $response,
-            isset($data['error']) ? $data['error'] : $response->getReasonPhrase()
+            $errorMessage
         );
     }
 
     /**
      * Creates identity exception from response.
      *
-     * @param string $message
-     *
      * @return IdentityProviderException
      */
-    protected static function fromResponse(ResponseInterface $response, $message = null)
+    protected static function fromResponse(ResponseInterface $response, string $message = '')
     {
         return new static($message, $response->getStatusCode(), (string) $response->getBody());
     }

@@ -17,7 +17,6 @@ namespace App\Security\OauthProvider;
 
 use App\Security\OauthProvider\Exception\OeModulesIdentityProviderException;
 use League\OAuth2\Client\Provider\AbstractProvider;
-use League\OAuth2\Client\Provider\Exception\IdentityProviderException;
 use League\OAuth2\Client\Token\AccessToken;
 use League\OAuth2\Client\Tool\BearerAuthorizationTrait;
 use Psr\Http\Message\ResponseInterface;
@@ -58,7 +57,7 @@ class OeModules extends AbstractProvider
 
             $responseEmail = $this->getParsedResponse($request);
 
-            $response['email'] = isset($responseEmail[0]['email']) ? $responseEmail[0]['email'] : null;
+            $response['email'] = $responseEmail[0]['email'] ?? null;
         }
 
         return $response;

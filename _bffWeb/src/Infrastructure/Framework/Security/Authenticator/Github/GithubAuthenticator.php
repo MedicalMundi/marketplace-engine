@@ -15,10 +15,11 @@
 
 namespace BffWeb\Infrastructure\Framework\Security\Authenticator\Github;
 
-use Doctrine\ORM\EntityManagerInterface;
 use KnpU\OAuth2ClientBundle\Client\ClientRegistry;
 use KnpU\OAuth2ClientBundle\Security\Authenticator\OAuth2Authenticator;
 use KnpU\OAuth2ClientBundle\Security\User\OAuthUserProvider;
+use League\OAuth2\Client\Provider\GithubResourceOwner;
+use League\OAuth2\Client\Token\AccessToken;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -49,17 +50,18 @@ class GithubAuthenticator extends OAuth2Authenticator implements AuthenticationE
 
     public function supports(Request $request): ?bool
     {
-        // continue ONLY if the current ROUTE matches the check ROUTE
         return $request->attributes->get('_route') === 'connect_github_check';
     }
 
     public function authenticate(Request $request): Passport
     {
         $client = $this->clientRegistry->getClient('github');
+        /** @var AccessToken $accessToken */
         $accessToken = $this->fetchAccessToken($client);
 
         return new SelfValidatingPassport(
             new UserBadge($accessToken->getToken(), function () use ($accessToken, $client) {
+                /** @var GithubResourceOwner $githubUser */
                 $githubUser = $client->fetchUserFromToken($accessToken);
 
                 $email = $githubUser->getEmail();
