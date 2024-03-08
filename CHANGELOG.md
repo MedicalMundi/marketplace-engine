@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) a
 
 ## [Unreleased] - XXXX-XX-XX
 
+## [v0.4.0] - 2024-08-03
+- ### added
+- Oauth login
+
 ## [v0.3.5] - 2024-02-25
 - ### Maintenance release
 
