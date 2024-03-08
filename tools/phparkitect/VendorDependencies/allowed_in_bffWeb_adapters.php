@@ -3,6 +3,8 @@
 return [
     'BffWeb\Core',
 
+    'KnpU\OAuth2ClientBundle\Client\ClientRegistry',
+
     'Symfony\Bundle\FrameworkBundle\Controller\AbstractController',
     'Symfony\Component\HttpFoundation\Request',
     'Symfony\Component\HttpFoundation\Response',

@@ -13,6 +13,16 @@
       <code>ContactFormType</code>
     </MissingTemplateParam>
   </file>
+  <file src="_bffWeb/src/Infrastructure/Framework/Security/Authenticator/Github/GithubAuthenticator.php">
+    <PossiblyNullArgument>
+      <code>$email</code>
+    </PossiblyNullArgument>
+  </file>
+  <file src="_bffWeb/src/Infrastructure/Framework/Security/Authenticator/OeModules/OeModulesAuthenticator.php">
+    <PossiblyNullArgument>
+      <code>$email</code>
+    </PossiblyNullArgument>
+  </file>
   <file src="_catalog/src/AdapterForGettingPublicModule/PublicModuleProviderFromPackagist.php">
     <MixedArgument>
       <code><![CDATA[$inputItem->getDescription()]]></code>
@@ -44,5 +54,57 @@
     <InvalidArgument>
       <code><![CDATA[$this->items]]></code>
     </InvalidArgument>
+  </file>
+  <file src="src/Security/OauthProvider/Exception/OeModulesIdentityProviderException.php">
+    <UnsafeInstantiation>
+      <code><![CDATA[new static($message, $response->getStatusCode(), (string) $response->getBody())]]></code>
+    </UnsafeInstantiation>
+  </file>
+  <file src="src/Security/OauthProvider/OeModules.php">
+    <MixedArrayAccess>
+      <code>$responseEmail[0]</code>
+      <code><![CDATA[$responseEmail[0]['email']]]></code>
+    </MixedArrayAccess>
+    <MixedArrayAssignment>
+      <code><![CDATA[$response['email']]]></code>
+    </MixedArrayAssignment>
+    <MixedAssignment>
+      <code>$response</code>
+      <code>$responseEmail</code>
+      <code><![CDATA[$response['email']]]></code>
+    </MixedAssignment>
+    <MixedInferredReturnType>
+      <code>createResourceOwner</code>
+    </MixedInferredReturnType>
+    <MixedReturnStatement>
+      <code><![CDATA[$user->setDomain($this->domain)]]></code>
+    </MixedReturnStatement>
+    <PossiblyInvalidArgument>
+      <code>$data</code>
+    </PossiblyInvalidArgument>
+    <PropertyNotSetInConstructor>
+      <code>OeModules</code>
+      <code>OeModules</code>
+      <code>OeModules</code>
+      <code>OeModules</code>
+    </PropertyNotSetInConstructor>
+  </file>
+  <file src="src/Security/OauthProvider/OeModulesResourceOwner.php">
+    <MissingReturnType>
+      <code>setDomain</code>
+    </MissingReturnType>
+    <MixedInferredReturnType>
+      <code>int|null</code>
+      <code>string|null</code>
+      <code>string|null</code>
+    </MixedInferredReturnType>
+    <MixedReturnStatement>
+      <code><![CDATA[$this->getValueByKey($this->response, 'email')]]></code>
+      <code><![CDATA[$this->getValueByKey($this->response, 'id')]]></code>
+      <code><![CDATA[$this->getValueByKey($this->response, 'name')]]></code>
+    </MixedReturnStatement>
+    <PropertyNotSetInConstructor>
+      <code>$domain</code>
+    </PropertyNotSetInConstructor>
   </file>
 </files>
