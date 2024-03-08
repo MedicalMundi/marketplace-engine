@@ -4,6 +4,8 @@ security:
         Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'auto'
     # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
     providers:
+        oauth:
+            id: knpu.oauth2.user_provider
         users_in_memory:
             memory:
                 users:
@@ -21,18 +23,19 @@ security:
             security: false
         main:
             lazy: true
-            provider: users_in_memory
-            form_login:
-                login_path: app_login
-                check_path: app_login
-                enable_csrf: true
+            #provider: users_in_memory
+            provider: oauth
+            entry_point: BffWeb\Infrastructure\Framework\Security\Authenticator\Github\GithubAuthenticator
+            custom_authenticators:
+                - BffWeb\Infrastructure\Framework\Security\Authenticator\Github\GithubAuthenticator
+                - BffWeb\Infrastructure\Framework\Security\Authenticator\OeModules\OeModulesAuthenticator
             logout:
                 path: /logout
                 # where to redirect after logout
                 target: app_home
 
             # by default, the feature allows 5 login attempts per minute
-            login_throttling: null
+            #login_throttling: null
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
