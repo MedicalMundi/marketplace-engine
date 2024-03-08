@@ -43,7 +43,7 @@ class OeModules extends AbstractProvider
 
     public function getResourceOwnerDetailsUrl(AccessToken $token): string
     {
-        return $this->domain . '/api/test';
+        return $this->domain . '/api/v1/auth/connect/me';
     }
 
     protected function fetchResourceOwnerDetails(AccessToken $token)
@@ -71,7 +71,6 @@ class OeModules extends AbstractProvider
     protected function checkResponse(ResponseInterface $response, $data)
     {
         if ($response->getStatusCode() >= 400) {
-            //TODO:error MESSAGE
             throw OeModulesIdentityProviderException::clientException($response, $data);
         } elseif (isset($data['error'])) {
             throw OeModulesIdentityProviderException::oauthException($response, $data);
