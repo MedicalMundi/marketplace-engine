@@ -29,10 +29,6 @@ security:
             custom_authenticators:
                 - BffWeb\Infrastructure\Framework\Security\Authenticator\Github\GithubAuthenticator
                 - BffWeb\Infrastructure\Framework\Security\Authenticator\OeModules\OeModulesAuthenticator
-#            form_login:
-#                login_path: app_login
-#                check_path: app_login
-#                enable_csrf: true
             logout:
                 path: /logout
                 # where to redirect after logout

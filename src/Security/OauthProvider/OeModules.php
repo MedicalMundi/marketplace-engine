@@ -23,13 +23,9 @@ use Psr\Http\Message\ResponseInterface;
 
 class OeModules extends AbstractProvider
 {
-    #const ACCESS_TOKEN_RESOURCE_OWNER_ID = 'id';
-    #public const ACCESS_TOKEN_RESOURCE_OWNER_ID = 'email';
     use BearerAuthorizationTrait;
 
     public string $domain = 'https://auth.oe-modules.com';
-    // For local test
-    //public string $domain = 'http://172.20.0.5:80';
 
     public function getBaseAuthorizationUrl(): string
     {
