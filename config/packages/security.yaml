@@ -51,6 +51,23 @@ security:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
 
+
+when@dev:
+    security:
+        providers:
+            all_users:
+                chain:
+                    providers: [ 'users_in_memory', 'oauth' ]
+
+        firewalls:
+            main:
+                provider: all_users
+                form_login:
+                    login_path: app_login
+                    check_path: app_login
+                    enable_csrf: true
+
+
 when@test:
     security:
         password_hashers:
