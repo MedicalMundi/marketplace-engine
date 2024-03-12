@@ -3,6 +3,10 @@
 return [
     'BffWeb\Core',
 
+    'Ecotone\Modelling\CommandBus',
+    'Ecotone\Modelling\QueryBus',
+    'Ecotone\Modelling\EventBus',
+
     'KnpU\OAuth2ClientBundle\Client\ClientRegistry',
 
     'Symfony\Bundle\FrameworkBundle\Controller\AbstractController',

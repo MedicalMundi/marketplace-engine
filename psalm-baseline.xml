@@ -55,6 +55,13 @@
       <code><![CDATA[$this->items]]></code>
     </InvalidArgument>
   </file>
+  <file src="_catalog/src/Core/Catalog/ModulesCatalog.php">
+    <MissingConstructor>
+      <code>$moduleId</code>
+      <code>$moduleType</code>
+      <code>$packageName</code>
+    </MissingConstructor>
+  </file>
   <file src="src/Security/OauthProvider/Exception/OeModulesIdentityProviderException.php">
     <UnsafeInstantiation>
       <code><![CDATA[new static($message, $response->getStatusCode(), (string) $response->getBody())]]></code>

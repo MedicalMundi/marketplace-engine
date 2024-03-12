@@ -16,38 +16,54 @@
 namespace Catalog\Core;
 
 use Catalog\Core\AntiCorruptionLayer\Dto\PackagistItem;
+use Catalog\Core\Catalog\AddPublicModule;
 use Ecotone\Messaging\Attribute\Parameter\Payload;
 use Ecotone\Modelling\Attribute\EventHandler;
+use Ecotone\Modelling\CommandBus;
 use Ecotone\Modelling\EventBus;
+use Ecotone\Modelling\QueryBus;
 use Psr\Log\LoggerInterface;
+use Ramsey\Uuid\Uuid;
 
 class PackagistScanner
 {
     public function __construct(
         private readonly ModuleFinder $moduleFinder,
+        private readonly CommandBus $commandBus,
+        private readonly QueryBus $queryBus,
         private readonly EventBus $eventBus,
         private readonly LoggerInterface $logger
     ) {
     }
 
-    public function scann(): void
+    public function scan(): void
     {
         $foundedModules = ($this->moduleFinder->search())->getItems();
 
-        //remove items if they are in catalog
-
         /** @var PackagistItem $potentialModule */
         foreach ($foundedModules as $potentialModule) {
-            $this->eventBus->publishWithRouting('catalog.newModuleWasFounded', [
-                'package_name' => $potentialModule->getName(),
-            ]);
+            if ($this->isNewModule($potentialModule->getName())) {
+                $this->eventBus->publishWithRouting('catalog.newPublicModuleWasFound', [
+
+                    'package_name' => $potentialModule->getName(),
+                ]);
+            } else {
+                $this->logger->info('Packagist scanner: skipped already registered module: ' . $potentialModule->getName());
+            }
         }
     }
 
-    #[EventHandler(listenTo: "catalog.newModuleWasFounded")]
+    #[EventHandler(listenTo: "catalog.newPublicModuleWasFound")]
     public function notifyAddModuleToCatalog(#[Payload] array $payload): void
     {
-        //dd($payload);
-        $this->logger->info((string) $payload['package_name']);
+        $moduleId = Uuid::uuid4();
+        $this->commandBus->send(new AddPublicModule($moduleId, (string) $payload['package_name']));
+    }
+
+    private function isNewModule(string $name): bool
+    {
+        $data = (array) $this->queryBus->sendWithRouting('getModuleByPackageName', $name);
+
+        return (0 === \count($data));
     }
 }

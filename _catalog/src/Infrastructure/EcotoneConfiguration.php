@@ -15,9 +15,13 @@
 
 namespace Catalog\Infrastructure;
 
+use Catalog\Core\Catalog\ModulesCatalog;
 use Ecotone\Dbal\Configuration\DbalConfiguration;
 use Ecotone\Dbal\DbalBackedMessageChannelBuilder;
+use Ecotone\EventSourcing\EventSourcingConfiguration;
+use Ecotone\EventSourcing\Prooph\LazyProophEventStore;
 use Ecotone\Messaging\Attribute\ServiceContext;
+use Ecotone\Messaging\Store\Document\DocumentStore;
 
 class EcotoneConfiguration
 {
@@ -32,5 +36,15 @@ class EcotoneConfiguration
     public function catalogChannel(): DbalBackedMessageChannelBuilder
     {
         return DbalBackedMessageChannelBuilder::create("catalog");
+    }
+
+    #[ServiceContext]
+    public function EventSourcingPersistenceStrategy(): EventSourcingConfiguration
+    {
+        return EventSourcingConfiguration::createWithDefaults()
+            ->withSimpleStreamPersistenceStrategy()
+            //->withPersistenceStrategyFor('some_stream', LazyProophEventStore::AGGREGATE_STREAM_PERSISTENCE)
+            ->withSnapshotsFor(ModulesCatalog::class, 1, DocumentStore::class)
+        ;
     }
 }

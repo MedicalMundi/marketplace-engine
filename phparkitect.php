@@ -59,7 +59,7 @@ return static function (Config $config): void {
         ->component('Adapters')->definedBy('Catalog\AdapterFor*')
         ->component('Infrastructure')->definedBy('Catalog\Infrastructure\*')
 
-        ->where('Infrastructure')->shouldNotDependOnAnyComponent()
+        ->where('Infrastructure')->mayDependOnComponents('Core')
         ->where('Adapters')->mayDependOnComponents('Core', 'Infrastructure')
         ->where('Core')->shouldNotDependOnAnyComponent()
         ->rules();

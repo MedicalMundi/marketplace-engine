@@ -1,13 +1,13 @@
 {
     "violations": [
         {
-            "fqcn": "BffWeb\\AdapterForWeb\\Administration\\IndexController",
-            "line": 30,
+            "fqcn": "BffWeb\\AdapterForWeb\\Administration\\Catalog\\CatalogController",
+            "line": 42,
             "error": "depends on Catalog\\Core\\PackagistScanner, but should not depend on classes outside namespace BffWeb\\Adapter* because we want isolate our bffWeb Adapters from ever growing dependencies."
         },
         {
-            "fqcn": "BffWeb\\AdapterForWeb\\Administration\\IndexController",
-            "line": 30,
+            "fqcn": "BffWeb\\AdapterForWeb\\Administration\\Catalog\\CatalogController",
+            "line": 42,
             "error": "depends on Catalog\\Core\\PackagistScanner, but should not depend on these namespaces: Catalog\\* because of component architecture"
         },
         {
