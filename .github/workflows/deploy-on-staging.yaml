@@ -48,7 +48,7 @@ jobs:
       - name: Deploy
         uses: deployphp/action@v1
         with:
-          deployer-version: "7.3.1"
+          deployer-version: "7.3.3"
           dep: deploy stage -o branch=main
           private-key: ${{ secrets.DEPLOYER_PRIVATE_SSH_KEY }}
           deployer-binary: "./vendor/bin/dep"
