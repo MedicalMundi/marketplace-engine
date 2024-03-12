@@ -15,7 +15,6 @@
 
 namespace BffWeb\AdapterForWeb\Administration;
 
-use Catalog\Core\PackagistScanner;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Attribute\AsController;
@@ -26,10 +25,9 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 class IndexController extends AbstractController
 {
     #[Route('/admin', name: 'web_admin')]
-    #[IsGranted('ROLE_SUPER_ADMIN')]
-    public function index(PackagistScanner $scanner): Response
+    #[IsGranted('ROLE_ADMIN')]
+    public function index(): Response
     {
-        $scanner->scann();
         return $this->render('@web/administration/index.html.twig');
     }
 }
