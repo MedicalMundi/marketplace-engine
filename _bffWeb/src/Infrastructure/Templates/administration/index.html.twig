@@ -4,6 +4,12 @@
     {{ parent() }}
 {% endblock %}
 
+    {% block navigation %}
+        {% include '@web/common/admin_navigation.html.twig' %}
+        {% include '@web/common/_flash_messages.html.twig' %}
+    {% endblock %}
+
+
 {% block main %}
 <main class="flex-shrink-0">
     <div class="container mt-3">
