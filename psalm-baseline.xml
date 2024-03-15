@@ -57,9 +57,11 @@
   </file>
   <file src="_catalog/src/Core/Catalog/ModulesCatalog.php">
     <MissingConstructor>
+      <code>$description</code>
       <code>$moduleId</code>
       <code>$moduleType</code>
       <code>$packageName</code>
+      <code>$url</code>
     </MissingConstructor>
   </file>
   <file src="src/Security/OauthProvider/Exception/OeModulesIdentityProviderException.php">
