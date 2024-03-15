@@ -20,9 +20,11 @@ use Ramsey\Uuid\UuidInterface;
 class PublicModuleWasAdded
 {
     public function __construct(
-        public UuidInterface $id,
-        public string $packageName,
-        public string $type = 'public'
+        public readonly UuidInterface $id,
+        public readonly string $packageName,
+        public readonly string $description,
+        public readonly string $url,
+        public readonly string $type = 'public'
     ) {
     }
 }

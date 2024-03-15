@@ -32,6 +32,10 @@ class CatalogTest extends TestCase
 
     private const TYPE = 'public';
 
+    private const DESCRIPTION = 'A module description';
+
+    private const URL = 'https://fake.githost.com/irrelevant/irrelevant';
+
     #[Test]
     public function should_add_a_public_module(): void
     {
@@ -42,6 +46,8 @@ class CatalogTest extends TestCase
             ->sendCommand(new AddPublicModule(
                 $expectedTodoId,
                 self::PACKAGE_NAME,
+                self::DESCRIPTION,
+                self::URL
             ))
             ->getAggregate(ModulesCatalog::class, $expectedTodoId);
 

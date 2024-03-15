@@ -44,8 +44,9 @@ class PackagistScanner
         foreach ($foundedModules as $potentialModule) {
             if ($this->isNewModule($potentialModule->getName())) {
                 $this->eventBus->publishWithRouting('catalog.newPublicModuleWasFound', [
-
                     'package_name' => $potentialModule->getName(),
+                    'description' => $potentialModule->getDescription(),
+                    'url' => $potentialModule->getUrl(),
                 ]);
             } else {
                 $this->logger->info('Packagist scanner: skipped already registered module: ' . $potentialModule->getName());
@@ -57,7 +58,7 @@ class PackagistScanner
     public function notifyAddModuleToCatalog(#[Payload] array $payload): void
     {
         $moduleId = Uuid::uuid4();
-        $this->commandBus->send(new AddPublicModule($moduleId, (string) $payload['package_name']));
+        $this->commandBus->send(new AddPublicModule($moduleId, (string) $payload['package_name'], (string) $payload['description'], (string) $payload['url']));
     }
 
     private function isNewModule(string $name): bool

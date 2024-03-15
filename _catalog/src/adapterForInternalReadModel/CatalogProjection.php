@@ -41,6 +41,8 @@ class CatalogProjection
         $this->connection->insert(self::TABLE_NAME, [
             "module_id" => $event->id->toString(),
             "package_name" => $event->packageName,
+            "description" => $event->description,
+            "url" => $event->url,
             "module_type" => $event->type,
         ]);
     }
@@ -57,15 +59,10 @@ class CatalogProjection
     #[QueryHandler("getModuleByPackageName")]
     public function getModuleByPackageName(string $packageName): array
     {
-        return $this->connection->executeQuery(<<<SQL
-    SELECT * FROM prj_catalog_module_list WHERE package_name = :package_name
-SQL, [
+        $sql = 'SELECT * FROM ' . self::TABLE_NAME . ' WHERE package_name = :package_name';
+        return $this->connection->executeQuery($sql, [
             "package_name" => $packageName,
         ])->fetchAllAssociative();
-
-        //$sql = 'SELECT * FROM ' . self::TABLE_NAME . ' WHERE package_name = ?';
-
-        //return $this->connection->executeQuery($sql)->fetchAllAssociative();
     }
 
     #[ProjectionInitialization]
@@ -79,6 +76,8 @@ SQL, [
 
         $table->addColumn('module_id', Types::STRING);
         $table->addColumn('package_name', Types::STRING);
+        $table->addColumn('description', Types::STRING);
+        $table->addColumn('url', Types::STRING);
         $table->addColumn('module_type', Types::STRING);
 
         $this->connection->createSchemaManager()->createTable($table);

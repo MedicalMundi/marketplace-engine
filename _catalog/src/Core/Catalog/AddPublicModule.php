@@ -21,7 +21,9 @@ class AddPublicModule
 {
     public function __construct(
         public readonly UuidInterface $id,
-        public readonly string $packageName
+        public readonly string $packageName,
+        public readonly string $description,
+        public readonly string $url,
     ) {
     }
 }

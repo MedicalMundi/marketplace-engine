@@ -36,6 +36,10 @@ class ModulesCatalog
 
     private string $packageName;
 
+    private string $description;
+
+    private string $url;
+
     private string $moduleType;
 
     #[CommandHandler]
@@ -45,6 +49,8 @@ class ModulesCatalog
             new PublicModuleWasAdded(
                 $command->id,
                 $command->packageName,
+                $command->description,
+                $command->url,
                 'public'
             ),
         ];
@@ -55,6 +61,8 @@ class ModulesCatalog
     {
         $this->moduleId = $event->id;
         $this->packageName = $event->packageName;
+        $this->description = $event->description;
+        $this->url = $event->url;
         $this->moduleType = $event->type;
     }
 
