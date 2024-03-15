@@ -40,7 +40,7 @@ class GithubAuthenticator extends OAuth2Authenticator implements AuthenticationE
     ) {
     }
 
-    public function start(Request $request, ?AuthenticationException $authException = null)
+    public function start(Request $request, ?AuthenticationException $authException = null): Response
     {
         return new RedirectResponse(
             '/connect/', // might be the site, where users choose their oauth provider
