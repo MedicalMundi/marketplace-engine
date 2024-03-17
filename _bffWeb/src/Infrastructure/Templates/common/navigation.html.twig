@@ -4,9 +4,17 @@
 {#        <h5 class="text-body-emphasis h4">Collapsed content</h5>#}
 {#        <span class="text-body-secondary">Toggleable via the navbar brand.</span>#}
         {% if  is_granted('IS_AUTHENTICATED') %}
-            <span class="text-body-secondary"><a href="{{ path('_logout_main') }}">Log Out</a></span>
+{#            <span class="text-body-secondary"><a href="{{ path('_logout_main') }}">Log Out</a></span>#}
+            <a class="btn btn-sm btn-outline-success" href="{{ path('_logout_main') }}">Log Out</a>
         {% else %}
-            <span class="text-body-secondary"><a href="{{ path('app_login') }}">Coonect/Log In</a></span>
+{#            <span class="text-body-secondary"><a href="{{ path('app_login') }}">Coonect/Log In</a></span>#}
+            {% if app.environment == 'dev' %}
+                <a class="btn btn-sm btn-outline-success" href="{{ path('app_login') }}">Log In</a>
+                <a class="btn btn-sm btn-outline-success" href="{{ path('connect_oemodules_start') }}">oAuth Connect</a>
+            {% endif %}
+            {% if app.environment == 'prod' %}
+                <a class="btn btn-sm btn-outline-success" href="{{ path('connect_oemodules_start') }}">oAuth Connect</a>
+            {% endif %}
         {% endif %}
 
     </div>
