@@ -38,14 +38,16 @@
                                 <th>Id</th>
                                 <th>Package</th>
                                 <th>Type</th>
+                                <th>Url</th>
                             </tr>
                             </thead>
                             <tbody>
                             {% for module in modules %}
                                 <tr>
-                                    <td>{{ module.module_id}}</td>
-                                    <td>{{ module.package_name}}</td>
-                                    <td>{{ module.module_type}}</td>
+                                    <td>{{ module.module_id|u.truncate(8, '...') }}</td>
+                                    <td>{{ module.package_name }}</td>
+                                    <td>{{ module.module_type }}</td>
+                                    <td>{{ module.url }}</td>
                                 </tr>
                             {% else %}
                                 <tr>
