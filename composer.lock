@@ -4024,16 +4024,16 @@
         },
         {
             "name": "pagerfanta/core",
-            "version": "v4.3.2",
+            "version": "v4.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Pagerfanta/core.git",
-                "reference": "2fe70a38067d74a514bee1b90d301d115dce0b87"
+                "reference": "93246f475f4f2d90d5f186dd9d01d96dc98eaa31"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Pagerfanta/core/zipball/2fe70a38067d74a514bee1b90d301d115dce0b87",
-                "reference": "2fe70a38067d74a514bee1b90d301d115dce0b87",
+                "url": "https://api.github.com/repos/Pagerfanta/core/zipball/93246f475f4f2d90d5f186dd9d01d96dc98eaa31",
+                "reference": "93246f475f4f2d90d5f186dd9d01d96dc98eaa31",
                 "shasum": ""
             },
             "require": {
@@ -4061,13 +4061,13 @@
                 "pagerfanta"
             ],
             "support": {
-                "source": "https://github.com/Pagerfanta/core/tree/v4.3.2"
+                "source": "https://github.com/Pagerfanta/core/tree/v4.5.0"
             },
-            "time": "2024-03-06T23:53:35+00:00"
+            "time": "2024-03-24T20:29:46+00:00"
         },
         {
             "name": "pagerfanta/doctrine-orm-adapter",
-            "version": "v4.3.2",
+            "version": "v4.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Pagerfanta/doctrine-orm-adapter.git",
@@ -4108,7 +4108,7 @@
                 "pagerfanta"
             ],
             "support": {
-                "source": "https://github.com/Pagerfanta/doctrine-orm-adapter/tree/v4.3.2"
+                "source": "https://github.com/Pagerfanta/doctrine-orm-adapter/tree/v4.5.0"
             },
             "time": "2024-03-06T23:51:47+00:00"
         },
