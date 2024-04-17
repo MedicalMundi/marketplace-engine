@@ -10652,20 +10652,21 @@
         },
         {
             "name": "twig/cssinliner-extra",
-            "version": "v3.8.0",
+            "version": "v3.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/cssinliner-extra.git",
-                "reference": "259a4b861732545e0e1ecd43bf25b251494af45b"
+                "reference": "419e3e98431da91e8051ffdb447725d10935285d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/cssinliner-extra/zipball/259a4b861732545e0e1ecd43bf25b251494af45b",
-                "reference": "259a4b861732545e0e1ecd43bf25b251494af45b",
+                "url": "https://api.github.com/repos/twigphp/cssinliner-extra/zipball/419e3e98431da91e8051ffdb447725d10935285d",
+                "reference": "419e3e98431da91e8051ffdb447725d10935285d",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2.5",
+                "symfony/deprecation-contracts": "^2.5|^3",
                 "tijsverkoyen/css-to-inline-styles": "^2.0",
                 "twig/twig": "^3.0"
             },
@@ -10674,6 +10675,9 @@
             },
             "type": "library",
             "autoload": {
+                "files": [
+                    "Resources/functions.php"
+                ],
                 "psr-4": {
                     "Twig\\Extra\\CssInliner\\": ""
                 },
@@ -10701,7 +10705,7 @@
                 "twig"
             ],
             "support": {
-                "source": "https://github.com/twigphp/cssinliner-extra/tree/v3.8.0"
+                "source": "https://github.com/twigphp/cssinliner-extra/tree/v3.9.0"
             },
             "funding": [
                 {
@@ -10713,7 +10717,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-11-21T14:02:01+00:00"
+            "time": "2023-12-10T19:34:32+00:00"
         },
         {
             "name": "twig/extra-bundle",
