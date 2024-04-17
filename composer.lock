@@ -4067,7 +4067,7 @@
         },
         {
             "name": "pagerfanta/doctrine-orm-adapter",
-            "version": "v4.3.2",
+            "version": "v4.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Pagerfanta/doctrine-orm-adapter.git",
@@ -4108,7 +4108,7 @@
                 "pagerfanta"
             ],
             "support": {
-                "source": "https://github.com/Pagerfanta/doctrine-orm-adapter/tree/v4.3.2"
+                "source": "https://github.com/Pagerfanta/doctrine-orm-adapter/tree/v4.5.0"
             },
             "time": "2024-03-06T23:51:47+00:00"
         },
