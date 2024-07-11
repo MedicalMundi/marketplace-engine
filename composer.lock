@@ -4037,16 +4037,16 @@
         },
         {
             "name": "pagerfanta/core",
-            "version": "v4.5.0",
+            "version": "v4.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Pagerfanta/core.git",
-                "reference": "93246f475f4f2d90d5f186dd9d01d96dc98eaa31"
+                "reference": "abebd22b1779bda6598b6ad1076284d91c5f7862"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Pagerfanta/core/zipball/93246f475f4f2d90d5f186dd9d01d96dc98eaa31",
-                "reference": "93246f475f4f2d90d5f186dd9d01d96dc98eaa31",
+                "url": "https://api.github.com/repos/Pagerfanta/core/zipball/abebd22b1779bda6598b6ad1076284d91c5f7862",
+                "reference": "abebd22b1779bda6598b6ad1076284d91c5f7862",
                 "shasum": ""
             },
             "require": {
@@ -4074,13 +4074,13 @@
                 "pagerfanta"
             ],
             "support": {
-                "source": "https://github.com/Pagerfanta/core/tree/v4.5.0"
+                "source": "https://github.com/Pagerfanta/core/tree/v4.6.0"
             },
-            "time": "2024-03-24T20:29:46+00:00"
+            "time": "2024-05-29T21:55:37+00:00"
         },
         {
             "name": "pagerfanta/doctrine-orm-adapter",
-            "version": "v4.5.0",
+            "version": "v4.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Pagerfanta/doctrine-orm-adapter.git",
@@ -4121,22 +4121,22 @@
                 "pagerfanta"
             ],
             "support": {
-                "source": "https://github.com/Pagerfanta/doctrine-orm-adapter/tree/v4.5.0"
+                "source": "https://github.com/Pagerfanta/doctrine-orm-adapter/tree/v4.6.0"
             },
             "time": "2024-03-06T23:51:47+00:00"
         },
         {
             "name": "pagerfanta/twig",
-            "version": "v4.5.0",
+            "version": "v4.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Pagerfanta/twig.git",
-                "reference": "74d43875490442a59ddca66e6e3fc66a9b583dd4"
+                "reference": "b00b600c4c81bc2e8c001c230b13473584dad16e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Pagerfanta/twig/zipball/74d43875490442a59ddca66e6e3fc66a9b583dd4",
-                "reference": "74d43875490442a59ddca66e6e3fc66a9b583dd4",
+                "url": "https://api.github.com/repos/Pagerfanta/twig/zipball/b00b600c4c81bc2e8c001c230b13473584dad16e",
+                "reference": "b00b600c4c81bc2e8c001c230b13473584dad16e",
                 "shasum": ""
             },
             "require": {
@@ -4165,9 +4165,9 @@
                 "pagerfanta"
             ],
             "support": {
-                "source": "https://github.com/Pagerfanta/twig/tree/v4.5.0"
+                "source": "https://github.com/Pagerfanta/twig/tree/v4.6.0"
             },
-            "time": "2024-03-06T23:51:47+00:00"
+            "time": "2024-05-08T00:35:50+00:00"
         },
         {
             "name": "paragonie/random_compat",
