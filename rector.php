@@ -16,6 +16,7 @@
 use Rector\CodeQuality\Rector\Class_\InlineConstructorDefaultToPropertyRector;
 use Rector\Config\RectorConfig;
 use Rector\Set\ValueObject\LevelSetList;
+use Rector\Symfony\CodeQuality\Rector\MethodCall\LiteralGetToRequestClassConstantRector;
 use Rector\Symfony\Set\SymfonySetList;
 use Rector\Symfony\Symfony64\Rector\Class_\ChangeRouteAttributeFromAnnotationSubnamespaceRector;
 
@@ -34,6 +35,11 @@ return static function (RectorConfig $rectorConfig): void {
     $rectorConfig->skip([
 
         ChangeRouteAttributeFromAnnotationSubnamespaceRector::class,
+        LiteralGetToRequestClassConstantRector::class => [
+            __DIR__ . '/tests',
+            __DIR__ . '/_catalog/tests',
+            __DIR__ . '/_bffWeb/tests',
+        ],
     ]);
 
     // register a single rule

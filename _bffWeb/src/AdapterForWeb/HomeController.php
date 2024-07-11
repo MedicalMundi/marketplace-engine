@@ -18,12 +18,11 @@ namespace BffWeb\AdapterForWeb;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Attribute\AsController;
-use Symfony\Component\Routing\Annotation\Route;
 
 #[AsController]
 class HomeController extends AbstractController
 {
-    #[Route(
+    #[\Symfony\Component\Routing\Attribute\Route(
         path: '/{_locale}',
         name: 'app_home',
         requirements: [
