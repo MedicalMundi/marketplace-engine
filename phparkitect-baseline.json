@@ -2,22 +2,22 @@
     "violations": [
         {
             "fqcn": "BffWeb\\AdapterForWeb\\Administration\\Catalog\\CatalogController",
-            "line": 42,
+            "line": 41,
             "error": "depends on Catalog\\Core\\PackagistScanner, but should not depend on classes outside namespace BffWeb\\Adapter* because we want isolate our bffWeb Adapters from ever growing dependencies."
         },
         {
             "fqcn": "BffWeb\\AdapterForWeb\\Administration\\Catalog\\CatalogController",
-            "line": 42,
+            "line": 41,
             "error": "depends on Catalog\\Core\\PackagistScanner, but should not depend on these namespaces: Catalog\\* because of component architecture"
         },
         {
             "fqcn": "BffWeb\\AdapterForWeb\\SearchModuleController",
-            "line": 28,
+            "line": 27,
             "error": "depends on Catalog\\AdapterForGettingPublicModule\\PublicModuleProviderFromPackagist, but should not depend on classes outside namespace BffWeb\\Adapter* because we want isolate our bffWeb Adapters from ever growing dependencies."
         },
         {
             "fqcn": "BffWeb\\AdapterForWeb\\SearchModuleController",
-            "line": 28,
+            "line": 27,
             "error": "depends on Catalog\\AdapterForGettingPublicModule\\PublicModuleProviderFromPackagist, but should not depend on these namespaces: Catalog\\* because of component architecture"
         }
     ],
