@@ -154,7 +154,7 @@ task('envvars:dump', function () {
         }
 
         if (getenv('CI')){
-            info('GHA CHECK ENV VARS FILE -- Setup stage env vars in file .env.local.php');
+            info('GITHUB ACTION - Create and populate .env.dev file for stage');
             $cmdResult = runLocally('ls -al');
             echo $cmdResult;
             info('Generated env.dev with staging configuration data');
