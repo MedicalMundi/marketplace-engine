@@ -160,8 +160,8 @@ task('envvars:dump', function () {
             info('Generated env.dev with staging configuration data');
             $cmdResult = runLocally('touch .env.dev');
             echo $cmdResult;
-            $APP_ENV = getenv('APP_ENV');
-            runLocally("echo APP_ENV=\"$APP_ENV\" >> .env.dev");
+            //$APP_ENV = getenv('APP_ENV');
+            //runLocally("echo APP_ENV=\"$APP_ENV\" >> .env.dev");
 
             $APP_SECRET = getenv('APP_SECRET');
             runLocally("echo APP_SECRET=\"$APP_SECRET\" >> .env.dev");
