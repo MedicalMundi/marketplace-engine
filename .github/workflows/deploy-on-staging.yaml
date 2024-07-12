@@ -113,15 +113,15 @@ jobs:
           private-key: ${{ secrets.DEPLOYER_PRIVATE_SSH_KEY }}
           deployer-binary: "./vendor/bin/dep"
         env:
-          APP_ENV: ${{ env.APP_ENV}}
-          APP_SECRET: ${{ env.APP_SECRET}}
-          DATABASE_URL: ${{ env.DATABASE_URL}}
-          LOCK_DSN: ${{ env.LOCK_DSN}}
-          MAILER_DSN: ${{ env.MAILER_DSN}}
-          OAUTH_GITHUB_CLIENT_ID: ${{ env.OAUTH_GITHUB_CLIENT_ID}}
-          OAUTH_GITHUB_CLIENT_SECRET: ${{ env.OAUTH_GITHUB_CLIENT_SECRET}}
-          OAUTH_OEMODULES_CLIENT_ID: ${{ env.OAUTH_OEMODULES_CLIENT_ID}}
-          OAUTH_OEMODULES_CLIENT_SECRET: ${{ env.OAUTH_OEMODULES_CLIENT_SECRET}}
+          APP_ENV: ${{ secrets.APP_ENV}}
+          APP_SECRET: ${{ secrets.APP_SECRET}}
+          DATABASE_URL: ${{ secrets.DATABASE_URL}}
+          LOCK_DSN: ${{ secrets.LOCK_DSN}}
+          MAILER_DSN: ${{ secrets.MAILER_DSN}}
+          OAUTH_GITHUB_CLIENT_ID: ${{ secrets.OAUTH_GITHUB_CLIENT_ID}}
+          OAUTH_GITHUB_CLIENT_SECRET: ${{ secrets.OAUTH_GITHUB_CLIENT_SECRET}}
+          OAUTH_OEMODULES_CLIENT_ID: ${{ secrets.OAUTH_OEMODULES_CLIENT_ID}}
+          OAUTH_OEMODULES_CLIENT_SECRET: ${{ secrets.OAUTH_OEMODULES_CLIENT_SECRET}}
 
 
 

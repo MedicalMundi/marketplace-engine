@@ -151,55 +151,77 @@ task('envvars:dump', function () {
             info('Setup stage env vars in file .env.local.php');
             runLocally('cp -f .env.itroom.stage .env.dev');
             info('Generated env.dev with staging configuration data');
+
+            info('Run composer symfony:dump-env dev');
+            $cmdResult = runLocally('composer symfony:dump-env dev', ['tty' => true]);
+            echo $cmdResult;
+            info('Generated .env.local.php');
         }
 
         if (getenv('CI')){
             info('GITHUB ACTION - Create and populate .env.dev file for stage');
             $cmdResult = runLocally('ls -al');
             echo $cmdResult;
+
+
+            runLocally('echo $KEY', env: ['KEY' => 'over']);
+
+            runLocally('echo $APP_SECRET', env: ['APP_SECRET' => getenv('APP_SECRET')]);
+
+
+            info('Remove generic .env ');
+            $cmdResult = runLocally('rm -f .env');
+            echo $cmdResult;
+
             info('Generated env.dev with staging configuration data');
-            $cmdResult = runLocally('touch .env.dev');
+            $cmdResult = runLocally('touch .env');
             echo $cmdResult;
 
-            info('GITHUB ACTION - Verify .env.dev is created.');
-            $cmdResult = runLocally('ls -al');
-            echo $cmdResult;
 
-            //$APP_ENV = getenv('APP_ENV');
-            //runLocally("echo APP_ENV=\"$APP_ENV\" >> .env.dev");
+            $APP_ENV = getenv('APP_ENV');
+            runLocally("echo APP_ENV=\"$APP_ENV\" >> .env");
 
             $APP_SECRET = getenv('APP_SECRET');
-            runLocally("echo APP_SECRET=\"$APP_SECRET\" >> .env.dev");
+            runLocally("echo APP_SECRET=\"$APP_SECRET\" >> .env");
 
             $DATABASE_URL = getenv('DATABASE_URL');
-            runLocally("echo DATABASE_URL=\"$DATABASE_URL\" >> .env.dev");
+            runLocally("echo DATABASE_URL=\"$DATABASE_URL\" >> .env");
 
             $LOCK_DSN = getenv('LOCK_DSN');
-            runLocally("echo LOCK_DSN=\"$LOCK_DSN\" >> .env.dev");
+            runLocally("echo LOCK_DSN=\"$LOCK_DSN\" >> .env");
 
             $MAILER_DSN = getenv('MAILER_DSN');
-            runLocally("echo MAILER_DSN=\"$MAILER_DSN\" >> .env.dev");
+            runLocally("echo MAILER_DSN=\"$MAILER_DSN\" >> .env");
 
             $OAUTH_GITHUB_CLIENT_ID = getenv('OAUTH_GITHUB_CLIENT_ID');
-            runLocally("echo OAUTH_GITHUB_CLIENT_ID=\"$OAUTH_GITHUB_CLIENT_ID\" >> .env.dev");
+            runLocally("echo OAUTH_GITHUB_CLIENT_ID=\"$OAUTH_GITHUB_CLIENT_ID\" >> .env");
 
             $OAUTH_GITHUB_CLIENT_SECRET = getenv('OAUTH_GITHUB_CLIENT_SECRET');
-            runLocally("echo OAUTH_GITHUB_CLIENT_SECRET=\"$OAUTH_GITHUB_CLIENT_SECRET\" >> .env.dev");
+            runLocally("echo OAUTH_GITHUB_CLIENT_SECRET=\"$OAUTH_GITHUB_CLIENT_SECRET\" >> .env");
 
             $OAUTH_OEMODULES_CLIENT_ID = getenv('OAUTH_OEMODULES_CLIENT_ID');
-            runLocally("echo OAUTH_OEMODULES_CLIENT_ID=\"$OAUTH_OEMODULES_CLIENT_ID\" >> .env.dev");
+            runLocally("echo OAUTH_OEMODULES_CLIENT_ID=\"$OAUTH_OEMODULES_CLIENT_ID\" >> .env");
 
             $OAUTH_OEMODULES_CLIENT_SECRET = getenv('OAUTH_OEMODULES_CLIENT_SECRET');
-            runLocally("echo OAUTH_OEMODULES_CLIENT_SECRET=\"$OAUTH_OEMODULES_CLIENT_SECRET\" >> .env.dev");
+            runLocally("echo OAUTH_OEMODULES_CLIENT_SECRET=\"$OAUTH_OEMODULES_CLIENT_SECRET\" >> .env");
 
-            $cmdResult = runLocally('cat .env.dev');
+            $cmdResult = runLocally('cat .env');
+            echo $cmdResult;
+
+            info('Run composer symfony:dump-env prod');
+            $cmdResult = runLocally('composer symfony:dump-env prod', ['tty' => true]);
+            echo $cmdResult;
+            info('Generated .env.local.php');
+
+
+            $cmdResult = runLocally('cat .env.local.php');
             echo $cmdResult;
         }
 
-        info('Run composer symfony:dump-env dev');
-        $cmdResult = runLocally('composer symfony:dump-env dev', ['tty' => true]);
-        echo $cmdResult;
-        info('Generated .env.local.php');
+//        info('Run composer symfony:dump-env dev');
+//        $cmdResult = runLocally('composer symfony:dump-env dev', ['tty' => true]);
+//        echo $cmdResult;
+//        info('Generated .env.local.php');
     }
 
     info('Try to upload .env.local.php');
