@@ -160,6 +160,11 @@ task('envvars:dump', function () {
             info('Generated env.dev with staging configuration data');
             $cmdResult = runLocally('touch .env.dev');
             echo $cmdResult;
+
+            info('GITHUB ACTION - Verify .env.dev is created.');
+            $cmdResult = runLocally('ls -al');
+            echo $cmdResult;
+
             //$APP_ENV = getenv('APP_ENV');
             //runLocally("echo APP_ENV=\"$APP_ENV\" >> .env.dev");
 
