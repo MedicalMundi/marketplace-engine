@@ -20,6 +20,7 @@ use Catalog\Core\AntiCorruptionLayer\Dto\PackagistItemCollection;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Attribute\Route;
 
 class SearchModuleController extends AbstractController
 {
@@ -28,7 +29,7 @@ class SearchModuleController extends AbstractController
     ) {
     }
 
-    #[\Symfony\Component\Routing\Attribute\Route('/search/modules', name: 'web_f_search_modules', methods: ['POST'])]
+    #[Route('/search/modules', name: 'web_f_search_modules', methods: ['POST'])]
     public function index(Request $request): Response
     {
         $searchTerms = (string) $request->request->get('search');

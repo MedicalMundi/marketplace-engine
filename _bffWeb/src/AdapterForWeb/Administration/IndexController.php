@@ -18,12 +18,13 @@ namespace BffWeb\AdapterForWeb\Administration;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Attribute\AsController;
+use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[AsController]
 class IndexController extends AbstractController
 {
-    #[\Symfony\Component\Routing\Attribute\Route('/admin', name: 'web_admin')]
+    #[Route('/admin', name: 'web_admin')]
     #[IsGranted('ROLE_ADMIN')]
     public function index(): Response
     {

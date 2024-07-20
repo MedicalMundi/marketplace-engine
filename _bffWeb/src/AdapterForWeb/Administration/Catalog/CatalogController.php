@@ -20,12 +20,13 @@ use Ecotone\Modelling\QueryBus;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Attribute\AsController;
+use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[AsController]
 class CatalogController extends AbstractController
 {
-    #[\Symfony\Component\Routing\Attribute\Route('/admin/catalog', name: 'web_admin_catalog_index')]
+    #[Route('/admin/catalog', name: 'web_admin_catalog_index')]
     #[IsGranted('ROLE_ADMIN')]
     public function index(QueryBus $queryBus): Response
     {
@@ -36,7 +37,7 @@ class CatalogController extends AbstractController
         ]);
     }
 
-    #[\Symfony\Component\Routing\Attribute\Route('/admin/catalog/scann/public', name: 'web_admin_catalog_packagist_scanner')]
+    #[Route('/admin/catalog/scann/public', name: 'web_admin_catalog_packagist_scanner')]
     #[IsGranted('ROLE_ADMIN')]
     public function scannPublicModules(PackagistScanner $scanner, QueryBus $queryBus): Response
     {

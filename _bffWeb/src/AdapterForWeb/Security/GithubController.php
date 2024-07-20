@@ -18,14 +18,14 @@ namespace BffWeb\AdapterForWeb\Security;
 use KnpU\OAuth2ClientBundle\Client\ClientRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Attribute\Route;
 
 class GithubController extends AbstractController
 {
     /**
      * Link to this controller to start the "connect" process
      */
-    #[\Symfony\Component\Routing\Attribute\Route('/connect/github', name: 'connect_github_start', methods: ['GET'])]
+    #[Route('/connect/github', name: 'connect_github_start', methods: ['GET'])]
     public function connect(ClientRegistry $clientRegistry): Response
     {
         return $clientRegistry
@@ -41,7 +41,7 @@ class GithubController extends AbstractController
      * because this is the "redirect_route" you configured
      * in config/packages/knpu_oauth2_client.yaml
      */
-    #[\Symfony\Component\Routing\Attribute\Route('/connect/github/check', name: 'connect_github_check')]
+    #[Route('/connect/github/check', name: 'connect_github_check')]
     public function connectCheck(): void
     {
         /**
