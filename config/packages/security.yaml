@@ -6,12 +6,15 @@ security:
     providers:
         oauth:
             id: knpu.oauth2.user_provider
+        # emergency login
         users_in_memory:
             memory:
                 users:
-                    teclaizerai@gmail.com: {password: '$2y$13$DzpN/bWe/v/X0DwZVmlZVOyKrQ1yuzE7VM.Z1cdIuG256X8/44Tme', roles: [ 'ROLE_SUPER_ADMIN' ]}
-                    admin@example.com: {password: '$2y$13$Bc.qVeuQuHbL.i02TyjFa.faHJuX7TWizBLak7YqwHUsp5U/hfLP2', roles: [ 'ROLE_ADMIN' ]}
-                    demo@example.com: {password: '$2y$13$k1pe2mYaWng.NOvHePwsqu0JUqZysHm0noQW27JeFpM23oumTRrQe', roles: [ 'ROLE_USER' ]}
+                    admin@oe-modules.com: {password: '$2y$13$RYPXjE5z1.S1GFpDKmiuduFHjx1yzTDrseQvIbO9PPdNpFcTQ3fo2', roles: [ 'ROLE_SUPER_ADMIN' ]}
+
+        all_users:
+            chain:
+                providers: [ 'users_in_memory', 'oauth' ]
 
     role_hierarchy:
         ROLE_SUPER_ADMIN: [ ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH ]
@@ -23,12 +26,17 @@ security:
             security: false
         main:
             lazy: true
-            #provider: users_in_memory
-            provider: oauth
+            provider: all_users
             entry_point: BffWeb\Infrastructure\Framework\Security\Authenticator\OeModules\OeModulesAuthenticator
             custom_authenticators:
                 #- BffWeb\Infrastructure\Framework\Security\Authenticator\Github\GithubAuthenticator
                 - BffWeb\Infrastructure\Framework\Security\Authenticator\OeModules\OeModulesAuthenticator
+
+            form_login:
+                login_path: app_login
+                check_path: app_login
+                enable_csrf: true
+
             logout:
                 path: /logout
                 # where to redirect after logout
@@ -55,6 +63,12 @@ security:
 when@dev:
     security:
         providers:
+            users_in_memory:
+                memory:
+                    users:
+                        admin@oe-modules.com: { password: '$2y$13$RYPXjE5z1.S1GFpDKmiuduFHjx1yzTDrseQvIbO9PPdNpFcTQ3fo2', roles: [ 'ROLE_ADMIN' ] }
+                        demo@example.com: { password: '$2y$13$k1pe2mYaWng.NOvHePwsqu0JUqZysHm0noQW27JeFpM23oumTRrQe', roles: [ 'ROLE_USER' ] }
+
             all_users:
                 chain:
                     providers: [ 'users_in_memory', 'oauth' ]
