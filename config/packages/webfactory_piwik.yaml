@@ -12,6 +12,10 @@ webfactory_piwik:
   disable_cookies: true
 
 
+when@prod:
+  webfactory_piwik:
+    disabled: false
+
 when@dev:
   webfactory_piwik:
     disabled: true
