@@ -364,6 +364,9 @@
     "twig/extra-bundle": {
         "version": "v3.7.1"
     },
+    "webfactory/piwik-bundle": {
+        "version": "3.3.0"
+    },
     "zenstruck/foundry": {
         "version": "1.36",
         "recipe": {

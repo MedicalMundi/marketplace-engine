@@ -50,7 +50,8 @@
         "twig/inky-extra": "^3.8",
         "twig/markdown-extra": "^3.8",
         "twig/string-extra": "^3.8",
-        "twig/twig": "^2.12 || ^3.0"
+        "twig/twig": "^2.12 || ^3.0",
+        "webfactory/piwik-bundle": "^3.3"
     },
     "replace": {
         "symfony/polyfill-ctype": "*",
