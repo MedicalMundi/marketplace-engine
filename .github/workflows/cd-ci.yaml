@@ -32,6 +32,7 @@ jobs:
   deploy-on-stage-workflow:
     name: Deploy on Staging server
     needs:
+      - commit-stage-workflow
       - acceptance-stage-workflow
     # note: racchiudere l'intero if con ${{ }}
     # @see https://github.com/actions/runner/issues/491
