@@ -93,7 +93,7 @@ return static function (Config $config): void {
 
     $bffWebClassSet = ClassSet::fromDir(__DIR__ . '/_bffWeb/src');
 
-    $allowedVendorDependenciesInBffApiCore = require_once __DIR__ . '/tools/phparkitect/VendorDependencies/allowed_in_bffWeb_core.php';
+    $allowedVendorDependenciesInBffWebCore = require_once __DIR__ . '/tools/phparkitect/VendorDependencies/allowed_in_bffWeb_core.php';
     $allowedVendorDependenciesInBffWebAdapters = require_once __DIR__ . '/tools/phparkitect/VendorDependencies/allowed_in_bffWeb_adapters.php';
 
     $bffWebPortAndAdapterArchitectureRules = Architecture::withComponents()
@@ -107,7 +107,7 @@ return static function (Config $config): void {
         ->rules();
 
 
-    $allowedDependenciesInBffWebCore = array_merge($allowedPhpDependencies, $allowedVendorDependenciesInBffApiCore);
+    $allowedDependenciesInBffWebCore = array_merge($allowedPhpDependencies, $allowedVendorDependenciesInBffWebCore);
     $bffWebCoreIsolationRule = Rule::allClasses()
         ->that(new ResideInOneOfTheseNamespaces('BffWeb\Core'))
         ->should(new NotHaveDependencyOutsideNamespace('BbfWeb\Core', $allowedDependenciesInBffWebCore))
