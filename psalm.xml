@@ -30,6 +30,19 @@
                 <file name="_catalog/src/Infrastructure/EcotoneConfiguration.php" />
             </errorLevel>
         </UnusedClass>
+
+
+        <!-- BffApi module -->
+        <MixedMethodCall>
+            <errorLevel type="suppress">
+                <file name="_bffApi/src/Infrastructure/Framework/Extension/BffApiModuleExtension.php" />
+            </errorLevel>
+        </MixedMethodCall>
+        <UndefinedMethod>
+            <errorLevel type="suppress">
+                <file name="_bffApi/src/Infrastructure/Framework/Extension/BffApiModuleExtension.php" />
+            </errorLevel>
+        </UndefinedMethod>
     </issueHandlers>
 
 
