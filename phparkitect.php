@@ -126,6 +126,47 @@ return static function (Config $config): void {
     /**++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
      *++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*
      *
+     *      BffApi
+     *
+     *++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*
+     *++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*
+     */
+
+    $bffApiClassSet = ClassSet::fromDir(__DIR__ . '/_bffApi/src');
+
+    $allowedVendorDependenciesInBffApiCore = require_once __DIR__ . '/tools/phparkitect/VendorDependencies/allowed_in_bffApi_core.php';
+    $allowedVendorDependenciesInBffApiAdapters = require_once __DIR__ . '/tools/phparkitect/VendorDependencies/allowed_in_bffApi_adapters.php';
+
+    $bffApiPortAndAdapterArchitectureRules = Architecture::withComponents()
+        ->component('Core')->definedBy('BffApi\Core\*')
+        ->component('Adapters')->definedBy('BffApi\Adapter*')
+        ->component('Infrastructure')->definedBy('BffApi\Infrastructure\*')
+
+        ->where('Infrastructure')->shouldNotDependOnAnyComponent()
+        ->where('Adapters')->mayDependOnComponents('Core', 'Infrastructure')
+        ->where('Core')->shouldNotDependOnAnyComponent()
+        ->rules();
+
+
+    $allowedDependenciesInBffApiCore = array_merge($allowedPhpDependencies, $allowedVendorDependenciesInBffApiCore);
+    $bffApiCoreIsolationRule = Rule::allClasses()
+        ->that(new ResideInOneOfTheseNamespaces('BffApi\Core'))
+        ->should(new NotHaveDependencyOutsideNamespace('BffApi\Core', $allowedDependenciesInBffApiCore))
+        ->because('we want isolate our bffApi core domain from external world.');
+
+
+    $allowedDependenciesInBffApiAdapters = array_merge($allowedPhpDependencies, $allowedVendorDependenciesInBffApiAdapters);
+    $bffApiAdaptersIsolationRule = Rule::allClasses()
+        ->that(new ResideInOneOfTheseNamespaces('BffApi\Adapter*'))
+        ->should(new NotHaveDependencyOutsideNamespace('BffApi\Adapter*', $allowedDependenciesInBffApiAdapters))
+        ->because('we want isolate our bffApi Adapters from ever growing dependencies.');
+
+    $config->add($bffApiClassSet, $bffApiCoreIsolationRule, $bffApiAdaptersIsolationRule, ...$bffApiPortAndAdapterArchitectureRules);
+
+
+    /**++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+     *++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*
+     *
      *      All Application
      *
      *++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*

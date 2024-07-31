@@ -106,14 +106,16 @@
         "psr-4": {
             "App\\": "src/",
             "Catalog\\": "_catalog/src/",
-            "BffWeb\\": "_bffWeb/src/"
+            "BffWeb\\": "_bffWeb/src/",
+            "BffApi\\": "_bffApi/src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
             "App\\Tests\\": "tests/",
             "Catalog\\Tests\\": "_catalog/tests/",
-            "BffWeb\\Tests\\": "_bffWeb/tests/"
+            "BffWeb\\Tests\\": "_bffWeb/tests/",
+            "BffApi\\Tests\\": "_bffApi/tests/"
         }
     },
     "minimum-stability": "stable",
