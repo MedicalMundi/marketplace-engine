@@ -29,10 +29,10 @@
         <testsuite name="catalog">
             <directory>_catalog/tests</directory>
         </testsuite>
-        <testsuite name="bbfWeb">
+        <testsuite name="bffWeb">
             <directory>_bffWeb/tests</directory>
         </testsuite>
-        <testsuite name="bbfApi">
+        <testsuite name="bffApi">
             <directory>_bffApi/tests</directory>
         </testsuite>
 
