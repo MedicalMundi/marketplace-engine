@@ -9,3 +9,9 @@ bff_web_controllers:
         path: ../_bffWeb/src/AdapterForWeb
         namespace: BffWeb\AdapterForWeb
     type: attribute
+
+bff_api_controllers:
+    resource:
+        path: ../_bffApi/src/AdapterForApi
+        namespace: BffApi\AdapterForApi
+    type: attribute
