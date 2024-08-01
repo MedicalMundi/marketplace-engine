@@ -13,29 +13,15 @@
  * @license https://github.com/MedicalMundi/marketplace-engine/blob/main/LICENSE MIT
  */
 
-namespace BffApi\Infrastructure\OperationOrientedApi\OperationDemo;
+namespace BffApi\Infrastructure\OperationOrientedApi;
 
-use BffApi\Infrastructure\OperationOrientedApi\ApiOutput;
 use BffApi\Infrastructure\OperationOrientedApi\Attribute\OperationMetadata;
-use BffApi\Infrastructure\OperationOrientedApi\OperationInterface;
 
-#[OperationMetadata(
-    name: 'SendPayment',
-    /** name: OperationNames::SendPayment->name, */
-    input: SendPaymentInput::class
-)]
-class SendPaymentOperation implements OperationInterface
+class ApiOperation
 {
-    /**
-     * @param SendPaymentInput $data
-     */
-    public function perform(mixed $data): ApiOutput
-    {
-        return new ApiOutput(
-            [
-                'id' => '384974197',
-            ],
-            200
-        );
+    public function __construct(
+        public readonly OperationInterface $handler,
+        public readonly OperationMetadata $metadata,
+    ) {
     }
 }
