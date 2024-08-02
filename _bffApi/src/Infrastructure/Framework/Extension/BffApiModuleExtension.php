@@ -45,6 +45,7 @@ class BffApiModuleExtension extends AbstractExtension
     public function loadExtension(array $config, ContainerConfigurator $container, ContainerBuilder $builder): void
     {
         $container->parameters()
+            ->set('module_bff_api.enabled', $config['enabled'])
             ->set('module_bff_api.catalog_dir', $config['catalog_dir'])
             ->set('module_bff_api.catalog_filename', $config['catalog_filename'])
         ;
