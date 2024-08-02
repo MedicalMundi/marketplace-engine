@@ -16,7 +16,7 @@
 namespace BffApi\Infrastructure\OperationOrientedApi\Subscriber;
 
 use BffApi\Infrastructure\OperationOrientedApi\Exception\InvalidPayloadException;
-use BffApi\Infrastructure\OperationOrientedApi\NotFoundOperationException;
+use BffApi\Infrastructure\OperationOrientedApi\Exception\NotFoundOperationException;
 use JMS\Serializer\Exception\ValidationFailedException;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
