@@ -13,7 +13,7 @@
  * @license https://github.com/MedicalMundi/marketplace-engine/blob/main/LICENSE MIT
  */
 
-namespace BffApi\Infrastructure\OperationOrientedApi;
+namespace BffApi\Infrastructure\OperationOrientedApi\Exception;
 
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
