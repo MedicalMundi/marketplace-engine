@@ -17,12 +17,13 @@ namespace BffApi\Infrastructure\OperationOrientedApi\Subscriber;
 
 use BffApi\Infrastructure\OperationOrientedApi\Exception\InvalidPayloadException;
 use BffApi\Infrastructure\OperationOrientedApi\Exception\NotFoundOperationException;
-use JMS\Serializer\Exception\ValidationFailedException;
+
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\ExceptionEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
+use Symfony\Component\Validator\Exception\ValidationFailedException;
 
 class KernelSubscriber implements EventSubscriberInterface
 {
@@ -39,7 +40,7 @@ class KernelSubscriber implements EventSubscriberInterface
 
         if ($exception instanceof ValidationFailedException) {
             $errors = [];
-            foreach ($exception->getConstraintViolationList() as $violation) {
+            foreach ($exception->getViolations() as $violation) {
                 $errors[$violation->getPropertyPath()] = $violation->getMessage();
             }
 
