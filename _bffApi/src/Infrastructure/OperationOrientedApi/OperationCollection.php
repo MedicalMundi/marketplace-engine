@@ -23,7 +23,7 @@ class OperationCollection
     {
         if (! isset($this->operations[$operation])) {
             throw new NotFoundOperationException(
-                sprintf('Operation %s is not defined.', $operation)
+                \sprintf('Operation %s is not defined.', $operation)
             );
         }
         return $this->operations[$operation];
