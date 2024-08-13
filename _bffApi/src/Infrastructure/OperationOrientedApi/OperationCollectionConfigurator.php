@@ -54,7 +54,7 @@ class OperationCollectionConfigurator
         }
 
         throw new \RuntimeException(
-            sprintf('Operation class %s without metadata', $object::class)
+            \sprintf('Operation class %s without metadata', $object::class)
         );
     }
 }
