@@ -9,7 +9,7 @@ set('allow_anonymous_stats', false);
 
 set('repository', 'https://github.com/MedicalMundi/marketplace-engine');
 
-add('shared_files', []);
+set('shared_files', []);
 add('shared_dirs', [
     'var/log',
 ]);
