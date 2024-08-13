@@ -20,7 +20,7 @@ jobs:
     timeout-minutes: 10
     services:
       mysql:
-        image: mariadb:10.6.16
+        image: mariadb:10.11.9
         env:
           MYSQL_ROOT_PASSWORD: test
           MYSQL_USER: test
@@ -112,7 +112,7 @@ jobs:
     timeout-minutes: 10
     services:
       mysql:
-        image: mariadb:10.6.16
+        image: mariadb:10.11.9
         env:
           MYSQL_ROOT_PASSWORD: test
           MYSQL_USER: test
@@ -209,7 +209,7 @@ jobs:
     timeout-minutes: 10
     services:
       mysql:
-        image: mariadb:10.6.16
+        image: mariadb:10.11.9
         env:
           MYSQL_ROOT_PASSWORD: test
           MYSQL_USER: test
