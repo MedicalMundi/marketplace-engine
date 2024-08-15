@@ -163,53 +163,47 @@ task('envvars:dump', function () {
             $cmdResult = runLocally('ls -al');
             echo $cmdResult;
 
-
-            runLocally('echo $KEY', env: ['KEY' => 'over']);
-
-            runLocally('echo $APP_SECRET', env: ['APP_SECRET' => getenv('APP_SECRET')]);
-
-
-            info('Remove generic .env ');
-            $cmdResult = runLocally('rm -f .env');
+            info('Remove generic .env.dev ');
+            $cmdResult = runLocally('rm -f .env.dev');
             echo $cmdResult;
 
             info('Generated env.dev with staging configuration data');
-            $cmdResult = runLocally('touch .env');
+            $cmdResult = runLocally('touch .env.dev');
             echo $cmdResult;
 
 
             $APP_ENV = getenv('APP_ENV');
-            runLocally("echo APP_ENV=\"$APP_ENV\" >> .env");
+            runLocally("echo APP_ENV=\"$APP_ENV\" >> .env.dev");
 
             $APP_SECRET = getenv('APP_SECRET');
-            runLocally("echo APP_SECRET=\"$APP_SECRET\" >> .env");
+            runLocally("echo APP_SECRET=\"$APP_SECRET\" >> .env.dev");
 
             $DATABASE_URL = getenv('DATABASE_URL');
-            runLocally("echo DATABASE_URL=\"$DATABASE_URL\" >> .env");
+            runLocally("echo DATABASE_URL=\"$DATABASE_URL\" >> .env.dev");
 
             $LOCK_DSN = getenv('LOCK_DSN');
-            runLocally("echo LOCK_DSN=\"$LOCK_DSN\" >> .env");
+            runLocally("echo LOCK_DSN=\"$LOCK_DSN\" >> .env.dev");
 
             $MAILER_DSN = getenv('MAILER_DSN');
-            runLocally("echo MAILER_DSN=\"$MAILER_DSN\" >> .env");
+            runLocally("echo MAILER_DSN=\"$MAILER_DSN\" >> .env.dev");
 
             $OAUTH_GITHUB_CLIENT_ID = getenv('OAUTH_GITHUB_CLIENT_ID');
-            runLocally("echo OAUTH_GITHUB_CLIENT_ID=\"$OAUTH_GITHUB_CLIENT_ID\" >> .env");
+            runLocally("echo OAUTH_GITHUB_CLIENT_ID=\"$OAUTH_GITHUB_CLIENT_ID\" >> .env.dev");
 
             $OAUTH_GITHUB_CLIENT_SECRET = getenv('OAUTH_GITHUB_CLIENT_SECRET');
-            runLocally("echo OAUTH_GITHUB_CLIENT_SECRET=\"$OAUTH_GITHUB_CLIENT_SECRET\" >> .env");
+            runLocally("echo OAUTH_GITHUB_CLIENT_SECRET=\"$OAUTH_GITHUB_CLIENT_SECRET\" >> .env.dev");
 
             $OAUTH_OEMODULES_CLIENT_ID = getenv('OAUTH_OEMODULES_CLIENT_ID');
-            runLocally("echo OAUTH_OEMODULES_CLIENT_ID=\"$OAUTH_OEMODULES_CLIENT_ID\" >> .env");
+            runLocally("echo OAUTH_OEMODULES_CLIENT_ID=\"$OAUTH_OEMODULES_CLIENT_ID\" >> .env.dev");
 
             $OAUTH_OEMODULES_CLIENT_SECRET = getenv('OAUTH_OEMODULES_CLIENT_SECRET');
-            runLocally("echo OAUTH_OEMODULES_CLIENT_SECRET=\"$OAUTH_OEMODULES_CLIENT_SECRET\" >> .env");
+            runLocally("echo OAUTH_OEMODULES_CLIENT_SECRET=\"$OAUTH_OEMODULES_CLIENT_SECRET\" >> .env.dev");
 
-            $cmdResult = runLocally('cat .env');
+            $cmdResult = runLocally('cat .env.dev');
             echo $cmdResult;
 
-            info('Run composer symfony:dump-env prod');
-            $cmdResult = runLocally('composer symfony:dump-env prod', ['tty' => true]);
+            info('Run composer symfony:dump-env dev');
+            $cmdResult = runLocally('composer symfony:dump-env dev', ['tty' => true]);
             echo $cmdResult;
             info('Generated .env.local.php');
 
