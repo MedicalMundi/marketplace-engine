@@ -35,24 +35,30 @@
         <testsuite name="bffApi">
             <directory>_bffApi/tests</directory>
         </testsuite>
+        <testsuite name="metadata">
+            <directory>_metadata/tests</directory>
+        </testsuite>
 
         <testsuite name="unit">
             <directory>tests/Unit</directory>
             <directory>_catalog/tests/Unit</directory>
             <directory>_bffWeb/tests/Unit</directory>
             <directory>_bffApi/tests/Unit</directory>
+            <directory>_metadata/tests/Unit</directory>
         </testsuite>
         <testsuite name="integration">
             <directory>tests/Integration</directory>
             <directory>_catalog/tests/Integration</directory>
             <directory>_bffWeb/tests/Integration</directory>
             <directory>_bffApi/tests/Integration</directory>
+            <directory>_metadata/tests/Integration</directory>
         </testsuite>
         <testsuite name="functional">
             <directory>tests/Functional</directory>
             <directory>_catalog/tests/Functional</directory>
             <directory>_bffWeb/tests/Functional</directory>
             <directory>_bffApi/tests/Functional</directory>
+            <directory>_metadata/tests/Functional</directory>
         </testsuite>
     </testsuites>
 
@@ -62,6 +68,7 @@
             <directory>_catalog/src</directory>
             <directory>_bffWeb/src</directory>
             <directory>_bffApi/src</directory>
+            <directory>_metadata/src</directory>
         </include>
     </source>
 </phpunit>
