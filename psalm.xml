@@ -15,6 +15,7 @@
         <directory name="_catalog/src"/>
         <directory name="_bffWeb/src"/>
         <directory name="_bffApi/src"/>
+        <directory name="_metadata/src"/>
         <ignoreFiles>
             <directory name="vendor"/>
         </ignoreFiles>

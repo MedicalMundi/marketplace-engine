@@ -25,6 +25,8 @@ return function (ECSConfig $ecsConfig): void {
         __DIR__ . '/_bffWeb/tests',
         __DIR__ . '/_bffApi/src',
         __DIR__ . '/_bffApi/tests',
+        __DIR__ . '/_metadata/src',
+        __DIR__ . '/_metadata/tests',
         __DIR__ . '/rector.php',
     ]);
 
