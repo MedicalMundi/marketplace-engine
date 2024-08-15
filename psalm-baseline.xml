@@ -134,12 +134,6 @@
       <code>$responseEmail</code>
       <code><![CDATA[$response['email']]]></code>
     </MixedAssignment>
-    <MixedInferredReturnType>
-      <code>createResourceOwner</code>
-    </MixedInferredReturnType>
-    <MixedReturnStatement>
-      <code><![CDATA[$user->setDomain($this->domain)]]></code>
-    </MixedReturnStatement>
     <PossiblyInvalidArgument>
       <code>$data</code>
     </PossiblyInvalidArgument>
@@ -151,9 +145,6 @@
     </PropertyNotSetInConstructor>
   </file>
   <file src="src/Security/OauthProvider/OeModulesResourceOwner.php">
-    <MissingReturnType>
-      <code>setDomain</code>
-    </MissingReturnType>
     <MixedInferredReturnType>
       <code>int|null</code>
       <code>string|null</code>

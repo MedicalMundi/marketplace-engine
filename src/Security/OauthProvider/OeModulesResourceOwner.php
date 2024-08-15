@@ -24,10 +24,8 @@ class OeModulesResourceOwner implements ResourceOwnerInterface
 
     /**
      * Domain
-     *
-     * @var string
      */
-    protected $domain;
+    protected string $domain;
 
     /**
      * Raw response
@@ -77,11 +75,9 @@ class OeModulesResourceOwner implements ResourceOwnerInterface
     /**
      * Set resource owner domain
      *
-     * @param string $domain
-     *
      * return ResourceOwner
      */
-    public function setDomain($domain)
+    public function setDomain(string $domain): static
     {
         $this->domain = $domain;
 
