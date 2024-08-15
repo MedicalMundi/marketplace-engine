@@ -10,7 +10,7 @@ Feature: Get module metadata
   I can see the whole module metadata
 
 
-  @wip @domain
+  @todo @domain
   Scenario: Can get an existing module with metadata
 
     Given there is the following metadata at metadata repository:
@@ -24,7 +24,7 @@ Feature: Get module metadata
       | true  | FINANCE | foo,bar | 6a674a7f-76a6-42db-b0e3-b230a9587c93 |
 
 
-  @wip @domain
+  @todo @domain
   Scenario: The module code doesn't exist
 
     Given there is no module with code "22136506-bf0b-4cf0-8e3d-3aad0c1eed67" at metadata repository
