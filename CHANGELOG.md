@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) a
 
 ## [Unreleased] - XXXX-XX-XX
 
+## [v0.7.5] - 2024-08-16
+- ### Added
+- Google tag manager
+- Google search console
+
 ## [v0.7.4] - 2024-08-02
 - ### Added
 - Init. api context, with feature flag
