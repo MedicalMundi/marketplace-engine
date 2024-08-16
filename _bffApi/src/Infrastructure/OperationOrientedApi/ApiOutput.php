@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-/*
+/**
  * This file is part of the medicalmundi/marketplace-engine
  *
- * @copyright (c) 2023 MedicalMundi
+ * @copyright (c) 2024 MedicalMundi
  *
  * This software consists of voluntary contributions made by many individuals
  * {@link https://github.com/medicalmundi/marketplace-engine/graphs/contributors developer} and is licensed under the MIT license.
