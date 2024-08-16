@@ -116,6 +116,20 @@
       <code>$url</code>
     </MissingConstructor>
   </file>
+  <file src="_metadata/src/AdapterForStoringMetadataStub/StubForStoringMetadata.php">
+    <MixedInferredReturnType>
+      <code>?ModuleMetadata</code>
+    </MixedInferredReturnType>
+    <MixedReturnStatement>
+      <code><![CDATA[$this->modulesById[$moduleId]]]></code>
+    </MixedReturnStatement>
+  </file>
+  <file src="_metadata/src/Core/MetadataModule.php">
+    <PossiblyNullArgument>
+      <code><![CDATA[$this->metadataStore]]></code>
+      <code><![CDATA[$this->metadataStore]]></code>
+    </PossiblyNullArgument>
+  </file>
   <file src="src/Security/OauthProvider/Exception/OeModulesIdentityProviderException.php">
     <UnsafeInstantiation>
       <code><![CDATA[new static($message, $response->getStatusCode(), (string) $response->getBody())]]></code>

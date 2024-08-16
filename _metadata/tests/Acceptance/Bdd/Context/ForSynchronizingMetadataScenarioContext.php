@@ -16,7 +16,49 @@
 namespace Metadata\Tests\Acceptance\Bdd\Context;
 
 use Behat\Behat\Context\Context;
+use Metadata\AdapterForStoringMetadataStub\StubForStoringMetadata;
+use Metadata\Core\MetadataModule;
+use Metadata\Core\Port\Driven\ModuleMetadata;
+use Metadata\Core\Port\Driver\ForConfiguringModule\ForConfiguringModule;
+use Metadata\Core\Port\Driver\ForSynchronizingMetadata\ForSynchronizingMetadata;
+use PHPUnit\Framework\Assert;
 
-class ScenarioContext implements Context
+final class ForSynchronizingMetadataScenarioContext implements Context
 {
+    private readonly ForConfiguringModule $moduleConfigurator;
+
+    private ForSynchronizingMetadata $metadataUpdater;
+
+    private ?ModuleMetadata $currentModuleMetadata = null;
+
+    public function __construct()
+    {
+        $module = new MetadataModule(metadataStore: new StubForStoringMetadata());
+        $this->metadataUpdater = $module->metadataUpdater();
+        $this->moduleConfigurator = $module->moduleConfigurator();
+    }
+
+    /**
+     * @Given there is no metadata for module with code :moduleId at metadata repository
+     */
+    public function thereIsNoMetadataForModuleWithCodeAtMetadataRepository(string $moduleId)
+    {
+        $this->moduleConfigurator->eraseMetadata($moduleId);
+    }
+
+    /**
+     * @When I ask for getting the metadata for module with code :moduleId
+     */
+    public function iAskForGettingTheMetadataForModuleWithCode(string $moduleId)
+    {
+        $this->currentModuleMetadata = $this->metadataUpdater->getMetadataForModule($moduleId);
+    }
+
+    /**
+     * @Then I should obtain no module
+     */
+    public function iShouldObtainNoModule()
+    {
+        Assert::assertNull($this->currentModuleMetadata);
+    }
 }
