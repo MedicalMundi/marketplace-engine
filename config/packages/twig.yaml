@@ -8,8 +8,14 @@ twig:
 
     globals:
         release_version: '%release.version%'
+        google_site_verification: ''
 
     form_themes: ['bootstrap_5_layout.html.twig']
+
+when@prod:
+    twig:
+        globals:
+            google_site_verification: "xIV2mRpvLGP9emiCI8zJeZNqq_H-g05yUgMxfm81RWA"
 
 
 when@test:
