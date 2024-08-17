@@ -8,7 +8,9 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    <link href="{{ asset('assets/tbs-532/dist/css/bootstrap.min.css') }}" rel="stylesheet">
+{#    <link href="{{ asset('assets/tbs-532/dist/css/bootstrap.min.css') }}" rel="stylesheet">#}
+    <link rel="preload" href="{{ preload(asset('assets/tbs-532/dist/css/bootstrap.min.css'), { as: 'style', nopush: true }) }}" >
+
     <link href="{{ asset('assets/bootstrap-icons-1.11.1/bootstrap-icons.css') }}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
