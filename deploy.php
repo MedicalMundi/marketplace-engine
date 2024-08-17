@@ -187,11 +187,11 @@ task('envvars:dump', function () {
             $MAILER_DSN = getenv('MAILER_DSN');
             runLocally("echo MAILER_DSN=\"$MAILER_DSN\" >> .env");
 
-//            $OAUTH_GITHUB_CLIENT_ID = getenv('OAUTH_GITHUB_CLIENT_ID');
-//            runLocally("echo OAUTH_GITHUB_CLIENT_ID=\"$OAUTH_GITHUB_CLIENT_ID\" >> .env");
-//
-//            $OAUTH_GITHUB_CLIENT_SECRET = getenv('OAUTH_GITHUB_CLIENT_SECRET');
-//            runLocally("echo OAUTH_GITHUB_CLIENT_SECRET=\"$OAUTH_GITHUB_CLIENT_SECRET\" >> .env");
+            $OAUTH_GITHUB_CLIENT_ID = getenv('OAUTH_GITHUB_CLIENT_ID');
+            runLocally("echo OAUTH_GITHUB_CLIENT_ID=\"$OAUTH_GITHUB_CLIENT_ID\" >> .env");
+
+            $OAUTH_GITHUB_CLIENT_SECRET = getenv('OAUTH_GITHUB_CLIENT_SECRET');
+            runLocally("echo OAUTH_GITHUB_CLIENT_SECRET=\"$OAUTH_GITHUB_CLIENT_SECRET\" >> .env");
 
             $OAUTH_OEMODULES_CLIENT_ID = getenv('OAUTH_OEMODULES_CLIENT_ID');
             runLocally("echo OAUTH_OEMODULES_CLIENT_ID=\"$OAUTH_OEMODULES_CLIENT_ID\" >> .env");
@@ -199,6 +199,8 @@ task('envvars:dump', function () {
             $OAUTH_OEMODULES_CLIENT_SECRET = getenv('OAUTH_OEMODULES_CLIENT_SECRET');
             runLocally("echo OAUTH_OEMODULES_CLIENT_SECRET=\"$OAUTH_OEMODULES_CLIENT_SECRET\" >> .env");
 
+            $SENTRY_DSN = getenv('SENTRY_DSN');
+            runLocally("echo SENTRY_DSN=\"$SENTRY_DSN\" >> .env");
             $cmdResult = runLocally('cat .env');
             echo $cmdResult;
 
