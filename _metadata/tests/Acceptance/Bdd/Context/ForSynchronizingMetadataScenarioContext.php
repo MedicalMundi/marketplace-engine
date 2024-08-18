@@ -16,12 +16,14 @@
 namespace Metadata\Tests\Acceptance\Bdd\Context;
 
 use Behat\Behat\Context\Context;
+use Behat\Gherkin\Node\TableNode;
 use Metadata\AdapterForStoringMetadataFake\FakeForStoringMetadata;
 use Metadata\Core\MetadataModule;
 use Metadata\Core\Port\Driven\ModuleMetadata;
 use Metadata\Core\Port\Driver\ForConfiguringModule\ForConfiguringModule;
 use Metadata\Core\Port\Driver\ForSynchronizingMetadata\ForSynchronizingMetadata;
 use PHPUnit\Framework\Assert;
+use Ramsey\Uuid\Uuid;
 
 final class ForSynchronizingMetadataScenarioContext implements Context
 {
@@ -60,5 +62,43 @@ final class ForSynchronizingMetadataScenarioContext implements Context
     public function iShouldObtainNoModule()
     {
         Assert::assertNull($this->currentModuleMetadata);
+    }
+
+    /**
+     * @Given there is the following metadata at metadata repository:
+     */
+    public function thereIsTheFollowingMetadataAtMetadataRepository(array $modulesMetadata)
+    {
+        $metadata = $modulesMetadata[0];
+        $this->moduleConfigurator->createMetadata($metadata);
+    }
+
+    /**
+     * @Then I should obtain the following metadata:
+     */
+    public function iShouldObtainTheFollowingMetadata(array $modulesMetadata)
+    {
+        $expectedResult = $modulesMetadata[0];
+        Assert::assertEquals($expectedResult, $this->currentModuleMetadata);
+    }
+
+    /**
+     * @Transform table:enableSync,category,tag,moduleCode
+     */
+    public function castModulesMetadataTable(TableNode $modulesMetadataTable): array
+    {
+        $moduleMetadata = [];
+        foreach ($modulesMetadataTable as $moduleMetadataHash) {
+            $tags = explode(',', $moduleMetadataHash['tag']);
+            $metadata = new ModuleMetadata(
+                moduleId: Uuid::fromString($moduleMetadataHash['moduleCode']),
+                category: $moduleMetadataHash['category'],
+                tags: $tags,
+                enableSync: (bool) $moduleMetadataHash['enableSync'],
+            );
+            $moduleMetadata[] = $metadata;
+        }
+
+        return $moduleMetadata;
     }
 }

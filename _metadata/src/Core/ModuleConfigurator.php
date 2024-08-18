@@ -28,7 +28,7 @@ class ModuleConfigurator implements ForConfiguringModule
 
     public function createMetadata(ModuleMetadata $metadata): void
     {
-        if (null !== $this->metadataStore->findByModuleId($metadata->moduleId()->toString())) {
+        if (null === $this->metadataStore->findByModuleId($metadata->moduleId()->toString())) {
             $this->metadataStore->store($metadata);
         }
     }

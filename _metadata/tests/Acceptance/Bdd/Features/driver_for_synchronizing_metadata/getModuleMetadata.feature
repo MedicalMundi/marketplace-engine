@@ -10,17 +10,17 @@ Feature: Get module metadata
   I can see the whole module metadata
 
 
-  @todo @domain
+  @domain
   Scenario: Can get an existing module with metadata
 
     Given there is the following metadata at metadata repository:
-      | enableSync | category | tag | ModuleCode |
+      | enableSync | category | tag | moduleCode |
       | true  | FINANCE | foo,bar | 6a674a7f-76a6-42db-b0e3-b230a9587c93 |
 
     When I ask for getting the metadata for module with code "6a674a7f-76a6-42db-b0e3-b230a9587c93"
 
     Then I should obtain the following metadata:
-      | enableSync | category | tag | ModuleCode |
+      | enableSync | category | tag | moduleCode |
       | true  | FINANCE | foo,bar | 6a674a7f-76a6-42db-b0e3-b230a9587c93 |
 
 
