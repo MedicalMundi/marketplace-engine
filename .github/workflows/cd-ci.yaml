@@ -29,6 +29,22 @@ jobs:
       triggering-sha: "${{ github.sha }}"
 
 
+  deploy-on-production-workflow:
+    name: Deploy on Production server
+    if: startsWith(github.event.ref, 'refs/tags/v') && ${{ vars.ENABLE_DEPLOY_ON_PRODUCTION  == '1' }}
+    needs:
+      - commit-stage-workflow
+      - acceptance-stage-workflow
+      - release-stage-workflow
+    # note: racchiudere l'intero if con ${{ }}
+    # @see https://github.com/actions/runner/issues/491
+    #if: ${{ vars.ENABLE_DEPLOY_ON_PRODUCTION  == '1' }}
+    secrets: inherit
+    uses: medicalmundi/marketplace-engine/.github/workflows/deploy-on-production.yaml@main
+    with:
+      triggering-sha: "${{ github.sha }}"
+
+
   deploy-on-stage-workflow:
     name: Deploy on Staging server
     needs:
