@@ -116,7 +116,7 @@
       <code>$url</code>
     </MissingConstructor>
   </file>
-  <file src="_metadata/src/AdapterForStoringMetadataStub/StubForStoringMetadata.php">
+  <file src="_metadata/src/AdapterForStoringMetadataFake/FakeForStoringMetadata.php">
     <MixedInferredReturnType>
       <code>?ModuleMetadata</code>
     </MixedInferredReturnType>

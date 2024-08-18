@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-/*
+/**
  * This file is part of the medicalmundi/marketplace-engine
  *
- * @copyright (c) 2023 MedicalMundi
+ * @copyright (c) 2024 MedicalMundi
  *
  * This software consists of voluntary contributions made by many individuals
  * {@link https://github.com/medicalmundi/marketplace-engine/graphs/contributors developer} and is licensed under the MIT license.
@@ -16,7 +16,7 @@
 namespace Metadata\Tests\Acceptance\Bdd\Context;
 
 use Behat\Behat\Context\Context;
-use Metadata\AdapterForStoringMetadataStub\StubForStoringMetadata;
+use Metadata\AdapterForStoringMetadataFake\FakeForStoringMetadata;
 use Metadata\Core\MetadataModule;
 use Metadata\Core\Port\Driven\ModuleMetadata;
 use Metadata\Core\Port\Driver\ForConfiguringModule\ForConfiguringModule;
@@ -33,7 +33,7 @@ final class ForSynchronizingMetadataScenarioContext implements Context
 
     public function __construct()
     {
-        $module = new MetadataModule(metadataStore: new StubForStoringMetadata());
+        $module = new MetadataModule(metadataStore: new FakeForStoringMetadata());
         $this->metadataUpdater = $module->metadataUpdater();
         $this->moduleConfigurator = $module->moduleConfigurator();
     }
