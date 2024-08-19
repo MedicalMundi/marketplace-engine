@@ -17,8 +17,10 @@ namespace Metadata\Tests\Acceptance\Bdd\Context;
 
 use Behat\Behat\Context\Context;
 use Behat\Gherkin\Node\TableNode;
+use Metadata\AdapterForReadingMetadataFromOriginalSourceStub\StubAdapterForReadingExternalMetadataSource;
 use Metadata\AdapterForStoringMetadataFake\FakeForStoringMetadata;
 use Metadata\Core\MetadataModule;
+use Metadata\Core\Port\Driven\ForReadingExternalMetadataSource\ExternalMetadataDto;
 use Metadata\Core\Port\Driven\ModuleMetadata;
 use Metadata\Core\Port\Driver\ForConfiguringModule\ForConfiguringModule;
 use Metadata\Core\Port\Driver\ForSynchronizingMetadata\ForSynchronizingMetadata;
@@ -35,7 +37,7 @@ final class ForSynchronizingMetadataScenarioContext implements Context
 
     public function __construct()
     {
-        $module = new MetadataModule(metadataStore: new FakeForStoringMetadata());
+        $module = new MetadataModule(metadataStore: new FakeForStoringMetadata(), metadataReader: new StubAdapterForReadingExternalMetadataSource());
         $this->metadataUpdater = $module->metadataUpdater();
         $this->moduleConfigurator = $module->moduleConfigurator();
     }
@@ -92,6 +94,7 @@ final class ForSynchronizingMetadataScenarioContext implements Context
             $tags = explode(',', $moduleMetadataHash['tag']);
             $metadata = new ModuleMetadata(
                 moduleId: Uuid::fromString($moduleMetadataHash['moduleCode']),
+                repositoryUrl: 'https://irrelevant.com',
                 category: $moduleMetadataHash['category'],
                 tags: $tags,
                 enableSync: (bool) $moduleMetadataHash['enableSync'],
@@ -100,5 +103,74 @@ final class ForSynchronizingMetadataScenarioContext implements Context
         }
 
         return $moduleMetadata;
+    }
+
+    /**
+     * @Transform table:enableSync,category,tag,moduleCode,moduleRepositoryUrl
+     */
+    public function castModulesMetadataWithUrlTable(TableNode $modulesMetadataTable): array
+    {
+        $moduleMetadata = [];
+        foreach ($modulesMetadataTable as $moduleMetadataHash) {
+            $tags = explode(',', $moduleMetadataHash['tag']);
+            $metadata = new ModuleMetadata(
+                moduleId: Uuid::fromString($moduleMetadataHash['moduleCode']),
+                repositoryUrl: $moduleMetadataHash['moduleRepositoryUrl'],
+                category: $moduleMetadataHash['category'],
+                tags: $tags,
+                enableSync: (bool) $moduleMetadataHash['enableSync'],
+            );
+            $moduleMetadata[] = $metadata;
+        }
+
+        return $moduleMetadata;
+    }
+
+    /**
+     * @Given there is the following metadata at metadata original source :url
+     */
+    public function thereIsTheFollowingMetadataAtMetadataOriginalSource2($url, array $externalModulesMetadataTable)
+    {
+        $this->moduleConfigurator->setExternalMetadataDto($url, $externalModulesMetadataTable[0]);
+    }
+
+    /**
+     * @Transform table:enableSync,category,tag
+     */
+    public function castExternalModulesMetadataTable(TableNode $externalModulesMetadataTable): array
+    {
+        $externalModuleMetadata = [];
+        foreach ($externalModulesMetadataTable as $moduleMetadataHash) {
+            $tags = explode(',', $moduleMetadataHash['tag']);
+            $metadata = new ExternalMetadataDto(
+                enableSync: (bool) $moduleMetadataHash['enableSync'],
+                category: $moduleMetadataHash['category'],
+                tags: $tags,
+            );
+            $externalModuleMetadata[] = $metadata;
+        }
+
+        return $externalModuleMetadata;
+    }
+
+    /**
+     * @When I ask for update the metadata for module with code :moduleId
+     */
+    public function iAskForUpdateTheMetadataForModuleWithCode(string $moduleId)
+    {
+        $this->metadataUpdater->synchronizeMetadataFor($moduleId);
+        $this->currentModuleMetadata = $this->metadataUpdater->getMetadataForModule($moduleId);
+    }
+
+    /**
+     * @Then I should obtain the following updated metadata:
+     */
+    public function iShouldObtainTheFollowingUpdatedMetadata(array $updatedModuleMetadata)
+    {
+        $expectedResult = $updatedModuleMetadata[0];
+
+        Assert::assertEquals($this->currentModuleMetadata->isSynchronizable(), $expectedResult->isSynchronizable());
+        Assert::assertEquals($this->currentModuleMetadata->category(), $expectedResult->category());
+        Assert::assertEquals($this->currentModuleMetadata->tags(), $expectedResult->tags());
     }
 }

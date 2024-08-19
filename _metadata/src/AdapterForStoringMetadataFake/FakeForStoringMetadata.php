@@ -33,6 +33,14 @@ class FakeForStoringMetadata implements ForStoringMetadata
         $this->modulesById[$metadata->moduleId()->toString()] = $metadata;
     }
 
+    public function update(ModuleMetadata $metadata): void
+    {
+        if (! $this->exists($metadata->moduleId()->toString())) {
+            throw new \RuntimeException("Cannot update metadata. ModuleId '" . $metadata->moduleId() . "' not exists.");
+        }
+        $this->modulesById[$metadata->moduleId()->toString()] = $metadata;
+    }
+
     public function findByModuleId(string $moduleId): ?ModuleMetadata
     {
         if (! $this->exists($moduleId)) {

@@ -13,15 +13,12 @@
  * @license https://github.com/MedicalMundi/marketplace-engine/blob/main/LICENSE MIT
  */
 
-namespace Metadata\Core\Port\Driven;
+namespace Metadata\Core\Port\Driven\ForReadingExternalMetadataSource;
 
-interface ForStoringMetadata
+interface ForReadingExternalMetadataSource
 {
-    public function store(ModuleMetadata $metadata): void;
-
-    public function update(ModuleMetadata $metadata): void;
-
-    public function findByModuleId(string $moduleId): ?ModuleMetadata;
-
-    public function delete(string $moduleId): void;
+    /**
+     * @throws MetadataReaderException
+     */
+    public function readMetadataFromExternalSource(string $moduleUrl): ExternalMetadataDto;
 }

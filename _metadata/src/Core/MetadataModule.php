@@ -15,6 +15,7 @@
 
 namespace Metadata\Core;
 
+use Metadata\Core\Port\Driven\ForReadingExternalMetadataSource\ForReadingExternalMetadataSource;
 use Metadata\Core\Port\Driven\ForStoringMetadata;
 use Metadata\Core\Port\Driver\ForConfiguringModule\ForConfiguringModule;
 use Metadata\Core\Port\Driver\ForSynchronizingMetadata\ForSynchronizingMetadata;
@@ -31,6 +32,7 @@ class MetadataModule implements MetadataModuleInterface
          * Driven Port
          */
         private ?ForStoringMetadata $metadataStore = null,
+        private ?ForReadingExternalMetadataSource $metadataReader = null,
         /**
          * Driver Port
          */
@@ -42,7 +44,7 @@ class MetadataModule implements MetadataModuleInterface
     public function metadataUpdater(): ForSynchronizingMetadata
     {
         if (! $this->metadataUpdater instanceof ForSynchronizingMetadata) {
-            $this->metadataUpdater = new MetadataUpdater($this->metadataStore);
+            $this->metadataUpdater = new MetadataUpdater($this->metadataStore, $this->metadataReader);
         }
 
         return $this->metadataUpdater;
@@ -51,7 +53,7 @@ class MetadataModule implements MetadataModuleInterface
     public function moduleConfigurator(): ForConfiguringModule
     {
         if (! $this->moduleConfigurator instanceof ForConfiguringModule) {
-            $this->moduleConfigurator = new ModuleConfigurator($this->metadataStore);
+            $this->moduleConfigurator = new ModuleConfigurator($this->metadataStore, $this->metadataReader);
         }
 
         return $this->moduleConfigurator;

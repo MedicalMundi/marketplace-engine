@@ -21,6 +21,7 @@ class ModuleMetadata
 {
     public function __construct(
         private readonly UuidInterface $moduleId,
+        private readonly string $repositoryUrl,
         private string $category = 'Unknown',
         private array $tags = [],
         private bool $enableSync = true,
@@ -32,6 +33,11 @@ class ModuleMetadata
         return $this->moduleId;
     }
 
+    public function repositoryUrl(): string
+    {
+        return $this->repositoryUrl;
+    }
+
     public function isSynchronizable(): bool
     {
         return $this->enableSync;
@@ -40,5 +46,25 @@ class ModuleMetadata
     public function category(): string
     {
         return $this->category;
+    }
+
+    public function tags(): array
+    {
+        return $this->tags;
+    }
+
+    public function changeCategory(string $category): void
+    {
+        $this->category = $category;
+    }
+
+    public function enableSynchronization(bool $enableSync): void
+    {
+        $this->enableSync = $enableSync;
+    }
+
+    public function changeTags(array $tags): void
+    {
+        $this->tags = $tags;
     }
 }

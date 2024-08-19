@@ -15,6 +15,7 @@
 
 namespace Metadata\Core\Port\Driver\ForConfiguringModule;
 
+use Metadata\Core\Port\Driven\ForReadingExternalMetadataSource\ExternalMetadataDto;
 use Metadata\Core\Port\Driven\ModuleMetadata;
 
 interface ForConfiguringModule
@@ -22,4 +23,8 @@ interface ForConfiguringModule
     public function createMetadata(ModuleMetadata $metadata): void;
 
     public function eraseMetadata(string $moduleId): void;
+
+    public function setMetadataReaderErrorPercentage(int $percent): void;
+
+    public function setExternalMetadataDto(string $url, ExternalMetadataDto $externalMetadataDto): void;
 }

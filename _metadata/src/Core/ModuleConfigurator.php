@@ -15,6 +15,10 @@
 
 namespace Metadata\Core;
 
+use Metadata\AdapterForReadingMetadataFromOriginalSourceSpy\SpyAdapterForReadingExternalMetadataSource;
+use Metadata\AdapterForReadingMetadataFromOriginalSourceStub\StubAdapterForReadingExternalMetadataSource;
+use Metadata\Core\Port\Driven\ForReadingExternalMetadataSource\ExternalMetadataDto;
+use Metadata\Core\Port\Driven\ForReadingExternalMetadataSource\ForReadingExternalMetadataSource;
 use Metadata\Core\Port\Driven\ForStoringMetadata;
 use Metadata\Core\Port\Driven\ModuleMetadata;
 use Metadata\Core\Port\Driver\ForConfiguringModule\ForConfiguringModule;
@@ -23,6 +27,7 @@ class ModuleConfigurator implements ForConfiguringModule
 {
     public function __construct(
         private readonly ForStoringMetadata $metadataStore,
+        private readonly ForReadingExternalMetadataSource $metadataReader,
     ) {
     }
 
@@ -37,6 +42,20 @@ class ModuleConfigurator implements ForConfiguringModule
     {
         if (null !== $this->metadataStore->findByModuleId($moduleId)) {
             $this->metadataStore->delete($moduleId);
+        }
+    }
+
+    public function setMetadataReaderErrorPercentage(int $percent): void
+    {
+        if ($this->metadataReader instanceof SpyAdapterForReadingExternalMetadataSource) {
+            $this->metadataReader->setPaymentErrorPercentage($percent);
+        }
+    }
+
+    public function setExternalMetadataDto(string $url, ExternalMetadataDto $externalMetadataDto): void
+    {
+        if ($this->metadataReader instanceof StubAdapterForReadingExternalMetadataSource) {
+            $this->metadataReader->setExternalMetadataDto($url, $externalMetadataDto);
         }
     }
 }

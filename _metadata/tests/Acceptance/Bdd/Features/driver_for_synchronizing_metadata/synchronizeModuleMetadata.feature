@@ -14,17 +14,17 @@ Feature: Synchronize module metadata
   Scenario: Can update an existing module with new metadata from original source
 
     Given there is the following metadata at metadata repository:
-      | enableSync | category | tag | moduleCode |
-      | true  | PAYMENTS | payment,claim | 4868cd6a-b854-461e-91a4-fb30ad1ce2cd |
+      | enableSync | category | tag | moduleCode | moduleRepositoryUrl |
+      | true  | PAYMENTS | payment,claim | 4868cd6a-b854-461e-91a4-fb30ad1ce2cd | https://www.github.com/foo/bar |
 
-    Given there is the following metadata at metadata original source:
+    Given there is the following metadata at metadata original source "https://www.github.com/foo/bar"
       | enableSync | category | tag |
-      | true  | FINANCE | finance |
+      | true  | FINANCE | finance, payment |
 
     When I ask for update the metadata for module with code "4868cd6a-b854-461e-91a4-fb30ad1ce2cd"
 
-    Then I should obtain the following metadata:
+    Then I should obtain the following updated metadata:
       | enableSync | category | tag | moduleCode |
-      | true  | FINANCE | finance | 6a674a7f-76a6-42db-b0e3-b230a9587c93 |
+      | true  | FINANCE | finance, payment | 4868cd6a-b854-461e-91a4-fb30ad1ce2cd |
 
 

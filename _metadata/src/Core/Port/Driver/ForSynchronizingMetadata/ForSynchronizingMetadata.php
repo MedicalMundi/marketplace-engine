@@ -20,4 +20,9 @@ use Metadata\Core\Port\Driven\ModuleMetadata;
 interface ForSynchronizingMetadata
 {
     public function getMetadataForModule(string $moduleId): ? ModuleMetadata;
+
+    /**
+     * Should return custom exception
+     */
+    public function synchronizeMetadataFor(string $moduleId): void;
 }
