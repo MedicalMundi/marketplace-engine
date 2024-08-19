@@ -39,14 +39,7 @@ class MetadataUpdater implements ForSynchronizingMetadata
         $moduleMetadata = $this->getMetadataForModule($moduleId);
 
         if (null === $moduleMetadata) {
-            /**
-             * TODO:    Implement UnreferenceModuleIdException
-             *          ModuleId and repoUrl values are owned by catalog module,
-             *          UnreferenceModuleIdException allow different
-             *          application execution path (retry, schedule, or ask data to catalog)
-             *          when the synch process hit an unkown moduleId
-             */
-            throw new \RuntimeException();
+            throw new UnreferencedMetadataModuleException($moduleId);
         }
 
         $targetUrl = $moduleMetadata->repositoryUrl();
