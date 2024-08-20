@@ -63,7 +63,7 @@ class MetadataUpdater implements ForSynchronizingMetadata
             $moduleMetadata->changeTags($eternalMetadata->tags);
 
             $this->metadataStore->update($moduleMetadata);
-        } catch (MetadataReaderException $exception) {
+        } catch (MetadataReaderException) {
         }
     }
 }
