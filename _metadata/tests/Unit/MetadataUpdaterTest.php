@@ -66,7 +66,7 @@ class MetadataUpdaterTest extends TestCase
         $category = 'Administration';
         $tags = ['user', 'account'];
 
-        $moduleMetadata = new ModuleMetadata($moduleId,$repoUrl,$category,$tags);
+        $moduleMetadata = new ModuleMetadata($moduleId, $repoUrl, $category, $tags);
 
         $app->moduleConfigurator()->createMetadata($moduleMetadata);
         $app->moduleConfigurator()->setExternalMetadataDto($repoUrl, new ExternalMetadataDto(false, 'performance', ['foo', 'bar']));
@@ -77,7 +77,6 @@ class MetadataUpdaterTest extends TestCase
 
         self::assertEquals(false, $updatedModuleMetadata->isSynchronizable());
         self::assertEquals('performance', $updatedModuleMetadata->category());
-        self::assertEquals(['foo','bar'], $updatedModuleMetadata->tags());
+        self::assertEquals(['foo', 'bar'], $updatedModuleMetadata->tags());
     }
-
 }
