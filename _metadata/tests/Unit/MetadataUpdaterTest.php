@@ -15,7 +15,7 @@
 
 namespace Metadata\Tests\Unit;
 
-use Metadata\AdapterForReadingMetadataFromOriginalSourceStub\StubAdapterForReadingExternalMetadataSource;
+use Metadata\AdapterForReadingExternalMetadataSourceStub\StubAdapterForReadingExternalMetadataSource;
 use Metadata\AdapterForStoringMetadataFake\FakeForStoringMetadata;
 use Metadata\Core\MetadataModule;
 use Metadata\Core\MetadataUpdater;

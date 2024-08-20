@@ -15,8 +15,8 @@
 
 namespace Metadata\Core;
 
-use Metadata\AdapterForReadingMetadataFromOriginalSourceSpy\SpyAdapterForReadingExternalMetadataSource;
-use Metadata\AdapterForReadingMetadataFromOriginalSourceStub\StubAdapterForReadingExternalMetadataSource;
+use Metadata\AdapterForReadingExternalMetadataSourceSpy\SpyAdapterForReadingExternalMetadataSource;
+use Metadata\AdapterForReadingExternalMetadataSourceStub\StubAdapterForReadingExternalMetadataSource;
 use Metadata\Core\Port\Driven\ForReadingExternalMetadataSource\ExternalMetadataDto;
 use Metadata\Core\Port\Driven\ForReadingExternalMetadataSource\ForReadingExternalMetadataSource;
 use Metadata\Core\Port\Driven\ForStoringMetadata;
