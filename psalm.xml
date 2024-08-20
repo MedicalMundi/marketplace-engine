@@ -44,6 +44,14 @@
                 <file name="_bffApi/src/Infrastructure/Framework/Extension/BffApiModuleExtension.php" />
             </errorLevel>
         </UndefinedMethod>
+        <!-- End BffApi module -->
+        <!-- Metadata module -->
+        <PossiblyNullArgument>
+            <errorLevel type="suppress">
+                <file name="_metadata/src/Core/MetadataModule.php" />
+            </errorLevel>
+        </PossiblyNullArgument>
+        <!-- End Metadata module -->
     </issueHandlers>
 
 

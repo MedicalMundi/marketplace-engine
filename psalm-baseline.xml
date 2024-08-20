@@ -116,6 +116,19 @@
       <code>$url</code>
     </MissingConstructor>
   </file>
+  <file src="_metadata/src/AdapterForReadingExternalMetadataSourceSpy/SpyAdapterForReadingExternalMetadataSource.php">
+    <InvalidReturnType>
+      <code>ExternalMetadataDto</code>
+    </InvalidReturnType>
+  </file>
+  <file src="_metadata/src/AdapterForReadingExternalMetadataSourceStub/StubAdapterForReadingExternalMetadataSource.php">
+    <MixedInferredReturnType>
+      <code>ExternalMetadataDto</code>
+    </MixedInferredReturnType>
+    <MixedReturnStatement>
+      <code><![CDATA[$this->metadataDtosIndexedByUrl[$moduleUrl]]]></code>
+    </MixedReturnStatement>
+  </file>
   <file src="_metadata/src/AdapterForStoringMetadataFake/FakeForStoringMetadata.php">
     <MixedInferredReturnType>
       <code>?ModuleMetadata</code>
@@ -123,12 +136,6 @@
     <MixedReturnStatement>
       <code><![CDATA[$this->modulesById[$moduleId]]]></code>
     </MixedReturnStatement>
-  </file>
-  <file src="_metadata/src/Core/MetadataModule.php">
-    <PossiblyNullArgument>
-      <code><![CDATA[$this->metadataStore]]></code>
-      <code><![CDATA[$this->metadataStore]]></code>
-    </PossiblyNullArgument>
   </file>
   <file src="src/Security/OauthProvider/Exception/OeModulesIdentityProviderException.php">
     <UnsafeInstantiation>
