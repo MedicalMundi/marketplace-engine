@@ -1,6 +1,4 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 use Arkitect\ClassSet;
 use Arkitect\CLI\Config;
@@ -162,6 +160,47 @@ return static function (Config $config): void {
         ->because('we want isolate our bffApi Adapters from ever growing dependencies.');
 
     $config->add($bffApiClassSet, $bffApiCoreIsolationRule, $bffApiAdaptersIsolationRule, ...$bffApiPortAndAdapterArchitectureRules);
+
+
+
+    /**++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+     *++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*
+     *
+     *      Metadata
+     *
+     *++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*
+     *++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*
+     */
+
+    $metadataClassSet = ClassSet::fromDir(__DIR__ . '/_metadata/src');
+
+    $allowedVendorDependenciesInMetadataCore = require_once __DIR__ . '/tools/phparkitect/VendorDependencies/allowed_in_metadata_core.php';
+    $allowedVendorDependenciesInMetadataAdapters = require_once __DIR__ . '/tools/phparkitect/VendorDependencies/allowed_in_metadata_adapters.php';
+
+//    $metadataPortAndAdapterArchitectureRules = Architecture::withComponents()
+//        ->component('Core')->definedBy('Metadata\Core\*')
+//        ->component('Adapters')->definedBy('Metadata\Adapter*')
+//        ->component('Infrastructure')->definedBy('Metadata\Infrastructure\*')
+//
+//        ->where('Infrastructure')->shouldNotDependOnAnyComponent()
+//        ->where('Adapters')->mayDependOnComponents('Core', 'Infrastructure')
+//        ->where('Core')->shouldNotDependOnAnyComponent()
+//        ->rules();
+
+    $allowedDependenciesInMetadataCore = array_merge($allowedPhpDependencies, $allowedVendorDependenciesInMetadataCore);
+    $metadataCoreIsolationRule = Rule::allClasses()
+        ->that(new ResideInOneOfTheseNamespaces('Metadata\Core'))
+        ->should(new NotHaveDependencyOutsideNamespace('Metadata\Core', $allowedDependenciesInMetadataCore))
+        ->because('we want isolate our metadata core domain from external world.');
+
+
+    $allowedDependenciesInMetadataAdapters = array_merge($allowedPhpDependencies, $allowedVendorDependenciesInMetadataAdapters);
+    $metadataAdaptersIsolationRule = Rule::allClasses()
+        ->that(new ResideInOneOfTheseNamespaces('Metadata\Adapter*'))
+        ->should(new NotHaveDependencyOutsideNamespace('Metadata\Adapter*', $allowedDependenciesInMetadataAdapters))
+        ->because('we want isolate our metadata Adapters from ever growing dependencies.');
+
+    $config->add($metadataClassSet, $metadataCoreIsolationRule, $metadataAdaptersIsolationRule);
 
 
     /**++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
