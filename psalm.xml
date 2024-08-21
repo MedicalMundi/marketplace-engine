@@ -34,23 +34,34 @@
 
 
         <!-- BffApi module -->
-        <MixedMethodCall>
-            <errorLevel type="suppress">
-                <file name="_bffApi/src/Infrastructure/Framework/Extension/BffApiModuleExtension.php" />
-            </errorLevel>
-        </MixedMethodCall>
         <UndefinedMethod>
             <errorLevel type="suppress">
-                <file name="_bffApi/src/Infrastructure/Framework/Extension/BffApiModuleExtension.php" />
+                <file name="_bffApi/src/Infrastructure/Framework/Extension/BffApiModuleExtension.php"/>
             </errorLevel>
         </UndefinedMethod>
+        <MixedMethodCall>
+            <errorLevel type="suppress">
+                <file name="_bffApi/src/Infrastructure/Framework/Extension/BffApiModuleExtension.php"/>
+            </errorLevel>
+        </MixedMethodCall>
         <!-- End BffApi module -->
+
         <!-- Metadata module -->
         <PossiblyNullArgument>
             <errorLevel type="suppress">
                 <file name="_metadata/src/Core/MetadataModule.php" />
             </errorLevel>
         </PossiblyNullArgument>
+        <MixedMethodCall>
+            <errorLevel type="suppress">
+                <file name="_metadata/src/Infrastructure/Framework/Extension/MetadataModuleExtension.php"/>
+            </errorLevel>
+        </MixedMethodCall>
+        <UndefinedMethod>
+            <errorLevel type="suppress">
+                <file name="_metadata/src/Infrastructure/Framework/Extension/MetadataModuleExtension.php"/>
+            </errorLevel>
+        </UndefinedMethod>
         <!-- End Metadata module -->
     </issueHandlers>
 
