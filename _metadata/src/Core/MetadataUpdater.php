@@ -15,6 +15,11 @@
 
 namespace Metadata\Core;
 
+use Metadata\Core\MetadataValidationEngine\FixedFalseMetadataValidationEngineValidation;
+use Metadata\Core\MetadataValidationEngine\FixedTrueMetadataValidationEngineValidation;
+use Metadata\Core\MetadataValidationEngine\ForMetadataSchemaValidation;
+use Metadata\Core\MetadataValidationEngine\MetadataValidationException;
+use Metadata\Core\Port\Driven\ForReadingExternalMetadataSource\ExternalMetadataDto;
 use Metadata\Core\Port\Driven\ForReadingExternalMetadataSource\ForReadingExternalMetadataSource;
 use Metadata\Core\Port\Driven\ForReadingExternalMetadataSource\MetadataReaderException;
 use Metadata\Core\Port\Driven\ForStoringMetadata;
@@ -26,7 +31,10 @@ class MetadataUpdater implements ForSynchronizingMetadata
     public function __construct(
         private readonly ForStoringMetadata $metadataStore,
         private readonly ForReadingExternalMetadataSource $metadataReader,
+        /** TODO: Implement a real validator engine */
+        private ?ForMetadataSchemaValidation $validatorEngine = null,
     ) {
+        $this->validatorEngine = $validatorEngine ?? new FixedTrueMetadataValidationEngineValidation();
     }
 
     public function getMetadataForModule(string $moduleId): ?ModuleMetadata
@@ -34,6 +42,9 @@ class MetadataUpdater implements ForSynchronizingMetadata
         return $this->metadataStore->findByModuleId($moduleId);
     }
 
+    /**
+     * @throws UnreferencedMetadataModuleException|MetadataValidationException
+     */
     public function synchronizeMetadataFor(string $moduleId): void
     {
         $moduleMetadata = $this->getMetadataForModule($moduleId);
@@ -47,15 +58,7 @@ class MetadataUpdater implements ForSynchronizingMetadata
         try {
             $eternalMetadata = $this->metadataReader->readMetadataFromExternalSource($targetUrl);
 
-            /**
-             * TODO: IMPLEMENT a Metadata Validator system
-             *       Should be usable as external tool
-             *       * WebUi - validate a composer.json by url
-             *       * WebUi - validate a loaded composer.json as file
-             *       * WebUi - validate a json text loaded in page form
-             *       * Api - validate a composer.json by url
-             *       * Api - validate a json structure passed as POST parameter
-             */
+            $this->validateMetadataOrError((array)$eternalMetadata);
 
             // update metadata
             $moduleMetadata->enableSynchronization($eternalMetadata->enableSync);
@@ -64,6 +67,24 @@ class MetadataUpdater implements ForSynchronizingMetadata
 
             $this->metadataStore->update($moduleMetadata);
         } catch (MetadataReaderException) {
+        }
+    }
+
+    /**
+     * TODO: IMPLEMENT a Metadata Validator system
+     *       Should be usable as external tool
+     *       * WebUi - validate a composer.json by url
+     *       * WebUi - validate a loaded composer.json as file
+     *       * WebUi - validate a json text loaded in page form
+     *       * Api - validate a composer.json by url
+     *       * Api - validate a json structure passed as POST parameter
+     */
+    private function validateMetadataOrError(array $externalMetadataDto): void
+    {
+        $validationResult = $this->validatorEngine->validate($externalMetadataDto);
+
+        if (false === $validationResult) {
+            throw new MetadataValidationException();
         }
     }
 }

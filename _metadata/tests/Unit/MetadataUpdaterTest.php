@@ -19,6 +19,8 @@ use Metadata\AdapterForReadingExternalMetadataSourceStub\StubAdapterForReadingEx
 use Metadata\AdapterForStoringMetadataFake\FakeForStoringMetadata;
 use Metadata\Core\MetadataModule;
 use Metadata\Core\MetadataUpdater;
+use Metadata\Core\MetadataValidationEngine\FixedFalseMetadataValidationEngineValidation;
+use Metadata\Core\MetadataValidationEngine\MetadataValidationException;
 use Metadata\Core\Port\Driven\ForReadingExternalMetadataSource\ExternalMetadataDto;
 use Metadata\Core\Port\Driven\ModuleMetadata;
 use Metadata\Core\UnreferencedMetadataModuleException;
@@ -78,5 +80,38 @@ class MetadataUpdaterTest extends TestCase
         self::assertEquals(false, $updatedModuleMetadata->isSynchronizable());
         self::assertEquals('performance', $updatedModuleMetadata->category());
         self::assertEquals(['foo', 'bar'], $updatedModuleMetadata->tags());
+    }
+
+    #[Test]
+    public function should_throw_metadata_validation_error()
+    {
+        self::markTestIncomplete('Implement a real Metadata Validator');
+        self::expectException(MetadataValidationException::class);
+        self::expectExceptionMessage(
+            'Metadata validation error'
+        );
+        $app = new MetadataModule(
+            new FakeForStoringMetadata(),
+            new StubAdapterForReadingExternalMetadataSource(),
+        );
+
+        // extract function
+        $moduleIdAsString = '15f7699b-e9a6-4a8a-9606-95d0a08c1959';
+        $moduleId = Uuid::fromString($moduleIdAsString);
+        $repoUrl = 'https://github.com/foo/bar';
+        $category = 'Administration';
+        $tags = ['user', 'account'];
+
+        $moduleMetadata = new ModuleMetadata($moduleId, $repoUrl, $category, $tags);
+
+        $app->moduleConfigurator()->createMetadata($moduleMetadata);
+        $app->moduleConfigurator()->setExternalMetadataDto($repoUrl, new ExternalMetadataDto(false, 'performance', ['foo', 'bar']));
+
+        self::expectException(MetadataValidationException::class);
+//        self::expectExceptionMessage(
+//            'ff'
+//        );
+
+        $app->metadataUpdater()->synchronizeMetadataFor($moduleIdAsString);
     }
 }
