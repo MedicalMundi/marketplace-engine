@@ -15,9 +15,16 @@
 
 namespace Metadata\Core;
 
+use Metadata\Core\Port\Driver\ForConfiguringModule\ForConfiguringModule;
 use Metadata\Core\Port\Driver\ForSynchronizingMetadata\ForSynchronizingMetadata;
 
+/**
+ * Metadata Module API
+ * Driver ports
+ */
 interface MetadataModuleInterface
 {
     public function metadataUpdater(): ForSynchronizingMetadata;
+
+    public function moduleConfigurator(): ForConfiguringModule;
 }

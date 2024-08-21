@@ -21,7 +21,7 @@ use Metadata\Core\Port\Driver\ForConfiguringModule\ForConfiguringModule;
 use Metadata\Core\Port\Driver\ForSynchronizingMetadata\ForSynchronizingMetadata;
 
 /**
- * Module
+ * Metadata Module
  * Offers driver ports as API.
  * Has a configurable dependency on driven ports as RI (required interface).
  */
