@@ -15,14 +15,16 @@
 
 namespace Metadata\Core\Port\Driver\ForSynchronizingMetadata;
 
+use Metadata\Core\MetadataValidationEngine\MetadataValidationException;
 use Metadata\Core\Port\Driven\ModuleMetadata;
+use Metadata\Core\UnreferencedMetadataModuleException;
 
 interface ForSynchronizingMetadata
 {
     public function getMetadataForModule(string $moduleId): ? ModuleMetadata;
 
     /**
-     * Should return custom exception
+     * @throws UnreferencedMetadataModuleException|MetadataValidationException
      */
     public function synchronizeMetadataFor(string $moduleId): void;
 }

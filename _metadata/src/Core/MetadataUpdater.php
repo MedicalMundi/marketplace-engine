@@ -15,11 +15,9 @@
 
 namespace Metadata\Core;
 
-use Metadata\Core\MetadataValidationEngine\FixedFalseMetadataValidationEngineValidation;
 use Metadata\Core\MetadataValidationEngine\FixedTrueMetadataValidationEngineValidation;
 use Metadata\Core\MetadataValidationEngine\ForMetadataSchemaValidation;
 use Metadata\Core\MetadataValidationEngine\MetadataValidationException;
-use Metadata\Core\Port\Driven\ForReadingExternalMetadataSource\ExternalMetadataDto;
 use Metadata\Core\Port\Driven\ForReadingExternalMetadataSource\ForReadingExternalMetadataSource;
 use Metadata\Core\Port\Driven\ForReadingExternalMetadataSource\MetadataReaderException;
 use Metadata\Core\Port\Driven\ForStoringMetadata;
@@ -49,16 +47,14 @@ class MetadataUpdater implements ForSynchronizingMetadata
     {
         $moduleMetadata = $this->getMetadataForModule($moduleId);
 
-        if (null === $moduleMetadata) {
-            throw new UnreferencedMetadataModuleException($moduleId);
-        }
+        $moduleMetadata ?? throw new UnreferencedMetadataModuleException($moduleId);
 
         $targetUrl = $moduleMetadata->repositoryUrl();
 
         try {
             $eternalMetadata = $this->metadataReader->readMetadataFromExternalSource($targetUrl);
 
-            $this->validateMetadataOrError((array)$eternalMetadata);
+            $this->validateMetadataOrError((array) $eternalMetadata);
 
             // update metadata
             $moduleMetadata->enableSynchronization($eternalMetadata->enableSync);
@@ -78,6 +74,8 @@ class MetadataUpdater implements ForSynchronizingMetadata
      *       * WebUi - validate a json text loaded in page form
      *       * Api - validate a composer.json by url
      *       * Api - validate a json structure passed as POST parameter
+     *
+     * @throws MetadataValidationException
      */
     private function validateMetadataOrError(array $externalMetadataDto): void
     {

@@ -19,7 +19,6 @@ use Metadata\AdapterForReadingExternalMetadataSourceStub\StubAdapterForReadingEx
 use Metadata\AdapterForStoringMetadataFake\FakeForStoringMetadata;
 use Metadata\Core\MetadataModule;
 use Metadata\Core\MetadataUpdater;
-use Metadata\Core\MetadataValidationEngine\FixedFalseMetadataValidationEngineValidation;
 use Metadata\Core\MetadataValidationEngine\MetadataValidationException;
 use Metadata\Core\Port\Driven\ForReadingExternalMetadataSource\ExternalMetadataDto;
 use Metadata\Core\Port\Driven\ModuleMetadata;
@@ -60,26 +59,21 @@ class MetadataUpdaterTest extends TestCase
             new FakeForStoringMetadata(),
             new StubAdapterForReadingExternalMetadataSource()
         );
-
-        // extract function
-        $moduleIdAsString = '15f7699b-e9a6-4a8a-9606-95d0a08c1959';
-        $moduleId = Uuid::fromString($moduleIdAsString);
-        $repoUrl = 'https://github.com/foo/bar';
-        $category = 'Administration';
-        $tags = ['user', 'account'];
-
-        $moduleMetadata = new ModuleMetadata($moduleId, $repoUrl, $category, $tags);
-
+        $moduleMetadata = $this->generateAModuleMetadata(
+            $moduleIdAsString = 'b33d940e-58b0-4096-85f1-bfa67bae7ef4',
+            $repoUrl = 'https://github.com/foo/bar',
+            $category = 'irrelevant',
+            $tags = ['irrelevant1-1', 'irrelevant-2']
+        );
         $app->moduleConfigurator()->createMetadata($moduleMetadata);
-        $app->moduleConfigurator()->setExternalMetadataDto($repoUrl, new ExternalMetadataDto(false, 'performance', ['foo', 'bar']));
+        $app->moduleConfigurator()->setExternalMetadataDto($repoUrl, new ExternalMetadataDto(false, 'performance', ['cache', 'redis']));
 
         $app->metadataUpdater()->synchronizeMetadataFor($moduleIdAsString);
 
         $updatedModuleMetadata = $app->metadataUpdater()->getMetadataForModule($moduleIdAsString);
-
         self::assertEquals(false, $updatedModuleMetadata->isSynchronizable());
         self::assertEquals('performance', $updatedModuleMetadata->category());
-        self::assertEquals(['foo', 'bar'], $updatedModuleMetadata->tags());
+        self::assertEquals(['cache', 'redis'], $updatedModuleMetadata->tags());
     }
 
     #[Test]
@@ -90,28 +84,30 @@ class MetadataUpdaterTest extends TestCase
         self::expectExceptionMessage(
             'Metadata validation error'
         );
+
         $app = new MetadataModule(
             new FakeForStoringMetadata(),
             new StubAdapterForReadingExternalMetadataSource(),
         );
-
-        // extract function
-        $moduleIdAsString = '15f7699b-e9a6-4a8a-9606-95d0a08c1959';
-        $moduleId = Uuid::fromString($moduleIdAsString);
-        $repoUrl = 'https://github.com/foo/bar';
-        $category = 'Administration';
-        $tags = ['user', 'account'];
-
-        $moduleMetadata = new ModuleMetadata($moduleId, $repoUrl, $category, $tags);
-
+        $moduleMetadata = $this->generateAModuleMetadata(
+            $moduleIdAsString = 'b33d940e-58b0-4096-85f1-bfa67bae7ef4',
+            $repoUrl = 'https://github.com/foo/bar',
+            $category = 'irrelevant',
+            $tags = ['irrelevant1-1', 'irrelevant-2']
+        );
         $app->moduleConfigurator()->createMetadata($moduleMetadata);
         $app->moduleConfigurator()->setExternalMetadataDto($repoUrl, new ExternalMetadataDto(false, 'performance', ['foo', 'bar']));
 
-        self::expectException(MetadataValidationException::class);
-//        self::expectExceptionMessage(
-//            'ff'
-//        );
-
         $app->metadataUpdater()->synchronizeMetadataFor($moduleIdAsString);
+    }
+
+    private function generateAModuleMetadata(string $moduleIdAsString = '', string $repoUrl = '', string $category = '', array $tags = []): ModuleMetadata
+    {
+        $moduleId = ($moduleIdAsString === '') ? Uuid::uuid4() : Uuid::fromString($moduleIdAsString);
+        $repoUrl = ($repoUrl === '') ? 'https://github.com/foo/bar' : $repoUrl;
+        $category = ($category === '') ? 'irrelevant' : $category;
+        $tags = ($tags === []) ? ['irrelevant-1', 'irrelevant-2'] : $tags;
+
+        return new ModuleMetadata($moduleId, $repoUrl, $category, $tags);
     }
 }

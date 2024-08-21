@@ -157,6 +157,12 @@
       <code><![CDATA[$this->modulesById[$moduleId]]]></code>
     </MixedReturnStatement>
   </file>
+  <file src="_metadata/src/Core/MetadataUpdater.php">
+    <PossiblyNullReference>
+      <code>repositoryUrl</code>
+      <code>validate</code>
+    </PossiblyNullReference>
+  </file>
   <file src="src/Security/OauthProvider/Exception/OeModulesIdentityProviderException.php">
     <UnsafeInstantiation>
       <code><![CDATA[new static($message, $response->getStatusCode(), (string) $response->getBody())]]></code>
