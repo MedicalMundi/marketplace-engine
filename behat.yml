@@ -1,0 +1,14 @@
+default:
+    translation:
+        locale: en
+    formatters:
+        pretty: true
+    gherkin:
+        filters:
+            tags: ~@wip&&~@todo
+    suites:
+        metadata:
+            paths:
+                - '%paths.base%/_metadata/tests/Acceptance/Bdd/Features/driver_for_synchronizing_metadata'
+            contexts:
+                - Metadata\Tests\Acceptance\Bdd\Context\ForSynchronizingMetadataScenarioContext

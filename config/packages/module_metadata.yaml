@@ -1,0 +1,12 @@
+module_metadata:
+  enabled: true
+
+
+when@prod:
+  module_metadata:
+    enabled: false
+
+
+when@dev:
+  module_metadata:
+    enabled: true
