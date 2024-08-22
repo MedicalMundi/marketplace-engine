@@ -184,7 +184,7 @@ jobs:
                 php-version: ${{ matrix.php }}
                 extensions: ${{ env.PHP_EXTENSIONS }}
                 ini-values: memory_limit=-1
-                coverage: xdebug2
+                coverage: xdebug
 
           - name: Set Composer Cache Directory
             if: ${{ vars.USE_COMPOSER_CACHE }}
