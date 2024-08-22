@@ -19,9 +19,11 @@ use Catalog\Core\AntiCorruptionLayer\Dto\PackagistItem;
 use Catalog\Core\AntiCorruptionLayer\Dto\PackagistItemCollection;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
+use PHPUnit\Framework\Attributes\UsesClass;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass(PackagistItemCollection::class)]
+#[UsesClass(PackagistItem::class)]
 class PackagistItemCollectionTest extends TestCase
 {
     private const IRRELEVANT = 'irrelevant';

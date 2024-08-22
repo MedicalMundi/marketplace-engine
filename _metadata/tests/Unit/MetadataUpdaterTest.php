@@ -19,16 +19,27 @@ use Metadata\AdapterForReadingExternalMetadataSourceStub\StubAdapterForReadingEx
 use Metadata\AdapterForStoringMetadataFake\FakeForStoringMetadata;
 use Metadata\Core\MetadataModule;
 use Metadata\Core\MetadataUpdater;
+use Metadata\Core\MetadataValidationEngine\FixedTrueMetadataValidationEngineValidation;
 use Metadata\Core\MetadataValidationEngine\MetadataValidationException;
+use Metadata\Core\ModuleConfigurator;
 use Metadata\Core\Port\Driven\ForReadingExternalMetadataSource\ExternalMetadataDto;
 use Metadata\Core\Port\Driven\ModuleMetadata;
 use Metadata\Core\UnreferencedMetadataModuleException;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
+use PHPUnit\Framework\Attributes\UsesClass;
 use PHPUnit\Framework\TestCase;
 use Ramsey\Uuid\Uuid;
 
 #[CoversClass(MetadataUpdater::class)]
+#[CoversClass(UnreferencedMetadataModuleException::class)]
+#[UsesClass(MetadataModule::class)]
+#[UsesClass(FakeForStoringMetadata::class)]
+#[UsesClass(StubAdapterForReadingExternalMetadataSource::class)]
+#[UsesClass(FixedTrueMetadataValidationEngineValidation::class)]
+#[UsesClass(ModuleConfigurator::class)]
+#[UsesClass(ModuleMetadata::class)]
+#[UsesClass(ExternalMetadataDto::class)]
 class MetadataUpdaterTest extends TestCase
 {
     protected function setUp(): void
