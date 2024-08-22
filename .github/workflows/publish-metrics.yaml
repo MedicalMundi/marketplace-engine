@@ -53,7 +53,7 @@ jobs:
 
   publish-unit-test-report:
     name: Publish unit test report
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     needs: [on-cdci-workflow-success]
     steps:
       - name: Checkout on branch ${{ github.event.workflow_run.head_branch }}|SHA-${{ github.event.workflow_run.head_commit.id }}
@@ -63,11 +63,9 @@ jobs:
 
       - name: Download unit test coverage artifact
         id: download-unit-test-coverage-artifact
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v4.1.8
         with:
           name: ${{ vars.ARTIFATC_NAME_FOR_UNIT_TESTS_COVERAGE }}-${{ github.event.workflow_run.head_commit.id }}
-          # Coverage-reports-unit-tests-on-SHA-fb5bba5f3787375e2cdee504840e2c242afb23e5
-        #run: echo current file name - ${{ vars.ARTIFATC_NAME_FOR_UNIT_TESTS_COVERAGE }}-${{ github.event.workflow_run.head_commit.id }}
 
       - name: Upload coverage results to Codecov
         if: ${{ (steps.download-unit-test-coverage-artifact.outcome == 'success') }}
