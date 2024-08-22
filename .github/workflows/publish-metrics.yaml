@@ -61,12 +61,19 @@ jobs:
         with:
           ref: ${{ github.event.workflow_run.head_commit.id }}
 
+#      - name: Download unit test coverage artifact
+#        id: download-unit-test-coverage-artifact
+#        uses: actions/download-artifact@v4
+#        with:
+#          name: ${{ vars.ARTIFATC_NAME_FOR_UNIT_TESTS_COVERAGE }}-${{ github.event.workflow_run.head_commit.id }}
+#          github-token: ${{ secrets.GH_API_ARTIFACT_ACTION }}
+
       - name: Download unit test coverage artifact
         id: download-unit-test-coverage-artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: ${{ vars.ARTIFATC_NAME_FOR_UNIT_TESTS_COVERAGE }}-${{ github.event.workflow_run.head_commit.id }}
-          github-token: ${{ secrets.GH_API_ARTIFACT_ACTION }}
+        run: |
+          gh run download -n ${{ vars.ARTIFATC_NAME_FOR_UNIT_TESTS_COVERAGE }}-${{ github.event.workflow_run.head_commit.id }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_API_ARTIFACT_ACTION }}
 
       - name: Upload coverage results to Codecov
         if: ${{ (steps.download-unit-test-coverage-artifact.outcome == 'success') }}
