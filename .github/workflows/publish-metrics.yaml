@@ -79,6 +79,7 @@ jobs:
         if: ${{ (steps.download-unit-test-coverage-artifact.outcome == 'success') }}
         uses: codecov/codecov-action@v4
         with:
+          token: ${{ secrets.CODECOV_TOKEN }}
           files: ${{ vars.UNIT_TEST_CLOVER_FILENAME }}
           name: Unit test
           #flags: unit-test
