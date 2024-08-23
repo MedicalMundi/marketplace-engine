@@ -44,6 +44,11 @@
                 <file name="_bffWeb/src/Infrastructure/Framework/Extension/BffWebModuleExtension.php"/>
             </errorLevel>
 
+            <!-- Catalog module -->
+            <errorLevel type="suppress">
+                <file name="_catalog/src/Infrastructure/Framework/Extension/CatalogModuleExtension.php"/>
+            </errorLevel>
+
             <!-- Metadata module -->
             <errorLevel type="suppress">
                 <file name="_metadata/src/Infrastructure/Framework/Extension/MetadataModuleExtension.php"/>
@@ -72,6 +77,9 @@
             </errorLevel>
 
             <!-- Catalog module -->
+            <errorLevel type="suppress">
+                <file name="_catalog/src/Infrastructure/Framework/Extension/CatalogModuleExtension.php"/>
+            </errorLevel>
 
             <!-- Metadata module -->
             <errorLevel type="suppress">
