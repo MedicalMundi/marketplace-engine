@@ -113,7 +113,8 @@
             "App\\": "src/",
             "Catalog\\": "_catalog/src/",
             "BffWeb\\": "_bffWeb/src/",
-            "BffApi\\": "_bffApi/src/"
+            "BffApi\\": "_bffApi/src/",
+            "Metadata\\": "_metadata/src/"
         }
     },
     "autoload-dev": {
@@ -121,7 +122,8 @@
             "App\\Tests\\": "tests/",
             "Catalog\\Tests\\": "_catalog/tests/",
             "BffWeb\\Tests\\": "_bffWeb/tests/",
-            "BffApi\\Tests\\": "_bffApi/tests/"
+            "BffApi\\Tests\\": "_bffApi/tests/",
+            "Metadata\\Tests\\": "_metadata/tests/"
         }
     },
     "minimum-stability": "stable",

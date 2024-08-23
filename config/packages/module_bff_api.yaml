@@ -1,7 +1,5 @@
 module_bff_api:
   enabled: true
-  catalog_dir: /app/var
-  catalog_filename: catalog.json
 
 
 when@prod:

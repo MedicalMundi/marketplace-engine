@@ -1,0 +1,12 @@
+module_bff_web:
+  enabled: true
+
+
+when@prod:
+  module_bff_web:
+    enabled: true
+
+
+when@dev:
+  module_bff_web:
+    enabled: true

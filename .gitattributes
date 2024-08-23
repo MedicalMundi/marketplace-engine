@@ -14,3 +14,8 @@ phpunit.xml.dist export-ignore
 psalm.xml export-ignore
 psalm-baseline.xml export-ignore
 rector.php export-ignore
+
+/_bffApi/tests
+/_bffWeb/tests
+/_catalog/tests
+/_metadata/tests

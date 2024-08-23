@@ -17,13 +17,17 @@ namespace Catalog\Tests\Unit\Core\Catalog;
 
 use Catalog\Core\Catalog\AddPublicModule;
 use Catalog\Core\Catalog\ModulesCatalog;
+use Catalog\Core\Catalog\PublicModuleWasAdded;
 use Ecotone\Lite\EcotoneLite;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
+use PHPUnit\Framework\Attributes\UsesClass;
 use PHPUnit\Framework\TestCase;
 use Ramsey\Uuid\Uuid;
 
 #[CoversClass(ModulesCatalog::class)]
+#[UsesClass(AddPublicModule::class)]
+#[UsesClass(PublicModuleWasAdded::class)]
 class CatalogTest extends TestCase
 {
     private const UUID = '048a23d9-db59-4d49-87e0-36a05ee08593';
