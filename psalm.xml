@@ -33,36 +33,54 @@
         </UnusedClass>
 
 
-        <!-- BffApi module -->
         <UndefinedMethod>
+            <!-- BffApi module -->
             <errorLevel type="suppress">
                 <file name="_bffApi/src/Infrastructure/Framework/Extension/BffApiModuleExtension.php"/>
+            </errorLevel>
+
+            <!-- BffApi module -->
+            <errorLevel type="suppress">
+                <file name="_bffWeb/src/Infrastructure/Framework/Extension/BffWebModuleExtension.php"/>
+            </errorLevel>
+
+            <!-- Metadata module -->
+            <errorLevel type="suppress">
+                <file name="_metadata/src/Infrastructure/Framework/Extension/MetadataModuleExtension.php"/>
             </errorLevel>
         </UndefinedMethod>
-        <MixedMethodCall>
-            <errorLevel type="suppress">
-                <file name="_bffApi/src/Infrastructure/Framework/Extension/BffApiModuleExtension.php"/>
-            </errorLevel>
-        </MixedMethodCall>
-        <!-- End BffApi module -->
 
-        <!-- Metadata module -->
+
+
         <PossiblyNullArgument>
+            <!-- Metadata module -->
             <errorLevel type="suppress">
                 <file name="_metadata/src/Core/MetadataModule.php" />
             </errorLevel>
         </PossiblyNullArgument>
+        
+
         <MixedMethodCall>
+            <!-- BffApi module -->
+            <errorLevel type="suppress">
+                <file name="_bffApi/src/Infrastructure/Framework/Extension/BffApiModuleExtension.php"/>
+            </errorLevel>
+
+            <!-- BffWeb module -->
+            <errorLevel type="suppress">
+                <file name="_bffWeb/src/Infrastructure/Framework/Extension/BffWebModuleExtension.php"/>
+            </errorLevel>
+
+            <!-- Catalog module -->
+
+            <!-- Metadata module -->
             <errorLevel type="suppress">
                 <file name="_metadata/src/Infrastructure/Framework/Extension/MetadataModuleExtension.php"/>
+            </errorLevel>
+            <errorLevel type="suppress">
+                <file name="_bffWeb/src/Infrastructure/Framework/Extension/BffWebModuleExtension.php"/>
             </errorLevel>
         </MixedMethodCall>
-        <UndefinedMethod>
-            <errorLevel type="suppress">
-                <file name="_metadata/src/Infrastructure/Framework/Extension/MetadataModuleExtension.php"/>
-            </errorLevel>
-        </UndefinedMethod>
-        <!-- End Metadata module -->
     </issueHandlers>
 
 

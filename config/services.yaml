@@ -1,6 +1,5 @@
 imports:
     - { resource: ../_catalog/src/Infrastructure/Framework/services.yaml }
-    - { resource: ../_bffWeb/src/Infrastructure/Framework/services.yaml }
     - { resource: ../_bffApi/src/Infrastructure/Framework/services.yaml }
     - { resource: ../_metadata/src/Infrastructure/Framework/services.yaml }
 
