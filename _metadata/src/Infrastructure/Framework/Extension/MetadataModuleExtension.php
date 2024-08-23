@@ -16,9 +16,11 @@
 namespace Metadata\Infrastructure\Framework\Extension;
 
 use Symfony\Component\Config\Definition\Configurator\DefinitionConfigurator;
+use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\AbstractExtension;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 
 class MetadataModuleExtension extends AbstractExtension
 {
@@ -39,6 +41,11 @@ class MetadataModuleExtension extends AbstractExtension
         $container->parameters()
             ->set('module_metadata.enabled', $config['enabled'])
         ;
+        $loader = new YamlFileLoader(
+            $builder,
+            new FileLocator(__DIR__ . '/../')
+        );
+        $loader->load('services.yaml');
     }
 
     public function getAlias(): string
