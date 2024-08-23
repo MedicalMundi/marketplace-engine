@@ -46,7 +46,6 @@ class BffApiModuleExtension extends AbstractExtension
             new FileLocator(__DIR__ . '/../')
         );
         $loader->load('services.yaml');
-
     }
 
     public function getAlias(): string
