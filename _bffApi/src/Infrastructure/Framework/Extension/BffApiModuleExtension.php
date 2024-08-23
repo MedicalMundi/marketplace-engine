@@ -16,9 +16,11 @@
 namespace BffApi\Infrastructure\Framework\Extension;
 
 use Symfony\Component\Config\Definition\Configurator\DefinitionConfigurator;
+use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\AbstractExtension;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 
 class BffApiModuleExtension extends AbstractExtension
 {
@@ -30,14 +32,6 @@ class BffApiModuleExtension extends AbstractExtension
             ->info('Enable or disable the module.')
             ->defaultValue(true)->end()
 
-            ->ScalarNode('catalog_dir')
-            ->info('The path of the catalogs directory.')
-            ->defaultValue('%kernel.project_dir%/var')->end()
-
-            ->ScalarNode('catalog_filename')
-            ->info('Filename of the default catalog.')
-            ->defaultValue('catalog.json')->end()
-
             ->end()
         ;
     }
@@ -46,9 +40,13 @@ class BffApiModuleExtension extends AbstractExtension
     {
         $container->parameters()
             ->set('module_bff_api.enabled', $config['enabled'])
-            ->set('module_bff_api.catalog_dir', $config['catalog_dir'])
-            ->set('module_bff_api.catalog_filename', $config['catalog_filename'])
         ;
+        $loader = new YamlFileLoader(
+            $builder,
+            new FileLocator(__DIR__ . '/../')
+        );
+        $loader->load('services.yaml');
+
     }
 
     public function getAlias(): string
