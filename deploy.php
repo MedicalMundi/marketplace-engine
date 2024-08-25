@@ -1,8 +1,8 @@
 <?php
 namespace Deployer;
 
-//require 'recipe/common.php';
 require 'recipe/symfony.php';
+require 'tools/deployer/recipes/marketplace-engine.php';
 
 // Config
 set('allow_anonymous_stats', false);
