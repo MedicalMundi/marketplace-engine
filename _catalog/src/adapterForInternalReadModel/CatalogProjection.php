@@ -68,7 +68,7 @@ class CatalogProjection
     #[ProjectionInitialization]
     public function initializeProjection(): void
     {
-        if ($this->connection->createSchemaManager()->tablesExist(self::TABLE_NAME)) {
+        if ($this->connection->createSchemaManager()->tablesExist([self::TABLE_NAME])) {
             return;
         }
 
