@@ -19,6 +19,86 @@
             "fqcn": "BffWeb\\AdapterForWeb\\SearchModuleController",
             "line": 28,
             "error": "depends on Catalog\\AdapterForGettingPublicModule\\PublicModuleProviderFromPackagist, but should not depend on these namespaces: Catalog\\* because of component architecture"
+        },
+        {
+            "fqcn": "Catalog\\AdapterForInternalReadModel\\CatalogProjection",
+            "line": 28,
+            "error": "depends on Ecotone\\EventSourcing\\Attribute\\Projection, but should not depend on classes outside namespace Catalog\\Core because we want isolate our catalog Adapters from ever growing dependencies."
+        },
+        {
+            "fqcn": "Catalog\\AdapterForInternalReadModel\\CatalogProjection",
+            "line": 34,
+            "error": "depends on Doctrine\\DBAL\\Connection, but should not depend on classes outside namespace Catalog\\Core because we want isolate our catalog Adapters from ever growing dependencies."
+        },
+        {
+            "fqcn": "Catalog\\AdapterForInternalReadModel\\CatalogProjection",
+            "line": 75,
+            "error": "depends on Doctrine\\DBAL\\Schema\\Table, but should not depend on classes outside namespace Catalog\\Core because we want isolate our catalog Adapters from ever growing dependencies."
+        },
+        {
+            "fqcn": "Catalog\\AdapterForInternalReadModel\\CatalogProjection",
+            "line": 77,
+            "error": "depends on Doctrine\\DBAL\\Types\\Types, but should not depend on classes outside namespace Catalog\\Core because we want isolate our catalog Adapters from ever growing dependencies."
+        },
+        {
+            "fqcn": "Catalog\\AdapterForInternalReadModel\\CatalogProjection",
+            "line": 78,
+            "error": "depends on Doctrine\\DBAL\\Types\\Types, but should not depend on classes outside namespace Catalog\\Core because we want isolate our catalog Adapters from ever growing dependencies."
+        },
+        {
+            "fqcn": "Catalog\\AdapterForInternalReadModel\\CatalogProjection",
+            "line": 79,
+            "error": "depends on Doctrine\\DBAL\\Types\\Types, but should not depend on classes outside namespace Catalog\\Core because we want isolate our catalog Adapters from ever growing dependencies."
+        },
+        {
+            "fqcn": "Catalog\\AdapterForInternalReadModel\\CatalogProjection",
+            "line": 80,
+            "error": "depends on Doctrine\\DBAL\\Types\\Types, but should not depend on classes outside namespace Catalog\\Core because we want isolate our catalog Adapters from ever growing dependencies."
+        },
+        {
+            "fqcn": "Catalog\\AdapterForInternalReadModel\\CatalogProjection",
+            "line": 81,
+            "error": "depends on Doctrine\\DBAL\\Types\\Types, but should not depend on classes outside namespace Catalog\\Core because we want isolate our catalog Adapters from ever growing dependencies."
+        },
+        {
+            "fqcn": "Catalog\\AdapterForPublicReadModel\\CatalogProjection",
+            "line": 28,
+            "error": "depends on Ecotone\\EventSourcing\\Attribute\\Projection, but should not depend on classes outside namespace Catalog\\Core because we want isolate our catalog Adapters from ever growing dependencies."
+        },
+        {
+            "fqcn": "Catalog\\AdapterForPublicReadModel\\CatalogProjection",
+            "line": 34,
+            "error": "depends on Doctrine\\DBAL\\Connection, but should not depend on classes outside namespace Catalog\\Core because we want isolate our catalog Adapters from ever growing dependencies."
+        },
+        {
+            "fqcn": "Catalog\\AdapterForPublicReadModel\\CatalogProjection",
+            "line": 75,
+            "error": "depends on Doctrine\\DBAL\\Schema\\Table, but should not depend on classes outside namespace Catalog\\Core because we want isolate our catalog Adapters from ever growing dependencies."
+        },
+        {
+            "fqcn": "Catalog\\AdapterForPublicReadModel\\CatalogProjection",
+            "line": 77,
+            "error": "depends on Doctrine\\DBAL\\Types\\Types, but should not depend on classes outside namespace Catalog\\Core because we want isolate our catalog Adapters from ever growing dependencies."
+        },
+        {
+            "fqcn": "Catalog\\AdapterForPublicReadModel\\CatalogProjection",
+            "line": 78,
+            "error": "depends on Doctrine\\DBAL\\Types\\Types, but should not depend on classes outside namespace Catalog\\Core because we want isolate our catalog Adapters from ever growing dependencies."
+        },
+        {
+            "fqcn": "Catalog\\AdapterForPublicReadModel\\CatalogProjection",
+            "line": 79,
+            "error": "depends on Doctrine\\DBAL\\Types\\Types, but should not depend on classes outside namespace Catalog\\Core because we want isolate our catalog Adapters from ever growing dependencies."
+        },
+        {
+            "fqcn": "Catalog\\AdapterForPublicReadModel\\CatalogProjection",
+            "line": 80,
+            "error": "depends on Doctrine\\DBAL\\Types\\Types, but should not depend on classes outside namespace Catalog\\Core because we want isolate our catalog Adapters from ever growing dependencies."
+        },
+        {
+            "fqcn": "Catalog\\AdapterForPublicReadModel\\CatalogProjection",
+            "line": 81,
+            "error": "depends on Doctrine\\DBAL\\Types\\Types, but should not depend on classes outside namespace Catalog\\Core because we want isolate our catalog Adapters from ever growing dependencies."
         }
     ],
     "stopOnFailure": false

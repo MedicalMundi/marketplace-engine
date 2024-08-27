@@ -13,7 +13,7 @@
  * @license https://github.com/MedicalMundi/marketplace-engine/blob/main/LICENSE MIT
  */
 
-namespace Catalog\adapterForInternalReadModel;
+namespace Catalog\AdapterForPublicReadModel;
 
 use Catalog\Core\Catalog\PublicModuleWasAdded;
 use Doctrine\DBAL\Connection;
@@ -25,10 +25,10 @@ use Ecotone\EventSourcing\Attribute\ProjectionReset;
 use Ecotone\Modelling\Attribute\EventHandler;
 use Ecotone\Modelling\Attribute\QueryHandler;
 
-#[Projection("catalog.moduleList", 'catalog.catalog_stream')]
+#[Projection("catalog.public.moduleList", 'catalog.catalog_stream')]
 class CatalogProjection
 {
-    public const TABLE_NAME = "prj_catalog_module_list";
+    public const TABLE_NAME = "prj_catalog_public_module_list";
 
     public function __construct(
         private readonly Connection $connection
@@ -47,8 +47,8 @@ class CatalogProjection
         ]);
     }
 
-    #[QueryHandler("catalog.getModuleList")]
-    #[QueryHandler("getModuleList")]
+    #[QueryHandler("catalog.public.getModuleList")]
+    #[QueryHandler("getPublicModuleList")]
     public function getModuleList(): array
     {
         $sql = 'SELECT * FROM ' . self::TABLE_NAME;
@@ -56,7 +56,7 @@ class CatalogProjection
         return $this->connection->executeQuery($sql)->fetchAllAssociative();
     }
 
-    #[QueryHandler("getModuleByPackageName")]
+    #[QueryHandler("getPublicModuleByPackageName")]
     public function getModuleByPackageName(string $packageName): array
     {
         $sql = 'SELECT * FROM ' . self::TABLE_NAME . ' WHERE package_name = :package_name';
