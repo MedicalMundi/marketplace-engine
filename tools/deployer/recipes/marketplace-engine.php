@@ -2,6 +2,9 @@
 
 namespace Deployer;
 
+set('projections', []);
+add('projections', ['catalog.moduleList']);
+
 /**
  * INFO
  * GENERATE NO RESPONSE
@@ -30,4 +33,23 @@ desc('Run "php composer diagnose" on the host.');
 task('composer:diagnose', function () {
     $output = run('cd {{release_or_current_path}} && {{bin/composer}} diagnose', ['tty' => true]);
     echo $output;
+});
+
+
+
+desc('Run "bin/console ecotone:es:initialize-projection" on the host.');
+task('projection:initialize', function () {
+    info('Initialize eventstore projections');
+
+    if (!has('projections')) {
+        warning("Please, specify \"projection\" to initialize.");
+        return;
+    }
+
+    $projections = get('projections');
+    foreach ($projections as $projection) {
+        info('Current projection: ' . $projection);
+        $output = run('cd {{release_or_current_path}} && {{bin/console}} ecotone:es:initialize-projection ' . $projection, ['tty' => true]);
+        echo $output;
+    }
 });
