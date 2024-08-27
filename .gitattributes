@@ -6,6 +6,9 @@
 
 .gitattributes export-ignore
 .gitignore export-ignore
+churn.dist.yml export-ignore
+churn.yml export-ignore
+codecov.yml export-ignore
 deploy.php export-ignore
 ecs.php export-ignore
 phparkitect.php export-ignore
