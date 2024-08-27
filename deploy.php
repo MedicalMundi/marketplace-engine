@@ -91,6 +91,7 @@ host('stage')
 
 after('deploy:failed', 'deploy:unlock');
 after('deploy', 'envvars:dump');
+after('deploy', 'projection:initialize');
 
 
 
