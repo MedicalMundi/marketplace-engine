@@ -25,8 +25,11 @@ use Ecotone\EventSourcing\Attribute\ProjectionReset;
 use Ecotone\Modelling\Attribute\EventHandler;
 use Ecotone\Modelling\Attribute\QueryHandler;
 
+/**
+ * TODO: add integration test
+ */
 #[Projection("catalog.public.moduleList", 'catalog.catalog_stream')]
-class CatalogProjection
+class CatalogPublicProjection
 {
     public const TABLE_NAME = "prj_catalog_public_module_list";
 
@@ -79,6 +82,8 @@ class CatalogProjection
         $table->addColumn('description', Types::STRING);
         $table->addColumn('url', Types::STRING);
         $table->addColumn('module_type', Types::STRING);
+        $table->addColumn('category', Types::STRING);
+        $table->addColumn('tags', Types::STRING);
 
         $this->connection->createSchemaManager()->createTable($table);
     }
