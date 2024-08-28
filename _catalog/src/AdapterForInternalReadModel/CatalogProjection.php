@@ -13,7 +13,7 @@
  * @license https://github.com/MedicalMundi/marketplace-engine/blob/main/LICENSE MIT
  */
 
-namespace Catalog\adapterForInternalReadModel;
+namespace Catalog\AdapterForInternalReadModel;
 
 use Catalog\Core\Catalog\PublicModuleWasAdded;
 use Doctrine\DBAL\Connection;
