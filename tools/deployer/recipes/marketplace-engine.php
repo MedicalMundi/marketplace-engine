@@ -3,7 +3,10 @@
 namespace Deployer;
 
 set('projections', []);
-add('projections', ['catalog.moduleList']);
+add('projections', [
+    'catalog.moduleList',
+    'catalog.public.moduleList',
+]);
 
 /**
  * INFO
