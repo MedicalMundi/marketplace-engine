@@ -11159,20 +11159,20 @@
         },
         {
             "name": "twig/cssinliner-extra",
-            "version": "v3.11.0",
+            "version": "v3.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/cssinliner-extra.git",
-                "reference": "7312a0275812b86918febb4b7a67d0cb084c5d02"
+                "reference": "31fd1f7bc79bf3b7c188316e02d78fdd0fc153e3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/cssinliner-extra/zipball/7312a0275812b86918febb4b7a67d0cb084c5d02",
-                "reference": "7312a0275812b86918febb4b7a67d0cb084c5d02",
+                "url": "https://api.github.com/repos/twigphp/cssinliner-extra/zipball/31fd1f7bc79bf3b7c188316e02d78fdd0fc153e3",
+                "reference": "31fd1f7bc79bf3b7c188316e02d78fdd0fc153e3",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2.5",
+                "php": ">=8.0.2",
                 "symfony/deprecation-contracts": "^2.5|^3",
                 "tijsverkoyen/css-to-inline-styles": "^2.0",
                 "twig/twig": "^3.0"
@@ -11212,7 +11212,7 @@
                 "twig"
             ],
             "support": {
-                "source": "https://github.com/twigphp/cssinliner-extra/tree/v3.11.0"
+                "source": "https://github.com/twigphp/cssinliner-extra/tree/v3.12.0"
             },
             "funding": [
                 {
@@ -11224,7 +11224,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-06-21T06:22:31+00:00"
+            "time": "2024-08-26T15:29:01+00:00"
         },
         {
             "name": "twig/extra-bundle",
