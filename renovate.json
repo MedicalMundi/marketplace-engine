@@ -3,5 +3,8 @@
   "extends": [
     "config:recommended"
   ],
-  "ignorePlugins": true
+  "ignorePlugins": false,
+  "major": {
+    "enabled": false
+  }
 }
