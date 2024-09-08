@@ -9,6 +9,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) a
 * Module metadata management [WIP]
 * Third Party APIs [WIP]
 
+## [v0.7.22] - 2024-09-08
+### Changed
+* use 'minify' js assets
+
 ## [v0.7.21] - 2024-09-08
 ### Changed
 * use 'preload' for css/js assets
