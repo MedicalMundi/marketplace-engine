@@ -7,7 +7,7 @@ parameters:
     locale: 'en'
     # This parameter defines the codes of the locales (languages) enabled in the application
     app_locales: en|es|it
-    release.version: 'v0.7.20'
+    release.version: 'v0.7.21'
     app.setting.instance_domain: ''
     app.setting.instance_schema: ''
 
