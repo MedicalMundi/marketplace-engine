@@ -1,0 +1,51 @@
+{% extends '@web/layout-base.html.twig' %}
+
+{% block title %}
+    {% if module %}
+        OpenEmr Module: {{ module.package_name }}
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+
+{% endblock %}
+
+{% block main %}
+<main class="flex-shrink-0">
+    <div class="container mt-3">
+        <div class="row mt-1 justify-content-center">
+            {% if module|length > 0 %}
+                <div class="col-sm-12 col-md-auto col-lg-8 text-center">
+                    <h1>{{ module.package_name }}</h1>
+                    <p class="text-muted">
+                        {{ module.description }}
+                    </p>
+                    <hr>
+                    <p class="text-muted">
+                        url:
+                        {{ module.url }}
+                    </p>
+                    <hr>
+                    <p class="text-muted">
+                        type:
+                        {{ module.module_type }}
+                    </p>
+                    <hr>
+                    <p class="text-muted">
+                        category:
+                        {{ module.category }}
+                    </p>
+                    <hr>
+                    <p class="text-muted">
+                        tags:
+                        {{ module.tags }}
+                    </p>
+                </div>
+            {% else %}
+                <div class="col-sm-12 col-md-auto col-lg-8 text-center">
+                    <p class="text-warning">Module not found</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</main>
+{% endblock %}
