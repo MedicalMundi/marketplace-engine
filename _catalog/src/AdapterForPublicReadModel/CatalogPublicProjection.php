@@ -20,6 +20,7 @@ use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Schema\Table;
 use Doctrine\DBAL\Types\Types;
 use Ecotone\EventSourcing\Attribute\Projection;
+use Ecotone\EventSourcing\Attribute\ProjectionDelete;
 use Ecotone\EventSourcing\Attribute\ProjectionInitialization;
 use Ecotone\EventSourcing\Attribute\ProjectionReset;
 use Ecotone\Modelling\Attribute\EventHandler;
@@ -51,7 +52,6 @@ class CatalogPublicProjection
     }
 
     #[QueryHandler("catalog.public.getModuleList")]
-    #[QueryHandler("getPublicModuleList")]
     public function getModuleList(): array
     {
         $sql = 'SELECT * FROM ' . self::TABLE_NAME;
@@ -59,13 +59,13 @@ class CatalogPublicProjection
         return $this->connection->executeQuery($sql)->fetchAllAssociative();
     }
 
-    #[QueryHandler("getPublicModuleByPackageName")]
-    public function getModuleByPackageName(string $packageName): array
+    #[QueryHandler("catalog.public.getModuleByPackageName")]
+    public function getModuleByPackageName(string $packageName): array|bool
     {
         $sql = 'SELECT * FROM ' . self::TABLE_NAME . ' WHERE package_name = :package_name';
         return $this->connection->executeQuery($sql, [
             "package_name" => $packageName,
-        ])->fetchAllAssociative();
+        ])->fetchAssociative();
     }
 
     #[ProjectionInitialization]
@@ -82,8 +82,17 @@ class CatalogPublicProjection
         $table->addColumn('description', Types::STRING);
         $table->addColumn('url', Types::STRING);
         $table->addColumn('module_type', Types::STRING);
-        $table->addColumn('category', Types::STRING);
-        $table->addColumn('tags', Types::STRING);
+        $table->addColumn('category', Types::STRING, [
+            'length' => 100,
+            'default' => '',
+        ]);
+        $table->addColumn('tags', Types::STRING, [
+            'length' => 255,
+            'default' => '',
+        ]);
+
+        $table->setPrimaryKey(["module_id"]);
+        $table->addUniqueIndex(["package_name"]);
 
         $this->connection->createSchemaManager()->createTable($table);
     }
@@ -93,6 +102,13 @@ class CatalogPublicProjection
     {
         $sql = 'DELETE FROM ' . self::TABLE_NAME;
 
-        $this->connection->executeStatement($sql);
+        $this->connection->executeQuery($sql);
+    }
+
+    #[ProjectionDelete]
+    public function delete(): void
+    {
+        $sql = 'DROP TABLE ' . self::TABLE_NAME;
+        $this->connection->executeQuery($sql);
     }
 }
