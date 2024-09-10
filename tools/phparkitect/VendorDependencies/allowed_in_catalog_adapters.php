@@ -8,4 +8,9 @@ return [
 
     'Ecotone\Modelling\CommandBus',
     'Ecotone\Modelling\QueryBus',
-    'Ecotone\Modelling\EventBus',];
+    'Ecotone\Modelling\EventBus',
+    'Ecotone\EventSourcing\Attribute\Projection',
+    'Doctrine\DBAL\Connection',
+    'Doctrine\DBAL\Schema\Table',
+    'Doctrine\DBAL\Types\Types',
+    ];
