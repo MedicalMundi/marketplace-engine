@@ -43,7 +43,7 @@ class ModuleController extends AbstractController
     )]
     public function index(string $packageName): Response
     {
-        $module = (array) $this->queryBus->sendWithRouting('catalog.public.getModuleByPackageName', $packageName);
+        $module = $this->queryBus->sendWithRouting('catalog.public.getModuleByPackageName', $packageName);
 
         return $this->render('@web/module/show.html.twig', [
             'module' => $module,
