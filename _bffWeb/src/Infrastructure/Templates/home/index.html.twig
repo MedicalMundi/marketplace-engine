@@ -11,8 +11,8 @@
             <div class="col-sm-12 col-md-auto col-lg-8 text-center">
                 <h1>oe-modules.com</h1>
                 <p class="text-muted">
-                    {{ 'page.home.available_module_for'|trans({}, 'pages') }} <a href="https://www.open-emr.org/" class="text-decoration-none" target="_blank">openEmr</a>. <br>
-                    {{ 'page.home.all_modules_are_registered_on'|trans({}, 'pages') }} <a href="https://packagist.org" class="text-decoration-none" target="_blank">packagist.org</a>.
+                    {{ 'page.home.available_module_for'|trans({}, 'pages') }} <a href="https://www.open-emr.org/" class="text-muted text-decoration-none fw-bold" target="_blank">openEmr</a>. <br>
+                    {{ 'page.home.all_modules_are_registered_on'|trans({}, 'pages') }} <a href="https://packagist.org" class="text-muted text-decoration-none fw-bold" target="_blank">packagist.org</a>.
                 </p>
             </div>
         </div>
@@ -32,11 +32,13 @@
         </div>
 
         <div class="row mt-1 justify-content-center">
-            <div class="col-sm-12 col-md-auto col-lg-8 justify-content-center">
-                <div class="htmx-indicator spinner-border text-success col-1" role="status">
+            <div class="col-sm-12 col-md-auto col-lg-8 text-center">
+                <div class="htmx-indicator spinner-border text-success" role="status">
                     <span class="visually-hidden"></span>
                 </div>
-                    <div id="search-results"></div>
+            </div>
+            <div class="col-sm-12 col-md-auto col-lg-8 justify-content-center">
+                <div id="search-results"></div>
             </div>
         </div>
 
