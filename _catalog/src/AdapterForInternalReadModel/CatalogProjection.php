@@ -20,6 +20,7 @@ use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Schema\Table;
 use Doctrine\DBAL\Types\Types;
 use Ecotone\EventSourcing\Attribute\Projection;
+use Ecotone\EventSourcing\Attribute\ProjectionDelete;
 use Ecotone\EventSourcing\Attribute\ProjectionInitialization;
 use Ecotone\EventSourcing\Attribute\ProjectionReset;
 use Ecotone\Modelling\Attribute\EventHandler;
@@ -56,13 +57,14 @@ class CatalogProjection
         return $this->connection->executeQuery($sql)->fetchAllAssociative();
     }
 
+    #[QueryHandler("catalog.getModuleByPackageName")]
     #[QueryHandler("getModuleByPackageName")]
-    public function getModuleByPackageName(string $packageName): array
+    public function getModuleByPackageName(string $packageName): array|bool
     {
         $sql = 'SELECT * FROM ' . self::TABLE_NAME . ' WHERE package_name = :package_name';
         return $this->connection->executeQuery($sql, [
             "package_name" => $packageName,
-        ])->fetchAllAssociative();
+        ])->fetchAssociative();
     }
 
     #[ProjectionInitialization]
@@ -79,6 +81,7 @@ class CatalogProjection
         $table->addColumn('description', Types::STRING);
         $table->addColumn('url', Types::STRING);
         $table->addColumn('module_type', Types::STRING);
+        $table->setPrimaryKey(["module_id"]);
 
         $this->connection->createSchemaManager()->createTable($table);
     }
@@ -88,6 +91,13 @@ class CatalogProjection
     {
         $sql = 'DELETE FROM ' . self::TABLE_NAME;
 
+        $this->connection->executeStatement($sql);
+    }
+
+    #[ProjectionDelete]
+    public function delete(): void
+    {
+        $sql = 'DROP TABLE ' . self::TABLE_NAME;
         $this->connection->executeStatement($sql);
     }
 }
