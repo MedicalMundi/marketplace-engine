@@ -123,7 +123,7 @@
             "Catalog\\Tests\\": "_catalog/tests/",
             "BffWeb\\Tests\\": "_bffWeb/tests/",
             "BffApi\\Tests\\": "_bffApi/tests/",
-            "Metadata\\Tests\\": "_metadata/tests/"
+            "MetadataTests\\": "_metadata/tests/"
         }
     },
     "minimum-stability": "stable",
