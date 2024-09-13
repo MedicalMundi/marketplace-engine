@@ -65,6 +65,18 @@
             "ref": "4dd47013ecec8a158d186f63ec4b51f1defff897"
         }
     },
+    "knplabs/github-api": {
+        "version": "3.14",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "main",
+            "version": "2.6",
+            "ref": "a7d5781e4a8e84f1c238c43e4c9bb806f01d8a3f"
+        },
+        "files": [
+            "config/packages/github_api.yaml"
+        ]
+    },
     "knplabs/knp-menu-bundle": {
         "version": "v3.3.0"
     },

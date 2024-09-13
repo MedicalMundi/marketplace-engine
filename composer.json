@@ -16,6 +16,7 @@
         "ecotone/jms-converter": "^1.2",
         "ecotone/pdo-event-sourcing": "^1.2",
         "ecotone/symfony-bundle": "^1.2",
+        "knplabs/github-api": "*",
         "knplabs/knp-menu-bundle": "^3.3",
         "knplabs/packagist-api": "^2.0",
         "knpuniversity/oauth2-client-bundle": "^2.18",
