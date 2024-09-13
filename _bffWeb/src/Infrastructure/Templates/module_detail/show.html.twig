@@ -23,6 +23,7 @@
                         <li class="nav-item" role="presentation">
                             <button hx-get="{{ path('web_module_show_version', {'packageName': module.package_name, 'version': version}) }}"
                                     hx-target="#myTabContent"
+                                    hx-indicator=".htmx-indicator"
                                     class="nav-link"
                                     id="disabled-tab"
                                     data-bs-toggle="tab"
@@ -37,6 +38,11 @@
                         </li>
                     {% endfor %}
                 </ul>
+                <div class="col-12 text-center">
+                    <div class="htmx-indicator spinner-border text-success" role="status">
+                        <span class="visually-hidden"></span>
+                    </div>
+                </div>
                 <div class="col-12 tab-content" id="myTabContent"></div>
             {% else %}
                 <div class="col-sm-12 col-md-auto col-lg-8 text-center">
