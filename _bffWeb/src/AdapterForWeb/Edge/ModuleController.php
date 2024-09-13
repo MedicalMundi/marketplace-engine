@@ -13,13 +13,14 @@
  * @license https://github.com/MedicalMundi/marketplace-engine/blob/main/LICENSE MIT
  */
 
-namespace BffWeb\AdapterForWeb;
+namespace BffWeb\AdapterForWeb\Edge;
 
 use Ecotone\Modelling\QueryBus;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Attribute\AsController;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[AsController]
 class ModuleController extends AbstractController
@@ -30,8 +31,8 @@ class ModuleController extends AbstractController
     }
 
     #[Route(
-        path: '/{_locale}/module/{packageName}',
-        name: 'web_module_show',
+        path: '/{_locale}/edge/module/{packageName}',
+        name: 'web_edge_module_show',
         requirements: [
             '_locale' => 'en|es|it',
             'packageName' => "[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+",
@@ -41,11 +42,12 @@ class ModuleController extends AbstractController
         ],
         methods: 'GET',
     )]
+    #[IsGranted('ROLE_ADMIN')]
     public function index(string $packageName): Response
     {
         $module = $this->queryBus->sendWithRouting('catalog.public.getModuleByPackageName', $packageName);
 
-        return $this->render('@web/module/show.html.twig', [
+        return $this->render('@web/edge/module/show.html.twig', [
             'module' => $module,
         ]);
     }

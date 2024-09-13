@@ -65,10 +65,18 @@
       <code>ContactFormType</code>
     </MissingTemplateParam>
   </file>
-  <file src="_bffWeb/src/AdapterForWeb/ModuleController.php">
+  <file src="_bffWeb/src/AdapterForWeb/Edge/ModuleController.php">
     <MixedAssignment>
       <code>$module</code>
     </MixedAssignment>
+  </file>
+  <file src="_bffWeb/src/AdapterForWeb/ModuleDetailController.php">
+    <PossiblyInvalidMethodCall>
+      <code>getDescription</code>
+      <code>getName</code>
+      <code>getVersions</code>
+      <code>getVersions</code>
+    </PossiblyInvalidMethodCall>
   </file>
   <file src="_bffWeb/src/Infrastructure/Framework/Security/Authenticator/Github/GithubAuthenticator.php">
     <PossiblyNullArgument>
