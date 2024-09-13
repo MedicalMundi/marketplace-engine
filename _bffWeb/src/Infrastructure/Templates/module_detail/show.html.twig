@@ -1,0 +1,49 @@
+{% extends '@web/layout-base.html.twig' %}
+
+{% block title %}
+    {% if module != false %}
+        OpenEmr Module: {{ module.package_name }}
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+
+{% endblock %}
+
+{% block main %}
+<main class="flex-shrink-0">
+    <div class="container mt-0">
+        <div class="row mt-1 justify-content-center">
+            {% if module != false %}
+                <div class="col-12 border-bottom mb-3">
+                    <h1 class="fs-3">{{ module.package_name }}</h1>
+                </div>
+
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    {% for version in module.all_version %}
+                        <li class="nav-item" role="presentation">
+                            <button hx-get="{{ path('web_module_show_version', {'packageName': module.package_name, 'version': version}) }}"
+                                    hx-target="#myTabContent"
+                                    class="nav-link"
+                                    id="disabled-tab"
+                                    data-bs-toggle="tab"
+                                    data-bs-target="#myTabContent"
+                                    type="button"
+                                    role="tab"
+                                    aria-controls="disabled-tab-pane"
+                                    aria-selected="false"
+                                    >
+                                {{ version }}
+                            </button>
+                        </li>
+                    {% endfor %}
+                </ul>
+                <div class="col-12 tab-content" id="myTabContent"></div>
+            {% else %}
+                <div class="col-sm-12 col-md-auto col-lg-8 text-center">
+                    <p class="text-warning fs-3">Module not found</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</main>
+{% endblock %}
