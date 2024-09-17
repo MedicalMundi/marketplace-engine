@@ -11,6 +11,17 @@
                     </p>
                     <p class="text-muted text-start fs-6 fw-bold">Description:</p>
                     <p class="text-muted">{{ version.description }}</p>
+                    <div class="col-12">
+                        <ul class="list-group">
+                            <li class="list-group-item fw-bold">Requirements</li>
+
+                            {% for key, require in version.require %}
+                                <li class="list-group-item">
+                                    <p class="text-start">{{ key }} : {{ require }}</p>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -74,3 +85,4 @@
         </div>
     </div>
 </div>
+

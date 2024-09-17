@@ -19,7 +19,7 @@
                 </div>
 
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
-                    {% for version in module.all_version %}
+                    {% for version in module.all_version|reverse %}
                         <li class="nav-item" role="presentation">
                             <button hx-get="{{ path('web_module_show_version', {'packageName': module.package_name, 'version': version}) }}"
                                     hx-target="#myTabContent"
