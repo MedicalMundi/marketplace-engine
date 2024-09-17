@@ -8,6 +8,7 @@ return [
     'Ecotone\Modelling\EventBus',
 
     'KnpU\OAuth2ClientBundle\Client\ClientRegistry',
+    'Packagist\Api\Client',
 
     'Symfony\Bundle\FrameworkBundle\Controller\AbstractController',
     'Symfony\Component\HttpFoundation\Request',
@@ -17,6 +18,8 @@ return [
     'Symfony\Component\HttpKernel\Attribute\AsController',
 
     'Symfony\Component\Security\Http\Authentication\AuthenticationUtils',
+
+    'Symfony\Component\Routing\Requirement\Requirement',
 
     'Symfony\Component\RateLimiter\RateLimiterFactory',
 
