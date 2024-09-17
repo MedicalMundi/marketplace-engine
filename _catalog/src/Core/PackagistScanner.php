@@ -63,8 +63,8 @@ class PackagistScanner
 
     private function isNewModule(string $name): bool
     {
-        $data = (array) $this->queryBus->sendWithRouting('getModuleByPackageName', $name);
+        $isAlreadyRegisteredInDb = $this->queryBus->sendWithRouting('getModuleByPackageName', $name);
 
-        return (0 === \count($data));
+        return (false === $isAlreadyRegisteredInDb) ? true : false;
     }
 }

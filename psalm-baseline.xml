@@ -129,6 +129,11 @@
       <code>$url</code>
     </MissingConstructor>
   </file>
+  <file src="_catalog/src/Core/PackagistScanner.php">
+    <MixedAssignment>
+      <code>$isAlreadyRegisteredInDb</code>
+    </MixedAssignment>
+  </file>
   <file src="_metadata/src/AdapterForReadingExternalMetadataSourceSpy/SpyAdapterForReadingExternalMetadataSource.php">
     <InvalidReturnType>
       <code>ExternalMetadataDto</code>
