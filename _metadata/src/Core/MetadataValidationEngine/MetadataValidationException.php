@@ -18,10 +18,11 @@ namespace Metadata\Core\MetadataValidationEngine;
 class MetadataValidationException extends \Exception
 {
     public function __construct(
+        string $message = '',
         int $code = 0,
         ?\Throwable $previous = null
     ) {
-        $message = 'Metadata validation error';
-        parent::__construct($message, $code, $previous);
+        $errorMessage = ($message === '') ? 'Metadata validation error' : $message;
+        parent::__construct($errorMessage, $code, $previous);
     }
 }

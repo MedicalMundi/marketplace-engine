@@ -15,6 +15,9 @@
 
 namespace Metadata\Core\MetadataValidationEngine;
 
+/**
+ * @throws MetadataValidationException
+ */
 interface ForMetadataSchemaValidation
 {
     public function validate(array $metadata): bool;
