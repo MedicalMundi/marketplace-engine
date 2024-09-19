@@ -89,7 +89,6 @@ class StatelessWorkflowProcess
                     'default_branch' => (string) $data['default_branch'],
                 ];
             }
-
         } catch (\Exception $exception) {
             $this->logger->error('Metadata updater error on module id: ' . $command->moduleId . ' ' . $exception->getMessage());
         }
@@ -148,7 +147,6 @@ class StatelessWorkflowProcess
         $ar = (array) json_decode($composerJsonContent, true);
 
         if ($this->hasMetadata($ar)) {
-
             print_r($ar['extra']['openemr-module']['metadata']['oe-modules.com']);
         }
 
