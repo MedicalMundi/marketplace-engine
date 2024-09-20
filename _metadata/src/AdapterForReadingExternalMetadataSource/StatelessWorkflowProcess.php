@@ -20,6 +20,7 @@ use Ecotone\Messaging\Attribute\Parameter\Header;
 use Ecotone\Modelling\Attribute\CommandHandler;
 use Github\Api\Repo;
 use Github\Client as GithubClient;
+use Metadata\Core\MetadataValidationEngine\MetadataValidator;
 use Metadata\Core\ValueObject\Repository;
 use Nyholm\Psr7\Request;
 use Psr\Http\Client\ClientInterface;
@@ -137,30 +138,35 @@ class StatelessWorkflowProcess
 
     #[InternalHandler(
         inputChannelName: 'module.extractMetadata',
-        outputChannelName: 'image.upload'
+        outputChannelName: 'module.validateMetadata',
+        changingHeaders: true,
     )]
     public function extractMetadata(
         UpdateModuleMetadata $command,
         #[Header('composer_json_content')]
         string $composerJsonContent,
-    ): UpdateModuleMetadata {
+    ): ?array {
         $ar = (array) json_decode($composerJsonContent, true);
 
         if ($this->hasMetadata($ar)) {
-            print_r($ar['extra']['openemr-module']['metadata']['oe-modules.com']);
+            return [
+                'metadata' => $ar['extra']['openemr-module']['metadata']['oe-modules.com'],
+            ];
         }
 
-        print_r($nodata = 'No metadata found');
-
-        return $command;
+        return null;
     }
 
-    #[InternalHandler(inputChannelName: 'image.resize', outputChannelName: 'image.upload')]
-    public function resizeImage(UpdateModuleMetadata $command): UpdateModuleMetadata
+    #[InternalHandler(inputChannelName: 'module.validateMetadata')]
+    public function validateMetadata(#[Header('metadata')] array $metadata, MetadataValidator $metadataValidator): ?UpdateModuleMetadata
     {
-        //echo 'xxxx';
+        if ($metadataValidator->validate($metadata)) {
+            echo 'metadata pass';
+        } else {
+            echo 'metadata not pass';
+        }
 
-        return $command;
+        return null;
     }
 
     #[InternalHandler(inputChannelName: 'image.upload')]

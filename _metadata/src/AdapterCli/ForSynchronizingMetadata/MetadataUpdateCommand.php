@@ -27,13 +27,13 @@ class MetadataUpdateCommand
         $moduleId = 'foo';
 
         // with error
-        $repoUrl = 'https://github.com/zerai/foo';
+        //$repoUrl = 'https://github.com/zerai/foo';
 
         // without metadata
         //$repoUrl = 'https://github.com/zerai/oe-module-demo-farm-add-ons';
 
         // with metadata
-        //$repoUrl = 'https://github.com/MedicalMundi/oe-module-todo-list';
+        $repoUrl = 'https://github.com/MedicalMundi/oe-module-todo-list';
 
         $command = new UpdateModuleMetadata($moduleId, $repoUrl);
 
