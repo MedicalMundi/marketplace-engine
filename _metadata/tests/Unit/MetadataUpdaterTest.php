@@ -32,6 +32,7 @@ use PHPUnit\Framework\TestCase;
 use Ramsey\Uuid\Uuid;
 
 #[CoversClass(MetadataUpdater::class)]
+#[CoversClass(MetadataValidationException::class)]
 #[CoversClass(UnreferencedMetadataModuleException::class)]
 #[UsesClass(MetadataModule::class)]
 #[UsesClass(FakeForStoringMetadata::class)]

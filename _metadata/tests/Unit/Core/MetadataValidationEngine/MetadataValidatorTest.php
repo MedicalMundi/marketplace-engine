@@ -23,6 +23,7 @@ use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass(MetadataValidator::class)]
+#[CoversClass(MetadataValidationException::class)]
 class MetadataValidatorTest extends TestCase
 {
     #[Test]
