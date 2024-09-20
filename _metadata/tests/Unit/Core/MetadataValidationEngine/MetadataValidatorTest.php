@@ -63,10 +63,10 @@ class MetadataValidatorTest extends TestCase
 
     #[Test]
     #[DataProvider('invalidTagsDataprovider')]
-    public function shouldFailWhenTagsIsNotValid(array $metadata): void
+    public function shouldFailWhenTagsIsNotValid(string $exceptionMessage, array $metadata): void
     {
         self::expectException(MetadataValidationException::class);
-        self::expectExceptionMessage('Metadata \'tags\' should be array type');
+        self::expectExceptionMessage($exceptionMessage);
 
         $validator = new MetadataValidator();
         $validator->validate($metadata);
@@ -122,25 +122,33 @@ class MetadataValidatorTest extends TestCase
     public static function invalidTagsDataprovider(): array
     {
         return [
-            [[
+            ['Metadata \'tags\' should be array type', [
                 'category' => 'billing',
                 'tags' => null,
             ]],
-            [[
+            ['Metadata \'tags\' should be array type', [
                 'category' => 'billing',
                 'tags' => 0,
             ]],
-            [[
+            ['Metadata \'tags\' should be array type', [
                 'category' => 'billing',
                 'tags' => 'string',
             ]],
-            [[
+            ['Metadata \'tags\' should be array type', [
                 'category' => 'billing',
                 'tags' => new \stdClass(),
             ]],
-            [[
+            ['Metadata \'tags\' should be array type', [
                 'category' => 'billing',
                 'tags' => 'not allowed',
+            ]],
+            ['Tag not allowed: not allowed', [
+                'category' => 'billing',
+                'tags' => ['not allowed'],
+            ]],
+            ['Tag not allowed: not allowed', [
+                'category' => 'billing',
+                'tags' => ['sms', 'organizer', 'not allowed'],
             ]],
         ];
     }
