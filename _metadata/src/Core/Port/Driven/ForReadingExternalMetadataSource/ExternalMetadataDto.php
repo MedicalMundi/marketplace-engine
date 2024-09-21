@@ -23,4 +23,12 @@ class ExternalMetadataDto
         public readonly array $tags,
     ) {
     }
+
+    public function toArray(): array
+    {
+        return [
+            'category' => $this->category,
+            'tags' => $this->tags,
+        ];
+    }
 }
