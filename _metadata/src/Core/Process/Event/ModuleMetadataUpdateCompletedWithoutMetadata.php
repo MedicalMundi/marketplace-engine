@@ -13,15 +13,12 @@
  * @license https://github.com/MedicalMundi/marketplace-engine/blob/main/LICENSE MIT
  */
 
-namespace Metadata\Core\Process;
+namespace Metadata\Core\Process\Event;
 
-use Metadata\Core\Port\Driven\ForReadingExternalMetadataSource\ExternalMetadataDto;
-
-class ModuleMetadataDetected
+class ModuleMetadataUpdateCompletedWithoutMetadata
 {
     public function __construct(
-        public readonly string $moduleId,
-        public readonly ExternalMetadataDto $externalMetadataDto,
+        public readonly string $moduleId
     ) {
     }
 }

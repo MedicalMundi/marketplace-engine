@@ -13,12 +13,13 @@
  * @license https://github.com/MedicalMundi/marketplace-engine/blob/main/LICENSE MIT
  */
 
-namespace Metadata\Core\Port\Driven\ForReadingExternalMetadataSource;
+namespace Metadata\Core\Process\Event;
 
-interface ForReadingExternalMetadataSource
+class ModuleMetadataUpdateAbortedWithError
 {
-    /**
-     * @throws MetadataReaderException
-     */
-    public function readMetadataFromExternalSource(string $moduleUrl): ?ExternalMetadataDto;
+    public function __construct(
+        public readonly string $moduleId,
+        public readonly mixed $error,
+    ) {
+    }
 }

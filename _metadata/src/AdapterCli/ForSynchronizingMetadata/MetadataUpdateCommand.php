@@ -17,7 +17,7 @@ namespace Metadata\AdapterCli\ForSynchronizingMetadata;
 
 use Ecotone\Messaging\Attribute\ConsoleCommand;
 use Ecotone\Modelling\CommandBus;
-use Metadata\AdapterForReadingExternalMetadataSource\UpdateModuleMetadata;
+use Metadata\Core\Process\StartModuleMetadataUpdate;
 
 class MetadataUpdateCommand
 {
@@ -35,7 +35,7 @@ class MetadataUpdateCommand
         // with metadata
         $repoUrl = 'https://github.com/MedicalMundi/oe-module-todo-list';
 
-        $command = new UpdateModuleMetadata($moduleId, $repoUrl);
+        $command = new StartModuleMetadataUpdate($moduleId, $repoUrl);
 
         $commandBus->send($command);
     }

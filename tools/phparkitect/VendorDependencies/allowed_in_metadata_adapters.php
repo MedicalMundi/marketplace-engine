@@ -7,6 +7,7 @@ return [
     'Ecotone\Modelling\CommandBus',
 
     'Github\Client',
+    'Nyholm\Psr7\Request',
 
     'RuntimeException',
     'UnexpectedValueException'

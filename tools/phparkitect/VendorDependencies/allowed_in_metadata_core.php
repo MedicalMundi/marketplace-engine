@@ -1,6 +1,8 @@
 <?php declare(strict_types=1);
 
 return [
+    'Ecotone\Modelling\EventBus',
+    'Ecotone\Modelling\CommandBus',
     'Metadata\AdapterForReadingExternalMetadataSourceSpy\SpyAdapterForReadingExternalMetadataSource',
     'Metadata\AdapterForReadingExternalMetadataSourceStub\StubAdapterForReadingExternalMetadataSource',
 
@@ -10,4 +12,5 @@ return [
 
     'Throwable',
     'RuntimeException',
+    'UnexpectedValueException',
 ];

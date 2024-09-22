@@ -13,20 +13,17 @@
  * @license https://github.com/MedicalMundi/marketplace-engine/blob/main/LICENSE MIT
  */
 
-namespace Metadata\AdapterForReadingExternalMetadataSource;
+namespace Metadata\Core\ValueObject;
 
 class ComposerJsonFile
 {
     private function __construct(
-        private string $source,
+        private string $value,
     ) {
     }
 
     public static function createFromJson(string $json): self
     {
-        /**
-         * TODO: check if valid json
-         */
         return new self($json);
     }
 
@@ -37,11 +34,10 @@ class ComposerJsonFile
     {
         $result = false;
 
-        $data = (array) json_decode($this->source, true);
+        $data = (array) json_decode($this->value, true);
 
         if (\array_key_exists('extra', $data)) {
             $extraSection = (array) $data['extra'];
-
 
             if (\array_key_exists('openemr-module', $extraSection)) {
                 $openEmrModuleSection = (array) $extraSection['openemr-module'];
@@ -59,11 +55,15 @@ class ComposerJsonFile
         return $result;
     }
 
-    public function getMetadata(): array
+    public function getMetadata(): ?array
     {
-        $data = (array) json_decode($this->source, true);
+        $data = (array) json_decode($this->value, true);
 
-        /** @psalm-suppress MixedArrayAccess */
-        return (array) $data['extra']['openemr-module']['metadata']['oe-modules.com'];
+        if ($this->hasMetadata()) {
+            /** @psalm-suppress MixedArrayAccess */
+            return (array) $data['extra']['openemr-module']['metadata']['oe-modules.com'];
+        }
+
+        return null;
     }
 }

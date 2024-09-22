@@ -13,9 +13,9 @@
  * @license https://github.com/MedicalMundi/marketplace-engine/blob/main/LICENSE MIT
  */
 
-namespace MetadataTests\Unit\ComposerJsonFile;
+namespace MetadataTests\Unit\Core\ValueObject;
 
-use Metadata\AdapterForReadingExternalMetadataSource\ComposerJsonFile;
+use Metadata\Core\ValueObject\ComposerJsonFile;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
@@ -35,7 +35,6 @@ class ComposerJsonFileTest extends TestCase
     }
 
     #[Test]
-    #[DataProvider(('jsonWithMetadataDataprovider'))]
     public function shouldReturnMetadata(): void
     {
         $json = '{
@@ -62,6 +61,24 @@ class ComposerJsonFileTest extends TestCase
         $sut = ComposerJsonFile::createFromJson($json);
 
         self::assertSame($expectedResult, $sut->getMetadata());
+    }
+
+    #[Test]
+    public function shouldReturnNullWhenThereAreNotMetadata(): void
+    {
+        $json = '{
+                "extra": {
+                    "openemr-module": {
+                        "metadata": {
+                        }
+                    }
+                }
+            }'
+        ;
+
+        $sut = ComposerJsonFile::createFromJson($json);
+
+        self::assertNull($sut->getMetadata());
     }
 
     public static function jsonWithoutMetadataDataprovider(): iterable

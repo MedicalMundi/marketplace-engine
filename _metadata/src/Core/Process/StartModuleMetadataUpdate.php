@@ -13,9 +13,9 @@
  * @license https://github.com/MedicalMundi/marketplace-engine/blob/main/LICENSE MIT
  */
 
-namespace Metadata\AdapterForReadingExternalMetadataSource;
+namespace Metadata\Core\Process;
 
-class UpdateModuleMetadata
+class StartModuleMetadataUpdate
 {
     public function __construct(
         public readonly string $moduleId,
