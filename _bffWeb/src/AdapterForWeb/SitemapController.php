@@ -46,6 +46,8 @@ class SitemapController extends AbstractController
 
         ];
 
+        $urls = $this->addStaticModuleRoutes($urls);
+
         // Add your sitemap URLs dynamically (e.g., from database or routes)
         // Dynamic URLs from Post table
 
@@ -57,5 +59,42 @@ class SitemapController extends AbstractController
         return new Response($xml, Response::HTTP_OK, [
             'Content-Type' => 'text/xml',
         ]);
+    }
+
+    private function addStaticModuleRoutes(array $urls): array
+    {
+        // Static module URLs
+        $supportedModules = [
+            'adunsulag/oe-module-custom-skeleton',
+            'medicalmundi/oe-module-npi-registry',
+            'zerai/oe-module-demo-farm-add-ons',
+            'providencehealthtech/mod-venom-coding',
+            'openemr/oe-module-faxsms',
+            'mouse55/oe-module-custom-sms-reminders',
+            'medicalmundi/oe-module-todo-list',
+            'medicalmundi/oe-module-marketplace',
+            'discoverandchange/oe-module-manning-custom-theme',
+            'discoverandchange/oe-module-dc-assessments',
+            'claimrevolution/oe-module-claimrev-connect',
+            'adunsulag/oe-module-g9-ccda-exporter',
+        ];
+
+        foreach ($supportedModules as $moduleName) {
+            $urls[] = [
+                'loc' => $this->generateUrl('web_module_show', [
+                    'packageName' => $moduleName,
+                ]),
+                'changefreq' => 'weekly',
+                'priority' => '1.00',
+
+            ];
+        }
+
+
+
+
+
+
+        return $urls;
     }
 }
