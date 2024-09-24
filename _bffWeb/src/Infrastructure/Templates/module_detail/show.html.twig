@@ -6,8 +6,24 @@
     {% else %}
         {{ parent() }}
     {% endif %}
-
 {% endblock %}
+
+{% block metadata_keywords %}
+    {% if module != false %}
+        <meta name="keywords" content="{{ module.package_name }}, openemr module, openemr marketplace">
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
+
+{% block metadata_description %}
+    {% if module != false %}
+        <meta name="description" content="{{ module.description }}">
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
+
 
 {% block main %}
 <main class="flex-shrink-0">
