@@ -16,9 +16,15 @@
         {% endif %}
         <meta charset="UTF-8">
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
-        <meta name="description" content="OpenEmr modules marketplace">
-        <meta name="keywords" content="OpenEmr module, openemr module, openemr, oe-modules, openEmr marketplace">
-        <meta name="author" content="MedicalMundi.com">
+        {% block metadata_description %}
+            <meta name="description" content="OpenEmr modules marketplace">
+        {% endblock %}
+        {% block metadata_keywords %}
+            <meta name="keywords" content="OpenEmr module, openemr module, openemr, oe-modules, openEmr marketplace">
+        {% endblock %}
+        {% block metadata_author %}
+            <meta name="author" content="MedicalMundi.com">
+        {% endblock %}
         {% if not google_site_verification == '' %}
             <meta name="google-site-verification" content="{{ google_site_verification }}" />
         {% endif %}
