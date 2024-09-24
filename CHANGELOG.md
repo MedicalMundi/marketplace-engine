@@ -9,6 +9,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) a
 * Module metadata management [WIP]
 * Third Party APIs [WIP]
 
+## [v0.9.4] - 2024-09-24
+### Maintenance release
+* improved sitemap generation
+
 ## [v0.9.3] - 2024-09-17
 ### Maintenance release
 
