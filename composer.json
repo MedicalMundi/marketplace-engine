@@ -91,6 +91,12 @@
             "symfony/flex": true,
             "symfony/runtime": true
         },
+        "audit": {
+            "abandoned": "report",
+            "ignore": {
+                "CVE-2024-45411": "To fix after CI audit conf."
+            }
+        },
         "optimize-autoloader": true,
         "preferred-install": {
             "*": "dist"
