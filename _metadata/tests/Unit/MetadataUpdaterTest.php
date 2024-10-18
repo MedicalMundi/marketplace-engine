@@ -13,14 +13,14 @@
  * @license https://github.com/MedicalMundi/marketplace-engine/blob/main/LICENSE MIT
  */
 
-namespace Metadata\Tests\Unit;
+namespace MetadataTests\Unit;
 
 use Metadata\AdapterForReadingExternalMetadataSourceStub\StubAdapterForReadingExternalMetadataSource;
 use Metadata\AdapterForStoringMetadataFake\FakeForStoringMetadata;
 use Metadata\Core\MetadataModule;
 use Metadata\Core\MetadataUpdater;
-use Metadata\Core\MetadataValidationEngine\FixedTrueMetadataValidationEngineValidation;
 use Metadata\Core\MetadataValidationEngine\MetadataValidationException;
+use Metadata\Core\MetadataValidationEngine\MetadataValidator;
 use Metadata\Core\ModuleConfigurator;
 use Metadata\Core\Port\Driven\ForReadingExternalMetadataSource\ExternalMetadataDto;
 use Metadata\Core\Port\Driven\ModuleMetadata;
@@ -32,11 +32,12 @@ use PHPUnit\Framework\TestCase;
 use Ramsey\Uuid\Uuid;
 
 #[CoversClass(MetadataUpdater::class)]
+#[CoversClass(MetadataValidationException::class)]
 #[CoversClass(UnreferencedMetadataModuleException::class)]
 #[UsesClass(MetadataModule::class)]
 #[UsesClass(FakeForStoringMetadata::class)]
 #[UsesClass(StubAdapterForReadingExternalMetadataSource::class)]
-#[UsesClass(FixedTrueMetadataValidationEngineValidation::class)]
+#[UsesClass(MetadataValidator::class)]
 #[UsesClass(ModuleConfigurator::class)]
 #[UsesClass(ModuleMetadata::class)]
 #[UsesClass(ExternalMetadataDto::class)]
@@ -77,23 +78,22 @@ class MetadataUpdaterTest extends TestCase
             $tags = ['irrelevant1-1', 'irrelevant-2']
         );
         $app->moduleConfigurator()->createMetadata($moduleMetadata);
-        $app->moduleConfigurator()->setExternalMetadataDto($repoUrl, new ExternalMetadataDto(false, 'performance', ['cache', 'redis']));
+        $app->moduleConfigurator()->setExternalMetadataDto($repoUrl, new ExternalMetadataDto(false, 'billing', ['sms', 'organizer']));
 
         $app->metadataUpdater()->synchronizeMetadataFor($moduleIdAsString);
 
         $updatedModuleMetadata = $app->metadataUpdater()->getMetadataForModule($moduleIdAsString);
         self::assertEquals(false, $updatedModuleMetadata->isSynchronizable());
-        self::assertEquals('performance', $updatedModuleMetadata->category());
-        self::assertEquals(['cache', 'redis'], $updatedModuleMetadata->tags());
+        self::assertEquals('billing', $updatedModuleMetadata->category());
+        self::assertEquals(['sms', 'organizer'], $updatedModuleMetadata->tags());
     }
 
     #[Test]
     public function should_throw_metadata_validation_error()
     {
-        self::markTestIncomplete('Implement a real Metadata Validator');
         self::expectException(MetadataValidationException::class);
         self::expectExceptionMessage(
-            'Metadata validation error'
+            'Category not allowed: performance'
         );
 
         $app = new MetadataModule(

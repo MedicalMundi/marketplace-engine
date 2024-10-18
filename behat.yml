@@ -11,4 +11,4 @@ default:
             paths:
                 - '%paths.base%/_metadata/tests/Acceptance/Bdd/Features/driver_for_synchronizing_metadata'
             contexts:
-                - Metadata\Tests\Acceptance\Bdd\Context\ForSynchronizingMetadataScenarioContext
+                - MetadataTests\Acceptance\Bdd\Context\ForSynchronizingMetadataScenarioContext
