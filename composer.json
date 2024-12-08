@@ -94,7 +94,9 @@
         "audit": {
             "abandoned": "report",
             "ignore": {
-                "CVE-2024-45411": "To fix after CI audit conf."
+                "CVE-2024-51754": "Unguarded calls to __toString() when nesting an object into an array",
+                "CVE-2024-51755": "Unguarded calls to __isset() ...",
+                "CVE-2024-51996": "Authentication Bypass via persisted RememberMe cookie"
             }
         },
         "optimize-autoloader": true,
