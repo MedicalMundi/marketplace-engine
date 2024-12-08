@@ -95,7 +95,7 @@
         "audit": {
             "abandoned": "report",
             "ignore": {
-                "CVE-2024-45411": "To fix after CI audit conf."
+                "CVE-2024-51996": "Authentication Bypass via persisted RememberMe cookie"
             }
         },
         "optimize-autoloader": true,
