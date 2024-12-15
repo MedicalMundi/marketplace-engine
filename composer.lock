@@ -3352,16 +3352,16 @@
         },
         {
             "name": "knplabs/packagist-api",
-            "version": "v2.1.0",
+            "version": "v2.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/KnpLabs/packagist-api.git",
-                "reference": "4634b39411011c02e7b5be4013ef6af3c8224373"
+                "reference": "c74bfd14bb15e552a1fcf53677379dc1cf9acaab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/packagist-api/zipball/4634b39411011c02e7b5be4013ef6af3c8224373",
-                "reference": "4634b39411011c02e7b5be4013ef6af3c8224373",
+                "url": "https://api.github.com/repos/KnpLabs/packagist-api/zipball/c74bfd14bb15e552a1fcf53677379dc1cf9acaab",
+                "reference": "c74bfd14bb15e552a1fcf53677379dc1cf9acaab",
                 "shasum": ""
             },
             "require": {
@@ -3406,9 +3406,9 @@
             ],
             "support": {
                 "issues": "https://github.com/KnpLabs/packagist-api/issues",
-                "source": "https://github.com/KnpLabs/packagist-api/tree/v2.1.0"
+                "source": "https://github.com/KnpLabs/packagist-api/tree/v2.1.1"
             },
-            "time": "2023-12-07T07:50:02+00:00"
+            "time": "2024-12-09T21:36:43+00:00"
         },
         {
             "name": "knpuniversity/oauth2-client-bundle",
@@ -8795,8 +8795,8 @@
             "type": "library",
             "extra": {
                 "thanks": {
-                    "name": "symfony/polyfill",
-                    "url": "https://github.com/symfony/polyfill"
+                    "url": "https://github.com/symfony/polyfill",
+                    "name": "symfony/polyfill"
                 }
             },
             "autoload": {
@@ -8877,8 +8877,8 @@
             "type": "library",
             "extra": {
                 "thanks": {
-                    "name": "symfony/polyfill",
-                    "url": "https://github.com/symfony/polyfill"
+                    "url": "https://github.com/symfony/polyfill",
+                    "name": "symfony/polyfill"
                 }
             },
             "autoload": {
@@ -8961,8 +8961,8 @@
             "type": "library",
             "extra": {
                 "thanks": {
-                    "name": "symfony/polyfill",
-                    "url": "https://github.com/symfony/polyfill"
+                    "url": "https://github.com/symfony/polyfill",
+                    "name": "symfony/polyfill"
                 }
             },
             "autoload": {
