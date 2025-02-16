@@ -13,7 +13,7 @@
  * @license https://github.com/MedicalMundi/marketplace-engine/blob/main/LICENSE MIT
  */
 
-namespace Metadata\Tests\Unit\Framework;
+namespace MetadataTests\Unit\Framework;
 
 use Metadata\Infrastructure\Framework\Extension\MetadataModuleExtension;
 use PHPUnit\Framework\Attributes\CoversClass;

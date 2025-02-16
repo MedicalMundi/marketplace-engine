@@ -4,6 +4,7 @@ ecotone:
     namespaces: # string[] (default: [])
       - 'Catalog\'
       - 'BffWeb\'
+      - 'Metadata\'
     defaultSerializationMediaType: application/x-php-serialized # string (default: application/x-php-serialized) [application/json, application/xml]
     defaultErrorChannel: null # string (default: null)
     defaultMemoryLimit: 1024 # string (default: 1024)

@@ -141,7 +141,7 @@
   </file>
   <file src="_metadata/src/AdapterForReadingExternalMetadataSourceStub/StubAdapterForReadingExternalMetadataSource.php">
     <MixedInferredReturnType>
-      <code>ExternalMetadataDto</code>
+      <code>?ExternalMetadataDto</code>
     </MixedInferredReturnType>
     <MixedReturnStatement>
       <code><![CDATA[$this->metadataDtosIndexedByUrl[$moduleUrl]]]></code>
@@ -156,6 +156,16 @@
     </MixedReturnStatement>
   </file>
   <file src="_metadata/src/Core/MetadataUpdater.php">
+    <PossiblyNullArgument>
+      <code><![CDATA[$eternalMetadata->category]]></code>
+      <code><![CDATA[$eternalMetadata->enableSync]]></code>
+      <code><![CDATA[$eternalMetadata->tags]]></code>
+    </PossiblyNullArgument>
+    <PossiblyNullPropertyFetch>
+      <code><![CDATA[$eternalMetadata->category]]></code>
+      <code><![CDATA[$eternalMetadata->enableSync]]></code>
+      <code><![CDATA[$eternalMetadata->tags]]></code>
+    </PossiblyNullPropertyFetch>
     <PossiblyNullReference>
       <code>repositoryUrl</code>
       <code>validate</code>

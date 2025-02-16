@@ -13,16 +13,12 @@
  * @license https://github.com/MedicalMundi/marketplace-engine/blob/main/LICENSE MIT
  */
 
-namespace Metadata\Core\MetadataValidationEngine;
+namespace Metadata\Core\Process\Event;
 
-class MetadataValidationException extends \Exception
+class ModuleMetadataUpdateCompletedWithInvalidMetadata
 {
     public function __construct(
-        string $message = '',
-        int $code = 0,
-        ?\Throwable $previous = null
+        public readonly string $moduleId
     ) {
-        $errorMessage = ($message === '') ? 'Metadata validation error' : $message;
-        parent::__construct($errorMessage, $code, $previous);
     }
 }

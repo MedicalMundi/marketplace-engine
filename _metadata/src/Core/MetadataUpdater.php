@@ -15,9 +15,9 @@
 
 namespace Metadata\Core;
 
-use Metadata\Core\MetadataValidationEngine\FixedTrueMetadataValidationEngineValidation;
 use Metadata\Core\MetadataValidationEngine\ForMetadataSchemaValidation;
 use Metadata\Core\MetadataValidationEngine\MetadataValidationException;
+use Metadata\Core\MetadataValidationEngine\MetadataValidator;
 use Metadata\Core\Port\Driven\ForReadingExternalMetadataSource\ForReadingExternalMetadataSource;
 use Metadata\Core\Port\Driven\ForReadingExternalMetadataSource\MetadataReaderException;
 use Metadata\Core\Port\Driven\ForStoringMetadata;
@@ -29,10 +29,9 @@ class MetadataUpdater implements ForSynchronizingMetadata
     public function __construct(
         private readonly ForStoringMetadata $metadataStore,
         private readonly ForReadingExternalMetadataSource $metadataReader,
-        /** TODO: Implement a real validator engine */
         private ?ForMetadataSchemaValidation $validatorEngine = null,
     ) {
-        $this->validatorEngine = $validatorEngine ?? new FixedTrueMetadataValidationEngineValidation();
+        $this->validatorEngine = $validatorEngine ?? new MetadataValidator();
     }
 
     public function getMetadataForModule(string $moduleId): ?ModuleMetadata
