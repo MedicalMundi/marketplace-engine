@@ -20,5 +20,5 @@ interface ForReadingExternalMetadataSource
     /**
      * @throws MetadataReaderException
      */
-    public function readMetadataFromExternalSource(string $moduleUrl): ExternalMetadataDto;
+    public function readMetadataFromExternalSource(string $moduleUrl): ?ExternalMetadataDto;
 }

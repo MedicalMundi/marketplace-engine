@@ -16,6 +16,7 @@
         "ecotone/jms-converter": "^1.2",
         "ecotone/pdo-event-sourcing": "^1.2",
         "ecotone/symfony-bundle": "^1.2",
+        "knplabs/github-api": "^3.14",
         "knplabs/knp-menu-bundle": "^3.3",
         "knplabs/packagist-api": "^2.0",
         "knpuniversity/oauth2-client-bundle": "^2.18",
@@ -129,7 +130,7 @@
             "Catalog\\Tests\\": "_catalog/tests/",
             "BffWeb\\Tests\\": "_bffWeb/tests/",
             "BffApi\\Tests\\": "_bffApi/tests/",
-            "Metadata\\Tests\\": "_metadata/tests/"
+            "MetadataTests\\": "_metadata/tests/"
         }
     },
     "minimum-stability": "stable",

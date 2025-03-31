@@ -13,12 +13,12 @@
  * @license https://github.com/MedicalMundi/marketplace-engine/blob/main/LICENSE MIT
  */
 
-namespace Metadata\Core\MetadataValidationEngine;
+namespace Metadata\Core\Process\Event;
 
-class FixedTrueMetadataValidationEngineValidation implements ForMetadataSchemaValidation
+class ModuleMetadataUpdateCompletedWithoutMetadata
 {
-    public function validate(array $metadata): bool
-    {
-        return true;
+    public function __construct(
+        public readonly string $moduleId
+    ) {
     }
 }

@@ -13,16 +13,15 @@
  * @license https://github.com/MedicalMundi/marketplace-engine/blob/main/LICENSE MIT
  */
 
-namespace Metadata\Core\MetadataValidationEngine;
+namespace Metadata\Core\Process\Event;
 
-class MetadataValidationException extends \Exception
+use Metadata\Core\Port\Driven\ForReadingExternalMetadataSource\ExternalMetadataDto;
+
+class ModuleMetadataUpdateCompletedWithMetadata
 {
     public function __construct(
-        string $message = '',
-        int $code = 0,
-        ?\Throwable $previous = null
+        public readonly string $moduleId,
+        public readonly ExternalMetadataDto $externalMetadataDto,
     ) {
-        $errorMessage = ($message === '') ? 'Metadata validation error' : $message;
-        parent::__construct($errorMessage, $code, $previous);
     }
 }

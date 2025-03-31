@@ -22,16 +22,26 @@ class StubAdapterForReadingExternalMetadataSource implements ForReadingExternalM
 {
     public function __construct(
         private array $metadataDtosIndexedByUrl = [],
+        private array $exceptions = [],
     ) {
     }
 
-    public function readMetadataFromExternalSource(string $moduleUrl): ExternalMetadataDto
+    public function readMetadataFromExternalSource(string $moduleUrl): ?ExternalMetadataDto
     {
+        if (0 < \count($this->exceptions)) {
+            throw $this->exceptions[0];
+        }
+
         return $this->metadataDtosIndexedByUrl[$moduleUrl];
     }
 
-    public function setExternalMetadataDto(string $url, ExternalMetadataDto $externalMetadataDto): void
+    public function setExternalMetadataDto(string $url, ?ExternalMetadataDto $externalMetadataDto): void
     {
         $this->metadataDtosIndexedByUrl[$url] = $externalMetadataDto;
+    }
+
+    public function setException(object $exception): void
+    {
+        $this->exceptions[] = $exception;
     }
 }
