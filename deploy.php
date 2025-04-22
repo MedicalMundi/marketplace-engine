@@ -60,28 +60,28 @@ host('production')
 
 
 /** Staging Application path on hosting server  */
-set('application_path_stage', 'stage.marketplace.oe-modules.com');
+set('application_path_stage', 'stage.extensions.openemrmarketplace.com');
 
 /** Staging Hosts configuration */
 host('stage')
-    ->setHostname('stage.marketplace.oe-modules.com')
+    ->setHostname('stage.extensions.openemrmarketplace.com')
     ->set('stage', 'stage')
     ->setLabels([
         'env' => 'stage',
     ])
     ->set('deploy_path', '~/{{application_path_stage}}')
-    ->set('http_user', 'ekvwxsme')
+    ->set('http_user', 'urkqihid')
     ->set('writable_use_sudo', false)
     ->set('writable_mode', 'chmod')
     /** ssh settings */
-    ->setRemoteUser('ekvwxsme')
+    ->setRemoteUser('urkqihid')
     ->setPort(3508)
     //->set('identityFile', '~/.ssh/id_rsa_marketplace_engine_deployer_local')
     ->set('ssh_multiplexing', false)
     /** git & composer settings */
     ->set('branch', 'main')
     ->set('composer_options', ' --prefer-dist --no-progress --no-interaction --optimize-autoloader')
-    ->set('keep_releases', 2)
+    ->set('keep_releases', 3)
 ;
 
 
