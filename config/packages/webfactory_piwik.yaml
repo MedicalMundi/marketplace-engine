@@ -2,7 +2,7 @@ webfactory_piwik:
   # Required, no default. Must be set to the site id found in the Matomo control panel
   site_id: 2
   # Required. no default. Hostname and path to the Matomo host.
-  piwik_host: matomo.oe-modules.com
+  piwik_host: matomo.openemrmarketplace.com
   # Optional, has default. Usually, you only want to include the tracking code in a production environment
   disabled: '%kernel.debug%'
   # Optional, has default. Path to the tracking script on the host.
@@ -14,7 +14,7 @@ webfactory_piwik:
 
 when@prod:
   webfactory_piwik:
-    disabled: false
+    disabled: true
 
 when@dev:
   webfactory_piwik:
