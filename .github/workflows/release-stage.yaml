@@ -8,6 +8,11 @@ on:
         required: true
         type: string
 
+defaults:
+  run:
+    shell: bash
+    working-directory: engine-service
+
 jobs:
   prepare-release:
     name: Prepare release (php-${{ matrix.php }})

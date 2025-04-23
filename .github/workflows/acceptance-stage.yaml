@@ -8,6 +8,11 @@ on:
         required: true
         type: string
 
+defaults:
+  run:
+    shell: bash
+    working-directory: engine-service
+
 env:
   # PHP SETTINGS
   PHP_EXTENSIONS: json
