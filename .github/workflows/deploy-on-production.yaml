@@ -11,6 +11,11 @@ on:
         required: true
         type: string
 
+defaults:
+  run:
+    shell: bash
+    working-directory: engine-service
+
 # It is important to specify "concurrency" for the workflow,
 # to prevent concurrency between different deploys.
 # @see https://docs.github.com/en/actions/using-jobs/using-concurrency

@@ -220,17 +220,23 @@ jobs:
                 --coverage-clover ${{ vars.UNIT_TEST_CLOVER_FILENAME }} \
                 --testdox-text ${{ vars.UNIT_TEST_DOC_FILENAME }}
 
+          - name: Check COVERAGE file report generation
+            if: ${{ matrix.generate-coverage-report }}
+            run: |
+                ls -al
+
           - name: Get Coverage artifact name
             if: ${{ matrix.generate-coverage-report }}
             id: coverage-artifact-name
             run: echo "name=${{ vars.ARTIFATC_NAME_FOR_UNIT_TESTS_COVERAGE }}-$GITHUB_SHA" >> $GITHUB_OUTPUT
 
+          # TODO: Fix coverage report file upload
           - name: Save coverage reports
             if: ${{ matrix.generate-coverage-report }}
             uses: actions/upload-artifact@v4
             with:
                 name: ${{ steps.coverage-artifact-name.outputs.name }}
-                path: ${{ vars.UNIT_TEST_CLOVER_FILENAME }}
+                path: "engine-service/${{ vars.UNIT_TEST_CLOVER_FILENAME }}"
 
           - name: Get Test doc artifact name
             if: ${{ matrix.generate-coverage-report }}
@@ -242,6 +248,6 @@ jobs:
             uses: actions/upload-artifact@v4
             with:
                 name: ${{ steps.test-doc-artifact-name.outputs.name }}
-                path: ${{ vars.UNIT_TEST_DOC_FILENAME }}
+                path: "engine-service/${{ vars.UNIT_TEST_DOC_FILENAME }}"
 
 

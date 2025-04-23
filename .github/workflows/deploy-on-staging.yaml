@@ -11,6 +11,11 @@ on:
         required: true
         type: string
 
+defaults:
+  run:
+    shell: bash
+    working-directory: engine-service
+
 # It is important to specify "concurrency" for the workflow,
 # to prevent concurrency between different deploys.
 # @see https://docs.github.com/en/actions/using-jobs/using-concurrency
@@ -68,7 +73,7 @@ jobs:
           deployer-version: "7.3.3"
           dep: deploy stage -o branch=main
           private-key: ${{ secrets.DEPLOYER_PRIVATE_SSH_KEY }}
-          deployer-binary: "./vendor/bin/dep"
+          deployer-binary: "./engine-service/vendor/bin/dep"
 
 
   enable-maintenance-mode:
@@ -127,4 +132,4 @@ jobs:
           deployer-version: "7.3.3"
           dep: maintenance:on stage
           private-key: ${{ secrets.DEPLOYER_PRIVATE_SSH_KEY }}
-          deployer-binary: "./vendor/bin/dep"
+          deployer-binary: "./engine-service/vendor/bin/dep"
