@@ -1,0 +1,105 @@
+name: PHP Composer Setup
+
+description: 'Sets up the PHP environment and composer dependencies'
+
+inputs:
+    php-version:
+        description: ''
+        required: true
+    composer-working-directory:
+      description: 'The \''backend service\'' directory (service)'
+    #################################################################
+    # Everything below this line is optional.
+    #
+    # It's designed to make the setup a reasonably standard 
+    # codebase "just work," though there may be speed gains to be had
+    # by tweaking these flags.
+    #################################################################
+    use-php-extensions-cache:
+      description: 'Enable or disable cache for PHP extensions'
+      required: false
+      default: 'false'
+    php-extensions:
+        description: 'The PHP extensions to install'
+        required: false
+        default: ' '
+    extensions-cache-key:
+        description: 'The key used to cache PHP extensions'
+        required: false
+        default: 'v1'
+    ini-values:
+      description: 'php ini values'
+      required: false
+      default: ''
+    coverage:
+      description: 'php coverage conf. (pcov|xdebug|none)'
+      required: false
+      default: 'none'
+    # Full tools list
+    # @see https://github.com/shivammathur/setup-php?tab=readme-ov-file#wrench-tools-support
+    tools:
+      description: 'enable tools, composer is always enabled. ( composer-normalize:2.16.0, churn, composer-unused, ... )'
+      required: false
+      default: ''
+    use-composer-cache:
+        description: 'Enable or disable cache for composer dependencies'
+        required: false
+        default: 'false'
+    composer-install-args:
+      description: 'Arguments string for composer install command'
+      required: false
+      default: ''
+
+runs:
+    using: composite
+    steps:
+        - name: Setup cache environment
+          if: ${{ inputs.use-php-extensions-cache }}
+          id: extcache
+          uses: shivammathur/cache-extensions@v1
+          with:
+              php-version: ${{ inputs.php-version }}
+              extensions: ${{ inputs.php-extensions }}
+              key: ${{ inputs.extensions-cache-key }}
+        
+        - name: Cache extensions
+          if: ${{ inputs.use-php-extensions-cache }}
+          uses: actions/cache@v4
+          with:
+              path: ${{ steps.extcache.outputs.dir }}
+              key: ${{ steps.extcache.outputs.key }}
+              restore-keys: ${{ steps.extcache.outputs.key }}
+
+        - name: Use PHP
+          uses: shivammathur/setup-php@2.32.0
+          with:
+              php-version: ${{ inputs.php-version }}
+              tools: composer, ${{ inputs.tools }}
+              extensions: ${{ inputs.php-extensions }}
+              coverage: ${{ inputs.coverage }}
+              ini-values: ${{ inputs.ini-values }}
+
+        - name: Set Composer Cache Directory
+          if: ${{ inputs.use-composer-cache }}
+          id: composer-cache
+          shell: bash
+          run: |
+            cd ${{ inputs.composer-working-directory }}
+            echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+
+        - name: Cache Composer dependencies
+          uses: actions/cache@v4
+          if: ${{ inputs.use-composer-cache }}
+          with:
+            path: |
+              ${{ steps.composer-cache.outputs.dir }}
+              ${{ inputs.composer-working-directory }}/vendor
+            key: ${{ inputs.composer-working-directory }}-service-composer-deps-${{ runner.os }}-php-${{ inputs.php-version }}-composer-${{ hashFiles('**/composer.lock') }}
+            restore-keys: |
+              ${{ inputs.composer-working-directory }}-service-composer-deps-${{ runner.os }}-php-${{ inputs.php-version }}-composer-
+
+        - name: Install dependencies
+          run: |
+            cd ${{ inputs.composer-working-directory }}
+            composer install ${{ inputs.composer-install-args }}
+          shell: bash
