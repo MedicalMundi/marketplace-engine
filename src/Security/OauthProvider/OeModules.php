@@ -25,7 +25,7 @@ class OeModules extends AbstractProvider
 {
     use BearerAuthorizationTrait;
 
-    public string $domain = 'https://auth.oe-modules.com';
+    public string $domain = 'https://auth.openemrmarketplace.com';
 
     public function getBaseAuthorizationUrl(): string
     {

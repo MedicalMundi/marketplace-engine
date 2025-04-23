@@ -104,7 +104,7 @@ class ContactController extends AbstractController
     private function prepareEmail(ContactFormDto $contact): Email
     {
         return (new Email())
-            ->from('sys@stage.accounts.oe-modules.com')
+            ->from('system@extensions.openemrmarketplace.com')
             ->to('teclaizerai@gmail.com')
             ->priority(Email::PRIORITY_HIGH)
             ->subject('Richiesta Informazione: ' . $contact->subject)

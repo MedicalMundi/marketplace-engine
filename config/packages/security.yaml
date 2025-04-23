@@ -10,7 +10,7 @@ security:
         users_in_memory:
             memory:
                 users:
-                    admin@oe-modules.com: {password: '$2y$13$RYPXjE5z1.S1GFpDKmiuduFHjx1yzTDrseQvIbO9PPdNpFcTQ3fo2', roles: [ 'ROLE_SUPER_ADMIN' ]}
+                    admin@openemrmarketplace.com: {password: '$2y$13$RYPXjE5z1.S1GFpDKmiuduFHjx1yzTDrseQvIbO9PPdNpFcTQ3fo2', roles: [ 'ROLE_SUPER_ADMIN' ]}
 
         all_users:
             chain:
@@ -66,7 +66,7 @@ when@dev:
             users_in_memory:
                 memory:
                     users:
-                        admin@oe-modules.com: { password: '$2y$13$RYPXjE5z1.S1GFpDKmiuduFHjx1yzTDrseQvIbO9PPdNpFcTQ3fo2', roles: [ 'ROLE_ADMIN' ] }
+                        admin@openemrmarketplace.com: { password: '$2y$13$RYPXjE5z1.S1GFpDKmiuduFHjx1yzTDrseQvIbO9PPdNpFcTQ3fo2', roles: [ 'ROLE_ADMIN' ] }
                         demo@example.com: { password: '$2y$13$k1pe2mYaWng.NOvHePwsqu0JUqZysHm0noQW27JeFpM23oumTRrQe', roles: [ 'ROLE_USER' ] }
 
             all_users:
