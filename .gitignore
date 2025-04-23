@@ -1,36 +1,12 @@
 /.idea
 
+/docker/
+/docs/
+/docs/
 
-.env.itroom.production
-.env.itroom.stage
-docs/internal/
-docs/wip/
-/tools/**/vendor
-
+Dockerfile
 docker-compose.yml
 docker-compose.override.yml
 
-###> symfony/framework-bundle ###
-/.env.local
-/.env.local.php
-/.env.*.local
-/config/secrets/prod/prod.decrypt.private.php
-/public/bundles/
+/tests_e2e/
 /var/
-/vendor/
-###< symfony/framework-bundle ###
-
-###> symfony/phpunit-bridge ###
-.phpunit.result.cache
-/phpunit.xml
-###< symfony/phpunit-bridge ###
-
-###> phpunit/phpunit ###
-/phpunit.xml
-.phpunit.result.cache
-###< phpunit/phpunit ###
-
-
-###> corley/maintenance-bundle ###
-public/hard.lock
-###< corley/maintenance-bundle ###

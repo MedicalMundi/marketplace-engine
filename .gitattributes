@@ -1,24 +1,24 @@
 /.github export-ignore
 /docker export-ignore
-/features export-ignore
-/tests export-ignore
-/tools export-ignore
+/engine-service/features export-ignore
+/engine-service/tests export-ignore
+/engine-service/tools export-ignore
 
 .gitattributes export-ignore
 .gitignore export-ignore
-churn.dist.yml export-ignore
-churn.yml export-ignore
-codecov.yml export-ignore
-deploy.php export-ignore
-ecs.php export-ignore
-phparkitect.php export-ignore
-phparkitect-baseline.json export-ignore
-phpunit.xml.dist export-ignore
-psalm.xml export-ignore
-psalm-baseline.xml export-ignore
-rector.php export-ignore
+/engine-service/churn.dist.yml export-ignore
+/engine-service/churn.yml export-ignore
+/engine-service/codecov.yml export-ignore
+/engine-service/deploy.php export-ignore
+/engine-service/ecs.php export-ignore
+/engine-service/phparkitect.php export-ignore
+/engine-service/phparkitect-baseline.json export-ignore
+/engine-service/phpunit.xml.dist export-ignore
+/engine-service/psalm.xml export-ignore
+/engine-service/psalm-baseline.xml export-ignore
+/engine-service/rector.php export-ignore
 
-/_bffApi/tests
-/_bffWeb/tests
-/_catalog/tests
-/_metadata/tests
+/engine-service/_bffApi/tests
+/engine-service/_bffWeb/tests
+/engine-service/_catalog/tests
+/engine-service/_metadata/tests
