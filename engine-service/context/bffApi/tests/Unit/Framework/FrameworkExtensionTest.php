@@ -13,7 +13,7 @@
  * @license https://github.com/MedicalMundi/marketplace-engine/blob/main/LICENSE MIT
  */
 
-namespace BffApi\Tests\Unit\Framework;
+namespace BffApiTests\Unit\Framework;
 
 use BffApi\Infrastructure\Framework\Extension\BffApiModuleExtension;
 use PHPUnit\Framework\Attributes\CoversClass;

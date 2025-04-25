@@ -28,8 +28,8 @@ return static function (RectorConfig $rectorConfig): void {
         __DIR__ . '/_catalog/tests',
         __DIR__ . '/_bffWeb/src',
         __DIR__ . '/_bffWeb/tests',
-        __DIR__ . '/_bffApi/src',
-        __DIR__ . '/_bffApi/tests',
+        __DIR__ . '/context/bffApi/src',
+        __DIR__ . '/context/bffApi/tests',
         __DIR__ . '/_metadata/src',
         __DIR__ . '/_metadata/tests',
     ]);
