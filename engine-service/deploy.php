@@ -13,6 +13,19 @@ set('shared_files', []);
 add('shared_dirs', [
     'var/log',
 ]);
+
+/**
+ * Specifies a sub directory within the repository to deploy.
+ * Works only when [`update_code_strategy`](#update_code_strategy) is set to `archive` (default).
+ *
+ * Example:
+ *  - set value to `src` if you want to deploy the folder that lives at `/src`.
+ *  - set value to `src/api` if you want to deploy the folder that lives at `/src/api`.
+ *
+ * Note: do not use a leading `/`!
+ */
+set('sub_directory', 'engine-service');
+
 add('writable_dirs', []);
 // Writable dirs by web server
 add('writable_dirs', [
