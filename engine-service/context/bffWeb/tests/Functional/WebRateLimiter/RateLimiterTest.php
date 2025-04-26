@@ -13,7 +13,7 @@
  * @license https://github.com/MedicalMundi/marketplace-engine/blob/main/LICENSE MIT
  */
 
-namespace BffWeb\Tests\Functional\WebRateLimiter;
+namespace BffWebTests\Functional\WebRateLimiter;
 
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;

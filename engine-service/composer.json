@@ -118,7 +118,7 @@
         "psr-4": {
             "App\\": "src/",
             "Catalog\\": "_catalog/src/",
-            "BffWeb\\": "_bffWeb/src/",
+            "BffWeb\\": "context/bffWeb/src/",
             "BffApi\\": "context/bffApi/src/",
             "Metadata\\": "_metadata/src/"
         }
@@ -127,7 +127,7 @@
         "psr-4": {
             "App\\Tests\\": "tests/",
             "Catalog\\Tests\\": "_catalog/tests/",
-            "BffWeb\\Tests\\": "_bffWeb/tests/",
+            "BffWebTests\\": "context/bffWeb/tests/",
             "BffApiTests\\": "context/bffApi/tests/",
             "Metadata\\Tests\\": "_metadata/tests/"
         }

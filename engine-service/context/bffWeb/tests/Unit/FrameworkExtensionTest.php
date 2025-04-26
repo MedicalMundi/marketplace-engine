@@ -13,7 +13,7 @@
  * @license https://github.com/MedicalMundi/marketplace-engine/blob/main/LICENSE MIT
  */
 
-namespace BffWeb\Tests\Unit;
+namespace BffWebTests\Unit;
 
 use BffWeb\Infrastructure\Framework\Extension\BffWebModuleExtension;
 use PHPUnit\Framework\Attributes\CoversClass;
