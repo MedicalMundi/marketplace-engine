@@ -14,7 +14,7 @@
         <directory name="src"/>
         <directory name="_catalog/src"/>
         <directory name="_bffWeb/src"/>
-        <directory name="_bffApi/src"/>
+        <directory name="context/bffApi/src"/>
         <directory name="_metadata/src"/>
         <ignoreFiles>
             <directory name="vendor"/>
@@ -36,7 +36,7 @@
         <UndefinedMethod>
             <!-- BffApi module -->
             <errorLevel type="suppress">
-                <file name="_bffApi/src/Infrastructure/Framework/Extension/BffApiModuleExtension.php"/>
+                <file name="context/bffApi/src/Infrastructure/Framework/Extension/BffApiModuleExtension.php"/>
             </errorLevel>
 
             <!-- BffApi module -->
@@ -68,7 +68,7 @@
         <MixedMethodCall>
             <!-- BffApi module -->
             <errorLevel type="suppress">
-                <file name="_bffApi/src/Infrastructure/Framework/Extension/BffApiModuleExtension.php"/>
+                <file name="context/bffApi/src/Infrastructure/Framework/Extension/BffApiModuleExtension.php"/>
             </errorLevel>
 
             <!-- BffWeb module -->

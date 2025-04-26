@@ -1,57 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <files psalm-version="5.15.0@5c774aca4746caf3d239d9c8cadb9f882ca29352">
-  <file src="_bffApi/src/Infrastructure/OperationOrientedApi/ApiOperationHandler.php">
-    <MixedAssignment>
-      <code>$inputData</code>
-    </MixedAssignment>
-  </file>
-  <file src="_bffApi/src/Infrastructure/OperationOrientedApi/OperationCollection.php">
-    <MixedInferredReturnType>
-      <code>ApiOperation</code>
-    </MixedInferredReturnType>
-    <MixedReturnStatement>
-      <code><![CDATA[$this->operations[$operation]]]></code>
-    </MixedReturnStatement>
-    <UndefinedClass>
-      <code>NotFoundOperationException</code>
-    </UndefinedClass>
-  </file>
-  <file src="_bffApi/src/Infrastructure/OperationOrientedApi/OperationCollectionConfigurator.php">
-    <ArgumentTypeCoercion>
-      <code>$operation</code>
-    </ArgumentTypeCoercion>
-    <LessSpecificReturnType>
-      <code>T|null</code>
-    </LessSpecificReturnType>
-    <MixedArgument>
-      <code>$operation</code>
-    </MixedArgument>
-    <MixedAssignment>
-      <code>$operation</code>
-    </MixedAssignment>
-    <PossiblyNullArgument>
-      <code>$metadata</code>
-    </PossiblyNullArgument>
-    <RedundantConditionGivenDocblockType>
-      <code>empty($atrrClass)</code>
-    </RedundantConditionGivenDocblockType>
-  </file>
-  <file src="_bffApi/src/Infrastructure/OperationOrientedApi/OperationDemo/SendPaymentOperation.php">
-    <MoreSpecificImplementedParamType>
-      <code>$data</code>
-    </MoreSpecificImplementedParamType>
-  </file>
-  <file src="_bffApi/src/Infrastructure/OperationOrientedApi/ValidationHandler.php">
-    <MissingReturnType>
-      <code>deserializeAndValidate</code>
-    </MissingReturnType>
-    <MixedAssignment>
-      <code>$object</code>
-    </MixedAssignment>
-    <UndefinedInterfaceMethod>
-      <code>denormalize</code>
-    </UndefinedInterfaceMethod>
-  </file>
   <file src="_bffWeb/src/AdapterForWeb/Contact/ContactController.php">
     <PossiblyNullOperand>
       <code><![CDATA[$contact->email]]></code>
@@ -160,6 +108,58 @@
       <code>repositoryUrl</code>
       <code>validate</code>
     </PossiblyNullReference>
+  </file>
+  <file src="context/bffApi/src/Infrastructure/OperationOrientedApi/ApiOperationHandler.php">
+    <MixedAssignment>
+      <code>$inputData</code>
+    </MixedAssignment>
+  </file>
+  <file src="context/bffApi/src/Infrastructure/OperationOrientedApi/OperationCollection.php">
+    <MixedInferredReturnType>
+      <code>ApiOperation</code>
+    </MixedInferredReturnType>
+    <MixedReturnStatement>
+      <code><![CDATA[$this->operations[$operation]]]></code>
+    </MixedReturnStatement>
+    <UndefinedClass>
+      <code>NotFoundOperationException</code>
+    </UndefinedClass>
+  </file>
+  <file src="context/bffApi/src/Infrastructure/OperationOrientedApi/OperationCollectionConfigurator.php">
+    <ArgumentTypeCoercion>
+      <code>$operation</code>
+    </ArgumentTypeCoercion>
+    <LessSpecificReturnType>
+      <code>T|null</code>
+    </LessSpecificReturnType>
+    <MixedArgument>
+      <code>$operation</code>
+    </MixedArgument>
+    <MixedAssignment>
+      <code>$operation</code>
+    </MixedAssignment>
+    <PossiblyNullArgument>
+      <code>$metadata</code>
+    </PossiblyNullArgument>
+    <RedundantConditionGivenDocblockType>
+      <code>empty($atrrClass)</code>
+    </RedundantConditionGivenDocblockType>
+  </file>
+  <file src="context/bffApi/src/Infrastructure/OperationOrientedApi/OperationDemo/SendPaymentOperation.php">
+    <MoreSpecificImplementedParamType>
+      <code>$data</code>
+    </MoreSpecificImplementedParamType>
+  </file>
+  <file src="context/bffApi/src/Infrastructure/OperationOrientedApi/ValidationHandler.php">
+    <MissingReturnType>
+      <code>deserializeAndValidate</code>
+    </MissingReturnType>
+    <MixedAssignment>
+      <code>$object</code>
+    </MixedAssignment>
+    <UndefinedInterfaceMethod>
+      <code>denormalize</code>
+    </UndefinedInterfaceMethod>
   </file>
   <file src="src/Security/OauthProvider/Exception/OeModulesIdentityProviderException.php">
     <UnsafeInstantiation>

@@ -130,7 +130,7 @@ return static function (Config $config): void {
      *++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*
      */
 
-    $bffApiClassSet = ClassSet::fromDir(__DIR__ . '/_bffApi/src');
+    $bffApiClassSet = ClassSet::fromDir(__DIR__ . '/context/bffApi/src');
 
     $allowedVendorDependenciesInBffApiCore = require_once __DIR__ . '/tools/phparkitect/VendorDependencies/allowed_in_bffApi_core.php';
     $allowedVendorDependenciesInBffApiAdapters = require_once __DIR__ . '/tools/phparkitect/VendorDependencies/allowed_in_bffApi_adapters.php';

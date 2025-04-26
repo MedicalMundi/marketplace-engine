@@ -12,6 +12,6 @@ bff_web_controllers:
 
 bff_api_controllers:
     resource:
-        path: ../_bffApi/src/AdapterForApi
+        path: ../context/bffApi/src/AdapterForApi
         namespace: BffApi\AdapterForApi
     type: attribute
