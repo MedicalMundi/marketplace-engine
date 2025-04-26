@@ -44,7 +44,7 @@ directoriesToScan:
   #- _bffApi/tests
   - context/bffWeb/src
   #- _bffWeb/tests
-  - _catalog/src
+  - context/catalog/src
   #- _catalog/tests
   - _metadata/src
   #- _metadata/tests

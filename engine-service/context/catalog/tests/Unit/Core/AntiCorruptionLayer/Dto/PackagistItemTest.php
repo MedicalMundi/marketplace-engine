@@ -13,7 +13,7 @@
  * @license https://github.com/MedicalMundi/marketplace-engine/blob/main/LICENSE MIT
  */
 
-namespace Catalog\Tests\Unit\Core\AntiCorruptionLayer\Dto;
+namespace CatalogTests\Unit\Core\AntiCorruptionLayer\Dto;
 
 use Catalog\Core\AntiCorruptionLayer\Dto\PackagistItem;
 use PHPUnit\Framework\Attributes\CoversClass;

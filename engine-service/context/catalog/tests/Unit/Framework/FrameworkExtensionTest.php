@@ -13,7 +13,7 @@
  * @license https://github.com/MedicalMundi/marketplace-engine/blob/main/LICENSE MIT
  */
 
-namespace Catalog\Tests\Unit\Framework;
+namespace CatalogTests\Unit\Framework;
 
 use Catalog\Infrastructure\Framework\Extension\CatalogModuleExtension;
 use PHPUnit\Framework\Attributes\CoversClass;

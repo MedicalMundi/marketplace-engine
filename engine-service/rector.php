@@ -24,8 +24,8 @@ return static function (RectorConfig $rectorConfig): void {
     $rectorConfig->paths([
         __DIR__ . '/src',
         __DIR__ . '/tests',
-        __DIR__ . '/_catalog/src',
-        __DIR__ . '/_catalog/tests',
+        __DIR__ . '/context/catalog/src',
+        __DIR__ . '/context/catalog/tests',
         __DIR__ . '/context/bffWeb/src',
         __DIR__ . '/context/bffWeb/tests',
         __DIR__ . '/context/bffApi/src',
@@ -41,7 +41,7 @@ return static function (RectorConfig $rectorConfig): void {
         ChangeRouteAttributeFromAnnotationSubnamespaceRector::class,
         LiteralGetToRequestClassConstantRector::class => [
             __DIR__ . '/tests',
-            __DIR__ . '/_catalog/tests',
+            __DIR__ . '/context/catalog/tests',
             __DIR__ . '/context/bffWeb/tests',
         ],
     ]);
