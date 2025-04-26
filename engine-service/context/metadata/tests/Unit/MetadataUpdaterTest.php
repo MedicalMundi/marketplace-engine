@@ -13,7 +13,7 @@
  * @license https://github.com/MedicalMundi/marketplace-engine/blob/main/LICENSE MIT
  */
 
-namespace Metadata\Tests\Unit;
+namespace MetadataTests\Unit;
 
 use Metadata\AdapterForReadingExternalMetadataSourceStub\StubAdapterForReadingExternalMetadataSource;
 use Metadata\AdapterForStoringMetadataFake\FakeForStoringMetadata;

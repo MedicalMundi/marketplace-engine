@@ -120,7 +120,7 @@
             "Catalog\\": "context/catalog/src/",
             "BffWeb\\": "context/bffWeb/src/",
             "BffApi\\": "context/bffApi/src/",
-            "Metadata\\": "_metadata/src/"
+            "Metadata\\": "context/metadata/src/"
         }
     },
     "autoload-dev": {
@@ -129,7 +129,7 @@
             "CatalogTests\\": "context/catalog/tests/",
             "BffWebTests\\": "context/bffWeb/tests/",
             "BffApiTests\\": "context/bffApi/tests/",
-            "Metadata\\Tests\\": "_metadata/tests/"
+            "MetadataTests\\": "context/metadata/tests/"
         }
     },
     "minimum-stability": "stable",

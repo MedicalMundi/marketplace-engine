@@ -25,6 +25,7 @@
             <directory>context/catalog/tests</directory>
             <directory>context/bffWeb/tests</directory>
             <directory>context/bffApi/tests</directory>
+            <directory>context/metadata/tests</directory>
         </testsuite>
         <testsuite name="catalog">
             <directory>context/catalog/tests</directory>
@@ -36,7 +37,7 @@
             <directory>context/bffApi/tests</directory>
         </testsuite>
         <testsuite name="metadata">
-            <directory>_metadata/tests</directory>
+            <directory>context/metadata/tests</directory>
         </testsuite>
 
         <testsuite name="unit">
@@ -44,21 +45,21 @@
             <directory>context/catalog/tests/Unit</directory>
             <directory>context/bffWeb/tests/Unit</directory>
             <directory>context/bffApi/tests/Unit</directory>
-            <directory>_metadata/tests/Unit</directory>
+            <directory>context/metadata/tests/Unit</directory>
         </testsuite>
         <testsuite name="integration">
             <directory>tests/Integration</directory>
             <directory>context/catalog/tests/Integration</directory>
             <directory>context/bffWeb/tests/Integration</directory>
             <directory>context/bffApi/tests/Integration</directory>
-            <directory>_metadata/tests/Integration</directory>
+            <directory>context/metadata/tests/Integration</directory>
         </testsuite>
         <testsuite name="functional">
             <directory>tests/Functional</directory>
             <directory>context/catalog/tests/Functional</directory>
             <directory>context/bffWeb/tests/Functional</directory>
             <directory>context/bffApi/tests/Functional</directory>
-            <directory>_metadata/tests/Functional</directory>
+            <directory>context/metadata/tests/Functional</directory>
         </testsuite>
     </testsuites>
 
@@ -68,7 +69,7 @@
             <directory>context/catalog/src</directory>
             <directory>context/bffWeb/src</directory>
             <directory>context/bffApi/src</directory>
-            <directory>_metadata/src</directory>
+            <directory>context/metadata/src</directory>
         </include>
     </source>
 </phpunit>

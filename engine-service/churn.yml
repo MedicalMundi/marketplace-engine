@@ -46,7 +46,7 @@ directoriesToScan:
   #- _bffWeb/tests
   - context/catalog/src
   #- _catalog/tests
-  - _metadata/src
+  - context/metadata/src
   #- _metadata/tests
 
 # List of user-defined hooks.

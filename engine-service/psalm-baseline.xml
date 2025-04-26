@@ -1,32 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <files psalm-version="5.15.0@5c774aca4746caf3d239d9c8cadb9f882ca29352">
-  <file src="_metadata/src/AdapterForReadingExternalMetadataSourceSpy/SpyAdapterForReadingExternalMetadataSource.php">
-    <InvalidReturnType>
-      <code>ExternalMetadataDto</code>
-    </InvalidReturnType>
-  </file>
-  <file src="_metadata/src/AdapterForReadingExternalMetadataSourceStub/StubAdapterForReadingExternalMetadataSource.php">
-    <MixedInferredReturnType>
-      <code>ExternalMetadataDto</code>
-    </MixedInferredReturnType>
-    <MixedReturnStatement>
-      <code><![CDATA[$this->metadataDtosIndexedByUrl[$moduleUrl]]]></code>
-    </MixedReturnStatement>
-  </file>
-  <file src="_metadata/src/AdapterForStoringMetadataFake/FakeForStoringMetadata.php">
-    <MixedInferredReturnType>
-      <code>?ModuleMetadata</code>
-    </MixedInferredReturnType>
-    <MixedReturnStatement>
-      <code><![CDATA[$this->modulesById[$moduleId]]]></code>
-    </MixedReturnStatement>
-  </file>
-  <file src="_metadata/src/Core/MetadataUpdater.php">
-    <PossiblyNullReference>
-      <code>repositoryUrl</code>
-      <code>validate</code>
-    </PossiblyNullReference>
-  </file>
   <file src="context/bffApi/src/Infrastructure/OperationOrientedApi/ApiOperationHandler.php">
     <MixedAssignment>
       <code>$inputData</code>
@@ -160,6 +133,33 @@
     <MixedAssignment>
       <code>$isAlreadyRegisteredInDb</code>
     </MixedAssignment>
+  </file>
+  <file src="context/metadata/src/AdapterForReadingExternalMetadataSourceSpy/SpyAdapterForReadingExternalMetadataSource.php">
+    <InvalidReturnType>
+      <code>ExternalMetadataDto</code>
+    </InvalidReturnType>
+  </file>
+  <file src="context/metadata/src/AdapterForReadingExternalMetadataSourceStub/StubAdapterForReadingExternalMetadataSource.php">
+    <MixedInferredReturnType>
+      <code>ExternalMetadataDto</code>
+    </MixedInferredReturnType>
+    <MixedReturnStatement>
+      <code><![CDATA[$this->metadataDtosIndexedByUrl[$moduleUrl]]]></code>
+    </MixedReturnStatement>
+  </file>
+  <file src="context/metadata/src/AdapterForStoringMetadataFake/FakeForStoringMetadata.php">
+    <MixedInferredReturnType>
+      <code>?ModuleMetadata</code>
+    </MixedInferredReturnType>
+    <MixedReturnStatement>
+      <code><![CDATA[$this->modulesById[$moduleId]]]></code>
+    </MixedReturnStatement>
+  </file>
+  <file src="context/metadata/src/Core/MetadataUpdater.php">
+    <PossiblyNullReference>
+      <code>repositoryUrl</code>
+      <code>validate</code>
+    </PossiblyNullReference>
   </file>
   <file src="src/Security/OauthProvider/Exception/OeModulesIdentityProviderException.php">
     <UnsafeInstantiation>

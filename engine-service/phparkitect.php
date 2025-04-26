@@ -172,7 +172,7 @@ return static function (Config $config): void {
      *++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*
      */
 
-    $metadataClassSet = ClassSet::fromDir(__DIR__ . '/_metadata/src');
+    $metadataClassSet = ClassSet::fromDir(__DIR__ . '/context/metadata/src');
 
     $allowedVendorDependenciesInMetadataCore = require_once __DIR__ . '/tools/phparkitect/VendorDependencies/allowed_in_metadata_core.php';
     $allowedVendorDependenciesInMetadataAdapters = require_once __DIR__ . '/tools/phparkitect/VendorDependencies/allowed_in_metadata_adapters.php';
