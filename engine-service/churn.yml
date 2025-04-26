@@ -40,9 +40,9 @@ fileExtensions:
 directoriesToScan:
   - src
   #- tests/
-  - _bffApi/src
+  - context/bffApi/src
   #- _bffApi/tests
-  - _bffWeb/src
+  - context/bffWeb/src
   #- _bffWeb/tests
   - _catalog/src
   #- _catalog/tests

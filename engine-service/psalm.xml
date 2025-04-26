@@ -13,7 +13,7 @@
     <projectFiles>
         <directory name="src"/>
         <directory name="_catalog/src"/>
-        <directory name="_bffWeb/src"/>
+        <directory name="context/bffWeb/src"/>
         <directory name="context/bffApi/src"/>
         <directory name="_metadata/src"/>
         <ignoreFiles>
@@ -26,7 +26,7 @@
         <!-- All controller -->
         <UnusedClass>
             <errorLevel type="suppress">
-                <directory name="_bffWeb/src/AdapterForWeb" />
+                <directory name="context/bffWeb/src/AdapterForWeb" />
                 <directory name="src/Controller" />
                 <file name="_catalog/src/Infrastructure/EcotoneConfiguration.php" />
             </errorLevel>
@@ -41,7 +41,7 @@
 
             <!-- BffApi module -->
             <errorLevel type="suppress">
-                <file name="_bffWeb/src/Infrastructure/Framework/Extension/BffWebModuleExtension.php"/>
+                <file name="context/bffWeb/src/Infrastructure/Framework/Extension/BffWebModuleExtension.php"/>
             </errorLevel>
 
             <!-- Catalog module -->
@@ -73,7 +73,7 @@
 
             <!-- BffWeb module -->
             <errorLevel type="suppress">
-                <file name="_bffWeb/src/Infrastructure/Framework/Extension/BffWebModuleExtension.php"/>
+                <file name="context/bffWeb/src/Infrastructure/Framework/Extension/BffWebModuleExtension.php"/>
             </errorLevel>
 
             <!-- Catalog module -->
@@ -86,7 +86,7 @@
                 <file name="_metadata/src/Infrastructure/Framework/Extension/MetadataModuleExtension.php"/>
             </errorLevel>
             <errorLevel type="suppress">
-                <file name="_bffWeb/src/Infrastructure/Framework/Extension/BffWebModuleExtension.php"/>
+                <file name="context/bffWeb/src/Infrastructure/Framework/Extension/BffWebModuleExtension.php"/>
             </errorLevel>
         </MixedMethodCall>
     </issueHandlers>

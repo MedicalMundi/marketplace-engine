@@ -14,11 +14,11 @@ component_management:
     - component_id: module_bff_api
       name: BffApi
       paths:
-        - _bffApi/**
+        - context/bffApi/**
     - component_id: module_bff_web
       name: BffWeb
       paths:
-        - _bffWeb/**
+        - context/bffWeb/**
     - component_id: module_catalog  # this is an identifier that should not be changed
       name: Catalog  # this is a display name, and can be changed freely
       paths:

@@ -26,8 +26,8 @@ return static function (RectorConfig $rectorConfig): void {
         __DIR__ . '/tests',
         __DIR__ . '/_catalog/src',
         __DIR__ . '/_catalog/tests',
-        __DIR__ . '/_bffWeb/src',
-        __DIR__ . '/_bffWeb/tests',
+        __DIR__ . '/context/bffWeb/src',
+        __DIR__ . '/context/bffWeb/tests',
         __DIR__ . '/context/bffApi/src',
         __DIR__ . '/context/bffApi/tests',
         __DIR__ . '/_metadata/src',
@@ -42,7 +42,7 @@ return static function (RectorConfig $rectorConfig): void {
         LiteralGetToRequestClassConstantRector::class => [
             __DIR__ . '/tests',
             __DIR__ . '/_catalog/tests',
-            __DIR__ . '/_bffWeb/tests',
+            __DIR__ . '/context/bffWeb/tests',
         ],
     ]);
 

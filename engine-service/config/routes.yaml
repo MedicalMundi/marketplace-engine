@@ -6,7 +6,7 @@ controllers:
 
 bff_web_controllers:
     resource:
-        path: ../_bffWeb/src/AdapterForWeb
+        path: ../context/bffWeb/src/AdapterForWeb
         namespace: BffWeb\AdapterForWeb
     type: attribute
 

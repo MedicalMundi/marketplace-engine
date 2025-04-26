@@ -4,7 +4,7 @@ twig:
     paths:
         # directories are relative to the project root dir (but you
         # can also use absolute directories)
-        '_bffWeb/src/Infrastructure/Templates': 'web'
+        'context/bffWeb/src/Infrastructure/Templates': 'web'
 
     globals:
         release_version: '%release.version%'

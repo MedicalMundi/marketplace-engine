@@ -89,7 +89,7 @@ return static function (Config $config): void {
      *++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*
      */
 
-    $bffWebClassSet = ClassSet::fromDir(__DIR__ . '/_bffWeb/src');
+    $bffWebClassSet = ClassSet::fromDir(__DIR__ . '/context/bffWeb/src');
 
     $allowedVendorDependenciesInBffWebCore = require_once __DIR__ . '/tools/phparkitect/VendorDependencies/allowed_in_bffWeb_core.php';
     $allowedVendorDependenciesInBffWebAdapters = require_once __DIR__ . '/tools/phparkitect/VendorDependencies/allowed_in_bffWeb_adapters.php';
