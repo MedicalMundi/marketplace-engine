@@ -26,7 +26,7 @@ component_management:
     - component_id: module_metadata
       name: Metadata
       paths:
-        - _metadata/**
+        - context/metadata/**
 #    - component_id: module_core
 #      name: core
 #      paths:

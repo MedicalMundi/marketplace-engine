@@ -15,7 +15,7 @@
         <directory name="context/catalog/src"/>
         <directory name="context/bffWeb/src"/>
         <directory name="context/bffApi/src"/>
-        <directory name="_metadata/src"/>
+        <directory name="context/metadata/src"/>
         <ignoreFiles>
             <directory name="vendor"/>
         </ignoreFiles>
@@ -51,7 +51,7 @@
 
             <!-- Metadata module -->
             <errorLevel type="suppress">
-                <file name="_metadata/src/Infrastructure/Framework/Extension/MetadataModuleExtension.php"/>
+                <file name="context/metadata/src/Infrastructure/Framework/Extension/MetadataModuleExtension.php"/>
             </errorLevel>
         </UndefinedMethod>
 
@@ -60,7 +60,7 @@
         <PossiblyNullArgument>
             <!-- Metadata module -->
             <errorLevel type="suppress">
-                <file name="_metadata/src/Core/MetadataModule.php" />
+                <file name="context/metadata/src/Core/MetadataModule.php" />
             </errorLevel>
         </PossiblyNullArgument>
         
@@ -83,7 +83,7 @@
 
             <!-- Metadata module -->
             <errorLevel type="suppress">
-                <file name="_metadata/src/Infrastructure/Framework/Extension/MetadataModuleExtension.php"/>
+                <file name="context/metadata/src/Infrastructure/Framework/Extension/MetadataModuleExtension.php"/>
             </errorLevel>
             <errorLevel type="suppress">
                 <file name="context/bffWeb/src/Infrastructure/Framework/Extension/BffWebModuleExtension.php"/>
