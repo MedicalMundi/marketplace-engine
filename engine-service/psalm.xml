@@ -12,7 +12,7 @@
 >
     <projectFiles>
         <directory name="src"/>
-        <directory name="_catalog/src"/>
+        <directory name="context/catalog/src"/>
         <directory name="context/bffWeb/src"/>
         <directory name="context/bffApi/src"/>
         <directory name="_metadata/src"/>
@@ -28,7 +28,7 @@
             <errorLevel type="suppress">
                 <directory name="context/bffWeb/src/AdapterForWeb" />
                 <directory name="src/Controller" />
-                <file name="_catalog/src/Infrastructure/EcotoneConfiguration.php" />
+                <file name="context/catalog/src/Infrastructure/EcotoneConfiguration.php" />
             </errorLevel>
         </UnusedClass>
 
@@ -46,7 +46,7 @@
 
             <!-- Catalog module -->
             <errorLevel type="suppress">
-                <file name="_catalog/src/Infrastructure/Framework/Extension/CatalogModuleExtension.php"/>
+                <file name="context/catalog/src/Infrastructure/Framework/Extension/CatalogModuleExtension.php"/>
             </errorLevel>
 
             <!-- Metadata module -->
@@ -78,7 +78,7 @@
 
             <!-- Catalog module -->
             <errorLevel type="suppress">
-                <file name="_catalog/src/Infrastructure/Framework/Extension/CatalogModuleExtension.php"/>
+                <file name="context/catalog/src/Infrastructure/Framework/Extension/CatalogModuleExtension.php"/>
             </errorLevel>
 
             <!-- Metadata module -->

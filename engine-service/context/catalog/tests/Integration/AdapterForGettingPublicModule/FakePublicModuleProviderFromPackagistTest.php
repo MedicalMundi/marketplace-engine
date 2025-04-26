@@ -13,33 +13,24 @@
  * @license https://github.com/MedicalMundi/marketplace-engine/blob/main/LICENSE MIT
  */
 
-namespace Catalog\Tests\Unit\Core\AntiCorruptionLayer;
+namespace CatalogTests\Integration\AdapterForGettingPublicModule;
 
 use Catalog\AdapterForGettingPublicModuleFake\FakePublicModuleProviderFromPackagist;
-use Catalog\Core\AntiCorruptionLayer\ForGettingPublicModule;
-use Catalog\Core\AntiCorruptionLayer\TranslatingModuleService;
+use Catalog\Core\AntiCorruptionLayer\Dto\PackagistItemCollection;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\CoversNothing;
-use PHPUnit\Framework\Attributes\DoesNotPerformAssertions;
 use PHPUnit\Framework\Attributes\Test;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-#[CoversClass(TranslatingModuleService::class)]
-class TranslatingModuleServiceTest extends TestCase
+#[CoversClass(FakePublicModuleProviderFromPackagist::class)]
+class FakePublicModuleProviderFromPackagistTest extends TestCase
 {
-    private ForGettingPublicModule|MockObject $moduleProvider;
-
-    protected function setUp(): void
-    {
-        $this->moduleProvider = new FakePublicModuleProviderFromPackagist();
-    }
-
     #[Test]
-    #[CoversNothing]
-    #[DoesNotPerformAssertions]
-    public function shouldBeInstantiated()
+    public function shouldReturnAPackagistItemCollection()
     {
-        $sut = new TranslatingModuleService($this->moduleProvider);
+        $sut = new FakePublicModuleProviderFromPackagist();
+
+        $sut->setupPackage('a-vendor-name/a-package-name', 'a cool module', 'https://www.packagist.org/a-vendor-name/a-package-name', 'https://github.com/a-vendor-name/a-package-name', 100);
+
+        self::assertInstanceOf(PackagistItemCollection::class, $sut->search(''));
     }
 }

@@ -13,7 +13,7 @@
  * @license https://github.com/MedicalMundi/marketplace-engine/blob/main/LICENSE MIT
  */
 
-namespace Catalog\Tests\Unit\Core\Catalog;
+namespace CatalogTests\Unit\Core\Catalog;
 
 use Catalog\Core\Catalog\AddPublicModule;
 use Catalog\Core\Catalog\ModulesCatalog;

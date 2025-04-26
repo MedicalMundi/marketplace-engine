@@ -13,7 +13,7 @@
  * @license https://github.com/MedicalMundi/marketplace-engine/blob/main/LICENSE MIT
  */
 
-namespace Catalog\Tests\Integration\AdapterForGettingPublicModule;
+namespace CatalogTests\Integration\AdapterForGettingPublicModule;
 
 use Catalog\AdapterForGettingPublicModule\PublicModuleProviderFromPackagist;
 use Catalog\Core\AntiCorruptionLayer\Dto\PackagistItemCollection;

@@ -1,51 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <files psalm-version="5.15.0@5c774aca4746caf3d239d9c8cadb9f882ca29352">
-  <file src="_catalog/src/AdapterForGettingPublicModule/PublicModuleProviderFromPackagist.php">
-    <MixedArgument>
-      <code><![CDATA[$inputItem->getDescription()]]></code>
-      <code><![CDATA[$inputItem->getName()]]></code>
-      <code><![CDATA[$inputItem->getRepository()]]></code>
-      <code><![CDATA[$inputItem->getUrl()]]></code>
-      <code><![CDATA[$item->getDescription()]]></code>
-      <code><![CDATA[$item->getName()]]></code>
-      <code><![CDATA[$item->getRepository()]]></code>
-      <code><![CDATA[$item->getUrl()]]></code>
-    </MixedArgument>
-    <MixedAssignment>
-      <code>$item</code>
-    </MixedAssignment>
-    <MixedMethodCall>
-      <code>getDescription</code>
-      <code>getDescription</code>
-      <code>getDownloads</code>
-      <code>getDownloads</code>
-      <code>getName</code>
-      <code>getName</code>
-      <code>getRepository</code>
-      <code>getRepository</code>
-      <code>getUrl</code>
-      <code>getUrl</code>
-    </MixedMethodCall>
-  </file>
-  <file src="_catalog/src/Core/AntiCorruptionLayer/Dto/PackagistItemCollection.php">
-    <InvalidArgument>
-      <code><![CDATA[$this->items]]></code>
-    </InvalidArgument>
-  </file>
-  <file src="_catalog/src/Core/Catalog/ModulesCatalog.php">
-    <MissingConstructor>
-      <code>$description</code>
-      <code>$moduleId</code>
-      <code>$moduleType</code>
-      <code>$packageName</code>
-      <code>$url</code>
-    </MissingConstructor>
-  </file>
-  <file src="_catalog/src/Core/PackagistScanner.php">
-    <MixedAssignment>
-      <code>$isAlreadyRegisteredInDb</code>
-    </MixedAssignment>
-  </file>
   <file src="_metadata/src/AdapterForReadingExternalMetadataSourceSpy/SpyAdapterForReadingExternalMetadataSource.php">
     <InvalidReturnType>
       <code>ExternalMetadataDto</code>
@@ -160,6 +114,52 @@
     <PossiblyNullArgument>
       <code>$email</code>
     </PossiblyNullArgument>
+  </file>
+  <file src="context/catalog/src/AdapterForGettingPublicModule/PublicModuleProviderFromPackagist.php">
+    <MixedArgument>
+      <code><![CDATA[$inputItem->getDescription()]]></code>
+      <code><![CDATA[$inputItem->getName()]]></code>
+      <code><![CDATA[$inputItem->getRepository()]]></code>
+      <code><![CDATA[$inputItem->getUrl()]]></code>
+      <code><![CDATA[$item->getDescription()]]></code>
+      <code><![CDATA[$item->getName()]]></code>
+      <code><![CDATA[$item->getRepository()]]></code>
+      <code><![CDATA[$item->getUrl()]]></code>
+    </MixedArgument>
+    <MixedAssignment>
+      <code>$item</code>
+    </MixedAssignment>
+    <MixedMethodCall>
+      <code>getDescription</code>
+      <code>getDescription</code>
+      <code>getDownloads</code>
+      <code>getDownloads</code>
+      <code>getName</code>
+      <code>getName</code>
+      <code>getRepository</code>
+      <code>getRepository</code>
+      <code>getUrl</code>
+      <code>getUrl</code>
+    </MixedMethodCall>
+  </file>
+  <file src="context/catalog/src/Core/AntiCorruptionLayer/Dto/PackagistItemCollection.php">
+    <InvalidArgument>
+      <code><![CDATA[$this->items]]></code>
+    </InvalidArgument>
+  </file>
+  <file src="context/catalog/src/Core/Catalog/ModulesCatalog.php">
+    <MissingConstructor>
+      <code>$description</code>
+      <code>$moduleId</code>
+      <code>$moduleType</code>
+      <code>$packageName</code>
+      <code>$url</code>
+    </MissingConstructor>
+  </file>
+  <file src="context/catalog/src/Core/PackagistScanner.php">
+    <MixedAssignment>
+      <code>$isAlreadyRegisteredInDb</code>
+    </MixedAssignment>
   </file>
   <file src="src/Security/OauthProvider/Exception/OeModulesIdentityProviderException.php">
     <UnsafeInstantiation>

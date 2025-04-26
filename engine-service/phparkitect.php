@@ -46,7 +46,7 @@ return static function (Config $config): void {
      *++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*
      */
 
-    $catalogClassSet = ClassSet::fromDir(__DIR__ . '/_catalog/src');
+    $catalogClassSet = ClassSet::fromDir(__DIR__ . '/context/catalog/src');
 
     $allowedPhpDependencies = require_once __DIR__ . '/tools/phparkitect/PhpDependencies/allowed_always.php';
     $allowedVendorDependenciesInCatalogCore = require_once __DIR__ . '/tools/phparkitect/VendorDependencies/allowed_in_catalog_core.php';

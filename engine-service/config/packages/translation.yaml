@@ -3,7 +3,7 @@ framework:
     translator:
         default_path: '%kernel.project_dir%/translations'
         paths:
-            - '%kernel.project_dir%/_catalog/src/Infrastructure/Translations'
+            - '%kernel.project_dir%/context/catalog/src/Infrastructure/Translations'
         fallbacks:
             - '%locale%'
         providers:

@@ -117,7 +117,7 @@
     "autoload": {
         "psr-4": {
             "App\\": "src/",
-            "Catalog\\": "_catalog/src/",
+            "Catalog\\": "context/catalog/src/",
             "BffWeb\\": "context/bffWeb/src/",
             "BffApi\\": "context/bffApi/src/",
             "Metadata\\": "_metadata/src/"
@@ -126,7 +126,7 @@
     "autoload-dev": {
         "psr-4": {
             "App\\Tests\\": "tests/",
-            "Catalog\\Tests\\": "_catalog/tests/",
+            "CatalogTests\\": "context/catalog/tests/",
             "BffWebTests\\": "context/bffWeb/tests/",
             "BffApiTests\\": "context/bffApi/tests/",
             "Metadata\\Tests\\": "_metadata/tests/"
