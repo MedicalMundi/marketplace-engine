@@ -20,12 +20,12 @@ env:
 
 jobs:
   acceptance-checks:
-    name: Acceptance checks (php-${{ matrix.php }})
+    name: Acceptance checks ${{ matrix.php-version }}
     runs-on: ubuntu-22.04
     timeout-minutes: 10
     services:
       mysql:
-        image: mariadb:10.6.16
+        image: mariadb:10.6.21
         env:
           MYSQL_ROOT_PASSWORD: test
           MYSQL_USER: test
@@ -36,7 +36,7 @@ jobs:
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=5
     strategy:
       matrix:
-        php:
+        php-version:
           - '8.1'
         is-php-experimental: [ false ]
         generate-coverage-report: [ false ]
@@ -54,70 +54,44 @@ jobs:
       - name: info triggering workflow - commit message
         run: echo commit message from triggering workflow '${{ github.event.workflow_run.head_commit.message }}'
 
-      - name: Setup php extension cache environment
-        if: ${{ vars.USE_PHP_EXTENSION_CACHE }}
-        id: cache-php-extensions
-        uses: shivammathur/cache-extensions@v1
+      - name: Setup PHP and composer dependencies
+        uses: './.github/actions/php-composer-setup'
         with:
-          php-version: ${{ matrix.php }}
-          extensions: ${{ env.PHP_EXTENSIONS }}
-          key: ${{ env.PHP_EXTENSIONS_CACHE_KEY }}-${{ matrix.php }}
-
-      - name: Cache PHP extensions
-        if: ${{ vars.USE_PHP_EXTENSION_CACHE }}
-        uses: actions/cache@v4
-        with:
-          path: ${{ steps.cache-php-extensions.outputs.dir }}
-          key: ${{ steps.cache-php-extensions.outputs.key }}
-          restore-keys: ${{ steps.cache-php-extensions.outputs.key }}
-
-      - name: Setup PHP
-        uses: shivammathur/setup-php@2.33.0
-        with:
-          php-version: ${{ matrix.php }}
-          extensions: ${{ env.PHP_EXTENSIONS }}
+          php-version: ${{ matrix.php-version }}
+          composer-working-directory: 'engine-service'
+          php-extensions: ${{ env.PHP_EXTENSIONS }}
+          extensions-cache-key:  ${{ env.PHP_EXTENSIONS_CACHE_KEY }}
+          use-php-extensions-cache: ${{ vars.USE_PHP_EXTENSION_CACHE }}
+          use-composer-cache: ${{ vars.USE_COMPOSER_CACHE }}
+          composer-install-args: '--no-interaction --prefer-dist --no-progress --ansi'
+          coverage: xdebug
           ini-values: memory_limit=-1
-          coverage: pcov
-
-      - name: Get Composer Cache Directory
-        id: composer-cache
-        run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
-
-      - name: Cache dependencies
-        uses: actions/cache@v4
-        with:
-          path: ${{ steps.composer-cache.outputs.dir }}
-          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
-          restore-keys: ${{ runner.os }}-composer-
-
-      - name: Install Composer dependencies
-        run: composer install --prefer-dist --no-progress --ansi --no-scripts
 
       - name: Run database migrations
         if: ${{ github.ref_name == 'main' }}
         run: ./bin/console doctrine:migrations:migrate -e test -n -vv --allow-no-migration --ansi
         env:
-          DATABASE_URL: mysql://test:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=mariadb-10.3.34
+          DATABASE_URL: mysql://test:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=mariadb-10.6.21
 
       - name: Run database schema update
         if: ${{ github.ref_name != 'main' }}
         run: ./bin/console doctrine:schema:update -e test --force --ansi
         env:
-          DATABASE_URL: mysql://test:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=mariadb-10.3.34
+          DATABASE_URL: mysql://test:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=mariadb-10.6.21
 
       - name: Run database schema validate
         run: ./bin/console doctrine:schema:validate -e test --ansi
         env:
-          DATABASE_URL: mysql://test:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=mariadb-10.3.34
+          DATABASE_URL: mysql://test:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=mariadb-10.6.21
 
 
   integration-test:
-    name: Integration tests (php-${{ matrix.php }})
+    name: Integration tests ${{ matrix.php-version }}
     runs-on: ubuntu-22.04
     timeout-minutes: 10
     services:
       mysql:
-        image: mariadb:10.6.16
+        image: mariadb:10.6.21
         env:
           MYSQL_ROOT_PASSWORD: test
           MYSQL_USER: test
@@ -128,7 +102,7 @@ jobs:
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=5
     strategy:
       matrix:
-        php:
+        php-version:
           - '8.1'
         is-php-experimental: [ false ]
         generate-coverage-report: [ false ]
@@ -139,82 +113,49 @@ jobs:
         with:
           ref: ${{ inputs.triggering-sha }}
 
-      - name: Show CI job info (dump context)
-        if: ${{ vars.SHOW_WORKFLOW_INFO == '1'}}
-        uses: crazy-max/ghaction-dump-context@v2.3.0
-
-      - name: info triggering workflow - commit message
-        run: echo commit message from triggering workflow '${{ github.event.workflow_run.head_commit.message }}'
-
-      - name: Setup php extension cache environment
-        if: ${{ vars.USE_PHP_EXTENSION_CACHE }}
-        id: cache-php-extensions
-        uses: shivammathur/cache-extensions@v1
+      - name: Setup PHP and composer dependencies
+        uses: './.github/actions/php-composer-setup'
         with:
-          php-version: ${{ matrix.php }}
-          extensions: ${{ env.PHP_EXTENSIONS }}
-          key: ${{ env.PHP_EXTENSIONS_CACHE_KEY }}-${{ matrix.php }}
-
-      - name: Cache PHP extensions
-        if: ${{ vars.USE_PHP_EXTENSION_CACHE }}
-        uses: actions/cache@v4
-        with:
-          path: ${{ steps.cache-php-extensions.outputs.dir }}
-          key: ${{ steps.cache-php-extensions.outputs.key }}
-          restore-keys: ${{ steps.cache-php-extensions.outputs.key }}
-
-      - name: Setup PHP
-        uses: shivammathur/setup-php@2.33.0
-        with:
-          php-version: ${{ matrix.php }}
-          extensions: ${{ env.PHP_EXTENSIONS }}
+          php-version: ${{ matrix.php-version }}
+          composer-working-directory: 'engine-service'
+          php-extensions: ${{ env.PHP_EXTENSIONS }}
+          extensions-cache-key:  ${{ env.PHP_EXTENSIONS_CACHE_KEY }}
+          use-php-extensions-cache: ${{ vars.USE_PHP_EXTENSION_CACHE }}
+          use-composer-cache: ${{ vars.USE_COMPOSER_CACHE }}
+          composer-install-args: '--no-interaction --prefer-dist --no-progress --ansi'
+          coverage: none
           ini-values: memory_limit=-1
-          coverage: pcov
-
-      - name: Get Composer Cache Directory
-        id: composer-cache
-        run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
-
-      - name: Cache dependencies
-        uses: actions/cache@v4
-        with:
-          path: ${{ steps.composer-cache.outputs.dir }}
-          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
-          restore-keys: ${{ runner.os }}-composer-
-
-      - name: Install Composer dependencies
-        run: composer install --prefer-dist --no-progress --ansi --no-scripts
 
       - name: Run database migrations
         if: ${{ github.ref_name == 'main' }}
         run: ./bin/console doctrine:migrations:migrate -e test -n -vv --allow-no-migration --ansi
         env:
-          DATABASE_URL: mysql://test:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=mariadb-10.3.34
+          DATABASE_URL: mysql://test:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=mariadb-10.6.21
 
       - name: Run database schema update
         if: ${{ github.ref_name != 'main' }}
         run: ./bin/console doctrine:schema:update -e test --force --ansi
         env:
-          DATABASE_URL: mysql://test:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=mariadb-10.3.34
+          DATABASE_URL: mysql://test:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=mariadb-10.6.21
 
       - name: Run database schema validate
         run: ./bin/console doctrine:schema:validate -e test --ansi
         env:
-          DATABASE_URL: mysql://test:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=mariadb-10.3.34
+          DATABASE_URL: mysql://test:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=mariadb-10.6.21
 
       - name: Run integration testsuite
         run: ./bin/phpunit --testsuite integration --no-progress
         env:
-          DATABASE_URL: mysql://test:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=mariadb-10.3.34
+          DATABASE_URL: mysql://test:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=mariadb-10.6.21
 
 
   functional-test:
-    name: Functional tests (php-${{ matrix.php }})
+    name: Functional tests ${{ matrix.php-version }}
     runs-on: ubuntu-22.04
     timeout-minutes: 10
     services:
       mysql:
-        image: mariadb:10.6.16
+        image: mariadb:10.6.21
         env:
           MYSQL_ROOT_PASSWORD: test
           MYSQL_USER: test
@@ -225,7 +166,7 @@ jobs:
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=5
     strategy:
       matrix:
-        php:
+        php-version:
           - '8.1'
         is-php-experimental: [ false ]
         generate-coverage-report: [ false ]
@@ -243,63 +184,37 @@ jobs:
       - name: info triggering workflow - commit message
         run: echo commit message from triggering workflow '${{ github.event.workflow_run.head_commit.message }}'
 
-      - name: Setup php extension cache environment
-        if: ${{ vars.USE_PHP_EXTENSION_CACHE }}
-        id: cache-php-extensions
-        uses: shivammathur/cache-extensions@v1
+      - name: Setup PHP and composer dependencies
+        uses: './.github/actions/php-composer-setup'
         with:
-          php-version: ${{ matrix.php }}
-          extensions: ${{ env.PHP_EXTENSIONS }}
-          key: ${{ env.PHP_EXTENSIONS_CACHE_KEY }}-${{ matrix.php }}
-
-      - name: Cache PHP extensions
-        if: ${{ vars.USE_PHP_EXTENSION_CACHE }}
-        uses: actions/cache@v4
-        with:
-          path: ${{ steps.cache-php-extensions.outputs.dir }}
-          key: ${{ steps.cache-php-extensions.outputs.key }}
-          restore-keys: ${{ steps.cache-php-extensions.outputs.key }}
-
-      - name: Setup PHP
-        uses: shivammathur/setup-php@2.33.0
-        with:
-          php-version: ${{ matrix.php }}
-          extensions: ${{ env.PHP_EXTENSIONS }}
+          php-version: ${{ matrix.php-version }}
+          composer-working-directory: 'engine-service'
+          php-extensions: ${{ env.PHP_EXTENSIONS }}
+          extensions-cache-key:  ${{ env.PHP_EXTENSIONS_CACHE_KEY }}
+          use-php-extensions-cache: ${{ vars.USE_PHP_EXTENSION_CACHE }}
+          use-composer-cache: ${{ vars.USE_COMPOSER_CACHE }}
+          composer-install-args: '--no-interaction --prefer-dist --no-progress --ansi'
+          coverage: none
           ini-values: memory_limit=-1
-          coverage: pcov
-
-      - name: Get Composer Cache Directory
-        id: composer-cache
-        run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
-
-      - name: Cache dependencies
-        uses: actions/cache@v4
-        with:
-          path: ${{ steps.composer-cache.outputs.dir }}
-          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
-          restore-keys: ${{ runner.os }}-composer-
-
-      - name: Install Composer dependencies
-        run: composer install --prefer-dist --no-progress --ansi --no-scripts
 
       - name: Run database migrations
         if: ${{ github.ref_name == 'main' }}
         run: ./bin/console doctrine:migrations:migrate -e test -n -vv --allow-no-migration --ansi
         env:
-          DATABASE_URL: mysql://test:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=mariadb-10.3.34
+          DATABASE_URL: mysql://test:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=mariadb-10.6.21
 
       - name: Run database schema update
         if: ${{ github.ref_name != 'main' }}
         run: ./bin/console doctrine:schema:update -e test --force --ansi
         env:
-          DATABASE_URL: mysql://test:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=mariadb-10.3.34
+          DATABASE_URL: mysql://test:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=mariadb-10.6.21
 
       - name: Run database schema validate
         run: ./bin/console doctrine:schema:validate -e test --ansi
         env:
-          DATABASE_URL: mysql://test:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=mariadb-10.3.34
+          DATABASE_URL: mysql://test:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=mariadb-10.6.21
 
       - name: Run integration testsuite
         run: ./bin/phpunit --testsuite functional --no-progress
         env:
-          DATABASE_URL: mysql://test:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=mariadb-10.3.34
+          DATABASE_URL: mysql://test:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=mariadb-10.6.21
