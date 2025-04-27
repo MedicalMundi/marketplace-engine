@@ -5,7 +5,7 @@ version: 2
 updates:
   - package-ecosystem: "composer"
     target-branch: "main"
-    directory: "/"
+    directory: "/engine-service"
     versioning-strategy: "increase-if-necessary"
     open-pull-requests-limit: 15
     schedule:
@@ -94,7 +94,7 @@ updates:
   ########################################################################################################################
   - package-ecosystem: "composer"
     target-branch: "main"
-    directory: "/tools/ecs"
+    directory: "/engine-service/tools/ecs"
     versioning-strategy: "increase"
     open-pull-requests-limit: 1
     schedule:
@@ -109,7 +109,7 @@ updates:
 
   - package-ecosystem: "composer"
     target-branch: "main"
-    directory: "/tools/psalm"
+    directory: "/engine-service/tools/psalm"
     versioning-strategy: "increase"
     open-pull-requests-limit: 1
     schedule:
@@ -124,7 +124,7 @@ updates:
 
   - package-ecosystem: "composer"
     target-branch: "main"
-    directory: "/tools/rector"
+    directory: "/engine-service/engine-service/tools/rector"
     versioning-strategy: "increase"
     open-pull-requests-limit: 1
     schedule:
