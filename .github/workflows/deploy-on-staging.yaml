@@ -11,11 +11,6 @@ on:
         required: true
         type: string
 
-defaults:
-  run:
-    shell: bash
-    working-directory: engine-service
-
 # It is important to specify "concurrency" for the workflow,
 # to prevent concurrency between different deploys.
 # @see https://docs.github.com/en/actions/using-jobs/using-concurrency
@@ -23,12 +18,21 @@ concurrency:
   group: staging_environment
   cancel-in-progress: true
 
+defaults:
+  run:
+    shell: bash
+    working-directory: engine-service
+
+env:
+  # PHP SETTINGS
+  PHP_EXTENSIONS: json
+  PHP_EXTENSIONS_CACHE_KEY: cache-php-extensions-v1
+
 jobs:
   deploy:
-    name: Deploy
+    name: Deploy on staging
     runs-on: ubuntu-latest
     environment: staging
-
     steps:
       - name: Checkout on SHA-${{ inputs.triggering-sha }}
         uses: actions/checkout@v4
@@ -39,15 +43,19 @@ jobs:
         if: ${{ vars.SHOW_WORKFLOW_INFO == '1'}}
         uses: crazy-max/ghaction-dump-context@v2
 
-      - name: Setup PHP
-        uses: shivammathur/setup-php@2.33.0
+      - name: Setup PHP and composer dependencies
+        uses: './.github/actions/php-composer-setup'
         with:
           php-version: '8.1'
-          tools: composer
+          composer-working-directory: 'engine-service'
+          php-extensions: ${{ env.PHP_EXTENSIONS }}
+          extensions-cache-key:  ${{ env.PHP_EXTENSIONS_CACHE_KEY }}
+          use-php-extensions-cache: ${{ vars.USE_PHP_EXTENSION_CACHE }}
+          use-composer-cache: ${{ vars.USE_COMPOSER_CACHE }}
+          composer-install-args: '--no-interaction --prefer-dist --no-progress --ansi'
 
-      - name: Install Composer dependencies
+      - name: Install Deployer
         run: |
-          composer install --prefer-dist --no-progress --no-scripts --ansi
           composer bin deployer install
 
       - uses: oNaiPs/secrets-to-env-action@v1
@@ -76,13 +84,13 @@ jobs:
           deployer-binary: "./engine-service/vendor/bin/dep"
 
 
+
   enable-maintenance-mode:
     name: Enable Maintenace mode
     if: ${{ vars.ENABLE_MAINTENANCE_MODE_AFTER_DEPLOY_ON_STAGING == '1'}}
     runs-on: ubuntu-latest
     needs:
       - deploy
-
     steps:
       - name: Checkout on SHA-${{ inputs.triggering-sha }}
         uses: actions/checkout@v4
@@ -93,19 +101,22 @@ jobs:
         if: ${{ vars.SHOW_WORKFLOW_INFO == '1'}}
         uses: crazy-max/ghaction-dump-context@v2
 
-      - name: Setup PHP
-        uses: shivammathur/setup-php@2.33.0
+      - name: Setup PHP and composer dependencies
+        uses: './.github/actions/php-composer-setup'
         with:
           php-version: '8.1'
-          tools: composer
+          composer-working-directory: 'engine-service'
+          php-extensions: ${{ env.PHP_EXTENSIONS }}
+          extensions-cache-key:  ${{ env.PHP_EXTENSIONS_CACHE_KEY }}
+          use-php-extensions-cache: ${{ vars.USE_PHP_EXTENSION_CACHE }}
+          use-composer-cache: ${{ vars.USE_COMPOSER_CACHE }}
+          composer-install-args: '--no-interaction --prefer-dist --no-progress --ansi'
 
-      - name: Install Composer dependencies
+      - name: Install Deployer
         run: |
-          composer install --prefer-dist --no-progress --no-scripts --ansi
           composer bin deployer install
 
       - name: Enable Maintenance Mode after deploy
-        if: ${{ vars.ENABLE_MAINTENANCE_MODE_AFTER_DEPLOY_ON_STAGING }}
         uses: deployphp/action@v1
         with:
           deployer-version: "7.3.3"

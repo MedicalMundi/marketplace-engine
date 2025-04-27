@@ -116,7 +116,8 @@ after('deploy', 'projection:initialize');
  */
 desc('Maintenance on');
 task('maintenance:on', function () {
-    run('{{bin/console}} corley:maintenance:lock on');
+    //run('{{bin/console}} corley:maintenance:lock on');
+    run('cd {{release_or_current_path}} && {{bin/console}} corley:maintenance:lock on');
     info('Maintenance mode (hard-lock) successfully activated!');
 });
 
