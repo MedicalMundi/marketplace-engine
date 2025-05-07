@@ -11,17 +11,22 @@ on:
         required: true
         type: string
 
-defaults:
-  run:
-    shell: bash
-    working-directory: engine-service
-
 # It is important to specify "concurrency" for the workflow,
 # to prevent concurrency between different deploys.
 # @see https://docs.github.com/en/actions/using-jobs/using-concurrency
 concurrency:
   group: production_environment
   cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash
+    working-directory: engine-service
+
+env:
+  # PHP SETTINGS
+  PHP_EXTENSIONS: json
+  PHP_EXTENSIONS_CACHE_KEY: cache-php-extensions-v1
 
 jobs:
   deploy:
@@ -39,15 +44,19 @@ jobs:
         if: ${{ vars.SHOW_WORKFLOW_INFO == '1'}}
         uses: crazy-max/ghaction-dump-context@v2
 
-      - name: Setup PHP
-        uses: shivammathur/setup-php@2.33.0
+      - name: Setup PHP and composer dependencies
+        uses: './.github/actions/php-composer-setup'
         with:
           php-version: '8.1'
-          tools: composer
+          composer-working-directory: 'engine-service'
+          php-extensions: ${{ env.PHP_EXTENSIONS }}
+          extensions-cache-key:  ${{ env.PHP_EXTENSIONS_CACHE_KEY }}
+          use-php-extensions-cache: ${{ vars.USE_PHP_EXTENSION_CACHE }}
+          use-composer-cache: ${{ vars.USE_COMPOSER_CACHE }}
+          composer-install-args: '--no-interaction --prefer-dist --no-progress --ansi'
 
-      - name: Install Composer dependencies
+      - name: Install Deployer
         run: |
-          composer install --prefer-dist --no-progress --no-scripts --ansi
           composer bin deployer install
 
       - uses: oNaiPs/secrets-to-env-action@v1
@@ -75,9 +84,9 @@ jobs:
         uses: deployphp/action@v1
         with:
           deployer-version: "7.3.3"
-          dep: deploy production --tag=${{ github.ref_name }}
+          dep: deploy production --tag=${{ github.ref_name }} -f ./engine-service/deploy.php
           private-key: ${{ secrets.DEPLOYER_PRIVATE_SSH_KEY }}
-          deployer-binary: "./vendor/bin/dep"
+          deployer-binary: "./engine-service/vendor/bin/dep"
 
 
   enable-maintenance-mode:
