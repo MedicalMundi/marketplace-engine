@@ -6,6 +6,9 @@
 
 .gitattributes export-ignore
 .gitignore export-ignore
+/engine-service/.env.test export-ignore
+/engine-service/.env.dev export-ignore
+/engine-service/behat.yml export-ignore
 /engine-service/churn.dist.yml export-ignore
 /engine-service/churn.yml export-ignore
 /engine-service/codecov.yml export-ignore
@@ -18,7 +21,7 @@
 /engine-service/psalm-baseline.xml export-ignore
 /engine-service/rector.php export-ignore
 
-/engine-service/_bffApi/tests
-/engine-service/_bffWeb/tests
-/engine-service/_catalog/tests
-/engine-service/_metadata/tests
+/engine-service/context/bffApi/tests
+/engine-service/context/bffWeb/tests
+/engine-service/context/catalog/tests
+/engine-service/context/metadata/tests
