@@ -4,6 +4,7 @@
 name: deploy
 
 on:
+  workflow_dispatch:
   workflow_call:
     # Map the workflow outputs to job outputs
     inputs:
