@@ -1,7 +1,7 @@
 # @see https://github.com/deployphp/action
 # @see https://deployer.org/docs/7.x/getting-started
 
-name: deploy
+name: Deploy on Production
 
 on:
   workflow_dispatch:
