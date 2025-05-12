@@ -1,6 +1,7 @@
 # Read the documentation: https://github.com/frankdekker/symfony-log-viewer-bundle/blob/master/docs/configuration-reference.md
 
 fd_log_viewer:
+    home_route: web_admin
     log_files:
         monolog:
             type: monolog
