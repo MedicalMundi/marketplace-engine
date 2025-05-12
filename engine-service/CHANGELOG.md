@@ -9,6 +9,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) a
 * Module metadata management [WIP]
 * Third Party APIs [WIP]
 
+## [v0.9.9] - 2025-05-12
+### Added
+* added log viewer for administraor
+
 ## [v0.9.8] - 2025-05-08
 ### Maintenance release
 
