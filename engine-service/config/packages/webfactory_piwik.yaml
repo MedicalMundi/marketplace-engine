@@ -14,7 +14,7 @@ webfactory_piwik:
 
 when@prod:
   webfactory_piwik:
-    disabled: true
+    disabled: false
 
 when@dev:
   webfactory_piwik:
