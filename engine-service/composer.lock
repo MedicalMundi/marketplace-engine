@@ -13812,16 +13812,16 @@
         },
         {
             "name": "symfony/phpunit-bridge",
-            "version": "v7.2.7",
+            "version": "v7.2.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/phpunit-bridge.git",
-                "reference": "2836a02f0165651d514fd444bb3cd2a3a8a2e0de"
+                "reference": "860206b88792463da3bb64763c224c29ddbe9729"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/phpunit-bridge/zipball/2836a02f0165651d514fd444bb3cd2a3a8a2e0de",
-                "reference": "2836a02f0165651d514fd444bb3cd2a3a8a2e0de",
+                "url": "https://api.github.com/repos/symfony/phpunit-bridge/zipball/860206b88792463da3bb64763c224c29ddbe9729",
+                "reference": "860206b88792463da3bb64763c224c29ddbe9729",
                 "shasum": ""
             },
             "require": {
@@ -13873,8 +13873,11 @@
             ],
             "description": "Provides utilities for PHPUnit, especially user deprecation notices management",
             "homepage": "https://symfony.com",
+            "keywords": [
+                "testing"
+            ],
             "support": {
-                "source": "https://github.com/symfony/phpunit-bridge/tree/v7.2.7"
+                "source": "https://github.com/symfony/phpunit-bridge/tree/v7.2.8"
             },
             "funding": [
                 {
@@ -13890,7 +13893,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-05-20T11:26:39+00:00"
+            "time": "2025-06-04T10:08:59+00:00"
         },
         {
             "name": "symfony/polyfill-php81",
