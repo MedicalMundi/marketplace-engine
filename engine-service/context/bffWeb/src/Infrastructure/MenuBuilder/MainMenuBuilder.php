@@ -115,5 +115,4 @@ final class MainMenuBuilder
         $menu['catalog']->setAttribute('class', 'nav-item');
         $menu['catalog']->setLinkAttribute('class', 'nav-link');
     }
-
 }
