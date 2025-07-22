@@ -40,7 +40,10 @@
             {% endif %}
         </button>
         <div class="collapse navbar-collapse" id="navbarMainTop">
+
+            {{ knp_menu_render('administration menu') }}
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="{{ path('app_home') }}">Home</a>
                 </li>
@@ -56,11 +59,9 @@
                         <li><a class="dropdown-item" href="{{ path('web_admin_catalog_index') }}">Modules</a></li>
                     </ul>
                 </li>
-                <li class="nav-item">
-                    {#                           TODO: translate#}
-{#                    <a class="nav-link" aria-current="page" href="{{ path('web_contact') }}">Contact</a>#}
-                </li>
             </ul>
         </div>
     </div>
 </nav>
+
+
