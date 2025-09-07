@@ -2483,16 +2483,16 @@
         },
         {
             "name": "fdekker/log-viewer-bundle",
-            "version": "v2.2.0",
+            "version": "v2.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/frankdekker/symfony-log-viewer-bundle.git",
-                "reference": "8062dd6671c4e03f4d33759599caba5b62ca135c"
+                "reference": "3cb0a8a5e9deefa3c45b50def297622d73005246"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/frankdekker/symfony-log-viewer-bundle/zipball/8062dd6671c4e03f4d33759599caba5b62ca135c",
-                "reference": "8062dd6671c4e03f4d33759599caba5b62ca135c",
+                "url": "https://api.github.com/repos/frankdekker/symfony-log-viewer-bundle/zipball/3cb0a8a5e9deefa3c45b50def297622d73005246",
+                "reference": "3cb0a8a5e9deefa3c45b50def297622d73005246",
                 "shasum": ""
             },
             "require": {
@@ -2567,9 +2567,9 @@
             ],
             "support": {
                 "issues": "https://github.com/frankdekker/symfony-log-viewer-bundle/issues",
-                "source": "https://github.com/frankdekker/symfony-log-viewer-bundle/tree/v2.2.0"
+                "source": "https://github.com/frankdekker/symfony-log-viewer-bundle/tree/v2.3.0"
             },
-            "time": "2025-06-19T18:43:13+00:00"
+            "time": "2025-09-04T20:03:29+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
