@@ -11634,16 +11634,16 @@
         },
         {
             "name": "webfactory/piwik-bundle",
-            "version": "3.3.2",
+            "version": "3.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/webfactory/piwik-bundle.git",
-                "reference": "8aaf1e7a222078f27e98675fea50d12af443d175"
+                "reference": "574d3e531a65caa0176c45526987b4383be98569"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webfactory/piwik-bundle/zipball/8aaf1e7a222078f27e98675fea50d12af443d175",
-                "reference": "8aaf1e7a222078f27e98675fea50d12af443d175",
+                "url": "https://api.github.com/repos/webfactory/piwik-bundle/zipball/574d3e531a65caa0176c45526987b4383be98569",
+                "reference": "574d3e531a65caa0176c45526987b4383be98569",
                 "shasum": ""
             },
             "require": {
@@ -11683,9 +11683,9 @@
             "description": "Symfony Bundle that adds a twig-function for the Matomo tracking code.",
             "support": {
                 "issues": "https://github.com/webfactory/piwik-bundle/issues",
-                "source": "https://github.com/webfactory/piwik-bundle/tree/3.3.2"
+                "source": "https://github.com/webfactory/piwik-bundle/tree/3.4.1"
             },
-            "time": "2025-08-01T09:14:35+00:00"
+            "time": "2025-09-22T16:12:30+00:00"
         },
         {
             "name": "webmozart/assert",
