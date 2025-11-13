@@ -95,7 +95,7 @@
         "audit": {
             "abandoned": "report",
             "ignore": {
-                "CVE-2024-51996": "Authentication Bypass via persisted RememberMe cookie"
+                "CVE-2025-64500": "Incorrect parsing of PATH_INFO can lead to limited authorization"
             }
         },
         "optimize-autoloader": true,
