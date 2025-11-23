@@ -2482,16 +2482,16 @@
         },
         {
             "name": "fdekker/log-viewer-bundle",
-            "version": "v2.3.0",
+            "version": "v2.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/frankdekker/symfony-log-viewer-bundle.git",
-                "reference": "3cb0a8a5e9deefa3c45b50def297622d73005246"
+                "reference": "e10b1d2d47c9470eb747fdc3443d23a66403a533"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/frankdekker/symfony-log-viewer-bundle/zipball/3cb0a8a5e9deefa3c45b50def297622d73005246",
-                "reference": "3cb0a8a5e9deefa3c45b50def297622d73005246",
+                "url": "https://api.github.com/repos/frankdekker/symfony-log-viewer-bundle/zipball/e10b1d2d47c9470eb747fdc3443d23a66403a533",
+                "reference": "e10b1d2d47c9470eb747fdc3443d23a66403a533",
                 "shasum": ""
             },
             "require": {
@@ -2520,7 +2520,7 @@
                 "phpstan/phpstan-symfony": "^2.0",
                 "phpunit/phpunit": "^10.5 || ^11.0 || ^12.0",
                 "roave/security-advisories": "dev-latest",
-                "squizlabs/php_codesniffer": "^3.6",
+                "squizlabs/php_codesniffer": "^4.0",
                 "symfony/browser-kit": "^6.0||^7.0",
                 "symfony/console": "^6.0||^7.0",
                 "symfony/css-selector": "^6.0||^7.0",
@@ -2566,9 +2566,9 @@
             ],
             "support": {
                 "issues": "https://github.com/frankdekker/symfony-log-viewer-bundle/issues",
-                "source": "https://github.com/frankdekker/symfony-log-viewer-bundle/tree/v2.3.0"
+                "source": "https://github.com/frankdekker/symfony-log-viewer-bundle/tree/v2.4.0"
             },
-            "time": "2025-09-04T20:03:29+00:00"
+            "time": "2025-11-16T21:16:00+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -10726,16 +10726,16 @@
         },
         {
             "name": "symfony/validator",
-            "version": "v6.4.27",
+            "version": "v6.4.29",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/validator.git",
-                "reference": "60dd71e219cd3d76fde906eb6b6c1271db628f5b"
+                "reference": "99df8a769e64e399f510166141ea74f450e8dd1d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/validator/zipball/60dd71e219cd3d76fde906eb6b6c1271db628f5b",
-                "reference": "60dd71e219cd3d76fde906eb6b6c1271db628f5b",
+                "url": "https://api.github.com/repos/symfony/validator/zipball/99df8a769e64e399f510166141ea74f450e8dd1d",
+                "reference": "99df8a769e64e399f510166141ea74f450e8dd1d",
                 "shasum": ""
             },
             "require": {
@@ -10803,7 +10803,7 @@
             "description": "Provides tools to validate values",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/validator/tree/v6.4.27"
+                "source": "https://github.com/symfony/validator/tree/v6.4.29"
             },
             "funding": [
                 {
@@ -10823,7 +10823,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-10-23T19:49:35+00:00"
+            "time": "2025-11-06T20:26:06+00:00"
         },
         {
             "name": "symfony/var-dumper",
