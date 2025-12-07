@@ -14341,16 +14341,16 @@
         },
         {
             "name": "zenstruck/foundry",
-            "version": "v2.7.9",
+            "version": "v2.8.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zenstruck/foundry.git",
-                "reference": "11973cebbb97d5c9f3f27ffd602833bff26bf760"
+                "reference": "4ab260d252716c316b20e7a66bd55b12d165dedb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zenstruck/foundry/zipball/11973cebbb97d5c9f3f27ffd602833bff26bf760",
-                "reference": "11973cebbb97d5c9f3f27ffd602833bff26bf760",
+                "url": "https://api.github.com/repos/zenstruck/foundry/zipball/4ab260d252716c316b20e7a66bd55b12d165dedb",
+                "reference": "4ab260d252716c316b20e7a66bd55b12d165dedb",
                 "shasum": ""
             },
             "require": {
@@ -14365,6 +14365,7 @@
             },
             "conflict": {
                 "doctrine/persistence": "<2.0",
+                "symfony/event-dispatcher": "<6.4",
                 "symfony/framework-bundle": "<6.4"
             },
             "require-dev": {
@@ -14372,7 +14373,7 @@
                 "dama/doctrine-test-bundle": "^8.0",
                 "doctrine/collections": "^1.7|^2.0",
                 "doctrine/common": "^3.2.2",
-                "doctrine/doctrine-bundle": "^2.10",
+                "doctrine/doctrine-bundle": "^2.10|^3.0|3.1.x-dev",
                 "doctrine/doctrine-migrations-bundle": "^2.2|^3.0",
                 "doctrine/mongodb-odm": "^2.4",
                 "doctrine/mongodb-odm-bundle": "^4.6|^5.0",
@@ -14382,6 +14383,7 @@
                 "symfony/browser-kit": "^6.4|^7.0|^8.0",
                 "symfony/console": "^6.4|^7.0|^8.0",
                 "symfony/dotenv": "^6.4|^7.0|^8.0",
+                "symfony/event-dispatcher": "^6.4|^7.0|^8.0",
                 "symfony/framework-bundle": "^6.4|^7.0|^8.0",
                 "symfony/maker-bundle": "^1.55",
                 "symfony/phpunit-bridge": "^6.4|^7.0|^8.0",
@@ -14443,7 +14445,7 @@
             ],
             "support": {
                 "issues": "https://github.com/zenstruck/foundry/issues",
-                "source": "https://github.com/zenstruck/foundry/tree/v2.7.9"
+                "source": "https://github.com/zenstruck/foundry/tree/v2.8.1"
             },
             "funding": [
                 {
@@ -14455,7 +14457,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-11-07T08:38:56+00:00"
+            "time": "2025-12-02T17:18:46+00:00"
         }
     ],
     "aliases": [],
