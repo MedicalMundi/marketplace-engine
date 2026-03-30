@@ -27,7 +27,7 @@ jobs:
 
       - name: Show CI job info (dump context)
         if: ${{ vars.SHOW_WORKFLOW_INFO == '1'}}
-        uses: crazy-max/ghaction-dump-context@v2
+        uses: crazy-max/ghaction-dump-context@v3
 
       - name: Build file 'release_version.txt'
         # Tag name: @see https://github.com/orgs/community/discussions/26686
